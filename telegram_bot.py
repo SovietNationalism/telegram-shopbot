@@ -100,58 +100,39 @@ class ShopBot:
         }
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-        # Clean up all previous menu/product/service messages
-        await self.cleanup_all(context, update.effective_chat.id)
+        await self.delete_last_menu(context, update.effective_chat.id)
         keyboard = [
             [InlineKeyboardButton("🛍️ Shop 🛍️", callback_data="shop")],
             [InlineKeyboardButton("💰 Pagamenti 💰", callback_data="payments")],
             [InlineKeyboardButton("👥 Contattami 👥", callback_data="contact")],
             [InlineKeyboardButton("👨‍💻 Developer 👨‍💻", callback_data="developer")]
         ]
-        reply_markup = InlineKeyboardMarkup(keyboard)
         welcome_message = (
             "🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹\n\n"
             "Scopri un mondo di prodotti selezionati, pensati per un'esperienza unica e indimenticabile. "
             "Puoi esplorare, acquistare e contattarci in pochi semplici clic!"
         )
-
         message = update.effective_message
         try:
             sent = await message.reply_photo(
                 photo=WELCOME_IMAGE_URL,
                 caption=welcome_message,
-                reply_markup=reply_markup
+                reply_markup=InlineKeyboardMarkup(keyboard)
             )
-            context.user_data["main_menu_msg_id"] = sent.message_id
+            context.user_data["last_menu_msg_id"] = sent.message_id
         except BadRequest as e:
             logger.warning(f"❌ Impossibile inviare l'immagine di benvenuto: {e}")
-            sent = await message.reply_text(text=welcome_message, reply_markup=reply_markup)
-            context.user_data["main_menu_msg_id"] = sent.message_id
+            sent = await message.reply_text(text=welcome_message, reply_markup=InlineKeyboardMarkup(keyboard))
+            context.user_data["last_menu_msg_id"] = sent.message_id
 
-    async def cleanup_all(self, context, chat_id):
-        # Delete all menu/product/service messages from user_data
-        for key in [
-            "main_menu_msg_id", "shop_menu_msg_id", "products_menu_msg_id", "services_menu_msg_id",
-            "product_msg_id", "service_msg_id"
-        ]:
-            msg_id = context.user_data.get(key)
-            if msg_id:
-                try:
-                    await context.bot.delete_message(chat_id=chat_id, message_id=msg_id)
-                except Exception:
-                    pass
-                context.user_data[key] = None
-
-    async def cleanup_detail(self, context, chat_id):
-        # Delete only product/service detail messages
-        for key in ["product_msg_id", "service_msg_id"]:
-            msg_id = context.user_data.get(key)
-            if msg_id:
-                try:
-                    await context.bot.delete_message(chat_id=chat_id, message_id=msg_id)
-                except Exception:
-                    pass
-                context.user_data[key] = None
+    async def delete_last_menu(self, context, chat_id):
+        msg_id = context.user_data.get("last_menu_msg_id")
+        if msg_id:
+            try:
+                await context.bot.delete_message(chat_id=chat_id, message_id=msg_id)
+            except Exception:
+                pass
+            context.user_data["last_menu_msg_id"] = None
 
     async def button_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         query = update.callback_query
@@ -159,15 +140,15 @@ class ShopBot:
         data = query.data
         chat_id = query.message.chat.id
 
-        # Main menu navigation
+        # Always delete the previous menu/detail message before showing a new one
+        await self.delete_last_menu(context, chat_id)
+
+        # Menus
         if data == "back_to_main":
-            await self.cleanup_all(context, chat_id)
             await self.start(update, context)
             return
 
-        # Shop menu
         if data == "shop":
-            await self.cleanup_all(context, chat_id)
             keyboard = [
                 [InlineKeyboardButton("📱 Prodotti", callback_data="products")],
                 [InlineKeyboardButton("🔧 Servizi", callback_data="services")],
@@ -179,12 +160,10 @@ class ShopBot:
                 reply_markup=InlineKeyboardMarkup(keyboard),
                 parse_mode=ParseMode.MARKDOWN
             )
-            context.user_data["shop_menu_msg_id"] = sent.message_id
+            context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        # Payments, contact, developer
         if data == "payments":
-            await self.cleanup_all(context, chat_id)
             keyboard = [[InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]]
             sent = await context.bot.send_message(
                 chat_id=chat_id,
@@ -197,10 +176,10 @@ class ShopBot:
                 reply_markup=InlineKeyboardMarkup(keyboard),
                 parse_mode=ParseMode.MARKDOWN
             )
-            context.user_data["shop_menu_msg_id"] = sent.message_id
+            context.user_data["last_menu_msg_id"] = sent.message_id
             return
+
         if data == "contact":
-            await self.cleanup_all(context, chat_id)
             keyboard = [
                 [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
@@ -211,10 +190,10 @@ class ShopBot:
                 reply_markup=InlineKeyboardMarkup(keyboard),
                 parse_mode=ParseMode.MARKDOWN
             )
-            context.user_data["shop_menu_msg_id"] = sent.message_id
+            context.user_data["last_menu_msg_id"] = sent.message_id
             return
+
         if data == "developer":
-            await self.cleanup_all(context, chat_id)
             keyboard = [
                 [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
@@ -227,12 +206,10 @@ class ShopBot:
                 reply_markup=InlineKeyboardMarkup(keyboard),
                 parse_mode=ParseMode.MARKDOWN
             )
-            context.user_data["shop_menu_msg_id"] = sent.message_id
+            context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        # Products menu
         if data == "products" or data == "back_to_products":
-            await self.cleanup_all(context, chat_id)
             keyboard = [
                 [InlineKeyboardButton(self.products["1"]["name"], callback_data="product_1")],
                 [InlineKeyboardButton(self.products["2"]["name"], callback_data="product_2")],
@@ -249,12 +226,10 @@ class ShopBot:
                 reply_markup=InlineKeyboardMarkup(keyboard),
                 parse_mode=ParseMode.MARKDOWN
             )
-            context.user_data["products_menu_msg_id"] = sent.message_id
+            context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        # Services menu
         if data == "services" or data == "back_to_services":
-            await self.cleanup_all(context, chat_id)
             keyboard = [
                 [InlineKeyboardButton(s["name"], callback_data=f"service_{sid}")]
                 for sid, s in self.services.items()
@@ -266,18 +241,16 @@ class ShopBot:
                 reply_markup=InlineKeyboardMarkup(keyboard),
                 parse_mode=ParseMode.MARKDOWN
             )
-            context.user_data["services_menu_msg_id"] = sent.message_id
+            context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
         # Product details
         if data.startswith("product_3_"):
-            await self.cleanup_detail(context, chat_id)
             key = data.replace("product_", "")
             product = self.products.get(key)
             if not product:
                 await query.answer("❌ Prodotto non trovato!")
                 return
-            # Send video if available
             if product.get("video_file_id"):
                 try:
                     sent = await context.bot.send_video(
@@ -285,37 +258,30 @@ class ShopBot:
                         video=product["video_file_id"],
                         caption=product["caption"],
                         parse_mode=ParseMode.MARKDOWN,
-                        supports_streaming=True
+                        supports_streaming=True,
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]])
                     )
-                    context.user_data["product_msg_id"] = sent.message_id
+                    context.user_data["last_menu_msg_id"] = sent.message_id
                 except BadRequest as e:
                     logger.warning(f"Errore invio video prodotto: {e}")
                     sent = await context.bot.send_message(
                         chat_id=chat_id,
                         text=product["caption"],
-                        parse_mode=ParseMode.MARKDOWN
+                        parse_mode=ParseMode.MARKDOWN,
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]])
                     )
-                    context.user_data["product_msg_id"] = sent.message_id
+                    context.user_data["last_menu_msg_id"] = sent.message_id
             else:
                 sent = await context.bot.send_message(
                     chat_id=chat_id,
                     text=product["caption"],
-                    parse_mode=ParseMode.MARKDOWN
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]])
                 )
-                context.user_data["product_msg_id"] = sent.message_id
-
-            keyboard = [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
-            sent2 = await context.bot.send_message(
-                chat_id=chat_id,
-                text=f"Hai selezionato: {product['name']}",
-                reply_markup=InlineKeyboardMarkup(keyboard),
-                parse_mode=ParseMode.MARKDOWN
-            )
-            context.user_data["products_menu_msg_id"] = sent2.message_id
+                context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
         if data in ["product_1", "product_2"]:
-            await self.cleanup_detail(context, chat_id)
             product_id = data.split("_")[1]
             product = self.products.get(product_id)
             if not product:
@@ -333,37 +299,30 @@ class ShopBot:
                         video=product["video_file_id"],
                         caption=caption,
                         parse_mode=ParseMode.MARKDOWN,
-                        supports_streaming=True
+                        supports_streaming=True,
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]])
                     )
-                    context.user_data["product_msg_id"] = sent.message_id
+                    context.user_data["last_menu_msg_id"] = sent.message_id
                 except BadRequest as e:
                     logger.warning(f"Errore invio video prodotto: {e}")
                     sent = await context.bot.send_message(
                         chat_id=chat_id,
                         text=caption,
-                        parse_mode=ParseMode.MARKDOWN
+                        parse_mode=ParseMode.MARKDOWN,
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]])
                     )
-                    context.user_data["product_msg_id"] = sent.message_id
+                    context.user_data["last_menu_msg_id"] = sent.message_id
             else:
                 sent = await context.bot.send_message(
                     chat_id=chat_id,
                     text=caption,
-                    parse_mode=ParseMode.MARKDOWN
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]])
                 )
-                context.user_data["product_msg_id"] = sent.message_id
-
-            keyboard = [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
-            sent2 = await context.bot.send_message(
-                chat_id=chat_id,
-                text=f"Hai selezionato: {product['name']}",
-                reply_markup=InlineKeyboardMarkup(keyboard),
-                parse_mode=ParseMode.MARKDOWN
-            )
-            context.user_data["products_menu_msg_id"] = sent2.message_id
+                context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
         if data == "product_4":
-            await self.cleanup_detail(context, chat_id)
             product = self.products["4"]
             lines = product["price"].split("\n")
             caption_lines = []
@@ -381,21 +340,13 @@ class ShopBot:
             sent = await context.bot.send_message(
                 chat_id=chat_id,
                 text=caption,
-                parse_mode=ParseMode.MARKDOWN
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]])
             )
-            context.user_data["product_msg_id"] = sent.message_id
-            keyboard = [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
-            sent2 = await context.bot.send_message(
-                chat_id=chat_id,
-                text=f"Hai selezionato: {product['name']}",
-                reply_markup=InlineKeyboardMarkup(keyboard),
-                parse_mode=ParseMode.MARKDOWN
-            )
-            context.user_data["products_menu_msg_id"] = sent2.message_id
+            context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
         if data.startswith("service_"):
-            await self.cleanup_detail(context, chat_id)
             service_id = data.split("_")[1]
             service = self.services.get(service_id)
             if not service:
@@ -413,50 +364,46 @@ class ShopBot:
                         video=service["video_file_id"],
                         caption=caption,
                         parse_mode=ParseMode.MARKDOWN,
-                        supports_streaming=True
+                        supports_streaming=True,
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]])
                     )
-                    context.user_data["service_msg_id"] = sent.message_id
+                    context.user_data["last_menu_msg_id"] = sent.message_id
                 except BadRequest as e:
                     logger.warning(f"Errore invio video servizio: {e}")
                     sent = await context.bot.send_message(
                         chat_id=chat_id,
                         text=caption,
-                        parse_mode=ParseMode.MARKDOWN
+                        parse_mode=ParseMode.MARKDOWN,
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]])
                     )
-                    context.user_data["service_msg_id"] = sent.message_id
+                    context.user_data["last_menu_msg_id"] = sent.message_id
             elif service.get("photo_file_id"):
                 try:
                     sent = await context.bot.send_photo(
                         chat_id=chat_id,
                         photo=service["photo_file_id"],
                         caption=caption,
-                        parse_mode=ParseMode.MARKDOWN
+                        parse_mode=ParseMode.MARKDOWN,
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]])
                     )
-                    context.user_data["service_msg_id"] = sent.message_id
+                    context.user_data["last_menu_msg_id"] = sent.message_id
                 except BadRequest as e:
                     logger.warning(f"Errore invio immagine servizio: {e}")
                     sent = await context.bot.send_message(
                         chat_id=chat_id,
                         text=caption,
-                        parse_mode=ParseMode.MARKDOWN
+                        parse_mode=ParseMode.MARKDOWN,
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]])
                     )
-                    context.user_data["service_msg_id"] = sent.message_id
+                    context.user_data["last_menu_msg_id"] = sent.message_id
             else:
                 sent = await context.bot.send_message(
                     chat_id=chat_id,
                     text=caption,
-                    parse_mode=ParseMode.MARKDOWN
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]])
                 )
-                context.user_data["service_msg_id"] = sent.message_id
-
-            keyboard = [[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]]
-            sent2 = await context.bot.send_message(
-                chat_id=chat_id,
-                text=f"Hai selezionato: {service['name']}",
-                reply_markup=InlineKeyboardMarkup(keyboard),
-                parse_mode=ParseMode.MARKDOWN
-            )
-            context.user_data["services_menu_msg_id"] = sent2.message_id
+                context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
     async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
