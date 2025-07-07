@@ -17,7 +17,6 @@ if not BOT_TOKEN:
     logger.critical("❌ BOT_TOKEN environment variable is missing. Set it before running.")
     sys.exit(1)
 
-# === BOT CLASS ===
 class ShopBot:
     def __init__(self):
         self.products = {
@@ -25,7 +24,6 @@ class ShopBot:
             "2": {"name": "Prodotto 2", "price": "€15.00", "description": "Descrizione del prodotto 2", "image_url": "https://example.com/product2.jpg"},
             "3": {"name": "Prodotto 3", "price": "€20.00", "description": "Descrizione del prodotto 3", "image_url": "https://example.com/product3.jpg"},
         }
-
         self.services = {
             "1": {"name": "Servizio 1", "price": "€25.00", "description": "Descrizione del servizio 1", "image_url": "https://example.com/service1.jpg"},
             "2": {"name": "Servizio 2", "price": "€30.00", "description": "Descrizione del servizio 2", "image_url": "https://example.com/service2.jpg"},
@@ -59,154 +57,169 @@ class ShopBot:
         query = update.callback_query
         await query.answer()
 
-        match query.data:
-            case "shop": await self.show_shop(query)
-            case "payments": await self.show_payments(query)
-            case "contact": await self.show_contact(query)
-            case "developer": await self.show_developer(query)
-            case "back_to_main": await self.show_main_menu(query)
-            case "products": await self.show_products(query)
-            case "services": await self.show_services(query)
-            case _ if query.data.startswith("product_"):
-                await self.show_product_details(query, query.data.split("_")[1])
-            case _ if query.data.startswith("service_"):
-                await self.show_service_details(query, query.data.split("_")[1])
-            case "back_to_shop": await self.show_shop(query)
-            case "back_to_products": await self.show_products(query)
-            case "back_to_services": await self.show_services(query)
+        # Helper per gestire edit o nuovo messaggio
+        async def safe_edit_or_send(text, keyboard, parse_mode="Markdown"):
+            if query.message.photo:
+                try:
+                    await query.message.delete()
+                except Exception:
+                    pass
+                await query.message.chat.send_message(
+                    text=text,
+                    reply_markup=InlineKeyboardMarkup(keyboard),
+                    parse_mode=parse_mode
+                )
+            else:
+                await query.edit_message_text(
+                    text=text,
+                    reply_markup=InlineKeyboardMarkup(keyboard),
+                    parse_mode=parse_mode
+                )
 
-    async def show_shop(self, query):
-        keyboard = [
-            [InlineKeyboardButton("📱 Prodotti", callback_data="products")],
-            [InlineKeyboardButton("🔧 Servizi", callback_data="services")],
-            [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
-        ]
-        await query.edit_message_text(
-            text="🛍️ *SHOP*\n\nScegli una categoria:",
-            reply_markup=InlineKeyboardMarkup(keyboard),
-            parse_mode="Markdown"
-        )
-
-    async def show_products(self, query):
-        keyboard = [
-            [InlineKeyboardButton(f"{p['name']} - {p['price']}", callback_data=f"product_{pid}")]
-            for pid, p in self.products.items()
-        ]
-        keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")])
-        await query.edit_message_text(
-            text="📱 *PRODOTTI DISPONIBILI*\n\nScegli un prodotto:",
-            reply_markup=InlineKeyboardMarkup(keyboard),
-            parse_mode="Markdown"
-        )
-
-    async def show_services(self, query):
-        keyboard = [
-            [InlineKeyboardButton(f"{s['name']} - {s['price']}", callback_data=f"service_{sid}")]
-            for sid, s in self.services.items()
-        ]
-        keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")])
-        await query.edit_message_text(
-            text="🔧 *SERVIZI DISPONIBILI*\n\nScegli un servizio:",
-            reply_markup=InlineKeyboardMarkup(keyboard),
-            parse_mode="Markdown"
-        )
-
-    async def show_product_details(self, query, product_id):
-        product = self.products.get(product_id)
-        if not product:
-            await query.answer("❌ Prodotto non trovato!")
-            return
-
-        try:
-            await query.message.reply_photo(
-                photo=product['image_url'],
-                caption=(
-                    f"📦 *{product['name']}*\n"
-                    f"💵 Prezzo: {product['price']}\n"
-                    f"📝 Descrizione: {product['description']}\n\n"
-                    "Usa /start per effettuare un ordine"
-                ),
-                parse_mode="Markdown"
+        data = query.data
+        if data == "shop":
+            await safe_edit_or_send(
+                "🛍️ *SHOP*\n\nScegli una categoria:",
+                [
+                    [InlineKeyboardButton("📱 Prodotti", callback_data="products")],
+                    [InlineKeyboardButton("🔧 Servizi", callback_data="services")],
+                    [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
+                ]
             )
-        except BadRequest as e:
-            logger.warning(f"Errore invio immagine prodotto: {e}")
-            await query.message.reply_text(
-                f"📦 *{product['name']}*\n💵 Prezzo: {product['price']}\n📝 Descrizione: {product['description']}\n\nUsa /start per ordinare",
-                parse_mode="Markdown"
+        elif data == "payments":
+            await safe_edit_or_send(
+                "💰 *METODI DI PAGAMENTO*\n\n"
+                "• 💰 Crypto (0% commissione)\n"
+                "• 💵 Contanti (0% commissione)\n"
+                "• 🏦 Bonifico istantaneo (0% commissione)\n"
+                "• 💳 PayPal (+10% commissione)\n\n"
+                "Scegli il metodo che preferisci al momento dell'ordine.",
+                [[InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]]
             )
-
-        await query.edit_message_text(
-            text=f"Hai selezionato: {product['name']}",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]])
-        )
-
-    async def show_service_details(self, query, service_id):
-        service = self.services.get(service_id)
-        if not service:
-            await query.answer("❌ Servizio non trovato!")
-            return
-
-        try:
-            await query.message.reply_photo(
-                photo=service['image_url'],
-                caption=(
-                    f"🛠️ *{service['name']}*\n"
-                    f"💵 Prezzo: {service['price']}\n"
-                    f"📝 Descrizione: {service['description']}\n\n"
-                    "Usa /start per richiedere il servizio"
-                ),
-                parse_mode="Markdown"
+        elif data == "contact":
+            await safe_edit_or_send(
+                "👥 *CONTATTAMI*\n\nClicca il pulsante qui sotto per contattarmi direttamente su Telegram:",
+                [
+                    [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
+                    [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
+                ]
             )
-        except BadRequest:
-            await query.message.reply_text(
-                f"🛠️ *{service['name']}*\n💵 Prezzo: {service['price']}\n📝 Descrizione: {service['description']}\n\nUsa /start per richiedere il servizio",
-                parse_mode="Markdown"
+        elif data == "developer":
+            await safe_edit_or_send(
+                "👨‍💻 *DEVELOPER*\n\n"
+                "Bot sviluppato da @ItalianEdibles\n\n"
+                "Contattami per progetti personalizzati!",
+                [
+                    [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
+                    [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
+                ]
             )
-
-        await query.edit_message_text(
-            text=f"Hai selezionato: {service['name']}",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]])
-        )
-
-    async def show_payments(self, query):
-        text = (
-            "💰 *METODI DI PAGAMENTO*\n\n"
-            "• 💰 Crypto (0% commissione)\n"
-            "• 💵 Contanti (0% commissione)\n"
-            "• 🏦 Bonifico istantaneo (0% commissione)\n"
-            "• 💳 PayPal (+10% commissione)\n\n"
-            "Scegli il metodo che preferisci al momento dell'ordine."
-        )
-        await query.edit_message_text(text=text, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]]), parse_mode="Markdown")
-
-    async def show_contact(self, query):
-        keyboard = [
-            [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
-            [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
-        ]
-        await query.edit_message_text(
-            text="👥 *CONTATTAMI*\n\nClicca il pulsante qui sotto per contattarmi direttamente su Telegram:",
-            reply_markup=InlineKeyboardMarkup(keyboard),
-            parse_mode="Markdown"
-        )
-
-    async def show_developer(self, query):
-        text = (
-            "👨‍💻 *DEVELOPER*\n\n"
-            "Bot sviluppato da @ItalianEdibles\n\n"
-            "Contattami per progetti personalizzati!"
-        )
-        await query.edit_message_text(
-            text=text,
-            reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
-                [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
-            ]),
-            parse_mode="Markdown"
-        )
-
-    async def show_main_menu(self, query):
-        await self.start(query, None)
+        elif data == "back_to_main":
+            # Torna al menu principale
+            # In questo caso, invia il menu di start come nuovo messaggio
+            await self.start(update, context)
+        elif data == "products":
+            keyboard = [
+                [InlineKeyboardButton(f"{p['name']} - {p['price']}", callback_data=f"product_{pid}")]
+                for pid, p in self.products.items()
+            ]
+            keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")])
+            await safe_edit_or_send(
+                "📱 *PRODOTTI DISPONIBILI*\n\nScegli un prodotto:",
+                keyboard
+            )
+        elif data == "services":
+            keyboard = [
+                [InlineKeyboardButton(f"{s['name']} - {s['price']}", callback_data=f"service_{sid}")]
+                for sid, s in self.services.items()
+            ]
+            keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")])
+            await safe_edit_or_send(
+                "🔧 *SERVIZI DISPONIBILI*\n\nScegli un servizio:",
+                keyboard
+            )
+        elif data.startswith("product_"):
+            product_id = data.split("_")[1]
+            product = self.products.get(product_id)
+            if not product:
+                await query.answer("❌ Prodotto non trovato!")
+                return
+            try:
+                await query.message.reply_photo(
+                    photo=product['image_url'],
+                    caption=(
+                        f"📦 *{product['name']}*\n"
+                        f"💵 Prezzo: {product['price']}\n"
+                        f"📝 Descrizione: {product['description']}\n\n"
+                        "Usa /start per effettuare un ordine"
+                    ),
+                    parse_mode="Markdown"
+                )
+            except BadRequest as e:
+                logger.warning(f"Errore invio immagine prodotto: {e}")
+                await query.message.reply_text(
+                    f"📦 *{product['name']}*\n💵 Prezzo: {product['price']}\n📝 Descrizione: {product['description']}\n\nUsa /start per ordinare",
+                    parse_mode="Markdown"
+                )
+            await safe_edit_or_send(
+                f"Hai selezionato: {product['name']}",
+                [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
+            )
+        elif data.startswith("service_"):
+            service_id = data.split("_")[1]
+            service = self.services.get(service_id)
+            if not service:
+                await query.answer("❌ Servizio non trovato!")
+                return
+            try:
+                await query.message.reply_photo(
+                    photo=service['image_url'],
+                    caption=(
+                        f"🛠️ *{service['name']}*\n"
+                        f"💵 Prezzo: {service['price']}\n"
+                        f"📝 Descrizione: {service['description']}\n\n"
+                        "Usa /start per richiedere il servizio"
+                    ),
+                    parse_mode="Markdown"
+                )
+            except BadRequest:
+                await query.message.reply_text(
+                    f"🛠️ *{service['name']}*\n💵 Prezzo: {service['price']}\n📝 Descrizione: {service['description']}\n\nUsa /start per richiedere il servizio",
+                    parse_mode="Markdown"
+                )
+            await safe_edit_or_send(
+                f"Hai selezionato: {service['name']}",
+                [[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]]
+            )
+        elif data == "back_to_shop":
+            await safe_edit_or_send(
+                "🛍️ *SHOP*\n\nScegli una categoria:",
+                [
+                    [InlineKeyboardButton("📱 Prodotti", callback_data="products")],
+                    [InlineKeyboardButton("🔧 Servizi", callback_data="services")],
+                    [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
+                ]
+            )
+        elif data == "back_to_products":
+            keyboard = [
+                [InlineKeyboardButton(f"{p['name']} - {p['price']}", callback_data=f"product_{pid}")]
+                for pid, p in self.products.items()
+            ]
+            keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")])
+            await safe_edit_or_send(
+                "📱 *PRODOTTI DISPONIBILI*\n\nScegli un prodotto:",
+                keyboard
+            )
+        elif data == "back_to_services":
+            keyboard = [
+                [InlineKeyboardButton(f"{s['name']} - {s['price']}", callback_data=f"service_{sid}")]
+                for sid, s in self.services.items()
+            ]
+            keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")])
+            await safe_edit_or_send(
+                "🔧 *SERVIZI DISPONIBILI*\n\nScegli un servizio:",
+                keyboard
+            )
 
     async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         text = update.message.text.lower()
@@ -217,7 +230,6 @@ class ShopBot:
         else:
             await update.message.reply_text("Non ho capito. Usa /start per vedere le opzioni disponibili.")
 
-# === MAIN ===
 def main():
     logger.info("Avvio del bot...")
     try:
