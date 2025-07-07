@@ -2,6 +2,7 @@ import logging
 import os
 import sys
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.constants import ParseMode
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
 from telegram.error import BadRequest
 
@@ -43,38 +44,51 @@ class ShopBot:
             "Puoi esplorare, acquistare e contattarci in pochi semplici clic!"
         )
 
+        message = update.effective_message
         try:
-            await update.message.reply_photo(
+            await message.reply_photo(
                 photo=WELCOME_IMAGE_URL,
                 caption=welcome_message,
                 reply_markup=reply_markup
             )
         except BadRequest as e:
             logger.warning(f"❌ Impossibile inviare l'immagine di benvenuto: {e}")
-            await update.message.reply_text(text=welcome_message, reply_markup=reply_markup)
+            await message.reply_text(text=welcome_message, reply_markup=reply_markup)
 
     async def button_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         query = update.callback_query
         await query.answer()
 
         # Helper per gestire edit o nuovo messaggio
-        async def safe_edit_or_send(text, keyboard, parse_mode="Markdown"):
-            if query.message.photo:
+        async def safe_edit_or_send(text, keyboard, parse_mode=ParseMode.MARKDOWN):
+            msg = query.message
+            # Se il messaggio originale aveva una foto, lo cancelliamo e mandiamo un nuovo messaggio testuale
+            if msg.photo:
                 try:
-                    await query.message.delete()
+                    await msg.delete()
                 except Exception:
                     pass
-                await query.message.chat.send_message(
+                await context.bot.send_message(
+                    chat_id=msg.chat_id,
                     text=text,
                     reply_markup=InlineKeyboardMarkup(keyboard),
                     parse_mode=parse_mode
                 )
             else:
-                await query.edit_message_text(
-                    text=text,
-                    reply_markup=InlineKeyboardMarkup(keyboard),
-                    parse_mode=parse_mode
-                )
+                try:
+                    await query.edit_message_text(
+                        text=text,
+                        reply_markup=InlineKeyboardMarkup(keyboard),
+                        parse_mode=parse_mode
+                    )
+                except BadRequest:
+                    # Se non può essere editato (es. troppo vecchio), invia nuovo messaggio
+                    await context.bot.send_message(
+                        chat_id=msg.chat_id,
+                        text=text,
+                        reply_markup=InlineKeyboardMarkup(keyboard),
+                        parse_mode=parse_mode
+                    )
 
         data = query.data
         if data == "shop":
@@ -115,8 +129,6 @@ class ShopBot:
                 ]
             )
         elif data == "back_to_main":
-            # Torna al menu principale
-            # In questo caso, invia il menu di start come nuovo messaggio
             await self.start(update, context)
         elif data == "products":
             keyboard = [
@@ -145,7 +157,8 @@ class ShopBot:
                 await query.answer("❌ Prodotto non trovato!")
                 return
             try:
-                await query.message.reply_photo(
+                await context.bot.send_photo(
+                    chat_id=query.message.chat_id,
                     photo=product['image_url'],
                     caption=(
                         f"📦 *{product['name']}*\n"
@@ -153,13 +166,14 @@ class ShopBot:
                         f"📝 Descrizione: {product['description']}\n\n"
                         "Usa /start per effettuare un ordine"
                     ),
-                    parse_mode="Markdown"
+                    parse_mode=ParseMode.MARKDOWN
                 )
             except BadRequest as e:
                 logger.warning(f"Errore invio immagine prodotto: {e}")
-                await query.message.reply_text(
-                    f"📦 *{product['name']}*\n💵 Prezzo: {product['price']}\n📝 Descrizione: {product['description']}\n\nUsa /start per ordinare",
-                    parse_mode="Markdown"
+                await context.bot.send_message(
+                    chat_id=query.message.chat_id,
+                    text=f"📦 *{product['name']}*\n💵 Prezzo: {product['price']}\n📝 Descrizione: {product['description']}\n\nUsa /start per ordinare",
+                    parse_mode=ParseMode.MARKDOWN
                 )
             await safe_edit_or_send(
                 f"Hai selezionato: {product['name']}",
@@ -172,7 +186,8 @@ class ShopBot:
                 await query.answer("❌ Servizio non trovato!")
                 return
             try:
-                await query.message.reply_photo(
+                await context.bot.send_photo(
+                    chat_id=query.message.chat_id,
                     photo=service['image_url'],
                     caption=(
                         f"🛠️ *{service['name']}*\n"
@@ -180,12 +195,14 @@ class ShopBot:
                         f"📝 Descrizione: {service['description']}\n\n"
                         "Usa /start per richiedere il servizio"
                     ),
-                    parse_mode="Markdown"
+                    parse_mode=ParseMode.MARKDOWN
                 )
-            except BadRequest:
-                await query.message.reply_text(
-                    f"🛠️ *{service['name']}*\n💵 Prezzo: {service['price']}\n📝 Descrizione: {service['description']}\n\nUsa /start per richiedere il servizio",
-                    parse_mode="Markdown"
+            except BadRequest as e:
+                logger.warning(f"Errore invio immagine servizio: {e}")
+                await context.bot.send_message(
+                    chat_id=query.message.chat_id,
+                    text=f"🛠️ *{service['name']}*\n💵 Prezzo: {service['price']}\n📝 Descrizione: {service['description']}\n\nUsa /start per richiedere il servizio",
+                    parse_mode=ParseMode.MARKDOWN
                 )
             await safe_edit_or_send(
                 f"Hai selezionato: {service['name']}",
@@ -222,13 +239,14 @@ class ShopBot:
             )
 
     async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-        text = update.message.text.lower()
+        message = update.effective_message
+        text = message.text.lower()
         if any(word in text for word in ["ciao", "salve"]):
-            await update.message.reply_text("Ciao! 👋 Usa /start per iniziare.")
+            await message.reply_text("Ciao! 👋 Usa /start per iniziare.")
         elif "aiuto" in text or "help" in text:
-            await update.message.reply_text("Usa /start per vedere il menu principale.")
+            await message.reply_text("Usa /start per vedere il menu principale.")
         else:
-            await update.message.reply_text("Non ho capito. Usa /start per vedere le opzioni disponibili.")
+            await message.reply_text("Non ho capito. Usa /start per vedere le opzioni disponibili.")
 
 def main():
     logger.info("Avvio del bot...")
@@ -240,7 +258,7 @@ def main():
         app.add_handler(CallbackQueryHandler(bot.button_handler))
         app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, bot.handle_message))
 
-        app.run_polling(allowed_updates=Update.ALL_TYPES)
+        app.run_polling()  # allowed_updates non serve, prende tutto di default
         logger.info("Bot terminato.")
     except Exception as e:
         logger.exception(f"❌ Errore critico: {e}")
