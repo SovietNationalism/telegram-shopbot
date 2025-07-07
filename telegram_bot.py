@@ -87,8 +87,8 @@ class ShopBot:
                 "name": "THC Vapes Packwoods™ x Runtz 💨",
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "1000mg distillato Delta 9 THC",
-                "special_note": "Dettaglio sotto i 5 pz non ancora disponibile. Tra poco."
-                 "video_file_id": "BAACAgQAAxkBAAIBhGhsLZ3WwkXvnqI-G74L_hsWrg6YAAI8GQACw-ZgU0zEehfiSYpmNgQ"
+                "special_note": "Dettaglio sotto i 5 pz non ancora disponibile. Tra poco.",
+                "video_file_id": "BAACAgQAAxkBAAIBhGhsLZ3WwkXvnqI-G74L_hsWrg6YAAI8GQACw-ZgU0zEehfiSYpmNgQ"
             }
         }
         self.services = {
