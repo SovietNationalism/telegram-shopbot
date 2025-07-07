@@ -63,7 +63,6 @@ class ShopBot:
             }
         }
 
-
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         keyboard = [
             [InlineKeyboardButton("🛍️ Shop 🛍️", callback_data="shop")],
@@ -204,7 +203,7 @@ class ShopBot:
             await self.start(update, context)
         elif data == "products":
             keyboard = [
-                [InlineKeyboardButton(f"{p['name']} - {p['price']}", callback_data=f"product_{pid}")]
+                [InlineKeyboardButton(f"{p['name']}", callback_data=f"product_{pid}")]
                 for pid, p in self.products.items()
             ]
             keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")])
@@ -214,7 +213,7 @@ class ShopBot:
             )
         elif data == "services":
             keyboard = [
-                [InlineKeyboardButton(f"{s['name']} - {s['price']}", callback_data=f"service_{sid}")]
+                [InlineKeyboardButton(f"{s['name']}", callback_data=f"service_{sid}")]
                 for sid, s in self.services.items()
             ]
             keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")])
@@ -234,7 +233,7 @@ class ShopBot:
                     photo=product['image_url'],
                     caption=(
                         f"📦 *{product['name']}*\n"
-                        f"💵 Prezzo: {product['price']}\n"
+                        f"💵 Prezzi:\n{product['price']}\n"
                         f"📝 Descrizione: {product['description']}\n\n"
                         "Usa /start per effettuare un ordine"
                     ),
@@ -245,7 +244,12 @@ class ShopBot:
                 logger.warning(f"Errore invio immagine prodotto: {e}")
                 sent = await context.bot.send_message(
                     chat_id=query.message.chat_id,
-                    text=f"📦 *{product['name']}*\n💵 Prezzo: {product['price']}\n📝 Descrizione: {product['description']}\n\nUsa /start per ordinare",
+                    text=(
+                        f"📦 *{product['name']}*\n"
+                        f"💵 Prezzi:\n{product['price']}\n"
+                        f"📝 Descrizione: {product['description']}\n\n"
+                        "Usa /start per ordinare"
+                    ),
                     parse_mode=ParseMode.MARKDOWN
                 )
                 context.user_data["product_msg_id"] = sent.message_id
@@ -276,7 +280,12 @@ class ShopBot:
                 logger.warning(f"Errore invio immagine servizio: {e}")
                 sent = await context.bot.send_message(
                     chat_id=query.message.chat_id,
-                    text=f"🛠️ *{service['name']}*\n💵 Prezzo: {service['price']}\n📝 Descrizione: {service['description']}\n\nUsa /start per richiedere il servizio",
+                    text=(
+                        f"🛠️ *{service['name']}*\n"
+                        f"💵 Prezzo: {service['price']}\n"
+                        f"📝 Descrizione: {service['description']}\n\n"
+                        "Usa /start per richiedere il servizio"
+                    ),
                     parse_mode=ParseMode.MARKDOWN
                 )
                 context.user_data["service_msg_id"] = sent.message_id
@@ -295,7 +304,7 @@ class ShopBot:
             )
         elif data == "back_to_products":
             keyboard = [
-                [InlineKeyboardButton(f"{p['name']} - {p['price']}", callback_data=f"product_{pid}")]
+                [InlineKeyboardButton(f"{p['name']}", callback_data=f"product_{pid}")]
                 for pid, p in self.products.items()
             ]
             keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")])
@@ -305,7 +314,7 @@ class ShopBot:
             )
         elif data == "back_to_services":
             keyboard = [
-                [InlineKeyboardButton(f"{s['name']} - {s['price']}", callback_data=f"service_{sid}")]
+                [InlineKeyboardButton(f"{s['name']}", callback_data=f"service_{sid}")]
                 for sid, s in self.services.items()
             ]
             keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")])
