@@ -57,9 +57,6 @@ class ShopBot:
         query = update.callback_query
         await query.answer()
         data = query.data
-
-        # Recupera eventuale messaggio prodotto da cancellare
-        product_msg_id = context.user_data.get("product_msg_id")
         chat_id = query.message.chat_id
 
         # Helper per gestire edit o nuovo messaggio
@@ -91,14 +88,40 @@ class ShopBot:
                         parse_mode=parse_mode
                     )
 
-        # Cancella il messaggio prodotto se esiste quando si torna indietro
-        if data in ["back_to_products", "back_to_shop", "back_to_main"]:
-            if product_msg_id:
+        # Funzione per cancellare messaggi prodotto/servizio
+        async def delete_product_service_msgs():
+            for key in ["product_msg_id", "service_msg_id"]:
+                msg_id = context.user_data.get(key)
+                if msg_id:
+                    try:
+                        await context.bot.delete_message(chat_id=chat_id, message_id=msg_id)
+                    except Exception:
+                        pass
+                    context.user_data[key] = None
+
+        # Cancella messaggio prodotto solo se torni ai prodotti
+        if data in ["back_to_products"]:
+            msg_id = context.user_data.get("product_msg_id")
+            if msg_id:
                 try:
-                    await context.bot.delete_message(chat_id=chat_id, message_id=product_msg_id)
+                    await context.bot.delete_message(chat_id=chat_id, message_id=msg_id)
                 except Exception:
                     pass
                 context.user_data["product_msg_id"] = None
+
+        # Cancella messaggio servizio solo se torni ai servizi
+        if data in ["back_to_services"]:
+            msg_id = context.user_data.get("service_msg_id")
+            if msg_id:
+                try:
+                    await context.bot.delete_message(chat_id=chat_id, message_id=msg_id)
+                except Exception:
+                    pass
+                context.user_data["service_msg_id"] = None
+
+        # Cancella entrambi se torni al menu principale o shop
+        if data in ["back_to_main", "back_to_shop"]:
+            await delete_product_service_msgs()
 
         if data == "shop":
             await safe_edit_or_send(
@@ -181,7 +204,6 @@ class ShopBot:
                     ),
                     parse_mode=ParseMode.MARKDOWN
                 )
-                # Salva l'ID del messaggio prodotto
                 context.user_data["product_msg_id"] = sent.message_id
             except BadRequest as e:
                 logger.warning(f"Errore invio immagine prodotto: {e}")
@@ -213,7 +235,7 @@ class ShopBot:
                     ),
                     parse_mode=ParseMode.MARKDOWN
                 )
-                context.user_data["product_msg_id"] = sent.message_id
+                context.user_data["service_msg_id"] = sent.message_id
             except BadRequest as e:
                 logger.warning(f"Errore invio immagine servizio: {e}")
                 sent = await context.bot.send_message(
@@ -221,7 +243,7 @@ class ShopBot:
                     text=f"🛠️ *{service['name']}*\n💵 Prezzo: {service['price']}\n📝 Descrizione: {service['description']}\n\nUsa /start per richiedere il servizio",
                     parse_mode=ParseMode.MARKDOWN
                 )
-                context.user_data["product_msg_id"] = sent.message_id
+                context.user_data["service_msg_id"] = sent.message_id
             await safe_edit_or_send(
                 f"Hai selezionato: {service['name']}",
                 [[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]]
