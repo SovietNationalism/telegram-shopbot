@@ -35,7 +35,7 @@ class ShopBot:
                 ),
                 "description": "Dry con effetto potente e duraturo, e un odore vivace",
                 "image_url": "https://drive.google.com/uc?export=download&id=1m-4w4uYRT-9h43iWi-jMXl9hjXXEkWMU",
-                "video_file_id": None  # Incolla qui il file_id dopo averlo ottenuto!
+                "video_file_id": BAACAgQAAxkBAAPCaGv91fParWTOjzMLqrdb2v-pB0wAAksWAAKdJ2FTkI7DxvBinmg2BA  # Incolla qui il file_id dopo averlo ottenuto!
             },
             "2": {
                 "name": "Prodotto 2",
