@@ -11,7 +11,7 @@ level=logging.INFO
 )
 logger = logging.getLogger(**name**)
 
-# Your bot token from BotFather
+# Your bot token from environment variable
 
 BOT_TOKEN = os.getenv(‘BOT_TOKEN’)
 
