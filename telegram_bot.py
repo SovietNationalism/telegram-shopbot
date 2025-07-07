@@ -84,17 +84,18 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAPvaGwJdobhaO1RPvm1nrbxIKokTOIAAqgdAAJTjGFTqdTZCjgZEpU2BA"
             },
             "4": {
-                "name": "THC VAPE PACKWOODS x Runtz",
+                "name": "THC Vapes Packwoods™ x Runtz 💨",
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "1000mg distillato Delta 9 THC",
                 "special_note": "Dettaglio sotto i 5 pz non ancora disponibile. Tra poco."
+                 "video_file_id": "BAACAgQAAxkBAAIBhGhsLZ3WwkXvnqI-G74L_hsWrg6YAAI8GQACw-ZgU0zEehfiSYpmNgQ"
             }
         }
         self.services = {
             "1": {
-                "name": "Servizio 1",
-                "price": "€25.00",
-                "description": "Descrizione del servizio 1",
+                "name": "Creazione Bot Telegram",
+                "price": "€35/m",
+                "description": "Sei un venditore o comunque sei interessato alla creazione di un bot simile? Posso aiutarti.",
                 "photo_file_id": "AgACAgQAAxkBAAIBVmY0n9f5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA"
             }
         }
