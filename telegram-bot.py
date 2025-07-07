@@ -12,7 +12,8 @@ logger = logging.getLogger(**name**)
 
 # Your bot token from BotFather
 
-BOT_TOKEN = “8053361541:AAFn_VBu7syZhOkR9Nxy7vc0-0NQYzRzz3g”
+import os
+BOT_TOKEN = os getenv ('8053361541:AAFn_VBu7syZhOkR9Nxy7vc0-0NQYzRzz3g')
 
 class ShopBot:
 def **init**(self):
