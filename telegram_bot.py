@@ -1,4 +1,5 @@
 import logging
+import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
 
@@ -12,8 +13,7 @@ logger = logging.getLogger(**name**)
 
 # Your bot token from BotFather
 
-import os
-BOT_TOKEN = os getenv ('8053361541:AAFn_VBu7syZhOkR9Nxy7vc0-0NQYzRzz3g')
+BOT_TOKEN = os.getenv(‘BOT_TOKEN’)
 
 class ShopBot:
 def **init**(self):
