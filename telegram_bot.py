@@ -14,12 +14,6 @@ logger = logging.getLogger(__name__)
 # Get bot token from environment variable
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-# Debug environment variables
-logger.info("Checking environment variables...")
-env_vars = os.environ.keys()
-logger.info(f"Available env vars: {list(env_vars)}")
-logger.info(f"BOT_TOKEN exists: {'BOT_TOKEN' in env_vars}")
-
 if not BOT_TOKEN:
     logger.critical("❌ BOT_TOKEN environment variable is not set. Exiting.")
     sys.exit(1)
@@ -46,7 +40,11 @@ class ShopBot:
         ]
         
         reply_markup = InlineKeyboardMarkup(keyboard)
-        welcome_message = "🤖 Benvenuto nello Shop Bot.\n\n🛍️ Qui troverai una vasta selezione di servizi."
+        welcome_message = (
+            "🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹\n\n"
+            "Scopri un mondo di prodotti selezionati, pensati per farti avere un'esperienza "
+            "unica e indimenticabile. Qui puoi esplorare, acquistare e contattarci in pochi semplici clic!"
+        )
         
         await update.message.reply_text(welcome_message, reply_markup=reply_markup)
 
@@ -173,44 +171,53 @@ class ShopBot:
         )
 
     async def show_payments(self, query) -> None:
-        keyboard = [
-            [InlineKeyboardButton("💳 Carta di Credito", callback_data="credit_card")],
-            [InlineKeyboardButton("💰 PayPal", callback_data="paypal")],
-            [InlineKeyboardButton("🏦 Bonifico", callback_data="bank_transfer")],
-            [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
-        ]
+        payment_methods = (
+            "💰 **METODI DI PAGAMENTO**\n\n"
+            "• 💰 Crypto (0% commissione)\n"
+            "• 💵 Contanti (0% commissione)\n"
+            "• 🏦 Bonifico istantaneo (0% commissione)\n"
+            "• 💳 PayPal (+10% commissione)\n\n"
+            "Scegli il metodo che preferisci al momento dell'ordine."
+        )
+        
+        keyboard = [[InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]]
         reply_markup = InlineKeyboardMarkup(keyboard)
         
         await query.edit_message_text(
-            text="💰 **PAGAMENTI**\n\nScegli un metodo di pagamento:",
+            text=payment_methods,
             reply_markup=reply_markup,
             parse_mode="Markdown"
         )
 
     async def show_contact(self, query) -> None:
         keyboard = [
-            [InlineKeyboardButton("📧 Email", url="mailto:your-email@example.com")],
-            [InlineKeyboardButton("📞 Telefono", callback_data="phone")],
+            [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
+            [InlineKeyboardButton("📧 Email", url="mailto:italianedibles@example.com")],
             [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
         
         await query.edit_message_text(
-            text="👥 **CONTATTAMI**\n\nCome preferisci essere contattato?",
+            text="👥 **CONTATTAMI**\n\nScegli come preferisci contattarci:",
             reply_markup=reply_markup,
             parse_mode="Markdown"
         )
 
     async def show_developer(self, query) -> None:
+        text = (
+            "👨‍💻 **DEVELOPER**\n\n"
+            "Bot sviluppato da @ItalianEdibles\n\n"
+            "Contattami per progetti personalizzati!"
+        )
+        
         keyboard = [
-            [InlineKeyboardButton("🌐 GitHub", url="https://github.com/yourusername")],
-            [InlineKeyboardButton("💼 LinkedIn", url="https://linkedin.com/in/yourprofile")],
+            [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
             [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
         
         await query.edit_message_text(
-            text="👨‍💻 **DEVELOPER**\n\nBot sviluppato da [Your Name]\n\nContattami per progetti personalizzati!",
+            text=text,
             reply_markup=reply_markup,
             parse_mode="Markdown"
         )
@@ -223,8 +230,13 @@ class ShopBot:
             [InlineKeyboardButton("👨‍💻 Developer 👨‍💻", callback_data="developer")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
+        welcome_message = (
+            "🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹\n\n"
+            "Scopri un mondo di prodotti selezionati, pensati per farti avere un'esperienza "
+            "unica e indimenticabile. Qui puoi esplorare, acquistare e contattarci in pochi semplici clic!"
+        )
         await query.edit_message_text(
-            text="🤖 Benvenuto nello Shop Bot.\n\n🛍️ Qui troverai una vasta selezione di servizi.",
+            text=welcome_message,
             reply_markup=reply_markup
         )
 
