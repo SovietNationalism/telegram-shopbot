@@ -7,7 +7,7 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Mess
 from telegram.error import BadRequest
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-WELCOME_IMAGE_FILE_ID = "AgACAgQAAxkBAAIBUGY0n6v5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA"  # Replace with your actual file_id
+WELCOME_IMAGE_URL = "https://i.postimg.cc/pr65RVVm/D6-F1-EDE3-E7-E8-4-ADC-AAFC-5-FB67-F86-BDE3.png"
 ADMIN_USER_ID = 6840588025  # <-- Only you receive file_id replies
 
 logging.basicConfig(
@@ -84,7 +84,7 @@ class ShopBot:
         message = update.effective_message
         try:
             await message.reply_photo(
-                photo=WELCOME_IMAGE_FILE_ID,
+                photo=WELCOME_IMAGE_URL,
                 caption=welcome_message,
                 reply_markup=reply_markup
             )
@@ -373,13 +373,22 @@ class ShopBot:
     async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         message = update.effective_message
 
-        # Only admin receives file_id replies
-        if message.video and message.from_user and message.from_user.id == ADMIN_USER_ID:
-            await message.reply_text(
-                f"File ID del video:\n<code>{message.video.file_id}</code>",
-                parse_mode=ParseMode.HTML
-            )
-            return
+        # Only admin receives file_id replies for both images and videos
+        if message.from_user and message.from_user.id == ADMIN_USER_ID:
+            if message.video:
+                await message.reply_text(
+                    f"File ID del video:\n<code>{message.video.file_id}</code>",
+                    parse_mode=ParseMode.HTML
+                )
+                return
+            if message.photo:
+                # Telegram sends photos as a list of sizes, last is highest quality
+                file_id = message.photo[-1].file_id
+                await message.reply_text(
+                    f"File ID della foto:\n<code>{file_id}</code>",
+                    parse_mode=ParseMode.HTML
+                )
+                return
 
         text = message.text.lower() if message.text else ""
         if any(word in text for word in ["ciao", "salve"]):
