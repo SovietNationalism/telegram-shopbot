@@ -7,10 +7,13 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Mess
 from telegram.error import BadRequest
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-WELCOME_IMAGE_URL = "https://i.postimg.cc/pr65RVVm/D6-F1-EDE3-E7-E8-4-ADC-AAFC-5-FB67-F86-BDE3.png"
-ADMIN_USER_ID = 6840588025  # <-- Solo tu ricevi i file_id
+WELCOME_IMAGE_FILE_ID = "AgACAgQAAxkBAAIBUGY0n6v5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA"  # Replace with your actual file_id
+ADMIN_USER_ID = 6840588025  # <-- Only you receive file_id replies
 
-logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    level=logging.INFO
+)
 logger = logging.getLogger(__name__)
 
 if not BOT_TOKEN:
@@ -34,20 +37,19 @@ class ShopBot:
                     "200g 780"
                 ),
                 "description": "Dry con effetto potente e duraturo, e un odore vivace",
-                "image_url": "https://drive.google.com/uc?export=download&id=1m-4w4uYRT-9h43iWi-jMXl9hjXXEkWMU",
-                "video_file_id": "BAACAgQAAxkBAAPCaGv91fParWTOjzMLqrdb2v-pB0wAAksWAAKdJ2FTkI7DxvBinmg2BA"  # Incolla qui il file_id dopo averlo ottenuto!
+                "video_file_id": "BAACAgQAAxkBAAPCaGv91fParWTOjzMLqrdb2v-pB0wAAksWAAKdJ2FTkI7DxvBinmg2BA"
             },
             "2": {
                 "name": "Prodotto 2",
                 "price": "€15.00",
                 "description": "Descrizione del prodotto 2",
-                "image_url": "https://example.com/product2.jpg"
+                "photo_file_id": "AgACAgQAAxkBAAIBUGY0n6v5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA"
             },
             "3": {
                 "name": "Prodotto 3",
                 "price": "€20.00",
                 "description": "Descrizione del prodotto 3",
-                "image_url": "https://example.com/product3.jpg"
+                "photo_file_id": "AgACAgQAAxkBAAIBU2Y0n8f5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA"
             }
         }
         self.services = {
@@ -55,14 +57,13 @@ class ShopBot:
                 "name": "Servizio 1",
                 "price": "€25.00",
                 "description": "Descrizione del servizio 1",
-                "image_url": "https://example.com/service1.jpg"
-                # "video_file_id": None
+                "photo_file_id": "AgACAgQAAxkBAAIBVmY0n9f5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA"
             },
             "2": {
                 "name": "Servizio 2",
                 "price": "€30.00",
                 "description": "Descrizione del servizio 2",
-                "image_url": "https://example.com/service2.jpg"
+                "photo_file_id": "AgACAgQAAxkBAAIBV2Y0n-f5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA"
             }
         }
 
@@ -83,7 +84,7 @@ class ShopBot:
         message = update.effective_message
         try:
             await message.reply_photo(
-                photo=WELCOME_IMAGE_URL,
+                photo=WELCOME_IMAGE_FILE_ID,
                 caption=welcome_message,
                 reply_markup=reply_markup
             )
@@ -95,7 +96,7 @@ class ShopBot:
         query = update.callback_query
         await query.answer()
         data = query.data
-        chat_id = query.message.chat_id
+        chat_id = query.message.chat.id
 
         async def safe_edit_or_send(text, keyboard, parse_mode=ParseMode.MARKDOWN):
             msg = query.message
@@ -105,7 +106,7 @@ class ShopBot:
                 except Exception:
                     pass
                 await context.bot.send_message(
-                    chat_id=msg.chat_id,
+                    chat_id=msg.chat.id,
                     text=text,
                     reply_markup=InlineKeyboardMarkup(keyboard),
                     parse_mode=parse_mode
@@ -119,7 +120,7 @@ class ShopBot:
                     )
                 except BadRequest:
                     await context.bot.send_message(
-                        chat_id=msg.chat_id,
+                        chat_id=msg.chat.id,
                         text=text,
                         reply_markup=InlineKeyboardMarkup(keyboard),
                         parse_mode=parse_mode
@@ -226,6 +227,7 @@ class ShopBot:
                 await query.answer("❌ Prodotto non trovato!")
                 return
             video_file_id = product.get("video_file_id")
+            photo_file_id = product.get("photo_file_id")
             caption = (
                 f"📦 *{product['name']}*\n"
                 f"💵 Prezzo:\n{product['price']}\n"
@@ -234,7 +236,7 @@ class ShopBot:
             if video_file_id:
                 try:
                     sent = await context.bot.send_video(
-                        chat_id=query.message.chat_id,
+                        chat_id=query.message.chat.id,
                         video=video_file_id,
                         caption=caption,
                         parse_mode=ParseMode.MARKDOWN,
@@ -244,16 +246,16 @@ class ShopBot:
                 except BadRequest as e:
                     logger.warning(f"Errore invio video prodotto: {e}")
                     sent = await context.bot.send_message(
-                        chat_id=query.message.chat_id,
+                        chat_id=query.message.chat.id,
                         text=caption,
                         parse_mode=ParseMode.MARKDOWN
                     )
                     context.user_data["product_msg_id"] = sent.message_id
-            else:
+            elif photo_file_id:
                 try:
                     sent = await context.bot.send_photo(
-                        chat_id=query.message.chat_id,
-                        photo=product['image_url'],
+                        chat_id=query.message.chat.id,
+                        photo=photo_file_id,
                         caption=caption,
                         parse_mode=ParseMode.MARKDOWN
                     )
@@ -261,11 +263,19 @@ class ShopBot:
                 except BadRequest as e:
                     logger.warning(f"Errore invio immagine prodotto: {e}")
                     sent = await context.bot.send_message(
-                        chat_id=query.message.chat_id,
+                        chat_id=query.message.chat.id,
                         text=caption,
                         parse_mode=ParseMode.MARKDOWN
                     )
                     context.user_data["product_msg_id"] = sent.message_id
+            else:
+                sent = await context.bot.send_message(
+                    chat_id=query.message.chat.id,
+                    text=caption,
+                    parse_mode=ParseMode.MARKDOWN
+                )
+                context.user_data["product_msg_id"] = sent.message_id
+
             await safe_edit_or_send(
                 f"Hai selezionato: {product['name']}",
                 [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
@@ -277,6 +287,7 @@ class ShopBot:
                 await query.answer("❌ Servizio non trovato!")
                 return
             video_file_id = service.get("video_file_id")
+            photo_file_id = service.get("photo_file_id")
             caption = (
                 f"🛠️ *{service['name']}*\n"
                 f"💵 Prezzo:\n{service['price']}\n"
@@ -285,7 +296,7 @@ class ShopBot:
             if video_file_id:
                 try:
                     sent = await context.bot.send_video(
-                        chat_id=query.message.chat_id,
+                        chat_id=query.message.chat.id,
                         video=video_file_id,
                         caption=caption,
                         parse_mode=ParseMode.MARKDOWN,
@@ -295,16 +306,16 @@ class ShopBot:
                 except BadRequest as e:
                     logger.warning(f"Errore invio video servizio: {e}")
                     sent = await context.bot.send_message(
-                        chat_id=query.message.chat_id,
+                        chat_id=query.message.chat.id,
                         text=caption,
                         parse_mode=ParseMode.MARKDOWN
                     )
                     context.user_data["service_msg_id"] = sent.message_id
-            else:
+            elif photo_file_id:
                 try:
                     sent = await context.bot.send_photo(
-                        chat_id=query.message.chat_id,
-                        photo=service['image_url'],
+                        chat_id=query.message.chat.id,
+                        photo=photo_file_id,
                         caption=caption,
                         parse_mode=ParseMode.MARKDOWN
                     )
@@ -312,11 +323,19 @@ class ShopBot:
                 except BadRequest as e:
                     logger.warning(f"Errore invio immagine servizio: {e}")
                     sent = await context.bot.send_message(
-                        chat_id=query.message.chat_id,
+                        chat_id=query.message.chat.id,
                         text=caption,
                         parse_mode=ParseMode.MARKDOWN
                     )
                     context.user_data["service_msg_id"] = sent.message_id
+            else:
+                sent = await context.bot.send_message(
+                    chat_id=query.message.chat.id,
+                    text=caption,
+                    parse_mode=ParseMode.MARKDOWN
+                )
+                context.user_data["service_msg_id"] = sent.message_id
+
             await safe_edit_or_send(
                 f"Hai selezionato: {service['name']}",
                 [[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]]
@@ -354,7 +373,7 @@ class ShopBot:
     async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         message = update.effective_message
 
-        # Rispondi col file_id solo se il mittente è l'admin
+        # Only admin receives file_id replies
         if message.video and message.from_user and message.from_user.id == ADMIN_USER_ID:
             await message.reply_text(
                 f"File ID del video:\n<code>{message.video.file_id}</code>",
