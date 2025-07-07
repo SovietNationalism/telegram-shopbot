@@ -8,6 +8,7 @@ from telegram.error import BadRequest
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 WELCOME_IMAGE_URL = "https://i.postimg.cc/pr65RVVm/D6-F1-EDE3-E7-E8-4-ADC-AAFC-5-FB67-F86-BDE3.png"
+ORDER_LINK = "https://t.me/ItalianEdibles"
 
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -22,28 +23,28 @@ class ShopBot:
             "1": {
                 "name": "Filtrato 120u",
                 "price": (
-                    "3g 30€\n"
-                    "5g 40€\n"
-                    "10g 70€\n"
-                    "15g 100€\n"
-                    "25g 160€\n"
-                    "35g 215€\n"
-                    "50g 250€\n"
-                    "100g 420€\n"
-                    "200g 780€"
+                    "3g 30\n"
+                    "5g 40\n"
+                    "10g 70\n"
+                    "15g 100\n"
+                    "25g 160\n"
+                    "35g 215\n"
+                    "50g 250\n"
+                    "100g 420\n"
+                    "200g 780"
                 ),
                 "description": "Dry con effetto potente e duraturo, e un odore vivace",
-                "image_url": "https://drive.google.com/uc?export=download&id=1m-4w4uYRT-9h43iWi-jMXl9hjXXEkWMU"
+                "image_url": "https://files.catbox.moe/itm2xf.mov"
             },
             "2": {
                 "name": "Prodotto 2",
-                "price": "€15.00",
+                "price": "15",
                 "description": "Descrizione del prodotto 2",
                 "image_url": "https://example.com/product2.jpg"
             },
             "3": {
                 "name": "Prodotto 3",
-                "price": "€20.00",
+                "price": "20",
                 "description": "Descrizione del prodotto 3",
                 "image_url": "https://example.com/product3.jpg"
             }
@@ -51,13 +52,13 @@ class ShopBot:
         self.services = {
             "1": {
                 "name": "Servizio 1",
-                "price": "€25.00",
+                "price": "25",
                 "description": "Descrizione del servizio 1",
                 "image_url": "https://example.com/service1.jpg"
             },
             "2": {
                 "name": "Servizio 2",
-                "price": "€30.00",
+                "price": "30",
                 "description": "Descrizione del servizio 2",
                 "image_url": "https://example.com/service2.jpg"
             }
@@ -94,7 +95,6 @@ class ShopBot:
         data = query.data
         chat_id = query.message.chat_id
 
-        # Helper per gestire edit o nuovo messaggio
         async def safe_edit_or_send(text, keyboard, parse_mode=ParseMode.MARKDOWN):
             msg = query.message
             if msg.photo:
@@ -123,7 +123,6 @@ class ShopBot:
                         parse_mode=parse_mode
                     )
 
-        # Funzione per cancellare messaggi prodotto/servizio
         async def delete_product_service_msgs():
             for key in ["product_msg_id", "service_msg_id"]:
                 msg_id = context.user_data.get(key)
@@ -134,7 +133,6 @@ class ShopBot:
                         pass
                     context.user_data[key] = None
 
-        # Cancella messaggio prodotto solo se torni ai prodotti
         if data in ["back_to_products"]:
             msg_id = context.user_data.get("product_msg_id")
             if msg_id:
@@ -144,7 +142,6 @@ class ShopBot:
                     pass
                 context.user_data["product_msg_id"] = None
 
-        # Cancella messaggio servizio solo se torni ai servizi
         if data in ["back_to_services"]:
             msg_id = context.user_data.get("service_msg_id")
             if msg_id:
@@ -154,7 +151,6 @@ class ShopBot:
                     pass
                 context.user_data["service_msg_id"] = None
 
-        # Cancella entrambi se torni al menu principale o shop
         if data in ["back_to_main", "back_to_shop"]:
             await delete_product_service_msgs()
 
@@ -181,7 +177,7 @@ class ShopBot:
             await safe_edit_or_send(
                 "👥 *CONTATTAMI*\n\nClicca il pulsante qui sotto per contattarmi direttamente su Telegram:",
                 [
-                    [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
+                    [InlineKeyboardButton("✉️ Contattami su Telegram", url=ORDER_LINK)],
                     [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
                 ]
             )
@@ -191,7 +187,7 @@ class ShopBot:
                 "Bot sviluppato da @ItalianEdibles\n\n"
                 "Contattami per progetti personalizzati!",
                 [
-                    [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
+                    [InlineKeyboardButton("✉️ Contattami su Telegram", url=ORDER_LINK)],
                     [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
                 ]
             )
@@ -233,9 +229,9 @@ class ShopBot:
                     photo=product['image_url'],
                     caption=(
                         f"📦 *{product['name']}*\n"
-                        f"💵 Prezzi:\n{product['price']}\n"
+                        f"💵 Prezzo:\n{product['price']}\n"
                         f"📝 Descrizione: {product['description']}\n\n"
-                        "Usa /start per effettuare un ordine"
+                        f"[Premi qui per ordinare]({ORDER_LINK})"
                     ),
                     parse_mode=ParseMode.MARKDOWN
                 )
@@ -246,9 +242,9 @@ class ShopBot:
                     chat_id=query.message.chat_id,
                     text=(
                         f"📦 *{product['name']}*\n"
-                        f"💵 Prezzi:\n{product['price']}\n"
+                        f"💵 Prezzo:\n{product['price']}\n"
                         f"📝 Descrizione: {product['description']}\n\n"
-                        "Usa /start per ordinare"
+                        f"[Premi qui per ordinare]({ORDER_LINK})"
                     ),
                     parse_mode=ParseMode.MARKDOWN
                 )
@@ -271,7 +267,7 @@ class ShopBot:
                         f"🛠️ *{service['name']}*\n"
                         f"💵 Prezzo: {service['price']}\n"
                         f"📝 Descrizione: {service['description']}\n\n"
-                        "Usa /start per richiedere il servizio"
+                        f"[Premi qui per ordinare]({ORDER_LINK})"
                     ),
                     parse_mode=ParseMode.MARKDOWN
                 )
@@ -284,7 +280,7 @@ class ShopBot:
                         f"🛠️ *{service['name']}*\n"
                         f"💵 Prezzo: {service['price']}\n"
                         f"📝 Descrizione: {service['description']}\n\n"
-                        "Usa /start per richiedere il servizio"
+                        f"[Premi qui per ordinare]({ORDER_LINK})"
                     ),
                     parse_mode=ParseMode.MARKDOWN
                 )
