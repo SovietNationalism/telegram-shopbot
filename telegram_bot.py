@@ -8,7 +8,6 @@ from telegram.error import BadRequest
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 WELCOME_IMAGE_URL = "https://i.postimg.cc/pr65RVVm/D6-F1-EDE3-E7-E8-4-ADC-AAFC-5-FB67-F86-BDE3.png"
-ORDER_LINK = "https://t.me/ItalianEdibles"
 
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -34,17 +33,18 @@ class ShopBot:
                     "200g 780"
                 ),
                 "description": "Dry con effetto potente e duraturo, e un odore vivace",
-                "image_url": "https://files.catbox.moe/itm2xf.mov"
+                "image_url": "https://drive.google.com/uc?export=download&id=1m-4w4uYRT-9h43iWi-jMXl9hjXXEkWMU",
+                "video_url": "https://files.catbox.moe/itm2xf.mov"
             },
             "2": {
                 "name": "Prodotto 2",
-                "price": "15",
+                "price": "€15.00",
                 "description": "Descrizione del prodotto 2",
                 "image_url": "https://example.com/product2.jpg"
             },
             "3": {
                 "name": "Prodotto 3",
-                "price": "20",
+                "price": "€20.00",
                 "description": "Descrizione del prodotto 3",
                 "image_url": "https://example.com/product3.jpg"
             }
@@ -52,13 +52,13 @@ class ShopBot:
         self.services = {
             "1": {
                 "name": "Servizio 1",
-                "price": "25",
+                "price": "€25.00",
                 "description": "Descrizione del servizio 1",
                 "image_url": "https://example.com/service1.jpg"
             },
             "2": {
                 "name": "Servizio 2",
-                "price": "30",
+                "price": "€30.00",
                 "description": "Descrizione del servizio 2",
                 "image_url": "https://example.com/service2.jpg"
             }
@@ -177,7 +177,7 @@ class ShopBot:
             await safe_edit_or_send(
                 "👥 *CONTATTAMI*\n\nClicca il pulsante qui sotto per contattarmi direttamente su Telegram:",
                 [
-                    [InlineKeyboardButton("✉️ Contattami su Telegram", url=ORDER_LINK)],
+                    [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
                     [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
                 ]
             )
@@ -187,7 +187,7 @@ class ShopBot:
                 "Bot sviluppato da @ItalianEdibles\n\n"
                 "Contattami per progetti personalizzati!",
                 [
-                    [InlineKeyboardButton("✉️ Contattami su Telegram", url=ORDER_LINK)],
+                    [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
                     [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
                 ]
             )
@@ -223,32 +223,57 @@ class ShopBot:
             if not product:
                 await query.answer("❌ Prodotto non trovato!")
                 return
-            try:
-                sent = await context.bot.send_photo(
-                    chat_id=query.message.chat_id,
-                    photo=product['image_url'],
-                    caption=(
-                        f"📦 *{product['name']}*\n"
-                        f"💵 Prezzo:\n{product['price']}\n"
-                        f"📝 Descrizione: {product['description']}\n\n"
-                        f"[Premi qui per ordinare]({ORDER_LINK})"
-                    ),
-                    parse_mode=ParseMode.MARKDOWN
-                )
-                context.user_data["product_msg_id"] = sent.message_id
-            except BadRequest as e:
-                logger.warning(f"Errore invio immagine prodotto: {e}")
-                sent = await context.bot.send_message(
-                    chat_id=query.message.chat_id,
-                    text=(
-                        f"📦 *{product['name']}*\n"
-                        f"💵 Prezzo:\n{product['price']}\n"
-                        f"📝 Descrizione: {product['description']}\n\n"
-                        f"[Premi qui per ordinare]({ORDER_LINK})"
-                    ),
-                    parse_mode=ParseMode.MARKDOWN
-                )
-                context.user_data["product_msg_id"] = sent.message_id
+            # Per "Filtrato 120u" invia video, per gli altri invia foto
+            if product_id == "1" and "video_url" in product:
+                try:
+                    sent = await context.bot.send_video(
+                        chat_id=query.message.chat_id,
+                        video=product['video_url'],
+                        caption=(
+                            f"📦 *{product['name']}*\n"
+                            f"💵 Prezzo:\n{product['price']}\n"
+                            f"📝 Descrizione: {product['description']}"
+                        ),
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                    context.user_data["product_msg_id"] = sent.message_id
+                except BadRequest as e:
+                    logger.warning(f"Errore invio video prodotto: {e}")
+                    sent = await context.bot.send_message(
+                        chat_id=query.message.chat_id,
+                        text=(
+                            f"📦 *{product['name']}*\n"
+                            f"💵 Prezzo:\n{product['price']}\n"
+                            f"📝 Descrizione: {product['description']}"
+                        ),
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                    context.user_data["product_msg_id"] = sent.message_id
+            else:
+                try:
+                    sent = await context.bot.send_photo(
+                        chat_id=query.message.chat_id,
+                        photo=product['image_url'],
+                        caption=(
+                            f"📦 *{product['name']}*\n"
+                            f"💵 Prezzo:\n{product['price']}\n"
+                            f"📝 Descrizione: {product['description']}"
+                        ),
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                    context.user_data["product_msg_id"] = sent.message_id
+                except BadRequest as e:
+                    logger.warning(f"Errore invio immagine prodotto: {e}")
+                    sent = await context.bot.send_message(
+                        chat_id=query.message.chat_id,
+                        text=(
+                            f"📦 *{product['name']}*\n"
+                            f"💵 Prezzo:\n{product['price']}\n"
+                            f"📝 Descrizione: {product['description']}"
+                        ),
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                    context.user_data["product_msg_id"] = sent.message_id
             await safe_edit_or_send(
                 f"Hai selezionato: {product['name']}",
                 [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
@@ -265,9 +290,8 @@ class ShopBot:
                     photo=service['image_url'],
                     caption=(
                         f"🛠️ *{service['name']}*\n"
-                        f"💵 Prezzo: {service['price']}\n"
-                        f"📝 Descrizione: {service['description']}\n\n"
-                        f"[Premi qui per ordinare]({ORDER_LINK})"
+                        f"💵 Prezzo:\n{service['price']}\n"
+                        f"📝 Descrizione: {service['description']}"
                     ),
                     parse_mode=ParseMode.MARKDOWN
                 )
@@ -278,9 +302,8 @@ class ShopBot:
                     chat_id=query.message.chat_id,
                     text=(
                         f"🛠️ *{service['name']}*\n"
-                        f"💵 Prezzo: {service['price']}\n"
-                        f"📝 Descrizione: {service['description']}\n\n"
-                        f"[Premi qui per ordinare]({ORDER_LINK})"
+                        f"💵 Prezzo:\n{service['price']}\n"
+                        f"📝 Descrizione: {service['description']}"
                     ),
                     parse_mode=ParseMode.MARKDOWN
                 )
