@@ -21,15 +21,16 @@ if not BOT_TOKEN:
 
 class ShopBot:
     def __init__(self):
-        # Welcome image URL - replace with your actual image URL
-        self.welcome_image_url = "https://example.com/welcome.jpg"  # Must be a direct image URL
+        # Welcome image URL - using the provided image
+        self.welcome_image_url = "https://i.postimg.cc/pr65RVVm/D6-F1-EDE3-E7-E8-4-ADC-AAFC-5-FB67-F86-BDE3.png"
         
+        # Product and service images - replace with your actual URLs
         self.products = {
             "1": {
                 "name": "Prodotto 1", 
                 "price": "€10.00", 
                 "description": "Descrizione del prodotto 1",
-                "image_url": "https://example.com/product1.jpg"  # Must be a direct image URL
+                "image_url": "https://example.com/product1.jpg"
             },
             "2": {
                 "name": "Prodotto 2", 
@@ -61,18 +62,6 @@ class ShopBot:
         }
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-        try:
-            # Try to send welcome image
-            await update.message.reply_photo(
-                photo=self.welcome_image_url,
-                caption="🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹"
-            )
-        except BadRequest as e:
-            logger.warning(f"Couldn't send welcome image: {e}")
-            # Fallback to text only if image fails
-            await update.message.reply_text("🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹")
-        
-        # Send welcome message with menu
         keyboard = [
             [InlineKeyboardButton("🛍️ Shop 🛍️", callback_data="shop")],
             [InlineKeyboardButton("💰 Pagamenti 💰", callback_data="payments")],
@@ -82,11 +71,25 @@ class ShopBot:
         
         reply_markup = InlineKeyboardMarkup(keyboard)
         welcome_message = (
+            "🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹\n\n"
             "Scopri un mondo di prodotti selezionati, pensati per farti avere un'esperienza "
             "unica e indimenticabile. Qui puoi esplorare, acquistare e contattarci in pochi semplici clic!"
         )
         
-        await update.message.reply_text(welcome_message, reply_markup=reply_markup)
+        try:
+            # Send single message with both image and buttons
+            await update.message.reply_photo(
+                photo=self.welcome_image_url,
+                caption=welcome_message,
+                reply_markup=reply_markup
+            )
+        except BadRequest as e:
+            logger.warning(f"Couldn't send welcome image: {e}")
+            # Fallback to text only if image fails
+            await update.message.reply_text(
+                text=welcome_message,
+                reply_markup=reply_markup
+            )
 
     async def button_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         query = update.callback_query
@@ -173,7 +176,7 @@ class ShopBot:
             return
             
         try:
-            # Try to send product image
+            # Try to send product image with details
             await query.message.reply_photo(
                 photo=product['image_url'],
                 caption=(
@@ -212,7 +215,7 @@ class ShopBot:
             return
             
         try:
-            # Try to send service image
+            # Try to send service image with details
             await query.message.reply_photo(
                 photo=service['image_url'],
                 caption=(
@@ -308,10 +311,21 @@ class ShopBot:
             "Scopri un mondo di prodotti selezionati, pensati per farti avere un'esperienza "
             "unica e indimenticabile. Qui puoi esplorare, acquistare e contattarci in pochi semplici clic!"
         )
-        await query.edit_message_text(
-            text=welcome_message,
-            reply_markup=reply_markup
-        )
+        
+        try:
+            # Edit to show image and menu
+            await query.message.reply_photo(
+                photo=self.welcome_image_url,
+                caption=welcome_message,
+                reply_markup=reply_markup
+            )
+        except BadRequest as e:
+            logger.warning(f"Couldn't send welcome image: {e}")
+            # Fallback to text only if image fails
+            await query.edit_message_text(
+                text=welcome_message,
+                reply_markup=reply_markup
+            )
 
     async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         message_text = update.message.text.lower()
