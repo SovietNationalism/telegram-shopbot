@@ -8,7 +8,7 @@ from telegram.error import BadRequest
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 WELCOME_IMAGE_URL = "https://i.postimg.cc/pr65RVVm/D6-F1-EDE3-E7-E8-4-ADC-AAFC-5-FB67-F86-BDE3.png"
-ADMIN_USER_ID = 6840588025  # <-- Only you receive file_id replies
+ADMIN_USER_ID = 6840588025  # Only you receive file_id replies
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -40,10 +40,26 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAPCaGv91fParWTOjzMLqrdb2v-pB0wAAksWAAKdJ2FTkI7DxvBinmg2BA"
             },
             "2": {
-                "name": "Prodotto 2",
-                "price": "€15.00",
-                "description": "Descrizione del prodotto 2",
-                "photo_file_id": "AgACAgQAAxkBAAIBUGY0n6v5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA"
+                "name": "SCIROPPO THC",
+                "price": (
+                    "x 1 150 ml 30€\n"
+                    "x 2 300 ml 40€\n"
+                    "x 5 750 ml 100€\n"
+                    "x 10 1,5 l 190€\n"
+                    "x 20 3 l 335€"
+                ),
+                "description": (
+                    "🇮🇹 SCIROPPO THC\n"
+                    "🍇 Gusti: Lampone, Fragola, Menta, Limone\n\n"
+                    "Una formula esclusiva, realizzata con estratto di hashish a base di etanolo di alta qualità, emulsionato in sciroppo al lampone per una stabilità e biodisponibilità superiore.\n\n"
+                    "💧 Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi fredde e dolci per mascherare il sapore.\n"
+                    "Ogni bottiglia contiene 250 mg di THC attivo in 150 ml di sciroppo.\n\n"
+                    "📐 Dosaggio consigliato (1.66 mg/ml):\n"
+                    " • 🟢 Principianti: 10–15 mg (6–9 ml circa)\n"
+                    " • 🟡 Regolari: 25–35 mg (15–20 ml)\n"
+                    " • 🔴 Esperti: 50+ mg (30 ml e oltre)"
+                ),
+                "photo_file_id": "AgACAgQAAxkBAAPQaGwBgXT832mqyg-CdoYxieQnnsoAAkLJMRtTjGFTwEHoBVCzhywBAAMCAAN4AAM2BA"
             },
             "3": {
                 "name": "Prodotto 3",
