@@ -8,6 +8,7 @@ from telegram.error import BadRequest
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 WELCOME_IMAGE_URL = "https://i.postimg.cc/pr65RVVm/D6-F1-EDE3-E7-E8-4-ADC-AAFC-5-FB67-F86-BDE3.png"
+ADMIN_USER_ID = 6840588025  # <-- Solo tu ricevi i file_id
 
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -34,7 +35,7 @@ class ShopBot:
                 ),
                 "description": "Dry con effetto potente e duraturo, e un odore vivace",
                 "image_url": "https://drive.google.com/uc?export=download&id=1m-4w4uYRT-9h43iWi-jMXl9hjXXEkWMU",
-                "video_url": "https://files.catbox.moe/itm2xf.mov"
+                "video_file_id": None  # Incolla qui il file_id dopo averlo ottenuto!
             },
             "2": {
                 "name": "Prodotto 2",
@@ -55,6 +56,7 @@ class ShopBot:
                 "price": "€25.00",
                 "description": "Descrizione del servizio 1",
                 "image_url": "https://example.com/service1.jpg"
+                # "video_file_id": None
             },
             "2": {
                 "name": "Servizio 2",
@@ -223,17 +225,18 @@ class ShopBot:
             if not product:
                 await query.answer("❌ Prodotto non trovato!")
                 return
-            # Selezione prodotto: invia video se esiste, altrimenti foto
-            if product_id == "1" and "video_url" in product:
+            video_file_id = product.get("video_file_id")
+            caption = (
+                f"📦 *{product['name']}*\n"
+                f"💵 Prezzo:\n{product['price']}\n"
+                f"📝 Descrizione: {product['description']}"
+            )
+            if video_file_id:
                 try:
                     sent = await context.bot.send_video(
                         chat_id=query.message.chat_id,
-                        video=product['video_url'],
-                        caption=(
-                            f"📦 *{product['name']}*\n"
-                            f"💵 Prezzo:\n{product['price']}\n"
-                            f"📝 Descrizione: {product['description']}"
-                        ),
+                        video=video_file_id,
+                        caption=caption,
                         parse_mode=ParseMode.MARKDOWN,
                         supports_streaming=True
                     )
@@ -242,11 +245,7 @@ class ShopBot:
                     logger.warning(f"Errore invio video prodotto: {e}")
                     sent = await context.bot.send_message(
                         chat_id=query.message.chat_id,
-                        text=(
-                            f"📦 *{product['name']}*\n"
-                            f"💵 Prezzo:\n{product['price']}\n"
-                            f"📝 Descrizione: {product['description']}"
-                        ),
+                        text=caption,
                         parse_mode=ParseMode.MARKDOWN
                     )
                     context.user_data["product_msg_id"] = sent.message_id
@@ -255,11 +254,7 @@ class ShopBot:
                     sent = await context.bot.send_photo(
                         chat_id=query.message.chat_id,
                         photo=product['image_url'],
-                        caption=(
-                            f"📦 *{product['name']}*\n"
-                            f"💵 Prezzo:\n{product['price']}\n"
-                            f"📝 Descrizione: {product['description']}"
-                        ),
+                        caption=caption,
                         parse_mode=ParseMode.MARKDOWN
                     )
                     context.user_data["product_msg_id"] = sent.message_id
@@ -267,11 +262,7 @@ class ShopBot:
                     logger.warning(f"Errore invio immagine prodotto: {e}")
                     sent = await context.bot.send_message(
                         chat_id=query.message.chat_id,
-                        text=(
-                            f"📦 *{product['name']}*\n"
-                            f"💵 Prezzo:\n{product['price']}\n"
-                            f"📝 Descrizione: {product['description']}"
-                        ),
+                        text=caption,
                         parse_mode=ParseMode.MARKDOWN
                     )
                     context.user_data["product_msg_id"] = sent.message_id
@@ -285,30 +276,47 @@ class ShopBot:
             if not service:
                 await query.answer("❌ Servizio non trovato!")
                 return
-            try:
-                sent = await context.bot.send_photo(
-                    chat_id=query.message.chat_id,
-                    photo=service['image_url'],
-                    caption=(
-                        f"🛠️ *{service['name']}*\n"
-                        f"💵 Prezzo:\n{service['price']}\n"
-                        f"📝 Descrizione: {service['description']}"
-                    ),
-                    parse_mode=ParseMode.MARKDOWN
-                )
-                context.user_data["service_msg_id"] = sent.message_id
-            except BadRequest as e:
-                logger.warning(f"Errore invio immagine servizio: {e}")
-                sent = await context.bot.send_message(
-                    chat_id=query.message.chat_id,
-                    text=(
-                        f"🛠️ *{service['name']}*\n"
-                        f"💵 Prezzo:\n{service['price']}\n"
-                        f"📝 Descrizione: {service['description']}"
-                    ),
-                    parse_mode=ParseMode.MARKDOWN
-                )
-                context.user_data["service_msg_id"] = sent.message_id
+            video_file_id = service.get("video_file_id")
+            caption = (
+                f"🛠️ *{service['name']}*\n"
+                f"💵 Prezzo:\n{service['price']}\n"
+                f"📝 Descrizione: {service['description']}"
+            )
+            if video_file_id:
+                try:
+                    sent = await context.bot.send_video(
+                        chat_id=query.message.chat_id,
+                        video=video_file_id,
+                        caption=caption,
+                        parse_mode=ParseMode.MARKDOWN,
+                        supports_streaming=True
+                    )
+                    context.user_data["service_msg_id"] = sent.message_id
+                except BadRequest as e:
+                    logger.warning(f"Errore invio video servizio: {e}")
+                    sent = await context.bot.send_message(
+                        chat_id=query.message.chat_id,
+                        text=caption,
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                    context.user_data["service_msg_id"] = sent.message_id
+            else:
+                try:
+                    sent = await context.bot.send_photo(
+                        chat_id=query.message.chat_id,
+                        photo=service['image_url'],
+                        caption=caption,
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                    context.user_data["service_msg_id"] = sent.message_id
+                except BadRequest as e:
+                    logger.warning(f"Errore invio immagine servizio: {e}")
+                    sent = await context.bot.send_message(
+                        chat_id=query.message.chat_id,
+                        text=caption,
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                    context.user_data["service_msg_id"] = sent.message_id
             await safe_edit_or_send(
                 f"Hai selezionato: {service['name']}",
                 [[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]]
@@ -345,7 +353,16 @@ class ShopBot:
 
     async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         message = update.effective_message
-        text = message.text.lower()
+
+        # Rispondi col file_id solo se il mittente è l'admin
+        if message.video and message.from_user and message.from_user.id == ADMIN_USER_ID:
+            await message.reply_text(
+                f"File ID del video:\n<code>{message.video.file_id}</code>",
+                parse_mode=ParseMode.HTML
+            )
+            return
+
+        text = message.text.lower() if message.text else ""
         if any(word in text for word in ["ciao", "salve"]):
             await message.reply_text("Ciao! 👋 Usa /start per iniziare.")
         elif "aiuto" in text or "help" in text:
@@ -361,7 +378,7 @@ def main():
 
         app.add_handler(CommandHandler("start", bot.start))
         app.add_handler(CallbackQueryHandler(bot.button_handler))
-        app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, bot.handle_message))
+        app.add_handler(MessageHandler(filters.ALL, bot.handle_message))
 
         app.run_polling()
         logger.info("Bot terminato.")
