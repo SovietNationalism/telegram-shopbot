@@ -3,6 +3,7 @@ import os
 import sys
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
+from telegram.error import BadRequest
 
 # Enable logging
 logging.basicConfig(
@@ -20,27 +21,27 @@ if not BOT_TOKEN:
 
 class ShopBot:
     def __init__(self):
-        # Welcome image URL
-        self.welcome_image_url = "https://drive.google.com/file/d/1-6b1dFFw4Ed0YOxYRHldQSwAZYxz_Thk/view?usp=drivesdk"
+        # Welcome image URL - replace with your actual image URL
+        self.welcome_image_url = "https://example.com/welcome.jpg"  # Must be a direct image URL
         
         self.products = {
             "1": {
                 "name": "Prodotto 1", 
                 "price": "€10.00", 
                 "description": "Descrizione del prodotto 1",
-                "image_url": "https://drive.google.com/file/d/1-6b1dFFw4Ed0YOxYRHldQSwAZYxz_Thk/view?usp=drivesdk"
+                "image_url": "https://example.com/product1.jpg"  # Must be a direct image URL
             },
             "2": {
                 "name": "Prodotto 2", 
                 "price": "€15.00", 
                 "description": "Descrizione del prodotto 2",
-                "image_url": "https://via.placeholder.com/400x300?text=Prodotto+2"
+                "image_url": "https://example.com/product2.jpg"
             },
             "3": {
                 "name": "Prodotto 3", 
                 "price": "€20.00", 
                 "description": "Descrizione del prodotto 3",
-                "image_url": "https://via.placeholder.com/400x300?text=Prodotto+3"
+                "image_url": "https://example.com/product3.jpg"
             },
         }
 
@@ -49,22 +50,27 @@ class ShopBot:
                 "name": "Servizio 1", 
                 "price": "€25.00", 
                 "description": "Descrizione del servizio 1",
-                "image_url": "https://via.placeholder.com/400x300?text=Servizio+1"
+                "image_url": "https://example.com/service1.jpg"
             },
             "2": {
                 "name": "Servizio 2", 
                 "price": "€30.00", 
                 "description": "Descrizione del servizio 2",
-                "image_url": "https://via.placeholder.com/400x300?text=Servizio+2"
+                "image_url": "https://example.com/service2.jpg"
             },
         }
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-        # Send welcome image
-        await update.message.reply_photo(
-            photo=self.welcome_image_url,
-            caption="🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹"
-        )
+        try:
+            # Try to send welcome image
+            await update.message.reply_photo(
+                photo=self.welcome_image_url,
+                caption="🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹"
+            )
+        except BadRequest as e:
+            logger.warning(f"Couldn't send welcome image: {e}")
+            # Fallback to text only if image fails
+            await update.message.reply_text("🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹")
         
         # Send welcome message with menu
         keyboard = [
@@ -166,17 +172,30 @@ class ShopBot:
             await query.answer("Prodotto non trovato!")
             return
             
-        # Send product image
-        await query.message.reply_photo(
-            photo=product['image_url'],
-            caption=(
-                f"📦 **{product['name']}**\n\n"
-                f"💵 Prezzo: {product['price']}\n"
-                f"📝 Descrizione: {product['description']}\n\n"
-                "Usa /start per effettuare un ordine"
-            ),
-            parse_mode="Markdown"
-        )
+        try:
+            # Try to send product image
+            await query.message.reply_photo(
+                photo=product['image_url'],
+                caption=(
+                    f"📦 **{product['name']}**\n\n"
+                    f"💵 Prezzo: {product['price']}\n"
+                    f"📝 Descrizione: {product['description']}\n\n"
+                    "Usa /start per effettuare un ordine"
+                ),
+                parse_mode="Markdown"
+            )
+        except BadRequest as e:
+            logger.warning(f"Couldn't send product image: {e}")
+            # Fallback to text only if image fails
+            await query.message.reply_text(
+                text=(
+                    f"📦 **{product['name']}**\n\n"
+                    f"💵 Prezzo: {product['price']}\n"
+                    f"📝 Descrizione: {product['description']}\n\n"
+                    "Usa /start per effettuare un ordine"
+                ),
+                parse_mode="Markdown"
+            )
         
         # Show back button
         keyboard = [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
@@ -192,17 +211,30 @@ class ShopBot:
             await query.answer("Servizio non trovato!")
             return
             
-        # Send service image
-        await query.message.reply_photo(
-            photo=service['image_url'],
-            caption=(
-                f"🛠️ **{service['name']}**\n\n"
-                f"💵 Prezzo: {service['price']}\n"
-                f"📝 Descrizione: {service['description']}\n\n"
-                "Usa /start per richiedere il servizio"
-            ),
-            parse_mode="Markdown"
-        )
+        try:
+            # Try to send service image
+            await query.message.reply_photo(
+                photo=service['image_url'],
+                caption=(
+                    f"🛠️ **{service['name']}**\n\n"
+                    f"💵 Prezzo: {service['price']}\n"
+                    f"📝 Descrizione: {service['description']}\n\n"
+                    "Usa /start per richiedere il servizio"
+                ),
+                parse_mode="Markdown"
+            )
+        except BadRequest as e:
+            logger.warning(f"Couldn't send service image: {e}")
+            # Fallback to text only if image fails
+            await query.message.reply_text(
+                text=(
+                    f"🛠️ **{service['name']}**\n\n"
+                    f"💵 Prezzo: {service['price']}\n"
+                    f"📝 Descrizione: {service['description']}\n\n"
+                    "Usa /start per richiedere il servizio"
+                ),
+                parse_mode="Markdown"
+            )
         
         # Show back button
         keyboard = [[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]]
@@ -232,7 +264,6 @@ class ShopBot:
         )
 
     async def show_contact(self, query) -> None:
-        # Directly open chat with @ItalianEdibles
         keyboard = [
             [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
             [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
