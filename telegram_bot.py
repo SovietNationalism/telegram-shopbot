@@ -97,7 +97,7 @@ class ShopBot:
 
         async def safe_edit_or_send(text, keyboard, parse_mode=ParseMode.MARKDOWN):
             msg = query.message
-            if msg.photo:
+            if getattr(msg, "photo", None):
                 try:
                     await msg.delete()
                 except Exception:
@@ -223,7 +223,7 @@ class ShopBot:
             if not product:
                 await query.answer("❌ Prodotto non trovato!")
                 return
-            # Per "Filtrato 120u" invia video, per gli altri invia foto
+            # Selezione prodotto: invia video se esiste, altrimenti foto
             if product_id == "1" and "video_url" in product:
                 try:
                     sent = await context.bot.send_video(
@@ -234,7 +234,8 @@ class ShopBot:
                             f"💵 Prezzo:\n{product['price']}\n"
                             f"📝 Descrizione: {product['description']}"
                         ),
-                        parse_mode=ParseMode.MARKDOWN
+                        parse_mode=ParseMode.MARKDOWN,
+                        supports_streaming=True
                     )
                     context.user_data["product_msg_id"] = sent.message_id
                 except BadRequest as e:
