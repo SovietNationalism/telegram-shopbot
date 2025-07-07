@@ -20,18 +20,53 @@ if not BOT_TOKEN:
 
 class ShopBot:
     def __init__(self):
+        # Welcome image URL
+        self.welcome_image_url = "https://drive.google.com/file/d/1-6b1dFFw4Ed0YOxYRHldQSwAZYxz_Thk/view?usp=drivesdk"
+        
         self.products = {
-            "1": {"name": "Prodotto 1", "price": "€10.00", "description": "Descrizione del prodotto 1"},
-            "2": {"name": "Prodotto 2", "price": "€15.00", "description": "Descrizione del prodotto 2"},
-            "3": {"name": "Prodotto 3", "price": "€20.00", "description": "Descrizione del prodotto 3"},
+            "1": {
+                "name": "Prodotto 1", 
+                "price": "€10.00", 
+                "description": "Descrizione del prodotto 1",
+                "image_url": "https://drive.google.com/file/d/1-6b1dFFw4Ed0YOxYRHldQSwAZYxz_Thk/view?usp=drivesdk"
+            },
+            "2": {
+                "name": "Prodotto 2", 
+                "price": "€15.00", 
+                "description": "Descrizione del prodotto 2",
+                "image_url": "https://via.placeholder.com/400x300?text=Prodotto+2"
+            },
+            "3": {
+                "name": "Prodotto 3", 
+                "price": "€20.00", 
+                "description": "Descrizione del prodotto 3",
+                "image_url": "https://via.placeholder.com/400x300?text=Prodotto+3"
+            },
         }
 
         self.services = {
-            "1": {"name": "Servizio 1", "price": "€25.00", "description": "Descrizione del servizio 1"},
-            "2": {"name": "Servizio 2", "price": "€30.00", "description": "Descrizione del servizio 2"},
+            "1": {
+                "name": "Servizio 1", 
+                "price": "€25.00", 
+                "description": "Descrizione del servizio 1",
+                "image_url": "https://via.placeholder.com/400x300?text=Servizio+1"
+            },
+            "2": {
+                "name": "Servizio 2", 
+                "price": "€30.00", 
+                "description": "Descrizione del servizio 2",
+                "image_url": "https://via.placeholder.com/400x300?text=Servizio+2"
+            },
         }
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+        # Send welcome image
+        await update.message.reply_photo(
+            photo=self.welcome_image_url,
+            caption="🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹"
+        )
+        
+        # Send welcome message with menu
         keyboard = [
             [InlineKeyboardButton("🛍️ Shop 🛍️", callback_data="shop")],
             [InlineKeyboardButton("💰 Pagamenti 💰", callback_data="payments")],
@@ -41,7 +76,6 @@ class ShopBot:
         
         reply_markup = InlineKeyboardMarkup(keyboard)
         welcome_message = (
-            "🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹\n\n"
             "Scopri un mondo di prodotti selezionati, pensati per farti avere un'esperienza "
             "unica e indimenticabile. Qui puoi esplorare, acquistare e contattarci in pochi semplici clic!"
         )
@@ -132,20 +166,24 @@ class ShopBot:
             await query.answer("Prodotto non trovato!")
             return
             
-        text = (
-            f"📦 **{product['name']}**\n\n"
-            f"💵 Prezzo: {product['price']}\n"
-            f"📝 Descrizione: {product['description']}\n\n"
-            "Usa /start per effettuare un ordine"
+        # Send product image
+        await query.message.reply_photo(
+            photo=product['image_url'],
+            caption=(
+                f"📦 **{product['name']}**\n\n"
+                f"💵 Prezzo: {product['price']}\n"
+                f"📝 Descrizione: {product['description']}\n\n"
+                "Usa /start per effettuare un ordine"
+            ),
+            parse_mode="Markdown"
         )
         
+        # Show back button
         keyboard = [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
         reply_markup = InlineKeyboardMarkup(keyboard)
-        
         await query.edit_message_text(
-            text=text,
-            reply_markup=reply_markup,
-            parse_mode="Markdown"
+            text=f"Hai selezionato: {product['name']}",
+            reply_markup=reply_markup
         )
 
     async def show_service_details(self, query, service_id: str) -> None:
@@ -154,20 +192,24 @@ class ShopBot:
             await query.answer("Servizio non trovato!")
             return
             
-        text = (
-            f"🛠️ **{service['name']}**\n\n"
-            f"💵 Prezzo: {service['price']}\n"
-            f"📝 Descrizione: {service['description']}\n\n"
-            "Usa /start per richiedere il servizio"
+        # Send service image
+        await query.message.reply_photo(
+            photo=service['image_url'],
+            caption=(
+                f"🛠️ **{service['name']}**\n\n"
+                f"💵 Prezzo: {service['price']}\n"
+                f"📝 Descrizione: {service['description']}\n\n"
+                "Usa /start per richiedere il servizio"
+            ),
+            parse_mode="Markdown"
         )
         
+        # Show back button
         keyboard = [[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]]
         reply_markup = InlineKeyboardMarkup(keyboard)
-        
         await query.edit_message_text(
-            text=text,
-            reply_markup=reply_markup,
-            parse_mode="Markdown"
+            text=f"Hai selezionato: {service['name']}",
+            reply_markup=reply_markup
         )
 
     async def show_payments(self, query) -> None:
@@ -190,15 +232,15 @@ class ShopBot:
         )
 
     async def show_contact(self, query) -> None:
+        # Directly open chat with @ItalianEdibles
         keyboard = [
             [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
-            [InlineKeyboardButton("📧 Email", url="mailto:italianedibles@example.com")],
             [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
         
         await query.edit_message_text(
-            text="👥 **CONTATTAMI**\n\nScegli come preferisci contattarci:",
+            text="👥 **CONTATTAMI**\n\nClicca il pulsante qui sotto per contattarmi direttamente su Telegram:",
             reply_markup=reply_markup,
             parse_mode="Markdown"
         )
