@@ -1,5 +1,6 @@
 import logging
 import os
+import sys
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
 
@@ -10,8 +11,18 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Your bot token from environment variable
+# Get bot token from environment variable
 BOT_TOKEN = os.getenv("BOT_TOKEN")
+
+# Debug environment variables
+logger.info("Checking environment variables...")
+env_vars = os.environ.keys()
+logger.info(f"Available env vars: {list(env_vars)}")
+logger.info(f"BOT_TOKEN exists: {'BOT_TOKEN' in env_vars}")
+
+if not BOT_TOKEN:
+    logger.critical("❌ BOT_TOKEN environment variable is not set. Exiting.")
+    sys.exit(1)
 
 class ShopBot:
     def __init__(self):
@@ -228,17 +239,22 @@ class ShopBot:
             await update.message.reply_text("Non ho capito. Usa /start per vedere le opzioni disponibili.")
 
 def main() -> None:
-    if not BOT_TOKEN:
-        raise ValueError("BOT_TOKEN environment variable not set")
-        
-    application = Application.builder().token(BOT_TOKEN).build()
-    bot = ShopBot()
+    logger.info("Starting bot initialization...")
+    
+    try:
+        application = Application.builder().token(BOT_TOKEN).build()
+        bot = ShopBot()
 
-    application.add_handler(CommandHandler("start", bot.start))
-    application.add_handler(CallbackQueryHandler(bot.button_handler))
-    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, bot.handle_message))
+        application.add_handler(CommandHandler("start", bot.start))
+        application.add_handler(CallbackQueryHandler(bot.button_handler))
+        application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, bot.handle_message))
 
-    application.run_polling(allowed_updates=Update.ALL_TYPES)
+        logger.info("Bot starting polling...")
+        application.run_polling(allowed_updates=Update.ALL_TYPES)
+        logger.info("Bot stopped")
+    except Exception as e:
+        logger.exception(f"❌ Bot crashed: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
