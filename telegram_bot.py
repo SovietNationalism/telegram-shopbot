@@ -62,7 +62,6 @@ class ShopBot:
         # Helper per gestire edit o nuovo messaggio
         async def safe_edit_or_send(text, keyboard, parse_mode=ParseMode.MARKDOWN):
             msg = query.message
-            # Se il messaggio originale aveva una foto, lo cancelliamo e mandiamo un nuovo messaggio testuale
             if msg.photo:
                 try:
                     await msg.delete()
@@ -82,7 +81,6 @@ class ShopBot:
                         parse_mode=parse_mode
                     )
                 except BadRequest:
-                    # Se non può essere editato (es. troppo vecchio), invia nuovo messaggio
                     await context.bot.send_message(
                         chat_id=msg.chat_id,
                         text=text,
@@ -129,6 +127,11 @@ class ShopBot:
                 ]
             )
         elif data == "back_to_main":
+            # ELIMINA IL VECCHIO MESSAGGIO PRIMA DI INVIARE IL MENU PRINCIPALE
+            try:
+                await query.message.delete()
+            except Exception:
+                pass
             await self.start(update, context)
         elif data == "products":
             keyboard = [
@@ -258,7 +261,7 @@ def main():
         app.add_handler(CallbackQueryHandler(bot.button_handler))
         app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, bot.handle_message))
 
-        app.run_polling()  # allowed_updates non serve, prende tutto di default
+        app.run_polling()
         logger.info("Bot terminato.")
     except Exception as e:
         logger.exception(f"❌ Errore critico: {e}")
