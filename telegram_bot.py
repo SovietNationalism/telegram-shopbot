@@ -19,28 +19,50 @@ if not BOT_TOKEN:
 class ShopBot:
     def __init__(self):
         self.products = {
-    "1": {
-        "name": "Filtrato 120u",
-        "price": (
-            "3g 30€\n"
-            "5g 40€\n"
-            "10g 70€\n"
-            "15g 100€\n"
-            "25g 160€\n"
-            "35g 215€\n"
-            "50g 250€\n"
-            "100g 420€\n"
-            "200g 780€"
-        ),
-        "description": "Dry con effetto potente e duraturo, e un odore vivace",
-        "image_url": "https://drive.google.com/uc?export=download&id=1m-4w4uYRT-9h43iWi-jMXl9hjXXEkWMU",
-            "2": {"name": "Prodotto 2", "price": "€15.00", "description": "Descrizione del prodotto 2", "image_url": "https://example.com/product2.jpg"},
-            "3": {"name": "Prodotto 3", "price": "€20.00", "description": "Descrizione del prodotto 3", "image_url": "https://example.com/product3.jpg"},
+            "1": {
+                "name": "Filtrato 120u",
+                "price": (
+                    "3g 30€\n"
+                    "5g 40€\n"
+                    "10g 70€\n"
+                    "15g 100€\n"
+                    "25g 160€\n"
+                    "35g 215€\n"
+                    "50g 250€\n"
+                    "100g 420€\n"
+                    "200g 780€"
+                ),
+                "description": "Dry con effetto potente e duraturo, e un odore vivace",
+                "image_url": "https://drive.google.com/uc?export=download&id=1m-4w4uYRT-9h43iWi-jMXl9hjXXEkWMU"
+            },
+            "2": {
+                "name": "Prodotto 2",
+                "price": "€15.00",
+                "description": "Descrizione del prodotto 2",
+                "image_url": "https://example.com/product2.jpg"
+            },
+            "3": {
+                "name": "Prodotto 3",
+                "price": "€20.00",
+                "description": "Descrizione del prodotto 3",
+                "image_url": "https://example.com/product3.jpg"
+            }
         }
         self.services = {
-            "1": {"name": "Servizio 1", "price": "€25.00", "description": "Descrizione del servizio 1", "image_url": "https://example.com/service1.jpg"},
-            "2": {"name": "Servizio 2", "price": "€30.00", "description": "Descrizione del servizio 2", "image_url": "https://example.com/service2.jpg"},
+            "1": {
+                "name": "Servizio 1",
+                "price": "€25.00",
+                "description": "Descrizione del servizio 1",
+                "image_url": "https://example.com/service1.jpg"
+            },
+            "2": {
+                "name": "Servizio 2",
+                "price": "€30.00",
+                "description": "Descrizione del servizio 2",
+                "image_url": "https://example.com/service2.jpg"
+            }
         }
+
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         keyboard = [
