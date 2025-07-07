@@ -100,6 +100,8 @@ class ShopBot:
         }
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+        # Clean up all previous menu/product/service messages
+        await self.cleanup_all(context, update.effective_chat.id)
         keyboard = [
             [InlineKeyboardButton("🛍️ Shop 🛍️", callback_data="shop")],
             [InlineKeyboardButton("💰 Pagamenti 💰", callback_data="payments")],
@@ -126,14 +128,12 @@ class ShopBot:
             sent = await message.reply_text(text=welcome_message, reply_markup=reply_markup)
             context.user_data["main_menu_msg_id"] = sent.message_id
 
-    async def button_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-        query = update.callback_query
-        await query.answer()
-        data = query.data
-        chat_id = query.message.chat.id
-
-        # Utility to delete a message by ID and clear from user_data
-        async def delete_menu_msg(key):
+    async def cleanup_all(self, context, chat_id):
+        # Delete all menu/product/service messages from user_data
+        for key in [
+            "main_menu_msg_id", "shop_menu_msg_id", "products_menu_msg_id", "services_menu_msg_id",
+            "product_msg_id", "service_msg_id"
+        ]:
             msg_id = context.user_data.get(key)
             if msg_id:
                 try:
@@ -142,82 +142,97 @@ class ShopBot:
                     pass
                 context.user_data[key] = None
 
-        # Delete all menu/product/service messages except the current one
-        async def cleanup_menus(exclude=None):
-            for key in ["main_menu_msg_id", "shop_menu_msg_id", "products_menu_msg_id", "services_menu_msg_id", "product_msg_id", "service_msg_id"]:
-                if key != exclude:
-                    await delete_menu_msg(key)
+    async def cleanup_detail(self, context, chat_id):
+        # Delete only product/service detail messages
+        for key in ["product_msg_id", "service_msg_id"]:
+            msg_id = context.user_data.get(key)
+            if msg_id:
+                try:
+                    await context.bot.delete_message(chat_id=chat_id, message_id=msg_id)
+                except Exception:
+                    pass
+                context.user_data[key] = None
 
-        # Send a menu and store its message_id
-        async def send_menu(text, keyboard, key, parse_mode=ParseMode.MARKDOWN):
-            sent = await context.bot.send_message(
-                chat_id=chat_id,
-                text=text,
-                reply_markup=InlineKeyboardMarkup(keyboard),
-                parse_mode=parse_mode
-            )
-            context.user_data[key] = sent.message_id
-            await cleanup_menus(exclude=key)
+    async def button_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+        query = update.callback_query
+        await query.answer()
+        data = query.data
+        chat_id = query.message.chat.id
 
         # Main menu navigation
         if data == "back_to_main":
-            await cleanup_menus()
+            await self.cleanup_all(context, chat_id)
             await self.start(update, context)
             return
 
         # Shop menu
         if data == "shop":
-            await cleanup_menus()
+            await self.cleanup_all(context, chat_id)
             keyboard = [
                 [InlineKeyboardButton("📱 Prodotti", callback_data="products")],
                 [InlineKeyboardButton("🔧 Servizi", callback_data="services")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
             ]
-            await send_menu("🛍️ *SHOP*\n\nScegli una categoria:", keyboard, "shop_menu_msg_id")
+            sent = await context.bot.send_message(
+                chat_id=chat_id,
+                text="🛍️ *SHOP*\n\nScegli una categoria:",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+                parse_mode=ParseMode.MARKDOWN
+            )
+            context.user_data["shop_menu_msg_id"] = sent.message_id
             return
 
         # Payments, contact, developer
         if data == "payments":
-            await cleanup_menus()
+            await self.cleanup_all(context, chat_id)
             keyboard = [[InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]]
-            await send_menu(
-                "💰 *METODI DI PAGAMENTO*\n\n"
-                "• 💰 Crypto (0% commissione)\n"
-                "• 💵 Contanti (0% commissione)\n"
-                "• 🏦 Bonifico istantaneo (0% commissione)\n"
-                "• 💳 PayPal (+10% commissione)\n\n"
-                "Scegli il metodo che preferisci al momento dell'ordine.",
-                keyboard, "shop_menu_msg_id"
+            sent = await context.bot.send_message(
+                chat_id=chat_id,
+                text="💰 *METODI DI PAGAMENTO*\n\n"
+                     "• 💰 Crypto (0% commissione)\n"
+                     "• 💵 Contanti (0% commissione)\n"
+                     "• 🏦 Bonifico istantaneo (0% commissione)\n"
+                     "• 💳 PayPal (+10% commissione)\n\n"
+                     "Scegli il metodo che preferisci al momento dell'ordine.",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+                parse_mode=ParseMode.MARKDOWN
             )
+            context.user_data["shop_menu_msg_id"] = sent.message_id
             return
         if data == "contact":
-            await cleanup_menus()
+            await self.cleanup_all(context, chat_id)
             keyboard = [
                 [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
             ]
-            await send_menu(
-                "👥 *CONTATTAMI*\n\nClicca il pulsante qui sotto per contattarmi direttamente su Telegram:",
-                keyboard, "shop_menu_msg_id"
+            sent = await context.bot.send_message(
+                chat_id=chat_id,
+                text="👥 *CONTATTAMI*\n\nClicca il pulsante qui sotto per contattarmi direttamente su Telegram:",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+                parse_mode=ParseMode.MARKDOWN
             )
+            context.user_data["shop_menu_msg_id"] = sent.message_id
             return
         if data == "developer":
-            await cleanup_menus()
+            await self.cleanup_all(context, chat_id)
             keyboard = [
                 [InlineKeyboardButton("✉️ Contattami su Telegram", url="https://t.me/ItalianEdibles")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
             ]
-            await send_menu(
-                "👨‍💻 *DEVELOPER*\n\n"
-                "Bot sviluppato da @ItalianEdibles\n\n"
-                "Contattami per progetti personalizzati!",
-                keyboard, "shop_menu_msg_id"
+            sent = await context.bot.send_message(
+                chat_id=chat_id,
+                text="👨‍💻 *DEVELOPER*\n\n"
+                     "Bot sviluppato da @ItalianEdibles\n\n"
+                     "Contattami per progetti personalizzati!",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+                parse_mode=ParseMode.MARKDOWN
             )
+            context.user_data["shop_menu_msg_id"] = sent.message_id
             return
 
         # Products menu
         if data == "products" or data == "back_to_products":
-            await cleanup_menus()
+            await self.cleanup_all(context, chat_id)
             keyboard = [
                 [InlineKeyboardButton(self.products["1"]["name"], callback_data="product_1")],
                 [InlineKeyboardButton(self.products["2"]["name"], callback_data="product_2")],
@@ -228,23 +243,35 @@ class ShopBot:
                 [InlineKeyboardButton(self.products["4"]["name"], callback_data="product_4")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]
             ]
-            await send_menu("📱 *PRODOTTI DISPONIBILI*\n\nScegli un prodotto:", keyboard, "products_menu_msg_id")
+            sent = await context.bot.send_message(
+                chat_id=chat_id,
+                text="📱 *PRODOTTI DISPONIBILI*\n\nScegli un prodotto:",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+                parse_mode=ParseMode.MARKDOWN
+            )
+            context.user_data["products_menu_msg_id"] = sent.message_id
             return
 
         # Services menu
         if data == "services" or data == "back_to_services":
-            await cleanup_menus()
+            await self.cleanup_all(context, chat_id)
             keyboard = [
                 [InlineKeyboardButton(s["name"], callback_data=f"service_{sid}")]
                 for sid, s in self.services.items()
             ]
             keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="shop")])
-            await send_menu("🔧 *SERVIZI DISPONIBILI*\n\nScegli un servizio:", keyboard, "services_menu_msg_id")
+            sent = await context.bot.send_message(
+                chat_id=chat_id,
+                text="🔧 *SERVIZI DISPONIBILI*\n\nScegli un servizio:",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+                parse_mode=ParseMode.MARKDOWN
+            )
+            context.user_data["services_menu_msg_id"] = sent.message_id
             return
 
         # Product details
         if data.startswith("product_3_"):
-            await cleanup_menus()
+            await self.cleanup_detail(context, chat_id)
             key = data.replace("product_", "")
             product = self.products.get(key)
             if not product:
@@ -278,11 +305,17 @@ class ShopBot:
                 context.user_data["product_msg_id"] = sent.message_id
 
             keyboard = [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
-            await send_menu(f"Hai selezionato: {product['name']}", keyboard, "products_menu_msg_id")
+            sent2 = await context.bot.send_message(
+                chat_id=chat_id,
+                text=f"Hai selezionato: {product['name']}",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+                parse_mode=ParseMode.MARKDOWN
+            )
+            context.user_data["products_menu_msg_id"] = sent2.message_id
             return
 
         if data in ["product_1", "product_2"]:
-            await cleanup_menus()
+            await self.cleanup_detail(context, chat_id)
             product_id = data.split("_")[1]
             product = self.products.get(product_id)
             if not product:
@@ -320,11 +353,17 @@ class ShopBot:
                 context.user_data["product_msg_id"] = sent.message_id
 
             keyboard = [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
-            await send_menu(f"Hai selezionato: {product['name']}", keyboard, "products_menu_msg_id")
+            sent2 = await context.bot.send_message(
+                chat_id=chat_id,
+                text=f"Hai selezionato: {product['name']}",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+                parse_mode=ParseMode.MARKDOWN
+            )
+            context.user_data["products_menu_msg_id"] = sent2.message_id
             return
 
         if data == "product_4":
-            await cleanup_menus()
+            await self.cleanup_detail(context, chat_id)
             product = self.products["4"]
             lines = product["price"].split("\n")
             caption_lines = []
@@ -346,11 +385,17 @@ class ShopBot:
             )
             context.user_data["product_msg_id"] = sent.message_id
             keyboard = [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
-            await send_menu(f"Hai selezionato: {product['name']}", keyboard, "products_menu_msg_id")
+            sent2 = await context.bot.send_message(
+                chat_id=chat_id,
+                text=f"Hai selezionato: {product['name']}",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+                parse_mode=ParseMode.MARKDOWN
+            )
+            context.user_data["products_menu_msg_id"] = sent2.message_id
             return
 
         if data.startswith("service_"):
-            await cleanup_menus()
+            await self.cleanup_detail(context, chat_id)
             service_id = data.split("_")[1]
             service = self.services.get(service_id)
             if not service:
@@ -405,7 +450,13 @@ class ShopBot:
                 context.user_data["service_msg_id"] = sent.message_id
 
             keyboard = [[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]]
-            await send_menu(f"Hai selezionato: {service['name']}", keyboard, "services_menu_msg_id")
+            sent2 = await context.bot.send_message(
+                chat_id=chat_id,
+                text=f"Hai selezionato: {service['name']}",
+                reply_markup=InlineKeyboardMarkup(keyboard),
+                parse_mode=ParseMode.MARKDOWN
+            )
+            context.user_data["services_menu_msg_id"] = sent2.message_id
             return
 
     async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
