@@ -24,7 +24,7 @@ class ShopBot:
     def __init__(self):
         self.products = {
             "1": {
-                "name": "Filtrato 120u",
+                "name": "Dry filtrato 🍫",
                 "price": (
                     "3g 30\n"
                     "5g 40\n"
@@ -40,7 +40,7 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAPCaGv91fParWTOjzMLqrdb2v-pB0wAAksWAAKdJ2FTkI7DxvBinmg2BA"
             },
             "2": {
-                "name": "SCIROPPO THC",
+                "name": "Sciroppo al THC 🫗",
                 "price": (
                     "x 1 150 ml 30€\n"
                     "x 2 300 ml 40€\n"
@@ -62,10 +62,10 @@ class ShopBot:
                 "photo_file_id": "AgACAgQAAxkBAAPQaGwBgXT832mqyg-CdoYxieQnnsoAAkLJMRtTjGFTwEHoBVCzhywBAAMCAAN4AAM2BA"
             },
             "3": {
-                "name": "Prodotto 3",
+                "name": "Caramelle al THC 🇪🇸",
                 "price": "€20.00",
                 "description": "Descrizione del prodotto 3",
-                "photo_file_id": "AgACAgQAAxkBAAIBU2Y0n8f5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA"
+                "photo_file_id": "BAACAgQAAxkBAAPvaGwJdobhaO1RPvm1nrbxIKokTOIAAqgdAAJTjGFTqdTZCjgZEpU2BA"
             }
         }
         self.services = {
