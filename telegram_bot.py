@@ -24,7 +24,7 @@ class ShopBot:
     def __init__(self):
         self.products = {
             "1": {
-                "name": "Dry filtrato 🍫",
+                "name": "Dry Filtrato 🍫",
                 "price": (
                     "3g 30\n"
                     "5g 40\n"
@@ -59,13 +59,13 @@ class ShopBot:
                     " • 🟡 Regolari: 25–35 mg (15–20 ml)\n"
                     " • 🔴 Esperti: 50+ mg (30 ml e oltre)"
                 ),
-                "photo_file_id": "AgACAgQAAxkBAAPQaGwBgXT832mqyg-CdoYxieQnnsoAAkLJMRtTjGFTwEHoBVCzhywBAAMCAAN4AAM2BA"
+                "video_file_id": "BAACAgQAAxkBAAIBCmhsFSRwLTrFoTt3ZbImNDzA8cKtAALKHQACU4xhU_j8jDMDFSiJNgQ"
             },
             "3": {
                 "name": "Caramelle al THC 🇪🇸",
                 "price": "€20.00",
                 "description": "Descrizione del prodotto 3",
-                "photo_file_id": "BAACAgQAAxkBAAPvaGwJdobhaO1RPvm1nrbxIKokTOIAAqgdAAJTjGFTqdTZCjgZEpU2BA"
+                "video_file_id": "BAACAgQAAxkBAAPvaGwJdobhaO1RPvm1nrbxIKokTOIAAqgdAAJTjGFTqdTZCjgZEpU2BA"
             }
         }
         self.services = {
