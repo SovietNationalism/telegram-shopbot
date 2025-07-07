@@ -63,47 +63,13 @@ class ShopBot:
             },
             "3": {
                 "name": "Caramelle al THC 🇪🇸",
-                "price": (
-                    "Dettaglio sotto i 5 pz non ancora disponibile. Tra poco.\n\n"
-                    "~1 - 20~\n"
-                    "~2 - 35~\n"
-                    "~3 - 50~\n"
-                    "~4 - 60~\n"
-                    "5 - 70\n"
-                    "10 - 130"
-                ),
-                "description": (
-                    "🟢 *Formato 10 caramelle da 500mg*\n"
-                    "Runtz Gummies\n"
-                    "White Runtz Fruit Punch - “Ether” Runtz Green Apple - Original Runtz Berries - Pink Runtz Watermelon\n\n"
-                    "Smacker Gummies Sours (Mix Green Apple, Blue Raspberry, Cherry, Lemon & Watermelon)\n\n"
-                    "Warheads Sour Medicated Chewy Cubes\n"
-                    "(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n"
-                    "🔵 *Formato 20 caramelle 600mg*\n"
-                    "Rancher Gummies Original Flavors (Mix Strawberry, Green Apple, Blue Raspberry)\n\n"
-                    "Rancher Gummies Sours (Mix Strawberry, Green Apple, Blue Raspberry)\n\n"
-                    "Warheads Sour Medicated Chewy Cubes\n"
-                    "(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)"
-                ),
                 "video_file_id": "BAACAgQAAxkBAAPvaGwJdobhaO1RPvm1nrbxIKokTOIAAqgdAAJTjGFTqdTZCjgZEpU2BA",
-                "buttons": [
-                    ["Formato 10 caramelle (500mg)", "caramelle_10"],
-                    ["Formato 20 caramelle (600mg)", "caramelle_20"]
-                ]
             },
             "4": {
                 "name": "THC VAPE PACKWOODS x Runtz",
-                "price": (
-                    "Dettaglio sotto i 5 pz non ancora disponibile. Tra poco.\n\n"
-                    "~1 - 45~\n"
-                    "~2 - 80~\n"
-                    "~3 - 110~\n"
-                    "~4 - 135~\n"
-                    "5 - 160\n"
-                    "10 - 300"
-                ),
+                "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "1000mg distillato Delta 9 THC",
-                "video_file_id": ""  # Add your video file ID here
+                "special_note": "Dettaglio sotto i 5 pz non ancora disponibile. Tra poco."
             }
         }
         self.services = {
@@ -113,7 +79,6 @@ class ShopBot:
                 "description": "Descrizione del servizio 1",
                 "photo_file_id": "AgACAgQAAxkBAAIBVmY0n9f5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA"
             }
-            # Removed Servizio 2 as requested
         }
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -251,10 +216,15 @@ class ShopBot:
             await self.start(update, context)
         elif data == "products":
             keyboard = [
-                [InlineKeyboardButton(f"{p['name']}", callback_data=f"product_{pid}")]
-                for pid, p in self.products.items()
+                [InlineKeyboardButton(f"{self.products['1']['name']}", callback_data="product_1")],
+                [InlineKeyboardButton(f"{self.products['2']['name']}", callback_data="product_2")],
+                [
+                    InlineKeyboardButton("Caramelle THC 🇪🇸 - Formato 10", callback_data="product_3_format_10"),
+                    InlineKeyboardButton("Caramelle THC 🇪🇸 - Formato 20", callback_data="product_3_format_20")
+                ],
+                [InlineKeyboardButton(f"{self.products['4']['name']}", callback_data="product_4")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")]
             ]
-            keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")])
             await safe_edit_or_send(
                 "📱 *PRODOTTI DISPONIBILI*\n\nScegli un prodotto:",
                 keyboard
@@ -269,54 +239,64 @@ class ShopBot:
                 "🔧 *SERVIZI DISPONIBILI*\n\nScegli un servizio:",
                 keyboard
             )
-        elif data.startswith("product_"):
+        elif data.startswith("product_3_format_"):
+            format_id = data.split("_")[-1]
+            product = self.products["3"]
+            if format_id == "10":
+                caption = (
+                    "📦 *Caramelle al THC 🇪🇸 - Formato 10 caramelle da 500mg*\n"
+                    "Runtz Gummies\nWhite Runtz Fruit Punch - “Ether” Runtz Green Apple - Original Runtz Berries - Pink Runtz Watermelon\n\n"
+                    "Smacker Gummies Sours (Mix Green Apple, Blue Raspberry, Cherry, Lemon & Watermelon)\n\n"
+                    "Warheads Sour Medicated Chewy Cubes\n(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n"
+                    "1 - 20\n2 - 35\n3 - 50\n4 - 60\n5 - 70\n10 - 130"
+                )
+            elif format_id == "20":
+                caption = (
+                    "📦 *Caramelle al THC 🇪🇸 - Formato 20 caramelle 600mg*\n"
+                    "Rancher Gummies Original Flavors (Mix Strawberry, Green Apple, Blue Raspberry)\n\n"
+                    "Rancher Gummies Sours (Mix Strawberry, Green Apple, Blue Raspberry)\n\n"
+                    "Warheads Sour Medicated Chewy Cubes\n(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n"
+                    "1 - 25\n2 - 40\n3 - 55\n4 - 70\n5 - 80\n10 - 140"
+                )
+            else:
+                caption = "Formato non trovato."
+            # Send video if available
+            if product.get("video_file_id"):
+                try:
+                    sent = await context.bot.send_video(
+                        chat_id=query.message.chat.id,
+                        video=product["video_file_id"],
+                        caption=caption,
+                        parse_mode=ParseMode.MARKDOWN,
+                        supports_streaming=True
+                    )
+                    context.user_data["product_msg_id"] = sent.message_id
+                except BadRequest as e:
+                    logger.warning(f"Errore invio video prodotto: {e}")
+                    sent = await context.bot.send_message(
+                        chat_id=query.message.chat.id,
+                        text=caption,
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                    context.user_data["product_msg_id"] = sent.message_id
+            else:
+                sent = await context.bot.send_message(
+                    chat_id=query.message.chat.id,
+                    text=caption,
+                    parse_mode=ParseMode.MARKDOWN
+                )
+                context.user_data["product_msg_id"] = sent.message_id
+
+            await safe_edit_or_send(
+                f"Hai selezionato: Caramelle THC 🇪🇸 - Formato {format_id}",
+                [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
+            )
+        elif data == "product_1" or data == "product_2":
             product_id = data.split("_")[1]
             product = self.products.get(product_id)
             if not product:
                 await query.answer("❌ Prodotto non trovato!")
                 return
-                
-            # Special handling for Caramelle (product 3)
-            if product_id == "3":
-                video_file_id = product.get("video_file_id")
-                if video_file_id:
-                    try:
-                        sent = await context.bot.send_video(
-                            chat_id=query.message.chat.id,
-                            video=video_file_id,
-                            caption=(
-                                f"📦 *{product['name']}*\n\n"
-                                f"{product['description']}"
-                            ),
-                            parse_mode=ParseMode.MARKDOWN,
-                            supports_streaming=True
-                        )
-                        context.user_data["product_msg_id"] = sent.message_id
-                    except BadRequest as e:
-                        logger.warning(f"Errore invio video prodotto: {e}")
-                        sent = await context.bot.send_message(
-                            chat_id=query.message.chat.id,
-                            text=(
-                                f"📦 *{product['name']}*\n\n"
-                                f"{product['description']}"
-                            ),
-                            parse_mode=ParseMode.MARKDOWN
-                        )
-                        context.user_data["product_msg_id"] = sent.message_id
-                
-                # Add buttons for different types
-                buttons = []
-                for btn_text, btn_data in product.get("buttons", []):
-                    buttons.append([InlineKeyboardButton(btn_text, callback_data=btn_data)])
-                buttons.append([InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")])
-                
-                await safe_edit_or_send(
-                    "Seleziona un formato:",
-                    buttons
-                )
-                return
-                
-            # Normal product handling
             video_file_id = product.get("video_file_id")
             photo_file_id = product.get("photo_file_id")
             caption = (
@@ -371,49 +351,30 @@ class ShopBot:
                 f"Hai selezionato: {product['name']}",
                 [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
             )
-            
-        # Handle Caramelle format selection
-        elif data in ["caramelle_10", "caramelle_20"]:
-            product = self.products.get("3")
-            if not product:
-                await query.answer("❌ Prodotto non trovato!")
-                return
-                
-            if data == "caramelle_10":
-                price_details = (
-                    "1 - 20\n"
-                    "2 - 35\n"
-                    "3 - 50\n"
-                    "4 - 60\n"
-                    "5 - 70\n"
-                    "10 - 130"
-                )
-                format_name = "Formato 10 caramelle (500mg)"
-            else:
-                price_details = (
-                    "1 - 25\n"
-                    "2 - 40\n"
-                    "3 - 55\n"
-                    "4 - 70\n"
-                    "5 - 80\n"
-                    "10 - 140"
-                )
-                format_name = "Formato 20 caramelle (600mg)"
-                
+        elif data == "product_4":
+            product = self.products["4"]
+            lines = product["price"].split("\n")
+            caption_lines = []
+            for line in lines:
+                qty = int(line.split(" - ")[0])
+                if qty < 5:
+                    caption_lines.append(f"~~{line}~~")
+                else:
+                    caption_lines.append(line)
             caption = (
-                f"📦 *{product['name']} - {format_name}*\n\n"
-                f"💵 *Prezzi:*\n{price_details}\n\n"
-                "⚠️ *Nota:* Dettaglio sotto i 5 pz non ancora disponibile. Tra poco."
+                f"📦 *{product['name']}*\n"
+                f"💵 Prezzo:\n" + "\n".join(caption_lines) +
+                f"\n📝 Descrizione: {product['description']}\n\n*{product['special_note']}*"
             )
-            
+            await context.bot.send_message(
+                chat_id=query.message.chat.id,
+                text=caption,
+                parse_mode=ParseMode.MARKDOWN
+            )
             await safe_edit_or_send(
-                caption,
-                [
-                    [InlineKeyboardButton("⬅️ Torna alla selezione formato", callback_data="product_3")],
-                    [InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]
-                ]
+                f"Hai selezionato: {product['name']}",
+                [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
             )
-            
         elif data.startswith("service_"):
             service_id = data.split("_")[1]
             service = self.services.get(service_id)
@@ -485,10 +446,15 @@ class ShopBot:
             )
         elif data == "back_to_products":
             keyboard = [
-                [InlineKeyboardButton(f"{p['name']}", callback_data=f"product_{pid}")]
-                for pid, p in self.products.items()
+                [InlineKeyboardButton(f"{self.products['1']['name']}", callback_data="product_1")],
+                [InlineKeyboardButton(f"{self.products['2']['name']}", callback_data="product_2")],
+                [
+                    InlineKeyboardButton("Caramelle THC 🇪🇸 - Formato 10", callback_data="product_3_format_10"),
+                    InlineKeyboardButton("Caramelle THC 🇪🇸 - Formato 20", callback_data="product_3_format_20")
+                ],
+                [InlineKeyboardButton(f"{self.products['4']['name']}", callback_data="product_4")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")]
             ]
-            keyboard.append([InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_shop")])
             await safe_edit_or_send(
                 "📱 *PRODOTTI DISPONIBILI*\n\nScegli un prodotto:",
                 keyboard
