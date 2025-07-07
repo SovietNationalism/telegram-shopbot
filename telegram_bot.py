@@ -1,3 +1,4 @@
+s
 import logging
 import os
 import sys
@@ -35,7 +36,7 @@ class ShopBot:
         keyboard = [
             [InlineKeyboardButton("🛍️ Shop 🛍️", callback_data="shop")],
             [InlineKeyboardButton("💰 Pagamenti 💰", callback_data="payments")],
-            [InlineKeyboardButton("👥 Contattami 👥", url=f"tg://user?id=6840588025")],
+            [InlineKeyboardButton("👥 Contattami 👥", callback_data="contact")],
             [InlineKeyboardButton("👨‍💻 Developer 👨‍💻", callback_data="developer")]
         ]
         
@@ -226,7 +227,7 @@ class ShopBot:
         keyboard = [
             [InlineKeyboardButton("🛍️ Shop 🛍️", callback_data="shop")],
             [InlineKeyboardButton("💰 Pagamenti 💰", callback_data="payments")],
-            [InlineKeyboardButton("👥 Contattami 👥", url=f"tg://user?id=6840588025")],
+            [InlineKeyboardButton("👥 Contattami 👥", callback_data="contact")],
             [InlineKeyboardButton("👨‍💻 Developer 👨‍💻", callback_data="developer")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
