@@ -6,11 +6,9 @@ from telegram.constants import ParseMode
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
 from telegram.error import BadRequest
 
-# === CONFIG ===
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 WELCOME_IMAGE_URL = "https://i.postimg.cc/pr65RVVm/D6-F1-EDE3-E7-E8-4-ADC-AAFC-5-FB67-F86-BDE3.png"
 
-# === LOGGER ===
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -58,6 +56,11 @@ class ShopBot:
     async def button_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         query = update.callback_query
         await query.answer()
+        data = query.data
+
+        # Recupera eventuale messaggio prodotto da cancellare
+        product_msg_id = context.user_data.get("product_msg_id")
+        chat_id = query.message.chat_id
 
         # Helper per gestire edit o nuovo messaggio
         async def safe_edit_or_send(text, keyboard, parse_mode=ParseMode.MARKDOWN):
@@ -88,7 +91,15 @@ class ShopBot:
                         parse_mode=parse_mode
                     )
 
-        data = query.data
+        # Cancella il messaggio prodotto se esiste quando si torna indietro
+        if data in ["back_to_products", "back_to_shop", "back_to_main"]:
+            if product_msg_id:
+                try:
+                    await context.bot.delete_message(chat_id=chat_id, message_id=product_msg_id)
+                except Exception:
+                    pass
+                context.user_data["product_msg_id"] = None
+
         if data == "shop":
             await safe_edit_or_send(
                 "🛍️ *SHOP*\n\nScegli una categoria:",
@@ -127,7 +138,6 @@ class ShopBot:
                 ]
             )
         elif data == "back_to_main":
-            # ELIMINA IL VECCHIO MESSAGGIO PRIMA DI INVIARE IL MENU PRINCIPALE
             try:
                 await query.message.delete()
             except Exception:
@@ -160,7 +170,7 @@ class ShopBot:
                 await query.answer("❌ Prodotto non trovato!")
                 return
             try:
-                await context.bot.send_photo(
+                sent = await context.bot.send_photo(
                     chat_id=query.message.chat_id,
                     photo=product['image_url'],
                     caption=(
@@ -171,13 +181,16 @@ class ShopBot:
                     ),
                     parse_mode=ParseMode.MARKDOWN
                 )
+                # Salva l'ID del messaggio prodotto
+                context.user_data["product_msg_id"] = sent.message_id
             except BadRequest as e:
                 logger.warning(f"Errore invio immagine prodotto: {e}")
-                await context.bot.send_message(
+                sent = await context.bot.send_message(
                     chat_id=query.message.chat_id,
                     text=f"📦 *{product['name']}*\n💵 Prezzo: {product['price']}\n📝 Descrizione: {product['description']}\n\nUsa /start per ordinare",
                     parse_mode=ParseMode.MARKDOWN
                 )
+                context.user_data["product_msg_id"] = sent.message_id
             await safe_edit_or_send(
                 f"Hai selezionato: {product['name']}",
                 [[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]
@@ -189,7 +202,7 @@ class ShopBot:
                 await query.answer("❌ Servizio non trovato!")
                 return
             try:
-                await context.bot.send_photo(
+                sent = await context.bot.send_photo(
                     chat_id=query.message.chat_id,
                     photo=service['image_url'],
                     caption=(
@@ -200,13 +213,15 @@ class ShopBot:
                     ),
                     parse_mode=ParseMode.MARKDOWN
                 )
+                context.user_data["product_msg_id"] = sent.message_id
             except BadRequest as e:
                 logger.warning(f"Errore invio immagine servizio: {e}")
-                await context.bot.send_message(
+                sent = await context.bot.send_message(
                     chat_id=query.message.chat_id,
                     text=f"🛠️ *{service['name']}*\n💵 Prezzo: {service['price']}\n📝 Descrizione: {service['description']}\n\nUsa /start per richiedere il servizio",
                     parse_mode=ParseMode.MARKDOWN
                 )
+                context.user_data["product_msg_id"] = sent.message_id
             await safe_edit_or_send(
                 f"Hai selezionato: {service['name']}",
                 [[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]]
