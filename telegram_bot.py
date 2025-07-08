@@ -18,13 +18,13 @@ class ShopBot:
             "1": {
                 "name": "Dry Filtrato 🍫",
                 "price": "3g 30\n5g 40\n10g 70\n15g 100\n25g 160\n35g 215\n50g 250\n100g 420\n200g 780",
-                "description": "Dry con effetto potente e duraturo, e un odore vivace",
+                "description": "Dry filtrato a 120 micron con effetto potente e duraturo, e un odore vivace.",
                 "video_file_id": "BAACAgQAAxkBAAICKGhtHmeAa3WA1B8UshA03xwIGRh6AAItHgACw-ZoUyEBRLZYiRBqNgQ"  # Updated
             },
             "2": {
                 "name": "Sciroppo al THC 🫗",
                 "price": "x 1 150 ml 30€\nx 2 300 ml 40€\nx 5 750 ml 100€\nx 10 1,5 l 190€\nx 20 3 l 335€",
-                "description": "SCIROPPO al THC 🥤\n Gusti: Lampone, Fragola, Menta, Limone\n\nUna formula realizzata con estratto di hashish a base di etanolo di alta qualità, emulsionato in uno sciroppo dolce per una stabilità e biodisponibilità superiore.\n\n💧 Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi fredde e dolci per mascherare il sapore.\nOgni bottiglia contiene 300 mg di THC attivo in 150 ml di sciroppo. Bisogna mescolare bene prima di ogni uso per distribuirlo bene..\n\n📐 Dosaggio consigliato (2 mg/ml):\n• 🟢 Principianti: 10–15 mg (5–7.5 ml circa)\n• 🟡 Regolari: 25–35 mg (12.5–17.5 ml)\n• 🔴 Esperti: 50+ mg (25 ml e oltre)",
+                "description": "Sciroppo al THC 🥤\n Gusti: Lampone, Fragola, Menta, Limone\n\nUna formula realizzata con estratto di hashish a base di etanolo di alta qualità, emulsionato in uno sciroppo dolce per una stabilità e biodisponibilità superiore.\n\n💧 Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi freddi e dolci per mascherare il sapore.\nOgni bottiglia contiene 300 mg di THC attivo in 150 ml di sciroppo. Scuotere la boccetta prima di ogni uso per distribuirlo bene.\n\n📐 Dosaggio consigliato (2 mg/ml):\n• 🟢 Principianti: 10–15 mg (5–7.5 ml circa)\n• 🟡 Regolari: 25–35 mg (12.5–17.5 ml)\n• 🔴 Esperti: 50+ mg (25 ml e oltre)",
                 "video_file_id": "BAACAgQAAxkBAAIBCmhsFSRwLTrFoTt3ZbImNDzA8cKtAALKHQACU4xhU_j8jDMDFSiJNgQ"
             },
             "3_10": {
@@ -40,7 +40,7 @@ class ShopBot:
             "4": {
                 "name": "THC Vapes Packwoods™ x Runtz 💨",
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
-                "description": "1000mg distillato Delta 9 THC",
+                "description": "Con 1000mg di distillato Delta 9 THC, basta una decina di tiri per sentira una fattanza potente.",
                 "special_note": "Dettaglio sotto i 5 pz non ancora disponibile. Tra poco.",
                 "video_file_id": "BAACAgQAAxkBAAIBhGhsLZ3WwkXvnqI-G74L_hsWrg6YAAI8GQACw-ZgU0zEehfiSYpmNgQ"
             }
