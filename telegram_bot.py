@@ -17,24 +17,24 @@ class ShopBot:
         self.products = {
             "1": {
                 "name": "Dry Filtrato 🍫",
-                "price": "3g 30\n5g 40\n10g 70\n15g 100\n25g 160\n35g 215\n50g 250\n100g 420\n200g 780",
+                "price": "3g 30\n5g 40\n10g 70\n15g 100\n25g 160\n35g 215\n50g 250\n100g 430\n200g 780",
                 "description": "Dry filtrato a 120 micron con effetto potente e duraturo, e un odore vivace.",
                 "video_file_id": "BAACAgQAAxkBAAICKGhtHmeAa3WA1B8UshA03xwIGRh6AAItHgACw-ZoUyEBRLZYiRBqNgQ"  # Updated
             },
             "2": {
                 "name": "Sciroppo al THC 🫗",
                 "price": "x 1 150 ml 30€\nx 2 300 ml 40€\nx 5 750 ml 100€\nx 10 1,5 l 190€\nx 20 3 l 335€",
-                "description": "Sciroppo al THC 🥤\n Gusti: Lampone, Fragola, Menta, Limone\n\nUna formula realizzata con estratto di hashish a base di etanolo di alta qualità, emulsionato in uno sciroppo dolce per una stabilità e biodisponibilità superiore.\n\n💧 Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi freddi e dolci per mascherare il sapore.\nOgni bottiglia contiene 300 mg di THC attivo in 150 ml di sciroppo. Scuotere la boccetta prima di ogni uso per distribuirlo bene.\n\n📐 Dosaggio consigliato (2 mg/ml):\n• 🟢 Principianti: 10–15 mg (5–7.5 ml circa)\n• 🟡 Regolari: 25–35 mg (12.5–17.5 ml)\n• 🔴 Esperti: 50+ mg (25 ml e oltre)",
+                "description": "\n Gusti: Lampone, Fragola, Menta, Limone\n\nUna formula composta con estratto di hashish a base di etanolo di alta qualità, emulsionato in uno sciroppo dolce per una stabilità e biodisponibilità superiore.\n\n💧 Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi freddi e dolci per mascherare il sapore.\nOgni bottiglia contiene 300 mg di THC attivo in 150 ml di sciroppo. Scuotere la boccetta prima di ogni uso per distribuirlo bene.\n\n📐 Dosaggio consigliato (2 mg/ml):\n• 🟢 Principianti: 10–15 mg (5–7.5 ml circa)\n• 🟡 Regolari: 25–35 mg (12.5–17.5 ml)\n• 🔴 Esperti: 50+ mg (25 ml e oltre)",
                 "video_file_id": "BAACAgQAAxkBAAIBCmhsFSRwLTrFoTt3ZbImNDzA8cKtAALKHQACU4xhU_j8jDMDFSiJNgQ"
             },
             "3_10": {
                 "name": "Caramelle al THC 🇪🇸 - Formato 10",
-                "caption": "📦 *Caramelle al THC 🇪🇸 - Formato 10 caramelle da 500mg*\nRuntz Gummies\nWhite Runtz Fruit Punch - “Ether” Runtz Green Apple - Original Runtz Berries - Pink Runtz Watermelon\n\nSmacker Gummies Sours (Mix Green Apple, Blue Raspberry, Cherry, Lemon & Watermelon)\n\nWarheads Sour Medicated Chewy Cubes\n(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n1 - 20\n2 - 35\n3 - 50\n4 - 60\n5 - 70\n10 - 130\n\nQueste caramelle gommose hanno una consistenza stile orsetti Haribo, un ottimo sapore e un effetto sorprendentemente potente.",
+                "caption": "📦 *Caramelle al THC 🇪🇸 - Formato 10 caramelle da 500mg*\nRuntz Gummies\nWhite Runtz Fruit Punch - “Ether” Runtz Green Apple - Original Runtz Berries - Pink Runtz Watermelon\n\nSmacker Gummies Sours (Mix Green Apple, Blue Raspberry, Cherry, Lemon & Watermelon)\n\nWarheads Sour Medicated Chewy Cubes\n(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n1 - 20\n2 - 35\n3 - 50\n4 - 60\n5 - 70\n10 - 130\n\nQueste caramelle gommose hanno una consistenza soffice, un ottimo sapore e un effetto sorprendentemente potente.",
                 "video_file_id": "BAACAgQAAxkBAAPvaGwJdobhaO1RPvm1nrbxIKokTOIAAqgdAAJTjGFTqdTZCjgZEpU2BA"
             },
             "3_20": {
                 "name": "Caramelle al THC 🇪🇸 - Formato 20",
-                "caption": "📦 *Caramelle al THC 🇪🇸 - Formato 20 caramelle 600mg*\nRancher Gummies Original Flavors (Mix Strawberry, Green Apple, Blue Raspberry)\n\nRancher Gummies Sours (Mix Strawberry, Green Apple, Blue Raspberry)\n\nWarheads Sour Medicated Chewy Cubes\n(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n1 - 25\n2 - 40\n3 - 55\n4 - 70\n5 - 80\n10 - 140\n\nQueste caramelle gommose hanno una consistenza stile orsetti Haribo, un ottimo sapore e un effetto sorprendentemente potente.",
+                "caption": "📦 *Caramelle al THC 🇪🇸 - Formato 20 caramelle 600mg*\nRancher Gummies Original Flavors (Mix Strawberry, Green Apple, Blue Raspberry)\n\nRancher Gummies Sours (Mix Strawberry, Green Apple, Blue Raspberry)\n\nWarheads Sour Medicated Chewy Cubes\n(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n1 - 25\n2 - 40\n3 - 55\n4 - 70\n5 - 80\n10 - 140\n\nQueste caramelle gommose hanno una consistenza soffice, un ottimo sapore e un effetto sorprendentemente potente.",
                 "video_file_id": "BAACAgQAAxkBAAPvaGwJdobhaO1RPvm1nrbxIKokTOIAAqgdAAJTjGFTqdTZCjgZEpU2BA"
             },
             "4": {
