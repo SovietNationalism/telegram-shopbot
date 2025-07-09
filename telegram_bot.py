@@ -45,7 +45,7 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAIBhGhsLZ3WwkXvnqI-G74L_hsWrg6YAAI8GQACw-ZgU0zEehfiSYpmNgQ"
             },
             "5": {
-                "name": "THC Brownies",
+                "name": "THC Brownies 🍰",
                 "caption": (
                     "📦 *THC Brownies*\n"
                     "💵 Prezzo:\n1pz 10€\n2pz 15€\n5pz 35€\n10pz 65€\n20pz 120€\n50pz 280€\n\n"
