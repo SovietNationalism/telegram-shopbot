@@ -19,7 +19,7 @@ class ShopBot:
                 "name": "Dry Filtrato 🍫",
                 "price": "3g 30\n5g 40\n10g 70\n15g 100\n25g 160\n35g 215\n50g 250\n100g 430\n200g 780",
                 "description": "Dry filtrato a 120 micron con effetto potente e duraturo, e un odore vivace.",
-                "video_file_id": "BAACAgQAAxkBAAICKGhtHmeAa3WA1B8UshA03xwIGRh6AAItHgACw-ZoUyEBRLZYiRBqNgQ"  # Updated
+                "video_file_id": "BAACAgQAAxkBAAICKGhtHmeAa3WA1B8UshA03xwIGRh6AAItHgACw-ZoUyEBRLZYiRBqNgQ"
             },
             "2": {
                 "name": "Sciroppo al THC 🫗",
@@ -29,12 +29,12 @@ class ShopBot:
             },
             "3_10": {
                 "name": "Caramelle al THC 🇪🇸 - Formato 10",
-                "caption": "📦 *Caramelle al THC 🇪🇸 - Formato 10 caramelle da 500mg*\nRuntz Gummies\nWhite Runtz Fruit Punch - “Ether” Runtz Green Apple - Original Runtz Berries - Pink Runtz Watermelon\n\nSmacker Gummies Sours (Mix Green Apple, Blue Raspberry, Cherry, Lemon & Watermelon)\n\nWarheads Sour Medicated Chewy Cubes\n(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n1 - 20\n2 - 35\n3 - 50\n4 - 60\n5 - 70\n10 - 130\n\nQueste caramelle gommose hanno una consistenza soffice, un ottimo sapore e un effetto sorprendentemente potente.",
+                "caption": "📦 *Caramelle al THC 🇪🇸 - Formato 10 caramelle da 500mg*\nRuntz Gummies\nWhite Runtz Fruit Punch - “Ether” Runtz Green Apple - Original Runtz Berries - Pink Runtz Watermelon\n\nSmacker Gummies Sours (Mix Green Apple, Blue Raspberry, Cherry, Lemon & Watermelon)\n\nWarheads Sour Medicated Chewy Cubes\n(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n1 - 20\n2 - 35\n3 - 50\n4 - 60\n5 - 70\n10 - 130\n\nQueste caramelle gommose hanno una consistenza densa stile orsetti Haribo, un ottimo sapore e un effetto sorprendentemente potente.",
                 "video_file_id": "BAACAgQAAxkBAAPvaGwJdobhaO1RPvm1nrbxIKokTOIAAqgdAAJTjGFTqdTZCjgZEpU2BA"
             },
             "3_20": {
                 "name": "Caramelle al THC 🇪🇸 - Formato 20",
-                "caption": "📦 *Caramelle al THC 🇪🇸 - Formato 20 caramelle 600mg*\nRancher Gummies Original Flavors (Mix Strawberry, Green Apple, Blue Raspberry)\n\nRancher Gummies Sours (Mix Strawberry, Green Apple, Blue Raspberry)\n\nWarheads Sour Medicated Chewy Cubes\n(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n1 - 25\n2 - 40\n3 - 55\n4 - 70\n5 - 80\n10 - 140\n\nQueste caramelle gommose hanno una consistenza soffice, un ottimo sapore e un effetto sorprendentemente potente.",
+                "caption": "📦 *Caramelle al THC 🇪🇸 - Formato 20 caramelle 600mg*\nRancher Gummies Original Flavors (Mix Strawberry, Green Apple, Blue Raspberry)\n\nRancher Gummies Sours (Mix Strawberry, Green Apple, Blue Raspberry)\n\nWarheads Sour Medicated Chewy Cubes\n(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n1 - 25\n2 - 40\n3 - 55\n4 - 70\n5 - 80\n10 - 140\n\nQueste caramelle gommose hanno una consistenza densa stile orsetti Haribo, un ottimo sapore e un effetto sorprendentemente potente.",
                 "video_file_id": "BAACAgQAAxkBAAPvaGwJdobhaO1RPvm1nrbxIKokTOIAAqgdAAJTjGFTqdTZCjgZEpU2BA"
             },
             "4": {
@@ -43,6 +43,30 @@ class ShopBot:
                 "description": "Con 1000mg di distillato Delta 9 THC, basta una decina di tiri per sentira una fattanza potente.",
                 "special_note": "Dettaglio sotto i 5 pz non ancora disponibile. Tra poco.",
                 "video_file_id": "BAACAgQAAxkBAAIBhGhsLZ3WwkXvnqI-G74L_hsWrg6YAAI8GQACw-ZgU0zEehfiSYpmNgQ"
+            },
+            "5": {
+                "name": "THC Brownies",
+                "caption": (
+                    "📦 *THC Brownies*\n"
+                    "💵 Prezzo:\n1pz 10€\n2pz 15€\n5pz 35€\n10pz 65€\n20pz 120€\n50pz 280€\n\n"
+                    "📝 Descrizione: Brownie al cioccolato con 50mg di THC per pezzo, preparato con burro infuso e lecitina per un effetto potente e ben bilanciato.\n"
+                    "*Offerta limitata*: Se aggiungi un singolo brownie a un ordine di min. 25€, ti costerà solo 5€ invece che 10€.\n\n"
+                    "⚠️ Non consumate l’intero brownie (a meno che non abbiate una tolleranza alta).\n"
+                    "Ogni brownie contiene 50 mg di THC; consigliamo di dividerlo con un amico o conservarne metà per dopo.\n"
+                    "💡 Pro tip: Scaldatelo nel microonde per 10–20 secondi prima di mangiarlo: sarà caldo e ancora più buono!"
+                ),
+                "video_file_id": "BAACAgQAAxkBAAICzmhucsfJasY9h-D9-mTSUhFTYGisAAIcGgACeZJxUyMtK0Venf2aNgQ"
+            },
+            "6": {
+                "name": "THC Cookies 🍪",
+                "caption": (
+                    "📦 *THC Cookies*\n"
+                    "💵 Prezzo:\n1pz 8€\n2pz 14€\n5pz 30€\n10pz 55€\n20pz 100€\n50pz 230€\n\n"
+                    "📝 Descrizione:\n"
+                    "Biscotto morbido al cioccolato con 35mg di THC per pezzo, preparato con crumble di brownie e burro infuso per un gusto intenso e una consistenza chewy. "
+                    "Effetto ben bilanciato, confezionato singolarmente per massima discrezione e freschezza."
+                ),
+                "video_file_id": "BAACAgQAAxkBAAIC2WhuyCwydopTi2xpCcoGIKe3YHoAA7YVAAJz7nFTWGJ8xrGDgw42BA"
             }
         }
         self.services = {
@@ -56,11 +80,10 @@ class ShopBot:
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         await self.delete_last_menu(context, update.effective_chat.id)
-        # Main menu with new "Canale Telegram" button
         kb = [
             [InlineKeyboardButton("🛍️ Shop 🛍️", callback_data="shop")],
             [InlineKeyboardButton("💰 Pagamenti 💰", callback_data="payments")],
-            [InlineKeyboardButton("📢 Canale Telegram 📢", url="https://t.me/+A3JnK9ALAmtiMjBk")],  # New button
+            [InlineKeyboardButton("📢 Canale Telegram 📢", url="https://t.me/+A3JnK9ALAmtiMjBk")],
             [InlineKeyboardButton("👥 Contattami 👥", callback_data="contact")],
             [InlineKeyboardButton("👨‍💻 Developer 👨‍💻", callback_data="developer")]
         ]
@@ -144,6 +167,8 @@ class ShopBot:
                 [InlineKeyboardButton("Caramelle THC 🇪🇸 - Formato 10", callback_data="product_3_10"),
                  InlineKeyboardButton("Caramelle THC 🇪🇸 - Formato 20", callback_data="product_3_20")],
                 [InlineKeyboardButton(self.products["4"]["name"], callback_data="product_4")],
+                [InlineKeyboardButton(self.products["5"]["name"], callback_data="product_5")],
+                [InlineKeyboardButton(self.products["6"]["name"], callback_data="product_6")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]
             ]
             sent = await context.bot.send_message(chat_id=cid, text="📱 *PRODOTTI DISPONIBILI*\n\nScegli un prodotto:", reply_markup=InlineKeyboardMarkup(kb), parse_mode=ParseMode.MARKDOWN)
@@ -160,6 +185,24 @@ class ShopBot:
             if not p:
                 await q.answer("❌ Prodotto non trovato!")
                 return
+            try:
+                sent = await context.bot.send_video(chat_id=cid, video=p["video_file_id"], caption=p["caption"], parse_mode=ParseMode.MARKDOWN, supports_streaming=True, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]))
+                context.user_data["last_menu_msg_id"] = sent.message_id
+            except BadRequest:
+                sent = await context.bot.send_message(chat_id=cid, text=p["caption"], parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]))
+                context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+        if d == "product_5":
+            p = self.products["5"]
+            try:
+                sent = await context.bot.send_video(chat_id=cid, video=p["video_file_id"], caption=p["caption"], parse_mode=ParseMode.MARKDOWN, supports_streaming=True, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]))
+                context.user_data["last_menu_msg_id"] = sent.message_id
+            except BadRequest:
+                sent = await context.bot.send_message(chat_id=cid, text=p["caption"], parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]))
+                context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+        if d == "product_6":
+            p = self.products["6"]
             try:
                 sent = await context.bot.send_video(chat_id=cid, video=p["video_file_id"], caption=p["caption"], parse_mode=ParseMode.MARKDOWN, supports_streaming=True, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]]))
                 context.user_data["last_menu_msg_id"] = sent.message_id
