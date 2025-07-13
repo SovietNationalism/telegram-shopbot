@@ -129,7 +129,7 @@ class ShopBot:
                 "💰 *METODI DI PAGAMENTO*\n\n"
                 "• 🏦 Bonifico istantaneo (0% commissione)\n"
                 "• 📲 Hype / Revolut / Satispay (0% commissione)\n"
-                "• 💸 Crypto LTC / BTC (-10% commissione)\n"
+                "• 💸 Crypto LTC / BTC (0% commissione)\n"
                 "• 💵 Contanti (0% commissione)\n"
                 "• 💳 PayPal (+10% commissione)\n"
                 "• 💼 Carta prepagata/buono (+10% commissione)\n\n"
