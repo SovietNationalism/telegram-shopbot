@@ -27,7 +27,7 @@ class ShopBot:
             "1": {
                 "name": "Dry Filtrato 🍫",
                 "price": "3g 30\n5g 40\n10g 70\n15g 100\n25g 160\n35g 215\n50g 250\n100g 430\n200g 780",
-                "description": "Dry filtrato a 120 micron con effetto potente e duraturo, e un odore vivace.",
+                "description": "ULTIME RIMANENZE.\nDry filtrato a 120 micron con effetto potente e duraturo, e un odore vivace.",
                 "video_file_id": "BAACAgQAAxkBAAICKGhtHmeAa3WA1B8UshA03xwIGRh6AAItHgACw-ZoUyEBRLZYiRBqNgQ",
             },
             "2": {
@@ -41,7 +41,7 @@ class ShopBot:
                 ),
                 "description": (
                     "TEMPORANEAMENTE SOLD OUT NUOVA RICETTA MIGLIORATA CON BOCCETTE MIGLIORI "
-                    "E SENZA SEDIMENTO\n\n"
+                    "E SENZA SEDIMENTO IN ARRIVO\n\n"
                     "Gusti: Lampone, Fragola, Menta, Limone\n\n"
                     "Una formula composta con estratto di hashish a base di etanolo di alta "
                     "qualità, emulsionato in uno sciroppo dolce per una stabilità e "
@@ -65,8 +65,6 @@ class ShopBot:
                     "White Runtz Fruit Punch - “Ether” Runtz Green Apple - Original Runtz Berries - "
                     "Pink Runtz Watermelon\n\n"
                     "Smacker Gummies Sours (Mix Green Apple, Blue Raspberry, Cherry, Lemon & Watermelon)\n\n"
-                    "Warheads Sour Medicated Chewy Cubes\n"
-                    "(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n"
                     "1 - 20\n2 - 35\n3 - 50\n4 - 60\n5 - 70\n10 - 130\n\n"
                     "Queste caramelle gommose hanno una consistenza densa stile orsetti Haribo, "
                     "un ottimo sapore e un effetto sorprendentemente potente."
@@ -77,10 +75,8 @@ class ShopBot:
                 "name": "Caramelle al THC 🇪🇸 - Formato 20",
                 "caption": (
                     "📦 *Caramelle al THC 🇪🇸 - Formato 20 caramelle 600mg*\n"
-                    "Rancher Gummies Original Flavors (Mix Strawberry, Green Apple, Blue Raspberry)\n\n"
-                    "Rancher Gummies Sours (Mix Strawberry, Green Apple, Blue Raspberry)\n\n"
-                    "Warheads Sour Medicated Chewy Cubes\n"
-                    "(Mix Orange, Watermelon, Blue Raspberry, Black Cherry, Strawberry, Green Apple)\n\n"
+                    "Rancher Gummies Original Flavors (Mix Strawberry, Watermelon, Blue Raspberry)\n\n"
+                    "Rancher Gummies Sours (Mix Strawberry, Watermelon, Blue Raspberry)\n\n"
                     "1 - 25\n2 - 40\n3 - 55\n4 - 70\n5 - 80\n10 - 140\n\n"
                     "Queste caramelle gommose hanno una consistenza densa stile orsetti Haribo, "
                     "un ottimo sapore e un effetto sorprendentemente potente."
@@ -94,7 +90,7 @@ class ShopBot:
                     "Con 1000 mg di distillato Delta-9 THC, basta una decina di tiri per "
                     "sentire una fattanza potente."
                 ),
-                "special_note": "ULTIME PAIA RIMASTE IL RESTO PRENOTATE.",
+                "special_note": "DETTAGLIO DISPONIBILE, ULTIME PAIA RIMASTE IL RESTO PRENOTATE.",
                 "video_file_id": "BAACAgQAAxkBAAIBhGhsLZ3WwkXvnqI-G74L_hsWrg6YAAI8GQACw-ZgU0zEehfiSYpmNgQ",
             },
             "5": {
@@ -127,7 +123,7 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAIC2WhuyCwydopTi2xpCcoGIKe3YHoAA7YVAAJz7nFTWGJ8xrGDgw42BA",
             },
             "7": {
-                "name": "🍃 Raspberry Runtz🍃",
+                "name": "Raspberry Runtz 🍒",
                 "caption": (
                     "Prodotto in arrivo. Tempo stimato per l’arrivo: 2 giorni."
                 ),
