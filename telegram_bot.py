@@ -53,10 +53,11 @@ class ShopBot:
                     "e dolci per mascherare il sapore.\n"
                     "Ogni bottiglia contiene 300 mg di THC attivo in 150 ml di sciroppo. "
                     "Scuotere la boccetta prima di ogni uso per distribuirlo bene.\n\n"
-                    "📐 Dosaggio consigliato (2 mg/ml):\n"
-                    "• 🟢 Principianti: 10–15 mg (5–7.5 ml circa)\n"
-                    "• 🟡 Regolari: 25–35 mg (12.5–17.5 ml)\n"
-                    "• 🔴 Esperti: 50 + mg (25 ml e oltre)"
+                    "Dosaggio consigliato (2 mg/ml):\n"
+                    "🟢 Principianti: 10–15 mg (5–7.5 ml circa)\n"
+                    "🟡 Regolari: 25–35 mg (12.5–17.5 ml)\n"
+                    "🔴 Esperti: 50 + mg (25 ml e oltre)\n"
+                    "Ricordarsi che gli ml non equivalgono ai grammi."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAIBCmhsFSRwLTrFoTt3ZbImNDzA8cKtAALKHQACU4xhU_j8jDMDFSiJNgQ",
             },
