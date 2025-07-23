@@ -27,12 +27,6 @@ class ShopBot:
     def __init__(self):
         # --------------------  PRODUCTS -------------------- #
         self.products = {
-            "1": {
-                "name": "Dry Filtrato 🍫",
-                "price": "3g 30\n5g 40\n10g 70\n15g 100\n25g 160\n35g 215\n50g 250\n100g 430\n200g 780",
-                "description": "ULTIME RIMANENZE.\nDry filtrato a 120 micron con effetto potente e duraturo, e un odore vivace.",
-                "video_file_id": "BAACAgQAAxkBAAICKGhtHmeAa3WA1B8UshA03xwIGRh6AAItHgACw-ZoUyEBRLZYiRBqNgQ",
-            },
             "2": {
                 "name": "Sciroppo al THC 🫗",
                 "price": (
@@ -61,37 +55,11 @@ class ShopBot:
                 ),
                 "video_file_id": "BAACAgQAAxkBAAIBCmhsFSRwLTrFoTt3ZbImNDzA8cKtAALKHQACU4xhU_j8jDMDFSiJNgQ",
             },
-            "3_10": {
-                "name": "Caramelle al THC 🇪🇸 - Formato 10",
-                "caption": (
-                    "📦 *Caramelle al THC 🇪🇸 - Formato 10 caramelle da 500mg*\n"
-                    "Runtz Gummies\n"
-                    "White Runtz Fruit Punch - “Ether” Runtz Green Apple - Original Runtz Berries - "
-                    "Pink Runtz Watermelon\n\n"
-                    "Smacker Gummies Sours (Mix Green Apple, Blue Raspberry, Cherry, Lemon & Watermelon)\n\n"
-                    "1 - 20\n2 - 35\n3 - 50\n4 - 60\n5 - 70\n10 - 130\n\n"
-                    "Queste caramelle gommose hanno una consistenza densa stile orsetti Haribo, "
-                    "un ottimo sapore e un effetto sorprendentemente potente."
-                ),
-                "video_file_id": "BAACAgQAAxkBAAPvaGwJdobhaO1RPvm1nrbxIKokTOIAAqgdAAJTjGFTqdTZCjgZEpU2BA",
-            },
-            "3_20": {
-                "name": "Caramelle al THC 🇪🇸 - Formato 20",
-                "caption": (
-                    "📦 *Caramelle al THC 🇪🇸 - Formato 20 caramelle 600mg*\n"
-                    "Rancher Gummies Original Flavors (Mix Strawberry, Watermelon, Blue Raspberry)\n\n"
-                    "Rancher Gummies Sours (Mix Strawberry, Watermelon, Blue Raspberry)\n\n"
-                    "1 - 25\n2 - 40\n3 - 55\n4 - 70\n5 - 80\n10 - 140\n\n"
-                    "Queste caramelle gommose hanno una consistenza densa stile orsetti Haribo, "
-                    "un ottimo sapore e un effetto sorprendentemente potente."
-                ),
-                "video_file_id": "BAACAgQAAxkBAAPvaGwJdobhaO1RPvm1nrbxIKokTOIAAqgdAAJTjGFTqdTZCjgZEpU2BA",
-            },
             "4": {
                 "name": "THC Vapes Packwoods™ x Runtz 💨",
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "Con 1000 mg di distillato Delta-9 THC, basta una decina di tiri per sentire una fattanza potente.",
-                "special_note": "DETTAGLIO DISPONIBILE, ULTIME PAIA RIMASTE IL RESTO PRENOTATE.",
+                "special_note": "NUOVO CARICO IN ARRIVO TRA UN PAIO DI GIORNI",
                 "video_file_id": "BAACAgQAAxkBAAIBhGhsLZ3WwkXvnqI-G74L_hsWrg6YAAI8GQACw-ZgU0zEehfiSYpmNgQ",
             },
             "5": {
@@ -111,22 +79,11 @@ class ShopBot:
                 ),
                 "video_file_id": "BAACAgQAAxkBAAICzmhucsfJasY9h-D9-mTSUhFTYGisAAIcGgACeZJxUyMtK0Venf2aNgQ",
             },
-            "6": {
-                "name": "THC Cookies 🍪",
-                "caption": (
-                    "📦 *THC Cookies*\n"
-                    "💵 Prezzo:\n1pz 8€\n2pz 14€\n5pz 30€\n10pz 55€\n20pz 100€\n50pz 230€\n\n"
-                    "📝 Descrizione:\n"
-                    "Biscotto morbido al cioccolato con 35 mg di THC per pezzo, preparato con "
-                    "crumble di brownie e burro infuso per un gusto intenso e una consistenza chewy. "
-                    "Effetto ben bilanciato, confezionato singolarmente per massima discrezione e freschezza."
-                ),
-                "video_file_id": "BAACAgQAAxkBAAIC2WhuyCwydopTi2xpCcoGIKe3YHoAA7YVAAJz7nFTWGJ8xrGDgw42BA",
-            },
             "7": {
                 "name": "Raspberry Runtz 🍒",
                 "caption": (
                     "📦 *Raspberry Runtz - Indica*\n"
+                    "*ULTIMISSIME RIMANENZE*\n\n"
                     "💵 *Prezzo:*\n"
                     "2g - 25€\n3g - 30€\n5g - 45€\n10g - 75€\n15g - 115€\n25g - 175€\n"
                     "30g - 205€\n35g - 235€\n50g - 300€\n100g - 450€\n\n"
@@ -186,7 +143,6 @@ class ShopBot:
         )
 
     # ────────────────────  HELPER: relay  ─────────────────── #
-
     async def _relay_to_admin(self, context: ContextTypes.DEFAULT_TYPE, who, what: str) -> None:
         message = f"👤 {who.full_name} ({who.id})\n💬 {what}"
         logger.info(message)
@@ -196,7 +152,6 @@ class ShopBot:
             logger.warning(f"Failed to relay to admin: {e}")
 
     # ────────────────────────  COMMANDS  ──────────────────────── #
-
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         await self.delete_last_menu(context, update.effective_chat.id)
 
@@ -231,7 +186,6 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = None
 
     # ────────────────────────  CALLBACKS  ──────────────────────── #
-
     async def button_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         q   = update.callback_query
         d   = q.data
@@ -311,15 +265,9 @@ class ShopBot:
         # ---------- LISTA PRODOTTI ---------- #
         if d in ("products", "back_to_products"):
             kb = [
-                [InlineKeyboardButton(self.products["1"]["name"], callback_data="product_1")],
                 [InlineKeyboardButton(self.products["2"]["name"], callback_data="product_2")],
-                [
-                    InlineKeyboardButton("Caramelle THC 🇪🇸 - Formato 10", callback_data="product_3_10"),
-                    InlineKeyboardButton("Caramelle THC 🇪🇸 - Formato 20", callback_data="product_3_20")
-                ],
                 [InlineKeyboardButton(self.products["4"]["name"], callback_data="product_4")],
                 [InlineKeyboardButton(self.products["5"]["name"], callback_data="product_5")],
-                [InlineKeyboardButton(self.products["6"]["name"], callback_data="product_6")],
                 [InlineKeyboardButton(self.products["7"]["name"], callback_data="product_7")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]
             ]
@@ -355,8 +303,8 @@ class ShopBot:
                 await q.answer("❌ Prodotto non trovato!")
                 return
 
-            # Caramelle e Raspberry hanno già caption completa
-            if key in ("3_10", "3_20", "5", "6", "7"):
+            # Brownies e Raspberry hanno già caption completa
+            if key in ("5", "7"):
                 caption = prod["caption"]
             elif key == "4":  # vapes
                 caption = (
@@ -374,7 +322,6 @@ class ShopBot:
 
             kb_back = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]])
 
-            # alcuni non hanno media
             if prod.get("video_file_id"):
                 try:
                     sent = await context.bot.send_video(chat_id=cid, video=prod["video_file_id"], caption=caption,
@@ -418,7 +365,6 @@ class ShopBot:
             return
 
     # ────────────────────────  MESSAGES  ──────────────────────── #
-
     async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         m   = update.effective_message
         usr = update.effective_user
@@ -445,7 +391,6 @@ class ShopBot:
             await m.reply_text("Non ho capito. Usa /start per vedere le opzioni disponibili.")
 
 # ──────────────────────────  MAIN  ────────────────────────── #
-
 def main():
     logger.info("Avvio del bot...")
     try:
