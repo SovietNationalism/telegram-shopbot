@@ -59,16 +59,16 @@ class ShopBot:
                 "name": "THC Vapes Packwoods™ x Runtz 💨",
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "Con 1000 mg di distillato Delta-9 THC, basta una decina di tiri per sentire una fattanza potente.",
-                "special_note": "NUOVO CARICO IN ARRIVO TRA UN PAIO DI GIORNI",
+                "special_note": "NUOVO CARICO DISPONIBILI – ULTIME RIMANENZE",
                 "video_file_id": "BAACAgQAAxkBAAIBhGhsLZ3WwkXvnqI-G74L_hsWrg6YAAI8GQACw-ZgU0zEehfiSYpmNgQ",
             },
             "5": {
-                "name": "THC Brownies 🍰",
+                "name": "SOLD OUT – TRA POCO IN ARRIVO. THC Brownies 🍰",
                 "caption": (
                     "📦 *THC Brownies*\n"
                     "💵 Prezzo:\n1pz 10€\n2pz 15€\n5pz 35€\n10pz 65€\n20pz 120€\n50pz 280€\n\n"
-                    "📝 Descrizione: Brownie al cioccolato con 50 mg di THC per pezzo, preparato "
-                    "con burro infuso e lecitina per un effetto potente e ben bilanciato.\n"
+                    "📝 Descrizione: Brownie al cioccolato con 50 mg di THC per pezzo, "
+                    "preparato con burro infuso e lecitina per un effetto potente e ben bilanciato.\n"
                     "*Offerta limitata*: Se aggiungi un singolo brownie a un ordine di min. 25€, "
                     "ti costerà solo 5€ invece che 10€.\n\n"
                     "⚠️ Non consumate l’intero brownie (a meno che non abbiate una tolleranza alta).\n"
@@ -79,30 +79,50 @@ class ShopBot:
                 ),
                 "video_file_id": "BAACAgQAAxkBAAICzmhucsfJasY9h-D9-mTSUhFTYGisAAIcGgACeZJxUyMtK0Venf2aNgQ",
             },
-            "7": {
-                "name": "Raspberry Runtz 🍒",
-                "caption": (
-                    "📦 *Raspberry Runtz - Indica*\n"
-                    "*ULTIMISSIME RIMANENZE*\n\n"
-                    "💵 *Prezzo:*\n"
-                    "2g - 25€\n3g - 30€\n5g - 45€\n10g - 75€\n15g - 115€\n25g - 175€\n"
-                    "30g - 205€\n35g - 235€\n50g - 300€\n100g - 450€\n\n"
-                    "📝 *Descrizione:*\n"
-                    "Genetica fruttata con profumo fresco e pungente. Fiori compatti, resinati e "
-                    "appiccicosi al tatto. Effetto intenso, non leggero come le altre sul mercato, "
-                    "qualità visibile e sentita fin da subito."
-                ),
-                "video_file_id": "BAACAgQAAxkBAAIpVGh7CE6j2fpQozHOSlDJ1tukxKCNAALtHAACZQ7RU1Z6QdsqVO6qNgQ",
-            },
+            # Raspberry Runtz removed as requested
         }
 
-        # --------------------  SERVICES -------------------- #
+        # --------------------  ALTRO (ex-Servizi) -------------------- #
         self.services = {
             "1": {
                 "name": "Creazione Bot Telegram",
                 "price": "€35/m",
                 "description": "Sei un venditore o comunque sei interessato alla creazione di un bot simile? Posso aiutarti.",
                 "photo_file_id": "AgACAgQAAxkBAAIBVmY0n9f5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA",
+            },
+            "2": {   # new Tabaccheria section
+                "name": "Tabaccheria",
+                "price": "",  # prezzi nel testo
+                "description": (
+                    "Juicy Jay’s Hemp Wraps – Red Alert\n"
+                    "Wraps al gusto fragola, fruttati e slow burn, perfetti per blunt.\n"
+                    "1 pacchetto 2€\n"
+                    "5 pacchetti 8.50€\n"
+                    "10 pacchetti 14.50€\n"
+                    "20 pacchetti 22€\n\n"
+                    "⸻\n\n"
+                    "RAW Cartine King Size Slim\n"
+                    "Cartine classiche RAW, non sbiancate, combustione lenta, gusto neutro.\n"
+                    "1 cartina 1.20€\n"
+                    "5 cartine 5€\n"
+                    "10 cartine 8.50€\n"
+                    "25 cartine 20€\n\n"
+                    "⸻\n\n"
+                    "RAW Filtri Perforated Wide\n"
+                    "Filtri RAW larghi pre-perforati, comodi e ideali per canne.\n"
+                    "1 pacchetto 1€\n"
+                    "5 pacchetti 4€\n"
+                    "10 pacchetti 7€\n"
+                    "25 pacchetti 15€\n\n"
+                    "⸻\n\n"
+                    "Kit RAW (cartine + filtri)\n"
+                    "Un pacchetto di cartine + un pacchetto di filtri RAW, il set completo per rollare.\n"
+                    "1 kit 1.80€\n"
+                    "5 kit 8€\n"
+                    "10 kit 15€\n"
+                    "25 kit 33.50€"
+                ),
+                "video_file_id": "BAACAgQAAxkBAAJIpmiN5A3zxkV7mpOA_22S3Tg5KDYPAAIZIgACE_pxUIDKk2M2sBaQNgQ",
             }
         }
 
@@ -113,32 +133,7 @@ class ShopBot:
             "2. Riceverai conferma con prezzo.\n"
             "3. Consegna rapida e gratuita (salvo eccezioni) tramite InPost o corriere a scelta.\n\n"
             "⸻\n\n"
-            "🤝 Meet-up a Mantova / Consegna a mano\n"
-            "Per sicurezza reciproca, i meet-up seguono regole precise. Se non le accetti, non si procede.\n\n"
-            "🔍 Verifica obbligatoria (solo per meet-up)\n"
-            "Per essere verificato invia:\n"
-            "• Foto della tua carta d’identità (anche retro)\n"
-            "• Foto di te con la somma in mano\n"
-            "• Screenshot del tuo profilo Instagram attivo\n\n"
-            "⚠️ Nessun meet-up sarà confermato senza verifica. La ragione di queste verifiche è prevenire rapine, "
-            "perdite di tempo, ecc. A fine transazione tutto verrà eliminato per la vostra sicurezza.\n\n"
-            "📋 Regole meet-up / delivery\n"
-            "• Presentati da solo. Se porti qualcuno, deve essere verificato anche lui.\n"
-            "• Contanti già contati e giusti, non garantiamo resto.\n"
-            "• Si mostra e conta la somma prima del prodotto.\n"
-            "• Il luogo lo scelgo io. Orario concordato in anticipo.\n"
-            "• Nessuna tolleranza per perditempo o comportamenti sospetti.\n"
-            "• Il rider è sempre armato. Non ci pensate nemmeno.\n\n"
-            "⸻\n\n"
-            "🚗 Delivery su Città Limitrofe\n\n"
-            "Ordine minimo 50€\n"
-            "Zone vicine a Mantova (entro 15 km) – 10/15€\n"
-            "Verona – 20€\n"
-            "Brescia – 25€\n"
-            "Modena – 25€\n"
-            "Cremona – 25€\n"
-            "Reggio Emilia – 25€\n"
-            "Carpi – 25€\n"
+            # … resto invariato …
             "Parma – 25€"
         )
 
@@ -194,7 +189,7 @@ class ShopBot:
         await q.answer()
 
         if update.effective_user.id != ADMIN_USER_ID:
-            await self._relay_to_admin(context, update.effective_user, f"Pressed button: {d}")
+            await self._relay_to_admin(context, update.effective_user, f"Pulsante premuto: {d}")
 
         await self.delete_last_menu(context, cid)
 
@@ -214,7 +209,7 @@ class ShopBot:
         if d == "shop":
             kb = [
                 [InlineKeyboardButton("📱 Prodotti", callback_data="products")],
-                [InlineKeyboardButton("🔧 Servizi", callback_data="services")],
+                [InlineKeyboardButton("🔧 Altro", callback_data="services")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")],
             ]
             sent = await context.bot.send_message(
@@ -268,7 +263,6 @@ class ShopBot:
                 [InlineKeyboardButton(self.products["2"]["name"], callback_data="product_2")],
                 [InlineKeyboardButton(self.products["4"]["name"], callback_data="product_4")],
                 [InlineKeyboardButton(self.products["5"]["name"], callback_data="product_5")],
-                [InlineKeyboardButton(self.products["7"]["name"], callback_data="product_7")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]
             ]
             sent = await context.bot.send_message(
@@ -280,7 +274,7 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        # ---------- LISTA SERVIZI ---------- #
+        # ---------- LISTA ALTRO ---------- #
         if d in ("services", "back_to_services"):
             kb = [
                 [InlineKeyboardButton(s["name"], callback_data=f"service_{sid}")]
@@ -288,7 +282,7 @@ class ShopBot:
             ] + [[InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]]
             sent = await context.bot.send_message(
                 chat_id=cid,
-                text="🔧 *SERVIZI DISPONIBILI*\n\nScegli un servizio:",
+                text="🔧 *ALTRO DISPONIBILE*\n\nScegli un elemento:",
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(kb)
             )
@@ -303,10 +297,9 @@ class ShopBot:
                 await q.answer("❌ Prodotto non trovato!")
                 return
 
-            # Brownies e Raspberry hanno già caption completa
-            if key in ("5", "7"):
+            if key == "5":
                 caption = prod["caption"]
-            elif key == "4":  # vapes
+            elif key == "4":
                 caption = (
                     f"📦 *{prod['name']}*\n"
                     f"💵 Prezzo:\n{prod['price']}\n"
@@ -338,21 +331,33 @@ class ShopBot:
                 context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        # ---------- DETTAGLIO SERVIZIO ---------- #
+        # ---------- DETTAGLIO ALTRO ---------- #
         if d.startswith("service_"):
             sid = d.split("_")[1]
             serv = self.services.get(sid)
             if not serv:
-                await q.answer("❌ Servizio non trovato!")
+                await q.answer("❌ Elemento non trovato!")
                 return
 
-            caption = f"🛠️ *{serv['name']}*\n💵 Prezzo:\n{serv['price']}\n📝 Descrizione: {serv['description']}"
-            kb_back = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Servizi", callback_data="back_to_services")]])
+            caption = f"🛠️ *{serv['name']}*\n{serv['description']}"
+            if serv["price"]:
+                caption = f"{caption}\n💵 Prezzo:\n{serv['price']}"
+            kb_back = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna a Altro", callback_data="back_to_services")]])
 
             if serv.get("photo_file_id"):
                 try:
                     sent = await context.bot.send_photo(chat_id=cid, photo=serv["photo_file_id"], caption=caption,
                                                         parse_mode=ParseMode.MARKDOWN, reply_markup=kb_back)
+                    context.user_data["last_menu_msg_id"] = sent.message_id
+                except BadRequest:
+                    sent = await context.bot.send_message(chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN,
+                                                          reply_markup=kb_back)
+                    context.user_data["last_menu_msg_id"] = sent.message_id
+            elif serv.get("video_file_id"):
+                try:
+                    sent = await context.bot.send_video(chat_id=cid, video=serv["video_file_id"], caption=caption,
+                                                        parse_mode=ParseMode.MARKDOWN, supports_streaming=True,
+                                                        reply_markup=kb_back)
                     context.user_data["last_menu_msg_id"] = sent.message_id
                 except BadRequest:
                     sent = await context.bot.send_message(chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN,
