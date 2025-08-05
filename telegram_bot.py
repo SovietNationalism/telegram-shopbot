@@ -56,19 +56,20 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAIBCmhsFSRwLTrFoTt3ZbImNDzA8cKtAALKHQACU4xhU_j8jDMDFSiJNgQ",
             },
             "4": {
-                "name": "THC Vapes Packwoods™ x Runtz 💨",
+                "name": "THC Vapes Packwoods™ 💨",
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "Con 1000 mg di distillato Delta-9 THC, basta una decina di tiri per sentire una fattanza potente.",
-                "special_note": "NUOVO CARICO DISPONIBILI – ULTIME RIMANENZE",
+                "special_note": "DISPONIBILI - ULTIME RIMANENZE",
                 "video_file_id": "BAACAgQAAxkBAAIBhGhsLZ3WwkXvnqI-G74L_hsWrg6YAAI8GQACw-ZgU0zEehfiSYpmNgQ",
             },
             "5": {
-                "name": "SOLD OUT – TRA POCO IN ARRIVO. THC Brownies 🍰",
+                "name": "THC Brownies 🍰",
                 "caption": (
+                    "SOLD OUT\n\n"
                     "📦 *THC Brownies*\n"
                     "💵 Prezzo:\n1pz 10€\n2pz 15€\n5pz 35€\n10pz 65€\n20pz 120€\n50pz 280€\n\n"
-                    "📝 Descrizione: Brownie al cioccolato con 50 mg di THC per pezzo, "
-                    "preparato con burro infuso e lecitina per un effetto potente e ben bilanciato.\n"
+                    "📝 Descrizione: Brownie al cioccolato con 50 mg di THC per pezzo, preparato "
+                    "con burro infuso e lecitina per un effetto potente e ben bilanciato.\n"
                     "*Offerta limitata*: Se aggiungi un singolo brownie a un ordine di min. 25€, "
                     "ti costerà solo 5€ invece che 10€.\n\n"
                     "⚠️ Non consumate l’intero brownie (a meno che non abbiate una tolleranza alta).\n"
@@ -79,7 +80,19 @@ class ShopBot:
                 ),
                 "video_file_id": "BAACAgQAAxkBAAICzmhucsfJasY9h-D9-mTSUhFTYGisAAIcGgACeZJxUyMtK0Venf2aNgQ",
             },
-            # Raspberry Runtz removed as requested
+            "8": {
+                "name": "Citronella Kush 🍋",
+                "caption": (
+                    "📦 *Citronella Kush*\n"
+                    "💵 Prezzo:\n"
+                    "1.5g 25€\n2g 30€\n4g 35€\n5g 45€\n8g 70€\n10g 80€\n"
+                    "15g 120€\n25g 185€\n30g 220€\n40g 240€\n50g 315€\n100g 525€\n\n"
+                    "📝 Descrizione: Una agrumata con note fresche e potenti. Fiori densi, "
+                    "ricchi di resina e molto appiccicosi. Effetto potente e duraturo, "
+                    "si distingue subito per qualità e intensità."
+                ),
+                "video_file_id": "BAACAgQAAxkBAAJTAAFokbjhN3ZdheSLMYqGzi9Nb335JAACOR0AAjvEiFCAvNsOwcysSTYE",
+            },
         }
 
         # --------------------  ALTRO (ex-Servizi) -------------------- #
@@ -90,39 +103,22 @@ class ShopBot:
                 "description": "Sei un venditore o comunque sei interessato alla creazione di un bot simile? Posso aiutarti.",
                 "photo_file_id": "AgACAgQAAxkBAAIBVmY0n9f5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA",
             },
-            "2": {   # new Tabaccheria section
+            "2": {
                 "name": "Tabaccheria",
-                "price": "",  # prezzi nel testo
-                "description": (
+                "price": (
                     "Juicy Jay’s Hemp Wraps – Red Alert\n"
-                    "Wraps al gusto fragola, fruttati e slow burn, perfetti per blunt.\n"
-                    "1 pacchetto 2€\n"
-                    "5 pacchetti 8.50€\n"
-                    "10 pacchetti 14.50€\n"
-                    "20 pacchetti 22€\n\n"
+                    "1 pacchetto 2€\n5 pacchetti 8.50€\n10 pacchetti 14.50€\n20 pacchetti 22€\n\n"
                     "⸻\n\n"
                     "RAW Cartine King Size Slim\n"
-                    "Cartine classiche RAW, non sbiancate, combustione lenta, gusto neutro.\n"
-                    "1 cartina 1.20€\n"
-                    "5 cartine 5€\n"
-                    "10 cartine 8.50€\n"
-                    "25 cartine 20€\n\n"
+                    "1 cartina 1.20€\n5 cartine 5€\n10 cartine 8.50€\n25 cartine 20€\n\n"
                     "⸻\n\n"
                     "RAW Filtri Perforated Wide\n"
-                    "Filtri RAW larghi pre-perforati, comodi e ideali per canne.\n"
-                    "1 pacchetto 1€\n"
-                    "5 pacchetti 4€\n"
-                    "10 pacchetti 7€\n"
-                    "25 pacchetti 15€\n\n"
+                    "1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n25 pacchetti 15€\n\n"
                     "⸻\n\n"
                     "Kit RAW (cartine + filtri)\n"
-                    "Un pacchetto di cartine + un pacchetto di filtri RAW, il set completo per rollare.\n"
-                    "1 kit 1.80€\n"
-                    "5 kit 8€\n"
-                    "10 kit 15€\n"
-                    "25 kit 33.50€"
+                    "1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€"
                 ),
-                "video_file_id": "BAACAgQAAxkBAAJIpmiN5A3zxkV7mpOA_22S3Tg5KDYPAAIZIgACE_pxUIDKk2M2sBaQNgQ",
+                "description": "Juicy Jay’s Hemp Wraps – Red Alert\nWraps al gusto fragola, fruttati e slow burn, perfetti per blunt.\n1 pacchetto 2€\n5 pacchetti 8.50€\n10 pacchetti 14.50€\n20 pacchetti 22€\n\n⸻\n\nRAW Cartine King Size Slim\nCartine classiche RAW, non sbiancate, combustione lenta, gusto neutro.\n1 cartina 1.20€\n5 cartine 5€\n10 cartine 8.50€\n25 cartine 20€\n\n⸻\n\nRAW Filtri Perforated Wide\nFiltri RAW larghi pre-perforati, comodi e ideali per canne.\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n25 pacchetti 15€\n\n⸻\n\nKit RAW (cartine + filtri)\nUn pacchetto di cartine + un pacchetto di filtri RAW, il set completo per rollare.\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€",
             }
         }
 
@@ -133,7 +129,32 @@ class ShopBot:
             "2. Riceverai conferma con prezzo.\n"
             "3. Consegna rapida e gratuita (salvo eccezioni) tramite InPost o corriere a scelta.\n\n"
             "⸻\n\n"
-            # … resto invariato …
+            "🤝 Meet-up a Mantova / Consegna a mano\n"
+            "Per sicurezza reciproca, i meet-up seguono regole precise. Se non le accetti, non si procede.\n\n"
+            "🔍 Verifica obbligatoria (solo per meet-up)\n"
+            "Per essere verificato invia:\n"
+            "• Foto della tua carta d’identità (anche retro)\n"
+            "• Foto di te con la somma in mano\n"
+            "• Screenshot del tuo profilo Instagram attivo\n\n"
+            "⚠️ Nessun meet-up sarà confermato senza verifica. La ragione di queste verifiche è prevenire rapine, "
+            "perdite di tempo, ecc. A fine transazione tutto verrà eliminato per la vostra sicurezza.\n\n"
+            "📋 Regole meet-up / delivery\n"
+            "• Presentati da solo. Se porti qualcuno, deve essere verificato anche lui.\n"
+            "• Contanti già contati e giusti, non garantiamo resto.\n"
+            "• Si mostra e conta la somma prima del prodotto.\n"
+            "• Il luogo lo scelgo io. Orario concordato in anticipo.\n"
+            "• Nessuna tolleranza per perditempo o comportamenti sospetti.\n"
+            "• Il rider è sempre armato. Non ci pensate nemmeno.\n\n"
+            "⸻\n\n"
+            "🚗 Delivery su Città Limitrofe\n\n"
+            "Ordine minimo 50€\n"
+            "Zone vicine a Mantova (entro 15 km) – 10/15€\n"
+            "Verona – 20€\n"
+            "Brescia – 25€\n"
+            "Modena – 25€\n"
+            "Cremona – 25€\n"
+            "Reggio Emilia – 25€\n"
+            "Carpi – 25€\n"
             "Parma – 25€"
         )
 
@@ -189,7 +210,7 @@ class ShopBot:
         await q.answer()
 
         if update.effective_user.id != ADMIN_USER_ID:
-            await self._relay_to_admin(context, update.effective_user, f"Pulsante premuto: {d}")
+            await self._relay_to_admin(context, update.effective_user, f"Pressed button: {d}")
 
         await self.delete_last_menu(context, cid)
 
@@ -263,6 +284,7 @@ class ShopBot:
                 [InlineKeyboardButton(self.products["2"]["name"], callback_data="product_2")],
                 [InlineKeyboardButton(self.products["4"]["name"], callback_data="product_4")],
                 [InlineKeyboardButton(self.products["5"]["name"], callback_data="product_5")],
+                [InlineKeyboardButton(self.products["8"]["name"], callback_data="product_8")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]
             ]
             sent = await context.bot.send_message(
@@ -282,7 +304,7 @@ class ShopBot:
             ] + [[InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]]
             sent = await context.bot.send_message(
                 chat_id=cid,
-                text="🔧 *ALTRO DISPONIBILE*\n\nScegli un elemento:",
+                text="🔧 *ALTRO*\n\nScegli un elemento:",
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(kb)
             )
@@ -297,9 +319,10 @@ class ShopBot:
                 await q.answer("❌ Prodotto non trovato!")
                 return
 
-            if key == "5":
+            # Brownies already have caption with SOLD OUT
+            if key in ("5",):
                 caption = prod["caption"]
-            elif key == "4":
+            elif key == "4":  # vapes
                 caption = (
                     f"📦 *{prod['name']}*\n"
                     f"💵 Prezzo:\n{prod['price']}\n"
@@ -307,7 +330,7 @@ class ShopBot:
                     f"*{prod['special_note']}*"
                 )
             else:
-                caption = (
+                caption = prod["caption"] if "caption" in prod else (
                     f"📦 *{prod['name']}*\n"
                     f"💵 Prezzo:\n{prod['price']}\n"
                     f"📝 Descrizione: {prod['description']}"
@@ -339,25 +362,13 @@ class ShopBot:
                 await q.answer("❌ Elemento non trovato!")
                 return
 
-            caption = f"🛠️ *{serv['name']}*\n{serv['description']}"
-            if serv["price"]:
-                caption = f"{caption}\n💵 Prezzo:\n{serv['price']}"
-            kb_back = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna a Altro", callback_data="back_to_services")]])
+            caption = f"🛠️ *{serv['name']}*\n💵 Prezzo:\n{serv['price']}\n📝 Descrizione: {serv['description']}"
+            kb_back = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ad Altro", callback_data="back_to_services")]])
 
             if serv.get("photo_file_id"):
                 try:
                     sent = await context.bot.send_photo(chat_id=cid, photo=serv["photo_file_id"], caption=caption,
                                                         parse_mode=ParseMode.MARKDOWN, reply_markup=kb_back)
-                    context.user_data["last_menu_msg_id"] = sent.message_id
-                except BadRequest:
-                    sent = await context.bot.send_message(chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN,
-                                                          reply_markup=kb_back)
-                    context.user_data["last_menu_msg_id"] = sent.message_id
-            elif serv.get("video_file_id"):
-                try:
-                    sent = await context.bot.send_video(chat_id=cid, video=serv["video_file_id"], caption=caption,
-                                                        parse_mode=ParseMode.MARKDOWN, supports_streaming=True,
-                                                        reply_markup=kb_back)
                     context.user_data["last_menu_msg_id"] = sent.message_id
                 except BadRequest:
                     sent = await context.bot.send_message(chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN,
