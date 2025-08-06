@@ -85,9 +85,9 @@ class ShopBot:
                 "caption": (
                     "📦 *Citronella Kush*\n"
                     "💵 Prezzo:\n"
-                    "1.5g 25€\n2g 30€\n4g 35€\n5g 45€\n8g 70€\n10g 80€\n"
-                    "15g 120€\n25g 185€\n30g 220€\n40g 240€\n50g 315€\n100g 525€\n\n"
-                    "📝 Descrizione: Una agrumata con note fresche e potenti. Fiori densi, "
+                    "1.5g 25€\n2g 24€\n4g 35€\n5g 45€\n8g 70€\n10g 80€\n"
+                    "15g 115€\n25g 185€\n30g 220€\n40g 255€\n50g 310€\n100g 525€\n\n"
+                    "📝 Descrizione: Una Calispain con genetica agrumata con note fresche e potenti. Fiori densi, "
                     "ricchi di resina e molto appiccicosi. Effetto potente e duraturo, "
                     "si distingue subito per qualità e intensità."
                 ),
