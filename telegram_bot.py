@@ -118,7 +118,7 @@ class ShopBot:
                     "Kit RAW (cartine + filtri)\n"
                     "1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€"
                 ),
-               "video_file_id": "BAACAgQAAxkBAAJeEmiYv5PRrUWVT9DjsyUrMCVJEwr8AAJFHAACOErJUPkmL_O8v3O_NgQ",
+                "video_file_id": "BAACAgQAAxkBAAJeEmiYv5PRrUWVT9DjsyUrMCVJEwr8AAJFHAACOErJUPkmL_O8v3O_NgQ",
             }
         }
 
@@ -319,10 +319,9 @@ class ShopBot:
                 await q.answer("❌ Prodotto non trovato!")
                 return
 
-            # Brownies already have caption with SOLD OUT
             if key in ("5",):
                 caption = prod["caption"]
-            elif key == "4":  # vapes
+            elif key == "4":
                 caption = (
                     f"📦 *{prod['name']}*\n"
                     f"💵 Prezzo:\n{prod['price']}\n"
@@ -356,7 +355,7 @@ class ShopBot:
 
         # ---------- DETTAGLIO ALTRO ---------- #
         if d.startswith("service_"):
-            sid = d.split("_")[1]
+            sid = d.split("_", 1)[1]
             serv = self.services.get(sid)
             if not serv:
                 await q.answer("❌ Elemento non trovato!")
