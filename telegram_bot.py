@@ -118,6 +118,7 @@ class ShopBot:
                     "Kit RAW (cartine + filtri)\n"
                     "1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€"
                 ),
+                "description": "Articoli da tabaccheria e rolling: wraps, cartine, filtri e kit RAW.",
                 "video_file_id": "BAACAgQAAxkBAAJeEmiYv5PRrUWVT9DjsyUrMCVJEwr8AAJFHAACOErJUPkmL_O8v3O_NgQ",
             }
         }
@@ -329,7 +330,7 @@ class ShopBot:
                     f"*{prod['special_note']}*"
                 )
             else:
-                caption = prod["caption"] if "caption" in prod else (
+                caption = prod.get("caption") or (
                     f"📦 *{prod['name']}*\n"
                     f"💵 Prezzo:\n{prod['price']}\n"
                     f"📝 Descrizione: {prod['description']}"
