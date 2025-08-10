@@ -59,7 +59,7 @@ class ShopBot:
                 "name": "THC Vapes Packwoods™ 💨",
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "Con 1000 mg di distillato Delta-9 THC, basta una decina di tiri per sentire una fattanza potente.",
-                "special_note": "DISPONIBILI - ULTIME RIMANENZE",
+                "special_note": "DISPONIBILI",
                 "video_file_id": "BAACAgQAAxkBAAIBhGhsLZ3WwkXvnqI-G74L_hsWrg6YAAI8GQACw-ZgU0zEehfiSYpmNgQ",
             },
             "5": {
@@ -87,7 +87,7 @@ class ShopBot:
                     "💵 Prezzo:\n"
                     "1.5g 25€\n2g 24€\n4g 35€\n5g 45€\n8g 70€\n10g 80€\n"
                     "15g 115€\n25g 185€\n30g 220€\n40g 255€\n50g 310€\n100g 525€\n\n"
-                    "📝 Descrizione: Una Calispain con genetica agrumata con note fresche e potenti. Fiori densi, "
+                    "📝 Descrizione: SOLD OUT. Una Calispain con genetica agrumata con note fresche e potenti. Fiori densi, "
                     "ricchi di resina e molto appiccicosi. Effetto potente e duraturo, "
                     "si distingue subito per qualità e intensità."
                 ),
@@ -95,7 +95,7 @@ class ShopBot:
             },
         }
 
-        # --------------------  ALTRO (ex-Servizi) -------------------- #
+        # ------------------  ALTRO (ex-Servizi) ------------------ #
         self.services = {
             "1": {
                 "name": "Creazione Bot Telegram",
@@ -118,7 +118,24 @@ class ShopBot:
                     "Kit RAW (cartine + filtri)\n"
                     "1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€"
                 ),
-                "description": "Juicy Jay’s Hemp Wraps – Red Alert\nWraps al gusto fragola, fruttati e slow burn, perfetti per blunt.\n1 pacchetto 2€\n5 pacchetti 8.50€\n10 pacchetti 14.50€\n20 pacchetti 22€\n\n⸻\n\nRAW Cartine King Size Slim\nCartine classiche RAW, non sbiancate, combustione lenta, gusto neutro.\n1 cartina 1.20€\n5 cartine 5€\n10 cartine 8.50€\n25 cartine 20€\n\n⸻\n\nRAW Filtri Perforated Wide\nFiltri RAW larghi pre-perforati, comodi e ideali per canne.\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n25 pacchetti 15€\n\n⸻\n\nKit RAW (cartine + filtri)\nUn pacchetto di cartine + un pacchetto di filtri RAW, il set completo per rollare.\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€",
+                "description": (
+                    "Juicy Jay’s Hemp Wraps – Red Alert\n"
+                    "Wraps al gusto fragola, fruttati e slow burn, perfetti per blunt.\n"
+                    "1 pacchetto 2€\n5 pacchetti 8.50€\n10 pacchetti 14.50€\n20 pacchetti 22€\n\n"
+                    "⸻\n\n"
+                    "RAW Cartine King Size Slim\n"
+                    "Cartine classiche RAW, non sbiancate, combustione lenta, gusto neutro.\n"
+                    "1 cartina 1.20€\n5 cartine 5€\n10 cartine 8.50€\n25 cartine 20€\n\n"
+                    "⸻\n\n"
+                    "RAW Filtri Perforated Wide\n"
+                    "Filtri RAW larghi pre-perforati, comodi e ideali per canne.\n"
+                    "1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n25 pacchetti 15€\n\n"
+                    "⸻\n\n"
+                    "Kit RAW (cartine + filtri)\n"
+                    "Un pacchetto di cartine + un pacchetto di filtri RAW, il set completo per rollare.\n"
+                    "1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€"
+                ),
+                "video_file_id": "BAACAgQAAxkBAAJIpmiN5A3zxkV7mpOA_22S3Tg5KDYPAAIZIgACE_pxUIDKk2M2sBaQNgQ",
             }
         }
 
@@ -365,7 +382,18 @@ class ShopBot:
             caption = f"🛠️ *{serv['name']}*\n💵 Prezzo:\n{serv['price']}\n📝 Descrizione: {serv['description']}"
             kb_back = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ad Altro", callback_data="back_to_services")]])
 
-            if serv.get("photo_file_id"):
+            # Show video if present, otherwise photo, otherwise text
+            if serv.get("video_file_id"):
+                try:
+                    sent = await context.bot.send_video(chat_id=cid, video=serv["video_file_id"], caption=caption,
+                                                        parse_mode=ParseMode.MARKDOWN, supports_streaming=True,
+                                                        reply_markup=kb_back)
+                    context.user_data["last_menu_msg_id"] = sent.message_id
+                except BadRequest:
+                    sent = await context.bot.send_message(chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN,
+                                                          reply_markup=kb_back)
+                    context.user_data["last_menu_msg_id"] = sent.message_id
+            elif serv.get("photo_file_id"):
                 try:
                     sent = await context.bot.send_photo(chat_id=cid, photo=serv["photo_file_id"], caption=caption,
                                                         parse_mode=ParseMode.MARKDOWN, reply_markup=kb_back)
