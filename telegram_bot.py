@@ -118,8 +118,7 @@ class ShopBot:
                     "Kit RAW (cartine + filtri)\n"
                     "1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€"
                 ),
-                "description": "Juicy Jay’s Hemp Wraps – Red Alert\nWraps al gusto fragola, fruttati e slow burn, perfetti per blunt.\n1 pacchetto 2€\n5 pacchetti 8.50€\n10 pacchetti 14.50€\n20 pacchetti 22€\n\n⸻\n\nRAW Cartine King Size Slim\nCartine classiche RAW, non sbiancate, combustione lenta, gusto neutro.\n1 cartina 1.20€\n5 cartine 5€\n10 cartine 8.50€\n25 cartine 20€\n\n⸻\n\nRAW Filtri Perforated Wide\nFiltri RAW larghi pre-perforati, comodi e ideali per canne.\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n25 pacchetti 15€\n\n⸻\n\nKit RAW (cartine + filtri)\nUn pacchetto di cartine + un pacchetto di filtri RAW, il set completo per rollare.\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€",
-                "video_file_id": "BAACAgQAAxkBAAJIpmiN5A3zxkV7mpOA_22S3Tg5KDYPAAIZIgACE_pxUIDKk2M2sBaQNgQ",
+               "video_file_id": "BAACAgQAAxkBAAJIpmiN5A3zxkV7mpOA_22S3Tg5KDYPAAIZIgACE_pxUIDKk2M2sBaQNgQ",
             }
         }
 
