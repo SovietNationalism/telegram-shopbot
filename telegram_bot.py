@@ -118,7 +118,7 @@ class ShopBot:
                     "Kit RAW (cartine + filtri)\n"
                     "1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€"
                 ),
-               "video_file_id": "BAACAgQAAxkBAAJIpmiN5A3zxkV7mpOA_22S3Tg5KDYPAAIZIgACE_pxUIDKk2M2sBaQNgQ",
+               "video_file_id": "BAACAgQAAxkBAAJeEmiYv5PRrUWVT9DjsyUrMCVJEwr8AAJFHAACOErJUPkmL_O8v3O_NgQ",
             }
         }
 
