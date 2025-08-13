@@ -251,9 +251,11 @@ class ShopBot:
                 "• 🏦 Bonifico istantaneo (0% commissione)\n"
                 "• 📲 Hype / Revolut / Satispay (0% commissione)\n"
                 "• 💸 Crypto LTC / BTC (0% commissione)\n"
-                "• 💵 Contanti (0% commissione)\n"
+                "• 💶 Contanti spediti o in meet up (0% commissione)\n"
                 "• 💳 PayPal (+10% commissione)\n"
-                "• 💼 Carta prepagata/buono (+10% commissione)"
+                "• 💼 Ricarica dal tabacchino (+10% commissione)"\n
+                 "• ✉️ Gift card prepagate/crypto (Bitnovo, Epipoli, Paysafecard, etc...) (+10% commissione)"\n
+                 "• 🏷️ Buoni regalo (+50% commissione)"
             )
             sent = await context.bot.send_message(
                 chat_id=cid,
