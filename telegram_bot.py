@@ -257,12 +257,11 @@ class ShopBot:
                 "• ✉️ Gift card prepagate/crypto (Bitnovo, Epipoli, Paysafecard, etc...) (+10% commissione)\n"
                 "• 🏷️ Buoni regalo (+50% commissione)\n\n"
                 "📦 *POLITICA DI RESHIP E ASSISTENZA*\n\n"
-                "In caso di pacco smarrito o perso in transito di ordini è previsto il rimborso o rispedizione del materiale.\n"
+                "In caso di pacco smarrito in transito è previsto il rimborso o rispedizione del materiale.\n"
                 "Per resi o problemi sul prodotto, è obbligatorio fornire:\n"
                 "• 🎥 Un video senza tagli dell’apertura del locker\n"
                 "• 🎥 Un video senza tagli dell’apertura del pacco\n\n"
                 "⚠️ In entrambi i video devono essere mostrati tutti i lati del pacco, per verificare che non sia stato manomesso.\n\n"
-                "🔐 In caso di pacco manomesso/rubato dal corriere non ci sarà nessun rimborso o rispedizione a meno che non si sia pagata la fee di 30€ per spedizione stealth."
             )
             sent = await context.bot.send_message(
                 chat_id=cid,
