@@ -65,7 +65,7 @@ class ShopBot:
             "5": {
                 "name": "THC Brownies 🍰",
                 "caption": (
-                    "SOLD OUT\n\n"
+                    "DISPONIBILE\n\n"
                     "📦 *THC Brownies*\n"
                     "💵 Prezzo:\n1pz 10€\n2pz 15€\n5pz 35€\n10pz 65€\n20pz 120€\n50pz 280€\n\n"
                     "📝 Descrizione: Brownie al cioccolato con 50 mg di THC per pezzo, preparato "
@@ -80,19 +80,19 @@ class ShopBot:
                 ),
                 "video_file_id": "BAACAgQAAxkBAAICzmhucsfJasY9h-D9-mTSUhFTYGisAAIcGgACeZJxUyMtK0Venf2aNgQ",
             },
-            "8": {
-                "name": "Citronella Kush 🍋",
+            "9": {
+                "name": "Dry Filtrato Dr. Cali 🍫",
                 "caption": (
-                    "📦 *Citronella Kush*\n"
+                    "📦 *DRY DR. CALI*\n"
                     "💵 Prezzo:\n"
-                    "1.5g 25€\n2g 24€\n4g 35€\n5g 45€\n8g 70€\n10g 80€\n"
-                    "15g 115€\n25g 185€\n30g 220€\n40g 255€\n50g 310€\n100g 525€\n\n"
-                    "📝 Descrizione: SOLD OUT. Una Calispain con genetica agrumata con note fresche e potenti. Fiori densi, "
-                    "ricchi di resina e molto appiccicosi. Effetto potente e duraturo, "
-                    "si distingue subito per qualità e intensità."
+                    "3g 30€\n5g 40€\n10g 75€\n15g 110€\n20g 145€\n30g 190€\n"
+                    "50g 260€\n70g 350€\n100g 450€\n200g 880€\n\n"
+                    "📝 Descrizione: Ancora tenuto perfettamente ad Agosto, fumo di alta qualità "
+                    "ottimo per lavorare e da fumare, sapore e botta intensa, un piacere da smistare. "
+                    "PREZZO BOMBA."
                 ),
-                "video_file_id": "BAACAgQAAxkBAAJTAAFokbjhN3ZdheSLMYqGzi9Nb335JAACOR0AAjvEiFCAvNsOwcysSTYE",
-            },
+                "video_file_id": "BAACAgQAAxkBAAJp1migOs5HDTQu2ZiE9fqKE63RrG98AAIFGQACht8AAVEhX9r5QyFvnDYE",
+            }
         }
 
         # --------------------  ALTRO (ex-Servizi) -------------------- #
@@ -122,6 +122,9 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAJeEmiYv5PRrUWVT9DjsyUrMCVJEwr8AAJFHAACOErJUPkmL_O8v3O_NgQ",
             }
         }
+
+        # Track users for broadcast
+        self.user_ids = set()
 
         # ------------------  REGOLAMENTO  ------------------ #
         self.rules_text = (
@@ -170,6 +173,7 @@ class ShopBot:
 
     # ────────────────────────  COMMANDS  ──────────────────────── #
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        self.user_ids.add(update.effective_user.id)
         await self.delete_last_menu(context, update.effective_chat.id)
 
         kb = [
@@ -193,6 +197,26 @@ class ShopBot:
             sent = await m.reply_text(text=msg, reply_markup=InlineKeyboardMarkup(kb))
             context.user_data["last_menu_msg_id"] = sent.message_id
 
+    async def broadcast(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        if update.effective_user.id != ADMIN_USER_ID:
+            await update.message.reply_text("❌ Non sei autorizzato a usare questo comando.")
+            return
+
+        if not context.args:
+            await update.message.reply_text("❗ Usa correttamente: /broadcast <messaggio>")
+            return
+
+        message = " ".join(context.args)
+        count = 0
+        for uid in list(self.user_ids):
+            try:
+                await context.bot.send_message(uid, f"📢 {message}")
+                count += 1
+            except Exception as e:
+                logger.warning(f"Impossibile inviare a {uid}: {e}")
+
+        await update.message.reply_text(f"✅ Messaggio inviato a {count} utenti.")
+
     async def delete_last_menu(self, context, chat_id):
         msg_id = context.user_data.get("last_menu_msg_id")
         if msg_id:
@@ -207,6 +231,7 @@ class ShopBot:
         q   = update.callback_query
         d   = q.data
         cid = q.message.chat.id
+        self.user_ids.add(update.effective_user.id)
 
         await q.answer()
 
@@ -293,7 +318,7 @@ class ShopBot:
                 [InlineKeyboardButton(self.products["2"]["name"], callback_data="product_2")],
                 [InlineKeyboardButton(self.products["4"]["name"], callback_data="product_4")],
                 [InlineKeyboardButton(self.products["5"]["name"], callback_data="product_5")],
-                [InlineKeyboardButton(self.products["8"]["name"], callback_data="product_8")],
+                [InlineKeyboardButton(self.products["9"]["name"], callback_data="product_9")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]
             ]
             sent = await context.bot.send_message(
@@ -328,7 +353,7 @@ class ShopBot:
                 await q.answer("❌ Prodotto non trovato!")
                 return
 
-            if key in ("5",):
+            if key in ("5", "9"):
                 caption = prod["caption"]
             elif key == "4":
                 caption = (
@@ -412,6 +437,7 @@ class ShopBot:
     async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         m   = update.effective_message
         usr = update.effective_user
+        self.user_ids.add(usr.id)
 
         if usr and usr.id != ADMIN_USER_ID:
             txt = (
@@ -442,6 +468,7 @@ def main():
         bot = ShopBot()
 
         app.add_handler(CommandHandler("start", bot.start))
+        app.add_handler(CommandHandler("broadcast", bot.broadcast))
         app.add_handler(CallbackQueryHandler(bot.button_handler))
         app.add_handler(MessageHandler(filters.ALL, bot.handle_message))
 
