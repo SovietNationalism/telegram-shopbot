@@ -156,10 +156,10 @@ class ShopBot:
             "Verona – 20€\n"
             "Brescia – 25€\n"
             "Modena – 25€\n"
-            "Cremona – 25€\n"
-            "Reggio Emilia – 25€\n"
+            "Cremona – 30€\n"
+            "Reggio Emilia – 30€\n"
             "Carpi – 25€\n"
-            "Parma – 25€"
+            "Parma – 30€"
         )
 
     # ────────────────────  HELPER: relay  ─────────────────── #
