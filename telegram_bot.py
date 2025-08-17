@@ -28,7 +28,7 @@ class ShopBot:
         # --------------------  PRODUCTS -------------------- #
         self.products = {
             "2": {
-                "name": "Sciroppo al THC 🫗",
+                "name": "Sciroppo al THC",
                 "price": (
                     "x 1 150 ml 30€\n"
                     "x 2 300 ml 40€\n"
@@ -56,14 +56,14 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAIBCmhsFSRwLTrFoTt3ZbImNDzA8cKtAALKHQACU4xhU_j8jDMDFSiJNgQ",
             },
             "4": {
-                "name": "THC Vapes Packwoods™ 💨",
+                "name": "THC Vapes Packwoods™ x Runtz",
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "Con 1000 mg di distillato Delta-9 THC, basta una decina di tiri per sentire una fattanza potente.",
                 "special_note": "DISPONIBILI",
-                "video_file_id": "BAACAgQAAxkBAAIBhGhsLZ3WwkXvnqI-G74L_hsWrg6YAAI8GQACw-ZgU0zEehfiSYpmNgQ",
+                "video_file_id": "BAACAgQAAxkBAAJt7mihhlxYRspdIzS7kVFyqRg1uFbPAAImHwACprYJUfBkRTR9sNz2NgQ",
             },
             "5": {
-                "name": "THC Brownies 🍰",
+                "name": "Brownies al THC",
                 "caption": (
                     "DISPONIBILE\n\n"
                     "📦 *THC Brownies*\n"
@@ -81,7 +81,7 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAICzmhucsfJasY9h-D9-mTSUhFTYGisAAIcGgACeZJxUyMtK0Venf2aNgQ",
             },
             "9": {
-                "name": "Dry Filtrato Dr. Cali 🍫",
+                "name": "Filtrato Dr. Cali",
                 "caption": (
                     "📦 *DRY DR. CALI*\n"
                     "💵 Prezzo:\n"
