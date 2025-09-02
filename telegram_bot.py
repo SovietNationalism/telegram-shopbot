@@ -178,6 +178,7 @@ class ShopBot:
 
         kb = [
             [InlineKeyboardButton("🛍️ Shop 🛍️", callback_data="shop")],
+            [InlineKeyboardButton("💬 Chat Clienti 💬", url="https://t.me/+a3rvmx13cjo5MjE0")],
             [InlineKeyboardButton("💰 Pagamenti 💰", callback_data="payments")],
             [InlineKeyboardButton("📋 Regolamento 📋", callback_data="rules")],
             [InlineKeyboardButton("📢 Canale Telegram 📢", url="https://t.me/+A3JnK9ALAmtiMjBk")],
