@@ -81,7 +81,7 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAICzmhucsfJasY9h-D9-mTSUhFTYGisAAIcGgACeZJxUyMtK0Venf2aNgQ",
             },
             "9": {
-                "name": "Filtrato Dr. Cali",
+                "name": "Filtrato Bufalo Plein",
                 "caption": (
                     "📦 *DRY BUFALO PLEIN*\n"
                     "💵 Prezzo:\n"
