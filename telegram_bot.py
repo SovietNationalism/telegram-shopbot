@@ -83,15 +83,13 @@ class ShopBot:
             "9": {
                 "name": "Filtrato Dr. Cali",
                 "caption": (
-                    "📦 *DRY DR. CALI*\n"
+                    "📦 *DRY BUFALO PLEIN*\n"
                     "💵 Prezzo:\n"
-                    "3g 30€\n5g 40€\n10g 75€\n15g 110€\n20g 145€\n30g 190€\n"
-                    "50g 260€\n70g 350€\n100g 450€\n200g 880€\n\n"
-                    "📝 Descrizione: Ancora tenuto perfettamente ad Agosto, fumo di alta qualità "
-                    "ottimo per lavorare e da fumare, sapore e botta intensa, un piacere da smistare. "
-                    "PREZZO BOMBA."
+                    "3g 30€\n5g 40€\n10g 75€\n15g 110€\n20g 140€\n25g 165€\n30g 200€\n50g 270€\n70g 350€\n100g 480€\n\n"
+                    "📝 Descrizione: Ancora tenuto perfettamente, fumo di alta qualità ottimo per lavorare e da fumare, "
+                    "sapore e botta intensa, un piacere da smistare."
                 ),
-                "video_file_id": "BAACAgQAAxkBAAJp1migOs5HDTQu2ZiE9fqKE63RrG98AAIFGQACht8AAVEhX9r5QyFvnDYE",
+                "video_file_id": "BAACAgQAAxkBAAKOtGi7QV3uU9iIQ3u2I-88q5Z1pg0WAALxGQACDXjZUUMGZqldPRkPNgQ",
             }
         }
 
