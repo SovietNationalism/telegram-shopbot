@@ -1,6 +1,4 @@
-Here’s the full code in one single code block, with only the explicitly requested changes applied: added two new products (Citronella Kush 🍋 with the provided prices/video and 500mg THC gummies 🍬 with the provided prices/video), updated the THC syrup text exactly as specified with the new video ID, and added a new “PROMO CLIENTI” product. Tabaccheria stays intact and clickable because service handling uses proper description and correct key parsing. Everything else remains unchanged.
-
-```python
+python
 import os, sys, logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.constants import ParseMode
