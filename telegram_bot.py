@@ -98,7 +98,7 @@ class ShopBot:
             },
             # NEW PRODUCT: Citronella Kush 🍋 (with new prices/video and description)
             "10": {
-                "name": "Citronella Kush 🍋",
+                "name": "Citronella Kush",
                 "caption": (
                     "📦 *Citronella Kush 🍋*\n"
                     "💵 Prezzo:\n"
@@ -118,7 +118,7 @@ class ShopBot:
             },
             # NEW PRODUCT: 500mg THC gummies 🍬
             "11": {
-                "name": "500mg THC gummies 🍬",
+                "name": "Caramelle 500mg THC",
                 "caption": (
                     "📦 *500mg THC gummies 🍬*\n"
                     "💵 Prezzo:\n"
@@ -133,7 +133,7 @@ class ShopBot:
             },
             # NEW PRODUCT: PROMO CLIENTI (as a product entry)
             "12": {
-                "name": "PROMO CLIENTI",
+                "name": "Promo sconto",
                 "caption": (
                     "📦 *PROMO CLIENTI*\n\n"
                     "Vuoi fumare GRATIS? Ti basta portare clienti!\n"
@@ -148,8 +148,8 @@ class ShopBot:
                     "I crediti valgono per qualsiasi prodotto (vape, edibili, sciroppi, ecc.).\n\n"
                     "ALTRE OFFERTE \n"
                     "VALIDO FINO AL 12/01\n"
-                    "10g dry + 1 Thc Lean = 95\n"
-                    "10g dry + 2 Thc Lean = 105"
+                    "10g dry + 1 THC Lean = 95\n"
+                    "10g dry + 2 THC Lean = 105"
                 ),
                 "video_file_id": None
             },
@@ -212,14 +212,14 @@ class ShopBot:
             "⸻\n\n"
             "🚗 Delivery su Città Limitrofe\n\n"
             "Ordine minimo 50€\n"
-            "Zone vicine a Mantova (entro 15 km) – 10/15€\n"
-            "Verona – 20€\n"
-            "Brescia – 25€\n"
+            "Zone vicine a Mantova (entro 15 km) – 15/20€.\n"
+            "Verona – 25€\n"
+            "Brescia – 30€\n"
             "Modena – 25€\n"
-            "Cremona – 30€\n"
-            "Reggio Emilia – 30€\n"
-            "Carpi – 25€\n"
-            "Parma – 30€"
+            "Cremona – 35€\n"
+            "Reggio Emilia – 35€\n"
+            "Carpi – 30€\n"
+            "Parma – 35€"
         )
 
     # ────────────────────  HELPER: relay  ─────────────────── #
