@@ -1,4 +1,3 @@
-python
 import os, sys, logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.constants import ParseMode
