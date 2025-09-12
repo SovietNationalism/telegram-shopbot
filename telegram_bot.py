@@ -112,7 +112,7 @@ class ShopBot:
                     "50g 315 ➡️ 300€\n"
                     "70g 420 ➡️ 390€\n"
                     "100g 525 ➡️ 500€\n\n"
-                    "📝 Descrizione: Una Calispain con genetica agrumata con note fresche e potenti. Fiori densi, ricchi di resina e molto appiccicosi. Effetto potente e duraturo, si distingue subito per qualità e intensità. PREZZI SCONTATI, PREORDER ATTIVI, IN ARRIVO PER PROSSIMA SETTIMANA ENTRO VENERDÌ 🔥"
+                    "📝 Descrizione: Una Calispain con genetica agrumata con note fresche e potenti. Fiori densi, ricchi di resina e molto appiccicosi. Effetto potente e duraturo, si distingue subito per qualità e intensità. DISPONIBILE."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAKS62i91dzcV9hhhs-3exRZUUW_b3IsAAJoGwACTNbwUT6DVkPtLa1vNgQ",
             },
