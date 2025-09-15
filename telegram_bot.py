@@ -45,7 +45,7 @@ class ShopBot:
                     "x 5 750 ml 100€\n"
                     "x 10 1,5 l 190€\n"
                     "x 20 3 l 335€\n"
-                    "📝 Descrizione: PER ORA DISPONIBILE SOLO SENZA L’ETICHETTA DAVANTI CHE DICE THC LEAN.\n"
+                    "📝 Descrizione: \n"
                     "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo dolce per una stabilità e biodisponibilità superiore.\n"
                     "Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi freddi e dolci per coprire il sapore.\n"
                     "Scuotere la boccetta prima di ogni uso per distribuirlo bene.\n"
