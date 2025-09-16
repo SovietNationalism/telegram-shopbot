@@ -113,7 +113,7 @@ class ShopBot:
                     "100g 525 ➡️ 500€\n\n"
                     "📝 Descrizione: Una Calispain con genetica agrumata con note fresche e potenti. Fiori densi, ricchi di resina e molto appiccicosi. Effetto potente e duraturo, si distingue subito per qualità e intensità. DISPONIBILE."
                 ),
-                "video_file_id": "BAACAgQAAxkBAAKS62i91dzcV9hhhs-3exRZUUW_b3IsAAJoGwACTNbwUT6DVkPtLa1vNgQ",
+                "video_file_id": "BAACAgQAAxkBAAP-aMm2JcuYvMEc2e-Xlzg8rE7ytTwAApAaAAICDkhS2xCWqGMGGS42BA",
             },
             # NEW PRODUCT: 500mg THC gummies 🍬
             "11": {
