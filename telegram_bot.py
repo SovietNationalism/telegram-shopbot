@@ -86,15 +86,14 @@ class ShopBot:
             },
             # Existing product kept as-is
             "9": {
-                "name": "Filtrato Bufalo Plein",
+                "name": "Filtrato Morocco Farmland",
                 "caption": (
-                    "📦 *DRY BUFALO PLEIN*\n"
+                    "📦 *DRY MFL*\n"
                     "💵 Prezzo:\n"
-                    "3g 30€\n5g 40€\n10g 75€\n15g 110€\n20g 140€\n25g 165€\n30g 200€\n50g 270€\n70g 350€\n100g 480€\n\n"
-                    "📝 Descrizione: Ancora tenuto perfettamente, fumo di alta qualità ottimo per lavorare e da fumare, "
-                    "sapore e botta intensa, un piacere da smistare."
+                    "3g 30€\n5g 40€\n10g 75€\n15g 110€\n20g 140€\n25g 165€\n30g 200€\n50g 270€\n70g 350€\n100g 470€\n\n"
+                    "📝 Descrizione: Top dry di alta qualità, sapore e odore intenso, fumata piacevole e botta intensa sebbene sia molto delicato sulla gola, fa tossire pochissimo e si sgretola bene."
                 ),
-                "video_file_id": "BAACAgQAAxkBAAKOtGi7QV3uU9iIQ3u2I-88q5Z1pg0WAALxGQACDXjZUUMGZqldPRkPNgQ",
+                "video_file_id": "BAACAgQAAxkBAAMLaMmw_dYbQWYR7B0NabwV6oJQavQAAuwZAALltEhS0_Pso_AGVpk2BA",
             },
             # NEW PRODUCT: Citronella Kush 🍋 (with new prices/video and description)
             "10": {
