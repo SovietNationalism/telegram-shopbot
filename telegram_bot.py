@@ -64,7 +64,7 @@ class ShopBot:
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "Con 1000 mg di distillato Delta-9 THC, basta una decina di tiri per sentire una fattanza potente.",
                 "special_note": "DISPONIBILI",
-                "video_file_id": "BAACAgQAAxkBAAJt7mihhlxYRspdIzS7kVFyqRg1uFbPAAImHwACprYJUfBkRTR9sNz2NgQ",
+                "video_file_id": "BAACAgQAAxkBAAIFf2jLLB8yvdGJo8oIv_8LTJ8HBethAAJ3HAACQu5gUmZ8c0unLksLNgQ",
             },
             "5": {
                 "name": "Brownies al THC",
@@ -82,7 +82,7 @@ class ShopBot:
                     "💡 Pro tip: Scaldatelo nel microonde per 10–20 s prima di mangiarlo: sarà caldo "
                     "e ancora più buono!"
                 ),
-                "video_file_id": "BAACAgQAAxkBAAICzmhucsfJasY9h-D9-mTSUhFTYGisAAIcGgACeZJxUyMtK0Venf2aNgQ",
+                "video_file_id": "BAACAgQAAxkBAAIFgWjLLWdyTmpbKtzpfb3jnqBbIPkNAAJ4HAACQu5gUvAzXKcczw8_NgQ",
             },
             # Existing product kept as-is
             "9": {
@@ -128,7 +128,7 @@ class ShopBot:
                     "10 - 180\n\n"
                     "📝 Descrizione: Caramelle gommose in formato da 20 caramelle da 25 mg l’una. Effetto piacevole, rilassante e duraturo, molto divertenti e comode da consumare."
                 ),
-                "video_file_id": "BAACAgQAAxkBAAKS7Wi91fNzDA7W1_75bX38S9FEikHmAAJpGwACTNbwUW7wVWvB8GnfNgQ",
+                "video_file_id": "BAACAgQAAxkBAAIFfWjLK8Fs4ZE3FisMbr8bMsAhmIyEAAJ2HAACQu5gUt0aqGYUVbjHNgQ",
             },
             # NEW PRODUCT: PROMO CLIENTI (as a product entry)
             "12": {
