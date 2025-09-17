@@ -90,8 +90,8 @@ class ShopBot:
                 "caption": (
                     "📦 *DRY MFL*\n"
                     "💵 Prezzo:\n"
-                    "3g 30€\n5g 40€\n10g 75€\n15g 110€\n20g 140€\n25g 165€\n30g 200€\n50g 270€\n70g 350€\n100g 470€\n\n"
-                    "📝 Descrizione: Top dry di alta qualità, sapore e odore intenso, fumata piacevole e botta intensa sebbene sia molto delicato sulla gola, fa tossire pochissimo e si sgretola bene."
+                    "3g 30€\n5g 40€\n10g 70€\n15g 110€\n20g 135€\n25g 165€\n30g 200€\n50g 250€\n70g 335€\n100g 450€\n\n"
+                    "📝 Descrizione: PREZZI BOMBA. Top dry di alta qualità, sapore e odore intenso, fumata piacevole e botta intensa nonostante sia molto delicato sulla gola, fa tossire pochissimo e si rompe bene."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAMLaMmw_dYbQWYR7B0NabwV6oJQavQAAuwZAALltEhS0_Pso_AGVpk2BA",
             },
@@ -108,9 +108,9 @@ class ShopBot:
                     "15g 120€\n"
                     "28g 190€\n"
                     "40g 265€\n"
-                    "50g 315 ➡️ 300€\n"
-                    "70g 420 ➡️ 390€\n"
-                    "100g 525 ➡️ 500€\n\n"
+                    "50g 300€\n"
+                    "70g 390€\n"
+                    "100g 500€\n\n"
                     "📝 Descrizione: Una Calispain con genetica agrumata con note fresche e potenti. Fiori densi, ricchi di resina e molto appiccicosi. Effetto potente e duraturo, si distingue subito per qualità e intensità. DISPONIBILE."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAP-aMm2JcuYvMEc2e-Xlzg8rE7ytTwAApAaAAICDkhS2xCWqGMGGS42BA",
