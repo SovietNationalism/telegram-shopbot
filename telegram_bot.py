@@ -178,7 +178,7 @@ class ShopBot:
                     "1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€"
                 ),
                 "description": "Articoli da tabaccheria e rolling: wraps, cartine, filtri e kit RAW.",
-                "video_file_id": "BAACAgQAAxkBAAJeEmiYv5PRrUWVT9DjsyUrMCVJEwr8AAJFHAACOErJUPkmL_O8v3O_NgQ",
+                "video_file_id": "BAACAgQAAxkBAAIHMGjL-PopR4SVbfHKOrl0PB77h7VoAAJNHQACQu5gUjVIxcbqHTmiNgQ",
             }
         }
 
@@ -335,7 +335,7 @@ class ShopBot:
                 "💰 *METODI DI PAGAMENTO*\n\n"
                 "• 🏦 Bonifico istantaneo (0% commissione)\n"
                 "• 📲 Hype / Revolut / Sumup / Tinaba (0% commissione)\n"
-                "• 💸 Crypto LTC / BTC (-5% commissione)\n"
+                "• 💸 Crypto LTC / BTC (0% commissione)\n"
                 "• 💶 Contanti spediti o in meet up (0% commissione)\n"
                 "• 💳 PayPal / Satispay (+10% commissione)\n"
                 "• 💼 Bonifico dal tabacchino (+10% commissione)\n"
