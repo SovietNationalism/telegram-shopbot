@@ -90,7 +90,7 @@ class ShopBot:
                 "caption": (
                     "📦 *DRY MFL*\n"
                     "💵 Prezzo:\n"
-                    "3g 30€\n5g 40€\n10g 70€\n15g 110€\n20g 135€\n25g 165€\n30g 200€\n50g 250€\n70g 335€\n100g 450€\n\n"
+                    "3g 30€\n5g 40€\n10g 70€\n15g 110€\n20g 135€\n25g 165€\n30g 200€\n50g 250€\n70g 335€\n100g 450€\n200g 850€\n"
                     "📝 Descrizione: Top dry di alta qualità, sapore e odore intenso, fumata piacevole e botta intensa nonostante sia molto delicato sulla gola, fa tossire pochissimo. PREZZI BOMBA.
                 ),
                 "video_file_id": "BAACAgQAAxkBAAMLaMmw_dYbQWYR7B0NabwV6oJQavQAAuwZAALltEhS0_Pso_AGVpk2BA",
