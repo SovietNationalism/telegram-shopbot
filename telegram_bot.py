@@ -57,7 +57,7 @@ class ShopBot:
                     "🔴 Esperti: 50 + mg (25 ml e oltre)\n"
                     "Ricordarsi che gli ml non equivalgono ai grammi."
                 ),
-                "video_file_id": "BAACAgQAAxkBAAKS92i91_6szBR9aZ6JT9zlvdo2IvyaAAJrGwACTNbwUa8t030MeXDoNgQ",
+                "video_file_id": "BAACAgQAAxkBAAIHDGjL-FIN062pvzPZy9SsquyvMFgSAAJMHQACQu5gUg9g7a-Xob58NgQ",
             },
             "4": {
                 "name": "THC Vapes Packwoods™ x Runtz",
