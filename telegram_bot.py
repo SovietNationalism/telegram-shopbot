@@ -144,7 +144,8 @@ class ShopBot:
                     "Regole:\n"
                     "Il cliente deve comunicare il tuo @username al momento dell’ordine.\n"
                     "Se preferisci, puoi accumulare i crediti e spenderli quando vuoi.\n"
-                    "I crediti valgono per qualsiasi altro prodotto (vape, edibili, sciroppi).\n\n"
+                    "I crediti valgono per qualsiasi altro prodotto (vape, edibili, sciroppi).\n"
+                    "OFFERTE:\n10g dry/weed + 1 sciroppo THC = 105\n15g dry/weed + 2 sciroppo THC = 140\n"
                 ),
                 "video_file_id": None
             },
