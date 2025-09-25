@@ -145,10 +145,6 @@ class ShopBot:
                     "Il cliente deve comunicare il tuo @username al momento dell’ordine.\n"
                     "Se preferisci, puoi accumulare i crediti e spenderli quando vuoi.\n"
                     "I crediti valgono per qualsiasi altro prodotto (vape, edibili, sciroppi).\n\n"
-                    "ALTRE OFFERTE \n"
-                    "VALIDO FINO AL 12/01\n"
-                    "10g dry + 1 THC Lean = 95\n"
-                    "10g dry + 2 THC Lean = 105"
                 ),
                 "video_file_id": None
             },
