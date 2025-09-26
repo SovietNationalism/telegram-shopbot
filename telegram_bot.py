@@ -149,6 +149,22 @@ class ShopBot:
                 ),
                 "video_file_id": None
             },
+            "13": {
+                "name": "Frozen Eggs Magic Farm",
+                "caption": 
+                    "📦 *Frozen Eggs Magic Farm 🕴️*\n"
+                    "💵 Prezzo:\n"
+                    "2.5g 40€\n"
+                    "5g 65€\n"
+                    "10g 110€\n"
+                    "25g 250€\n"
+                    "35g 325€\n"
+                    "50g 450€\n"
+                    "100g 820€\n\n"
+                    "📝 Descrizione: Un frozen sift di alta qualità, morbidissimo e vellutato al tatto, un piacere da fumare con un tiro saporito, dolce e intenso, botta potente e odore fresco. Un materiale molto più pulito di qualsiasi filtrato."
+                ),
+                "video_file_id": "BAACAgQAAxkBAAIXnGjWu4i8CNXPzvnzwSSTxwWySGbXAAKWHwACDyKwUq4zyybmyaaKNgQ",
+            },
         }
 
         # --------------------  ALTRO (ex-Servizi) -------------------- #
@@ -379,6 +395,7 @@ class ShopBot:
                 [InlineKeyboardButton(self.products["10"]["name"], callback_data="product_10")],
                 [InlineKeyboardButton(self.products["11"]["name"], callback_data="product_11")],
                 [InlineKeyboardButton(self.products["12"]["name"], callback_data="product_12")],
+                [InlineKeyboardButton(self.products["13"]["name"], callback_data="product_13")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]
             ]
             sent = await context.bot.send_message(
