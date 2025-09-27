@@ -130,25 +130,7 @@ class ShopBot:
                 ),
                 "video_file_id": "BAACAgQAAxkBAAIFfWjLK8Fs4ZE3FisMbr8bMsAhmIyEAAJ2HAACQu5gUt0aqGYUVbjHNgQ",
             },
-            # NEW PRODUCT: PROMO CLIENTI (as a product entry)
-            "12": {
-                "name": "Promo sconto",
-                "caption": (
-                    "📦 *PROMO CLIENTI*\n\n"
-                    "Vuoi fumare GRATIS? Ti basta portare clienti!\n"
-                    "Ogni volta che un tuo amico compra da noi, tu guadagni!\n\n"
-                    "Come funziona:\n"
-                    "1️⃣ Invita un amico a ordinare da noi.\n"
-                    "2️⃣ Quando compra, ci dice che lo hai inviato TU.\n"
-                    "3️⃣ Tu guadagni subito 1g gratis di erba o hash (o 5€ di credito per gli altri prodotti) ogni volta che spende 40€.\n\n"
-                    "Regole:\n"
-                    "Il cliente deve comunicare il tuo @username al momento dell’ordine.\n"
-                    "Se preferisci, puoi accumulare i crediti e spenderli quando vuoi.\n"
-                    "I crediti valgono per qualsiasi altro prodotto (vape, edibili, sciroppi).\n"
-                    "OFFERTE:\n10g dry/weed + 1 sciroppo THC = 105\n15g dry/weed + 2 sciroppo THC = 140\n"
-                ),
-                "video_file_id": None
-            },
+            # NEW PRODUCT ADDED: Frozen Eggs Magic Farm (already present in provided code as 13)
             "13": {
                 "name": "Frozen Eggs Magic Farm",
                 "caption": (
@@ -193,7 +175,26 @@ class ShopBot:
                 ),
                 "description": "Articoli da tabaccheria e rolling: wraps, cartine, filtri e kit RAW.",
                 "video_file_id": "BAACAgQAAxkBAAIHMGjL-PopR4SVbfHKOrl0PB77h7VoAAJNHQACQu5gUjVIxcbqHTmiNgQ",
-            }
+            },
+            "3": {
+                "name": "Promo sconto",
+                "price": "Programma referral",
+                "description": (
+                    "📦 PROMO CLIENTI\n\n"
+                    "Vuoi fumare GRATIS? Porta clienti e ottieni ricompense!\n"
+                    "Ogni volta che un amico compra e indica il tuo @username, guadagni:\n"
+                    "• 1g gratis di erba/hash ogni 40€ spesi dal tuo amico, oppure 5€ di credito su altri prodotti.\n\n"
+                    "Regole:\n"
+                    "• Il cliente deve comunicare il tuo @username al momento dell’ordine.\n"
+                    "• I crediti possono essere accumulati e usati quando vuoi.\n"
+                    "• I crediti valgono su qualsiasi altro prodotto (vape, edibili, sciroppi).\n\n"
+                    "Offerte combinate:\n"
+                    "• 10g dry/weed + 1 sciroppo THC = 105\n"
+                    "• 15g dry/weed + 2 sciroppi THC = 140"
+                ),
+                "photo_file_id": None,
+                "video_file_id": None,
+            },
         }
 
         # Track users for broadcast (kept as in prior code)
@@ -395,7 +396,6 @@ class ShopBot:
                 [InlineKeyboardButton(self.products["9"]["name"], callback_data="product_9")],
                 [InlineKeyboardButton(self.products["10"]["name"], callback_data="product_10")],
                 [InlineKeyboardButton(self.products["11"]["name"], callback_data="product_11")],
-                [InlineKeyboardButton(self.products["12"]["name"], callback_data="product_12")],
                 [InlineKeyboardButton(self.products["13"]["name"], callback_data="product_13")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]
             ]
@@ -422,8 +422,7 @@ class ShopBot:
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
-
-        # ---------- DETTAGLIO SINGOLO PRODOTTO ---------- #
+            
         if d.startswith("product_"):
             key = d.split("_", 1)[1]
             prod = self.products.get(key)
