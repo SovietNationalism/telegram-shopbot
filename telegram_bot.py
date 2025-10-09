@@ -148,22 +148,22 @@ class ShopBot:
             "svc2_blunts": {
                 "title": "Juicy Jay’s Hemp Wraps – Red Alert",
                 "caption": "Juicy Jay’s Hemp Wraps – Red Alert\n1 pacchetto 2€\n5 pacchetti 8.50€\n10 pacchetti 14.50€\n20 pacchetti 22€",
-                "video_file_id": "BAACAgQAA...YOUR_FILE_ID_FOR_BLUNTS..."
+                "video_file_id": "BAACAgQAAxkBAAI1KGjncIEkzh98_mRRwgoY5OEBzFgoAAJJGgACT6c5UwmW8tpHW1IqNgQ"
             },
             "svc2_papers": {
                 "title": "RAW Cartine King Size Slim",
                 "caption": "RAW Cartine King Size Slim\n1 cartina 1.20€\n5 cartine 5€\n10 cartine 8.50€\n25 cartine 20€",
-                "video_file_id": "BAACAgQAA...YOUR_FILE_ID_FOR_PAPERS..."
+                "video_file_id": "BAACAgQAAxkBAAI1JGjncFNO1ELRJ6fuaye9nvEjHmYZAAJHGgACT6c5U5SFr4CjhHPbNgQ"
             },
             "svc2_filters": {
                 "title": "RAW Filtri Perforated Wide",
                 "caption": "RAW Filtri Perforated Wide\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n25 pacchetti 15€",
-                "video_file_id": "BAACAgQAA...YOUR_FILE_ID_FOR_FILTERS..."
+                "video_file_id": "BAACAgQAAxkBAAI1Imjnb_Caqs6QPfzRxWx-cuEcD0rsAAJFGgACT6c5U7iZs8oUq-jANgQ"
             },
             "svc2_kits": {
                 "title": "Kit RAW (cartine + filtri)",
                 "caption": "Kit RAW (cartine + filtri)\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€",
-                "video_file_id": "BAACAgQAA...YOUR_FILE_ID_FOR_KITS..."
+                "video_file_id": "BAACAgQAAxkBAAI1JmjncHc0x5rbWK1Pu44-XkrMyuxgAAJIGgACT6c5U0QzjXcQJZWfNgQ"
             },
         }
 
