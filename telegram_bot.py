@@ -319,12 +319,18 @@ class ShopBot:
         if d == "back_to_main":
             await self.start(update, context)
             return
-
+            
         # ---------- SHOP ---------- #
         if d == "shop":
             kb = [
-                [InlineKeyboardButton("📱 Prodotti", callback_data="products")],
-                [InlineKeyboardButton("🔧 Altro", callback_data="services")],
+                [
+                    InlineKeyboardButton("📱 Prodotti THC", callback_data="products"),
+                    InlineKeyboardButton("🚬 Tabaccheria",   callback_data="service_2"),
+                ],
+                [
+                    InlineKeyboardButton("🛠️ Servizi",      callback_data="services"),
+                    InlineKeyboardButton("✨ Offerte",       callback_data="service_3"),
+                ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")],
             ]
             sent = await context.bot.send_message(
@@ -395,7 +401,7 @@ class ShopBot:
             ]
             sent = await context.bot.send_message(
                 chat_id=cid,
-                text="📱 *PRODOTTI DISPONIBILI*\n\nScegli un prodotto:",
+                text="📱 *PRODOTTI THC DISPONIBILI*\n\nScegli un prodotto:",
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(kb)
             )
