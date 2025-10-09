@@ -366,21 +366,21 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        # ---------- CONTACT ---------- 
+        # ---------- CONTACT ---------- #
         if d == "contact":
-    txt = "👥 *CONTATTAMI*\n\nClicca il pulsante qui sotto per contattarmi direttamente su Telegram:"
-    kb = [
-        [InlineKeyboardButton("✉️ Scrivimi", url="https://t.me/ItalianEdibles")],
-        [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
-    ]
-    sent = await context.bot.send_message(
-        chat_id=cid,
-        text=txt,
-        parse_mode=ParseMode.MARKDOWN,
-        reply_markup=InlineKeyboardMarkup(kb)
-    )
-    context.user_data["last_menu_msg_id"] = sent.message_id
-    return
+            txt = "👥 *CONTATTAMI*\n\nClicca il pulsante qui sotto per contattarmi direttamente su Telegram:"
+            kb = [
+                [InlineKeyboardButton("✉️ Scrivimi", url="https://t.me/ItalianEdibles")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text=txt,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(kb)
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
 
         # ---------- LISTA PRODOTTI ---------- #
         if d in ("products", "back_to_products"):
