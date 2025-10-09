@@ -463,6 +463,69 @@ class ShopBot:
                                                       reply_markup=kb_back)
                 context.user_data["last_menu_msg_id"] = sent.message_id
             return
+            
+        # ---------- TABACCHERIA SUBMENU ---------- #
+        if d == "service_2":
+            kb = [
+                [
+                    InlineKeyboardButton("🚬 Blunts",  callback_data="svc2_blunts"),
+                    InlineKeyboardButton("🧻 Papers",  callback_data="svc2_papers"),
+                ],
+                [
+                    InlineKeyboardButton("🧷 Filters", callback_data="svc2_filters"),
+                    InlineKeyboardButton("📦 Kits",    callback_data="svc2_kits"),
+                ],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text="Tabaccheria — scegli una categoria:",
+                reply_markup=InlineKeyboardMarkup(kb)
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+        # ---------- TABACCHERIA ITEMS ---------- #
+        if d == "svc2_blunts":
+            txt = (
+                "Juicy Jay’s Hemp Wraps – Red Alert\n"
+                "1 pacchetto 2€\n5 pacchetti 8.50€\n10 pacchetti 14.50€\n20 pacchetti 22€"
+            )
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="service_2")]]
+            sent = await context.bot.send_message(chat_id=cid, text=txt, reply_markup=InlineKeyboardMarkup(kb))
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+        
+        if d == "svc2_papers":
+            txt = (
+                "RAW Cartine King Size Slim\n"
+                "1 cartina 1.20€\n5 cartine 5€\n10 cartine 8.50€\n25 cartine 20€"
+            )
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="service_2")]]
+            sent = await context.bot.send_message(chat_id=cid, text=txt, reply_markup=InlineKeyboardMarkup(kb))
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+        
+        if d == "svc2_filters":
+            txt = (
+                "RAW Filtri Perforated Wide\n"
+                "1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n25 pacchetti 15€"
+            )
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="service_2")]]
+            sent = await context.bot.send_message(chat_id=cid, text=txt, reply_markup=InlineKeyboardMarkup(kb))
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+        
+        if d == "svc2_kits":
+            txt = (
+                "Kit RAW (cartine + filtri)\n"
+                "1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€"
+            )
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="service_2")]]
+            sent = await context.bot.send_message(chat_id=cid, text=txt, reply_markup=InlineKeyboardMarkup(kb))
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+        
 
         # ---------- DETTAGLIO ALTRO ---------- #
         if d.startswith("service_"):
