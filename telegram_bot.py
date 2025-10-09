@@ -93,7 +93,6 @@ class ShopBot:
                 ),
                 "video_file_id": "BAACAgQAAxkBAAMLaMmw_dYbQWYR7B0NabwV6oJQavQAAuwZAALltEhS0_Pso_AGVpk2BA",
             },
-            # NEW PRODUCT: Citronella Kush 🍋 (with new prices/video and description)
             "10": {
                 "name": "Citronella Kush",
                 "caption": (
@@ -113,7 +112,6 @@ class ShopBot:
                 ),
                 "video_file_id": "BAACAgQAAxkBAAP-aMm2JcuYvMEc2e-Xlzg8rE7ytTwAApAaAAICDkhS2xCWqGMGGS42BA",
             },
-            # NEW PRODUCT: 500mg THC gummies 🍬
             "11": {
                 "name": "Caramelle 500mg THC",
                 "caption": (
@@ -128,7 +126,6 @@ class ShopBot:
                 ),
                 "video_file_id": "BAACAgQAAxkBAAIFfWjLK8Fs4ZE3FisMbr8bMsAhmIyEAAJ2HAACQu5gUt0aqGYUVbjHNgQ",
             },
-            # NEW PRODUCT ADDED: Frozen Eggs Magic Farm (already present in provided code as 13)
             "13": {
                 "name": "Frozen Eggs Magic Farm",
                 "caption": (
@@ -148,7 +145,7 @@ class ShopBot:
             },
         }
 
-        # --------------------  ALTRO (ex-Servizi) -------------------- #
+        # --------------------  ALTRO -------------------- #
         self.services = {
             "1": {
                 "name": "Creazione Bot Telegram",
@@ -172,7 +169,7 @@ class ShopBot:
                     "1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€"
                 ),
                 "description": "Articoli da tabaccheria e rolling: wraps, cartine, filtri e kit RAW.",
-                "video_file_id": "BAACAgQAAxkBAAIHMGjL-PopR4SVbfHKOrl0PB77h7VoAAJNHQACQu5gUjVIxcbqHTmiNgQ",
+                "video_file_id": "BAACAgQAAxkBAAI0WGjnIq5ZDYpBVXZW1ificYnWpCHkAALjGQACT6c5U5v9wjmVpnBDNgQ",
             },
             "3": {
                 "name": "Promo sconto",
