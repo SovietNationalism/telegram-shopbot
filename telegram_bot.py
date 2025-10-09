@@ -27,7 +27,6 @@ class ShopBot:
     def __init__(self):
         # --------------------  PRODUCTS -------------------- #
         self.products = {
-            # UPDATED: THC Syrup content and video as requested
             "2": {
                 "name": "Sciroppo al THC",
                 "price": (
