@@ -173,40 +173,19 @@ class ShopBot:
                 "price": "€35/m",
                 "description": "Sei un venditore o comunque sei interessato alla creazione di un bot simile? Posso aiutarti.",
                 "photo_file_id": "AgACAgQAAxkBAAIBVmY0n9f5v1cAAQ1nUuH4QnX8h3QjAAJ8tzEbJ2FTkJ7yK5y1vN2BAAMCAANzAAMvBA",
+                "video_file_id": None,
             },
-            "2": {
-                "name": "Tabaccheria",
-                "price": (
-                    "Juicy Jay’s Hemp Wraps – Red Alert\n"
-                    "1 pacchetto 2€\n5 pacchetti 8.50€\n10 pacchetti 14.50€\n20 pacchetti 22€\n\n"
-                    "⸻\n\n"
-                    "RAW Cartine King Size Slim\n"
-                    "1 cartina 1.20€\n5 cartine 5€\n10 cartine 8.50€\n25 cartine 20€\n\n"
-                    "⸻\n\n"
-                    "RAW Filtri Perforated Wide\n"
-                    "1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n25 pacchetti 15€\n\n"
-                    "⸻\n\n"
-                    "Kit RAW (cartine + filtri)\n"
-                    "1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€"
-                ),
-                "description": "Articoli da tabaccheria e rolling: wraps, cartine, filtri e kit RAW.",
-                "video_file_id": "BAACAgQAAxkBAAI0WGjnIq5ZDYpBVXZW1ificYnWpCHkAALjGQACT6c5U5v9wjmVpnBDNgQ",
-            },
-            "3": {
-                "name": "Promo sconto",
-                "price": "Programma referral",
+            "4": {
+                "name": "Creazione etichette spedizione",
+                "price": "",
                 "description": (
-                    "📦 PROMO CLIENTI\n\n"
-                    "Vuoi fumare GRATIS? Porta clienti e ottieni ricompense!\n"
-                    "Ogni volta che un amico compra e indica il tuo @username, guadagni:\n"
-                    "• 1g gratis di erba/hash ogni 40€ spesi dal tuo amico, oppure 5€ di credito su altri prodotti.\n\n"
-                    "Regole:\n"
-                    "• Il cliente deve comunicare il tuo @username al momento dell’ordine.\n"
-                    "• I crediti possono essere accumulati e usati quando vuoi.\n"
-                    "• I crediti valgono su qualsiasi altro prodotto (vape, edibili, sciroppi).\n\n"
-                    "Offerte combinate:\n"
-                    "• 10g dry/weed + 1 sciroppo THC = 105\n"
-                    "• 15g dry/weed + 2 sciroppi THC = 140"
+                    "Ti creerò una etichetta da spedizione personalizzata per i seguenti corrieri e costi:\n\n"
+                    "INPOST - 10€\n"
+                    "POSTE STANDARD - 10€\n"
+                    "POSTE EXPRESS - 15€\n"
+                    "BRT - 20€\n"
+                    "GLS/UPS - 20€\n\n"
+                    "Per quantità si possono organizzare prezzi ridotti."
                 ),
                 "photo_file_id": None,
                 "video_file_id": None,
