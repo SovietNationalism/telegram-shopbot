@@ -81,7 +81,6 @@ class ShopBot:
                 ),
                 "video_file_id": "BAACAgQAAxkBAAI0VmjnIc0d0mnUyvqBBeKZkNPi8sLwAALiGQACT6c5U7b4YmzE6v_ZNgQ",
             },
-            # Existing product kept as-is
             "9": {
                 "name": "Filtrato Morocco Farmland",
                 "caption": (
@@ -145,6 +144,29 @@ class ShopBot:
         }
 
         # --------------------  ALTRO -------------------- #
+        self.tabaccheria_items = {
+            "svc2_blunts": {
+                "title": "Juicy Jay’s Hemp Wraps – Red Alert",
+                "caption": "Juicy Jay’s Hemp Wraps – Red Alert\n1 pacchetto 2€\n5 pacchetti 8.50€\n10 pacchetti 14.50€\n20 pacchetti 22€",
+                "video_file_id": "BAACAgQAA...YOUR_FILE_ID_FOR_BLUNTS..."
+            },
+            "svc2_papers": {
+                "title": "RAW Cartine King Size Slim",
+                "caption": "RAW Cartine King Size Slim\n1 cartina 1.20€\n5 cartine 5€\n10 cartine 8.50€\n25 cartine 20€",
+                "video_file_id": "BAACAgQAA...YOUR_FILE_ID_FOR_PAPERS..."
+            },
+            "svc2_filters": {
+                "title": "RAW Filtri Perforated Wide",
+                "caption": "RAW Filtri Perforated Wide\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n25 pacchetti 15€",
+                "video_file_id": "BAACAgQAA...YOUR_FILE_ID_FOR_FILTERS..."
+            },
+            "svc2_kits": {
+                "title": "Kit RAW (cartine + filtri)",
+                "caption": "Kit RAW (cartine + filtri)\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€",
+                "video_file_id": "BAACAgQAA...YOUR_FILE_ID_FOR_KITS..."
+            },
+        }
+
         self.services = {
             "1": {
                 "name": "Creazione Bot Telegram",
@@ -484,92 +506,74 @@ class ShopBot:
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
-            
-        # ---------- TABACCHERIA ITEMS ---------- #
-        if d == "svc2_blunts":
-            txt = (
-                "Juicy Jay’s Hemp Wraps – Red Alert\n"
-                "1 pacchetto 2€\n5 pacchetti 8.50€\n10 pacchetti 14.50€\n20 pacchetti 22€"
-            )
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="service_2")]]
-            sent = await context.bot.send_message(chat_id=cid, text=txt, reply_markup=InlineKeyboardMarkup(kb))
-            context.user_data["last_menu_msg_id"] = sent.message_id
-            return
-        
-        if d == "svc2_papers":
-            txt = (
-                "RAW Cartine King Size Slim\n"
-                "1 cartina 1.20€\n5 cartine 5€\n10 cartine 8.50€\n25 cartine 20€"
-            )
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="service_2")]]
-            sent = await context.bot.send_message(chat_id=cid, text=txt, reply_markup=InlineKeyboardMarkup(kb))
-            context.user_data["last_menu_msg_id"] = sent.message_id
-            return
-        
-        if d == "svc2_filters":
-            txt = (
-                "RAW Filtri Perforated Wide\n"
-                "1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n25 pacchetti 15€"
-            )
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="service_2")]]
-            sent = await context.bot.send_message(chat_id=cid, text=txt, reply_markup=InlineKeyboardMarkup(kb))
-            context.user_data["last_menu_msg_id"] = sent.message_id
-            return
-        
-        if d == "svc2_kits":
-            txt = (
-                "Kit RAW (cartine + filtri)\n"
-                "1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33.50€"
-            )
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="service_2")]]
-            sent = await context.bot.send_message(chat_id=cid, text=txt, reply_markup=InlineKeyboardMarkup(kb))
-            context.user_data["last_menu_msg_id"] = sent.message_id
-            return
-        
 
-        # ---------- DETTAGLIO ALTRO ---------- #
+        # ---------- TABACCHERIA ITEMS (video per item) ---------- #
+        if d in ("svc2_blunts", "svc2_papers", "svc2_filters", "svc2_kits"):
+            item = self.tabaccheria_items.get(d)
+            if not item:
+                await q.answer("❌ Elemento non trovato!")
+                return
+        
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="service_2")]]
+            sent = await context.bot.send_video(
+                chat_id=cid,
+                video=item["video_file_id"],
+                caption=item["caption"],
+                supports_streaming=True,
+                reply_markup=InlineKeyboardMarkup(kb)
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        # ---------- DETTAGLIO ALTRO (clean caption) ---------- #
         if d.startswith("service_"):
             sid = d.split("_", 1)[1]
             serv = self.services.get(sid)
             if not serv:
                 await q.answer("❌ Elemento non trovato!")
                 return
-
-            caption = f"🛠️ *{serv['name']}*\n💵 Prezzo:\n{serv['price']}\n📝 Descrizione: {serv['description']}"
+        
+            parts = [f"🛠️ *{serv['name']}*"]
+            price = (serv.get("price") or "").strip()
+            if price and price.lower() != "programma referral":
+                parts.append(f"💵 Prezzo:\n{price}")
+            parts.append(f"📝 Descrizione: {serv['description']}")
+            caption = "\n".join(parts)
+        
             kb_back = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ad Altro", callback_data="back_to_services")]])
-
+        
             if serv.get("video_file_id"):
                 try:
-                    sent = await context.bot.send_video(chat_id=cid, video=serv["video_file_id"], caption=caption,
-                                                        parse_mode=ParseMode.MARKDOWN, supports_streaming=True,
-                                                        reply_markup=kb_back)
+                    sent = await context.bot.send_video(
+                        chat_id=cid,
+                        video=serv["video_file_id"],
+                        caption=caption,
+                        supports_streaming=True,
+                        parse_mode=ParseMode.MARKDOWN,
+                        reply_markup=kb_back
+                    )
                     context.user_data["last_menu_msg_id"] = sent.message_id
                 except BadRequest:
-                    if serv.get("photo_file_id"):
-                        try:
-                            sent = await context.bot.send_photo(chat_id=cid, photo=serv["photo_file_id"], caption=caption,
-                                                                parse_mode=ParseMode.MARKDOWN, reply_markup=kb_back)
-                            context.user_data["last_menu_msg_id"] = sent.message_id
-                        except BadRequest:
-                            sent = await context.bot.send_message(chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN,
-                                                                  reply_markup=kb_back)
-                            context.user_data["last_menu_msg_id"] = sent.message_id
-                    else:
-                        sent = await context.bot.send_message(chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN,
-                                                              reply_markup=kb_back)
-                        context.user_data["last_menu_msg_id"] = sent.message_id
+                    sent = await context.bot.send_message(
+                        chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN, reply_markup=kb_back
+                    )
+                    context.user_data["last_menu_msg_id"] = sent.message_id
             elif serv.get("photo_file_id"):
                 try:
-                    sent = await context.bot.send_photo(chat_id=cid, photo=serv["photo_file_id"], caption=caption,
-                                                        parse_mode=ParseMode.MARKDOWN, reply_markup=kb_back)
+                    sent = await context.bot.send_photo(
+                        chat_id=cid, photo=serv["photo_file_id"], caption=caption,
+                        parse_mode=ParseMode.MARKDOWN, reply_markup=kb_back
+                    )
                     context.user_data["last_menu_msg_id"] = sent.message_id
                 except BadRequest:
-                    sent = await context.bot.send_message(chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN,
-                                                          reply_markup=kb_back)
+                    sent = await context.bot.send_message(
+                        chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN, reply_markup=kb_back
+                    )
                     context.user_data["last_menu_msg_id"] = sent.message_id
             else:
-                sent = await context.bot.send_message(chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN,
-                                                      reply_markup=kb_back)
+                sent = await context.bot.send_message(
+                    chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN, reply_markup=kb_back
+                )
                 context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
