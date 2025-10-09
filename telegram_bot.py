@@ -71,18 +71,16 @@ class ShopBot:
                 "caption": (
                     "DISPONIBILE\n\n"
                     "📦 *THC Brownies*\n"
-                    "💵 Prezzo:\n1pz 10€\n2pz 15€\n5pz 35€\n10pz 65€\n20pz 120€\n50pz 280€\n\n"
-                    "📝 Descrizione: Brownie al cioccolato con ora 70 mg di THC per pezzo, preparato "
-                    "con burro infuso e lecitina per un effetto potente e ben bilanciato.\n"
-                    "*Offerta limitata*: Se aggiungi un singolo brownie a un ordine di min. 25€, "
-                    "ti costerà solo 5€ invece che 10€.\n\n"
+                    "💵 Prezzo:\n1pz 10€\n2pz 20€\n5pz 40€\n10pz 70€\n20pz 130€\n50pz 280€\n\n"
+                    "📝 Descrizione: Prodotti fornari con ora 70 mg di THC per pezzo, preparato "
+                    "con burro infuso e lecitina per un effetto potente e ben distribuito.\n"
                     "⚠️ Non consumate l’intero brownie (a meno che non abbiate una tolleranza alta).\n"
                     "Ogni brownie contiene almeno 70 mg di THC; consigliamo di dividerlo con un amico o "
                     "conservarne metà per dopo.\n"
-                    "💡 Pro tip: Scaldatelo nel microonde per 10–20 s prima di mangiarlo: sarà caldo "
+                    "💡 Pro tip: Scaldatelo nel microonde per 10–20 s e impiattatelo prima di mangiarlo: sarà caldo "
                     "e ancora più buono!"
                 ),
-                "video_file_id": "BAACAgQAAxkBAAIFgWjLLWdyTmpbKtzpfb3jnqBbIPkNAAJ4HAACQu5gUvAzXKcczw8_NgQ",
+                "video_file_id": "BAACAgQAAxkBAAI0VmjnIc0d0mnUyvqBBeKZkNPi8sLwAALiGQACT6c5U7b4YmzE6v_ZNgQ",
             },
             # Existing product kept as-is
             "9": {
