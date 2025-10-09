@@ -252,7 +252,6 @@ class ShopBot:
             [InlineKeyboardButton("📋 Regolamento 📋", callback_data="rules")],
             [InlineKeyboardButton("📢 Canale Telegram 📢", url="https://t.me/+A3JnK9ALAmtiMjBk")],
             [InlineKeyboardButton("👥 Contattami 👥", callback_data="contact")],
-            [InlineKeyboardButton("👨‍💻 Developer 👨‍💻", callback_data="developer")],
         ]
         msg = (
             "🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹\n\n"
@@ -367,20 +366,21 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        # ---------- CONTACT / DEVELOPER ---------- #
-        if d in ("contact", "developer"):
-            txt = (
-                "👥 *CONTATTAMI*\n\nClicca il pulsante qui sotto per contattarmi direttamente su Telegram:"
-                if d == "contact"
-                else "👨‍💻 *DEVELOPER*\n\nBot sviluppato da @ItalianEdibles\n\nContattami per progetti personalizzati!"
-            )
-            kb = [
-                [InlineKeyboardButton("✉️ Scrivimi", url="https://t.me/ItalianEdibles")],
-                [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
-            ]
-            sent = await context.bot.send_message(chat_id=cid, text=txt, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(kb))
-            context.user_data["last_menu_msg_id"] = sent.message_id
-            return
+        # ---------- CONTACT ---------- 
+        if d == "contact":
+    txt = "👥 *CONTATTAMI*\n\nClicca il pulsante qui sotto per contattarmi direttamente su Telegram:"
+    kb = [
+        [InlineKeyboardButton("✉️ Scrivimi", url="https://t.me/ItalianEdibles")],
+        [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
+    ]
+    sent = await context.bot.send_message(
+        chat_id=cid,
+        text=txt,
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=InlineKeyboardMarkup(kb)
+    )
+    context.user_data["last_menu_msg_id"] = sent.message_id
+    return
 
         # ---------- LISTA PRODOTTI ---------- #
         if d in ("products", "back_to_products"):
