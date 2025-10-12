@@ -60,31 +60,29 @@ class ShopBot:
             },
             "3": {
                 "name": "Promo sconto",
-                "price": "",  # keep empty so no 'Prezzo:' header is shown
-                "description": (
-                    “PROMO CLIENTI\n”
-                    “I pacchetti di Ottobre sono:\n”
-                    “5g frozen 5g weed 105€\n”
-                    “10g weed/dry + 1 sciroppo 95€\n”
-                    “15g weed/dry + 2 sciroppo 145€\n”
-                    “10g frozen + 1 sciroppo 135€\n”
-                    “+ Se aggiungi un brownie ai seguenti ordini costa solo 5€!\n”
-                    “\n”
-                    “PROGRAMMA REFERRAL\n”
-                    “Vuoi fumare GRATIS? Ti basta portare clienti!\n”
-                    “Ogni volta che un tuo amico compra da noi, tu guadagni!\n”
-                    “\n”
-                    “Come funziona:\n”
-                    “1️⃣ Invita un amico a ordinare da noi.\n”
-                    “2️⃣ Quando compra, ci dice che lo hai inviato TU.\n”
-                    “3️⃣ Tu guadagni subito 1g gratis di erba o dry (o 5€ di credito verso gli altri prodotti) ogni volta che spende 40€.\n”
-                    “\n”
-                    “Regole:\n”
-                    “Il cliente deve comunicare il tuo @username al momento dell’ordine.\n”
-                    “Se preferisci, puoi accumulare i crediti e spenderli quando vuoi.\n”
-                    “I crediti valgono per qualsiasi prodotto (vape, edibili, sciroppi, ecc.).\n”
+                "caption": (
+                    "PROMO CLIENTI\n"
+                    "I pacchetti di Ottobre sono:\n"
+                    "5g frozen 5g weed 105€\n"
+                    "10g weed/dry + 1 sciroppo 95€\n"
+                    "15g weed/dry + 2 sciroppo 145€\n"
+                    "10g frozen + 1 sciroppo 135€\n"
+                    "+ Se aggiungi un brownie ai seguenti ordini costa solo 5€!\n"
+                    "\n"
+                    "PROGRAMMA REFERRAL\n"
+                    "Vuoi fumare GRATIS? Ti basta portare clienti!\n"
+                    "Ogni volta che un tuo amico compra da noi, tu guadagni!\n"
+                    "\n"
+                    "Come funziona:\n"
+                    "1️⃣ Invita un amico a ordinare da noi.\n"
+                    "2️⃣ Quando compra, ci dice che lo hai inviato TU.\n"
+                    "3️⃣ Tu guadagni subito 1g gratis di erba o dry (o 5€ di credito verso gli altri prodotti) ogni volta che spende 40€.\n"
+                    "\n"
+                    "Regole:\n"
+                    "Il cliente deve comunicare il tuo @username al momento dell’ordine.\n"
+                    "Se preferisci, puoi accumulare i crediti e spenderli quando vuoi.\n"
+                    "I crediti valgono per qualsiasi prodotto (vape, edibili, sciroppi, ecc.).\n"
                 ),
-                "photo_file_id": None,
                 "video_file_id": None,
             },
             "4": {
