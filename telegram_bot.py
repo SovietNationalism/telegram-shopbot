@@ -357,7 +357,7 @@ class ShopBot:
                 ],
                 [
                     InlineKeyboardButton("🛠️ Servizi",      callback_data="services"),
-                    InlineKeyboardButton("✨ Offerte",       callback_data="service_3"),
+                    InlineKeyboardButton("✨ Offerte",       callback_data="product_3"),
                 ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")],
             ]
@@ -468,11 +468,14 @@ class ShopBot:
                     f"*{prod['special_note']}*"
                 )
             else:
-                caption = (
-                    f"📦 *{prod['name']}*\n"
-                    f"💵 Prezzo:\n{prod.get('price','')}\n"
-                    f"📝 Descrizione: {prod.get('description','')}"
-                )
+                parts = [f"📦 *{prod['name']}*"]
+                price = (prod.get('price') or '').strip()
+                if price:
+                    parts.append(f"💵 Prezzo:\n{price}")
+                desc = (prod.get('description') or '').strip()
+                if desc:
+                    parts.append(f"📝 Descrizione: {desc}")
+                caption = "\n".join(parts)
 
             kb_back = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Torna ai Prodotti", callback_data="back_to_products")]])
 
