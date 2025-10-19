@@ -278,7 +278,7 @@ class ShopBot:
             [InlineKeyboardButton("💰 Pagamenti 💰", callback_data="payments")],
             [InlineKeyboardButton("📋 Regolamento 📋", callback_data="rules")],
             [InlineKeyboardButton("📢 Canale Telegram 📢", url="https://t.me/+A3JnK9ALAmtiMjBk")],
-            [InlineKeyboardButton("👥 Contattami 👥", callback_data="contact")],
+            [InlineKeyboardButton("👥 Ordina Scrivendomi Qui 👥", callback_data="contact")],
         ]
         msg = (
             "🎉 Benvenuto sul bot Vetrina ItalianEdibles! 🇮🇹\n\n"
@@ -401,7 +401,7 @@ class ShopBot:
 
         # ---------- CONTACT ---------- #
         if d == "contact":
-            txt = "👥 *CONTATTAMI*\n\nClicca il pulsante qui sotto per contattarmi direttamente su Telegram:"
+            txt = "👥 *COME ORDINARE*\n\nClicca il pulsante qui sotto per contattarmi, scrivimi il tuo ordine, se è ship/meetup/delivery, e la modalità di pagamento che hai scelto.\nTutte le opzioni disponibile sono visibili nel bot:"
             kb = [
                 [InlineKeyboardButton("✉️ Scrivimi", url="https://t.me/ItalianEdibles")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
