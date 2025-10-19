@@ -89,7 +89,7 @@ class ShopBot:
                 "name": "THC Vapes Packwoods™ x Runtz",
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "Con 1000 mg di distillato Delta-9 THC, basta una decina di tiri per sentire una fattanza potente.",
-                "special_note": "DISPONIBILI",
+                "special_note": "SOLD OUT - RESTOCK MERCOLEDI/GIOVEDI 22/23",
                 "video_file_id": "BAACAgQAAxkBAAIFf2jLLB8yvdGJo8oIv_8LTJ8HBethAAJ3HAACQu5gUmZ8c0unLksLNgQ",
             },
             "5": {
@@ -133,7 +133,7 @@ class ShopBot:
                     "50g 300€\n"
                     "70g 390€\n"
                     "100g 500€\n\n"
-                    "📝 Descrizione: Una Calispain con genetica agrumata con note fresche e potenti. Fiori densi, ricchi di resina e molto appiccicosi. Effetto potente e duraturo, si distingue subito per qualità e intensità. DISPONIBILE."
+                    "📝 Descrizione: ULTIMI 50g!!! Una Calispain con genetica agrumata con note fresche e potenti. Fiori densi, ricchi di resina e molto appiccicosi. Effetto potente e duraturo, si distingue subito per qualità e intensità. DISPONIBILE."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAP-aMm2JcuYvMEc2e-Xlzg8rE7ytTwAApAaAAICDkhS2xCWqGMGGS42BA",
             },
