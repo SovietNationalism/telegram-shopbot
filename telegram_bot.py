@@ -106,7 +106,7 @@ class ShopBot:
                     "💡 Pro tip: Scaldatelo nel microonde per 10–20 s e impiattatelo prima di mangiarlo: sarà caldo "
                     "e ancora più buono!"
                 ),
-                "video_file_id": "BAACAgQAAxkBAAI0VmjnIc0d0mnUyvqBBeKZkNPi8sLwAALiGQACT6c5U7b4YmzE6v_ZNgQ",
+                "photo_file_id": "AgACAgQAAxkBAAJkPmj2H-KK_qyJT4r6t_7m6dKyODicAAINyzEbq3uoU82sbUh3IVu8AQADAgADeQADNgQ",
             },
             "9": {
                 "name": "Filtrato Morocco Farmland",
