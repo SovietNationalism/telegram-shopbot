@@ -64,8 +64,6 @@ class ShopBot:
                     "PROMO CLIENTI\n"
                     "I pacchetti di Ottobre sono:\n"
                     "5g frozen 5g weed 105€\n"
-                    "10g weed/dry + 1 sciroppo 95€\n"
-                    "15g weed/dry + 2 sciroppo 145€\n"
                     "10g frozen + 1 sciroppo 135€\n"
                     "+ Se aggiungi un brownie ai seguenti ordini costa solo 5€!\n"
                     "\n"
@@ -89,7 +87,7 @@ class ShopBot:
                 "name": "THC Vapes Packwoods™ x Runtz",
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "Con 1000 mg di distillato Delta-9 THC, basta una decina di tiri per sentire una fattanza potente.",
-                "special_note": "SOLD OUT - RESTOCK MERCOLEDI/GIOVEDI 22/23",
+                "special_note": "SOLD OUT - RESTOCK RITARDATO LEGGERMENTE, NUOVO CARICO ENTRO IL 27.",
                 "video_file_id": "BAACAgQAAxkBAAIFf2jLLB8yvdGJo8oIv_8LTJ8HBethAAJ3HAACQu5gUmZ8c0unLksLNgQ",
             },
             "5": {
@@ -111,10 +109,10 @@ class ShopBot:
             "9": {
                 "name": "Filtrato Morocco Farmland",
                 "caption": (
-                    "📦 *DRY MFL*\n"
+                    "📦 *DRY*\n"
                     "💵 Prezzo:\n"
                     "3g 30€\n5g 40€\n10g 70€\n15g 110€\n20g 125\n25g 150€\n30g 175€\n50g 250€\n70g 335€\n100g 430€\n200g 820€\n"
-                    "📝 Descrizione: Top dry di alta qualità, sapore e odore intenso, fumata piacevole e botta intensa nonostante sia molto delicato sulla gola, fa tossire pochissimo. PREZZI BOMBA."
+                    "📝 Descrizione: Sold out, restock 24 ottobre."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAMLaMmw_dYbQWYR7B0NabwV6oJQavQAAuwZAALltEhS0_Pso_AGVpk2BA",
             },
@@ -133,7 +131,8 @@ class ShopBot:
                     "50g 300€\n"
                     "70g 390€\n"
                     "100g 500€\n\n"
-                    "📝 Descrizione: ULTIMI 50g!!! Una Calispain con genetica agrumata con note fresche e potenti. Fiori densi, ricchi di resina e molto appiccicosi. Effetto potente e duraturo, si distingue subito per qualità e intensità. DISPONIBILE."
+                    "📝 Descrizione: Sold out nuova weed arriva prossima settimana
+                    ."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAP-aMm2JcuYvMEc2e-Xlzg8rE7ytTwAApAaAAICDkhS2xCWqGMGGS42BA",
             },
@@ -147,7 +146,7 @@ class ShopBot:
                     "3 - 65\n"
                     "5 - 100\n"
                     "10 - 180\n\n"
-                    "📝 Descrizione: Caramelle gommose in formato da 20 caramelle da 25 mg l’una. Effetto piacevole, rilassante e duraturo, molto divertenti e comode da consumare."
+                    "📝 Descrizione: Sold out. Caramelle gommose in formato da 20 caramelle da 25 mg l’una. Effetto piacevole, rilassante e duraturo, molto divertenti e comode da consumare."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAIFfWjLK8Fs4ZE3FisMbr8bMsAhmIyEAAJ2HAACQu5gUt0aqGYUVbjHNgQ",
             },
