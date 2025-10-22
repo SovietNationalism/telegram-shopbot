@@ -131,8 +131,7 @@ class ShopBot:
                     "50g 300€\n"
                     "70g 390€\n"
                     "100g 500€\n\n"
-                    "📝 Descrizione: Sold out nuova weed arriva prossima settimana
-                    ."
+                    "📝 Descrizione: Sold out nuova weed arriva prossima settimana."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAP-aMm2JcuYvMEc2e-Xlzg8rE7ytTwAApAaAAICDkhS2xCWqGMGGS42BA",
             },
