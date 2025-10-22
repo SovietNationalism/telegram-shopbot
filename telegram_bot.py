@@ -107,12 +107,12 @@ class ShopBot:
                 "photo_file_id": "AgACAgQAAxkBAAJkPmj2H-KK_qyJT4r6t_7m6dKyODicAAINyzEbq3uoU82sbUh3IVu8AQADAgADeQADNgQ",
             },
             "9": {
-                "name": "Filtrato Morocco Farmland",
+                "name": "Dry",
                 "caption": (
                     "📦 *DRY*\n"
                     "💵 Prezzo:\n"
                     "3g 30€\n5g 40€\n10g 70€\n15g 110€\n20g 125\n25g 150€\n30g 175€\n50g 250€\n70g 335€\n100g 430€\n200g 820€\n"
-                    "📝 Descrizione: Sold out, restock 24 ottobre."
+                    "📝 Descrizione: Sold out, Nuovo dry 24 ottobre."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAMLaMmw_dYbQWYR7B0NabwV6oJQavQAAuwZAALltEhS0_Pso_AGVpk2BA",
             },
