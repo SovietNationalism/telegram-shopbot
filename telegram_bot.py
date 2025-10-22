@@ -11,7 +11,7 @@ from telegram.error import BadRequest
 
 BOT_TOKEN         = os.getenv("BOT_TOKEN")
 ADMIN_USER_ID     = 6840588025
-WELCOME_IMAGE_URL = "https://i.postimg.cc/pr65RVVm/D6-F1-EDE3-E7-E8-4-ADC-AAFC-5-FB67-F86-BDE3.png"
+WELCOME_IMAGE_URL = "https://i.postimg.cc/pr65RVVm/D6F1EDE3-E7E8-4ADC-AAFC-5FB67F86BDE3.png"
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
