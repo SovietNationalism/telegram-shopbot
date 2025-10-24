@@ -107,7 +107,7 @@ class ShopBot:
                 "photo_file_id": "AgACAgQAAxkBAAJkPmj2H-KK_qyJT4r6t_7m6dKyODicAAINyzEbq3uoU82sbUh3IVu8AQADAgADeQADNgQ",
             },
             "9": {
-                "name": "Dry",
+                "name": "NUOVO DRY COMING SOON",
                 "caption": (
                     "📦 *DRY*\n"
                     "💵 Prezzo:\n"
@@ -117,7 +117,7 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAMLaMmw_dYbQWYR7B0NabwV6oJQavQAAuwZAALltEhS0_Pso_AGVpk2BA",
             },
             "10": {
-                "name": "Citronella Kush",
+                "name": "NUOVA ERBA COMING SOON",
                 "caption": (
                     "📦 *Citronella Kush 🍋*\n"
                     "💵 Prezzo:\n"
@@ -162,7 +162,7 @@ class ShopBot:
                     "40g 370€\n"
                     "50g 450€\n"
                     "100g 820€\n\n"
-                    "📝 Descrizione: Un frozen sift di alta qualità, morbidissimo e vellutato al tatto, un piacere da fumare con un tiro saporito, dolce e intenso, botta potente e odore fresco. Un materiale molto più pulito di qualsiasi filtrato."
+                    "📝 Descrizione: ULTIMISSIME RIMANENZE. Un frozen sift di alta qualità, morbidissimo e vellutato al tatto, un piacere da fumare con un tiro saporito, dolce e intenso, botta potente e odore fresco. Un materiale molto più pulito di qualsiasi filtrato."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAIXnGjWu4i8CNXPzvnzwSSTxwWySGbXAAKWHwACDyKwUq4zyybmyaaKNgQ",
             },
