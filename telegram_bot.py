@@ -87,7 +87,7 @@ class ShopBot:
                 "name": "THC Vapes Packwoods™ x Runtz",
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "Con 1000 mg di distillato Delta-9 THC, basta una decina di tiri per sentire una fattanza potente.",
-                "special_note": "SOLD OUT - RESTOCK RITARDATO LEGGERMENTE, NUOVO CARICO ENTRO IL 27.",
+                "special_note": "SOLD OUT - RESTOCK RITARDATO LEGGERMENTE, Arrivano il 29.",
                 "video_file_id": "BAACAgQAAxkBAAIFf2jLLB8yvdGJo8oIv_8LTJ8HBethAAJ3HAACQu5gUmZ8c0unLksLNgQ",
             },
             "5": {
@@ -112,7 +112,7 @@ class ShopBot:
                     "📦 *DRY*\n"
                     "💵 Prezzo:\n"
                     "3g 30€\n5g 40€\n10g 70€\n15g 110€\n20g 125\n25g 150€\n30g 175€\n50g 250€\n70g 335€\n100g 430€\n200g 820€\n"
-                    "📝 Descrizione: Sold out, Nuovo dry 24 ottobre."
+                    "📝 Descrizione: Sold out, Nuovo dry LEGGERMENTE RITARDATO DROP LUNEDI 27 ottobre."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAMLaMmw_dYbQWYR7B0NabwV6oJQavQAAuwZAALltEhS0_Pso_AGVpk2BA",
             },
@@ -131,7 +131,7 @@ class ShopBot:
                     "50g 300€\n"
                     "70g 390€\n"
                     "100g 500€\n\n"
-                    "📝 Descrizione: Sold out nuova weed arriva prossima settimana."
+                    "📝 Descrizione: Sold out nuova weed arriva prossima settimana. Arriva il 30/31."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAP-aMm2JcuYvMEc2e-Xlzg8rE7ytTwAApAaAAICDkhS2xCWqGMGGS42BA",
             },
