@@ -107,14 +107,14 @@ class ShopBot:
                 "photo_file_id": "AgACAgQAAxkBAAJkPmj2H-KK_qyJT4r6t_7m6dKyODicAAINyzEbq3uoU82sbUh3IVu8AQADAgADeQADNgQ",
             },
             "9": {
-                "name": "NUOVO DRY COMING SOON",
+                "name": "Dry Filtre 73/90u",
                 "caption": (
                     "📦 *DRY*\n"
                     "💵 Prezzo:\n"
-                    "3g 30€\n5g 40€\n10g 70€\n15g 110€\n20g 125\n25g 150€\n30g 175€\n50g 250€\n70g 335€\n100g 430€\n200g 820€\n"
-                    "📝 Descrizione: Sold out, Nuovo dry LEGGERMENTE RITARDATO DROP LUNEDI 27 ottobre."
+                    "3g 30€\n5g 45\n10g 70€\n15g 110€\n20g 125\n25g 150€\n30g 175€\n50g 250€\n70g 335€\n100g 450€\n"
+                    "📝 Descrizione: Ottimo dry, effetto potente e duratore, fumata piacevole."
                 ),
-                "video_file_id": "BAACAgQAAxkBAAMLaMmw_dYbQWYR7B0NabwV6oJQavQAAuwZAALltEhS0_Pso_AGVpk2BA",
+                "video_file_id": "BAACAgQAAxkBAAKBFGj_z4A3oJEDk4Yj7NpUv8EawKKAAAJJHAAC6zEBUClCz0loabJtNgQ",
             },
             "10": {
                 "name": "NUOVA ERBA COMING SOON",
