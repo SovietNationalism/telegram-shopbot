@@ -109,10 +109,10 @@ class ShopBot:
             "9": {
                 "name": "Dry Filtre 73/90u",
                 "caption": (
-                    "📦 *DRY*\n"
+                    "📦 *Filtrato*\n"
                     "💵 Prezzo:\n"
                     "3g 30€\n5g 45\n10g 70€\n15g 110€\n20g 125\n25g 150€\n30g 175€\n50g 250€\n70g 335€\n100g 450€\n"
-                    "📝 Descrizione: Ottimo dry, effetto potente e duratore, fumata piacevole."
+                    "📝 Descrizione: Un drysift filtrato a 90/73u.\nFumata piacevole e corposa, sapore pieno e naturale, con una botta lunga e pulita.\nUn hash lavorato bene, di alta qualità."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAKBFGj_z4A3oJEDk4Yj7NpUv8EawKKAAAJJHAAC6zEBUClCz0loabJtNgQ",
             },
