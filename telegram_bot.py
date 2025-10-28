@@ -37,13 +37,14 @@ class ShopBot:
                     "x 20 3 l 335€"
                 ),
                 "caption": (
-                    "📦 Sciroppo al THC\n"
+                    "📦 Sciroppo al THC, formato 100 ml 200 mg\n"
                     "💵 Prezzo:\n"
-                    "x 1 150 ml 30€\n"
-                    "x 2 300 ml 40€\n"
-                    "x 5 750 ml 100€\n"
-                    "x 10 1,5 l 190€\n"
-                    "x 20 3 l 335€\n"
+                    "x 1 30€ (non ordinabile singolarmente)\n"
+                    "x 2 45€\n"
+                    "x 4 60€\n"
+                    "x 5 75€\n"
+                    "x 10 140€€\n"
+                    "x 20 265€\n"
                     "📝 Descrizione: \n"
                     "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo dolce per una stabilità e biodisponibilità superiore.\n"
                     "Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi freddi e dolci per coprire il sapore.\n"
@@ -56,7 +57,7 @@ class ShopBot:
                     "🔴 Esperti: 50 + mg (25 ml e oltre)\n"
                     "Ricordarsi che gli ml non equivalgono ai grammi."
                 ),
-                "video_file_id": "BAACAgQAAxkBAAIHDGjL-FIN062pvzPZy9SsquyvMFgSAAJMHQACQu5gUg9g7a-Xob58NgQ",
+                "video_file_id": "BAACAgQAAxkBAAKFGWkBIwRzsDfApvLm5zxk_WBRChDAAAIvKwAC5UMJUK8HDZt1QSigNgQ",
             },
             "3": {
                 "name": "Promo sconto",
