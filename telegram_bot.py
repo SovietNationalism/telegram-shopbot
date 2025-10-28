@@ -105,7 +105,7 @@ class ShopBot:
                     "💡 Pro tip: Scaldatelo nel microonde per 10–20 s e impiattatelo prima di mangiarlo: sarà caldo "
                     "e ancora più buono!"
                 ),
-                "photo_file_id": "AgACAgQAAxkBAAJkPmj2H-KK_qyJT4r6t_7m6dKyODicAAINyzEbq3uoU82sbUh3IVu8AQADAgADeQADNgQ",
+                "video_file_id": "BAACAgQAAxkBAAKFQWkBJWdYQlJV45y5vgY_vGhS-aQnAAIyKwAC5UMJUAUSNKi6rfVtNgQ",
             },
             "9": {
                 "name": "Dry Filtre 73/90u",
