@@ -96,7 +96,7 @@ class ShopBot:
                 "caption": (
                     "DISPONIBILE\n\n"
                     "📦 *THC Brownies*\n"
-                    "💵 Prezzo:\n1pz 10€\n2pz 20€\n5pz 40€\n10pz 70€\n20pz 130€\n50pz 280€\n\n"
+                    "💵 Prezzo:\n1pz 10€ (non ordinabile singolarmente)\n2pz 20€\n5pz 40€\n10pz 70€\n20pz 130€\n50pz 280€\n\n"
                     "📝 Descrizione: Prodotti fornari con ora 70 mg di THC per pezzo, preparato "
                     "con burro infuso e lecitina per un effetto potente e ben distribuito.\n"
                     "⚠️ Non consumate l’intero brownie (a meno che non abbiate una tolleranza alta).\n"
