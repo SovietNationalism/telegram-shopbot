@@ -132,7 +132,7 @@ class ShopBot:
                     "50g 300€\n"
                     "70g 390€\n"
                     "100g 500€\n\n"
-                    "📝 Descrizione: Sold out nuova weed arriva prossima settimana. Arriva il 30/31."
+                    "📝 Descrizione: Sold out nuova weed restock ritardato leggermente.."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAP-aMm2JcuYvMEc2e-Xlzg8rE7ytTwAApAaAAICDkhS2xCWqGMGGS42BA",
             },
@@ -146,26 +146,9 @@ class ShopBot:
                     "3 - 65\n"
                     "5 - 100\n"
                     "10 - 180\n\n"
-                    "📝 Descrizione: Sold out. Caramelle gommose in formato da 20 caramelle da 25 mg l’una. Effetto piacevole, rilassante e duraturo, molto divertenti e comode da consumare."
+                    "📝 Descrizione: Caramelle gommose in formato da 20 caramelle da 25 mg l’una. Effetto piacevole, rilassante e duraturo, molto divertenti e comode da consumare."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAIFfWjLK8Fs4ZE3FisMbr8bMsAhmIyEAAJ2HAACQu5gUt0aqGYUVbjHNgQ",
-            },
-            "13": {
-                "name": "Frozen Eggs Magic Farm",
-                "caption": (
-                    "📦 *Frozen Eggs Magic Farm 🕴️*\n"
-                    "💵 Prezzo:\n"
-                    "2.5g 40€\n"
-                    "5g 60€\n"
-                    "10g 115€\n"
-                    "20g 200€\n"
-                    "30g 285€\n"
-                    "40g 370€\n"
-                    "50g 450€\n"
-                    "100g 820€\n\n"
-                    "📝 Descrizione: ULTIMISSIME RIMANENZE. Un frozen sift di alta qualità, morbidissimo e vellutato al tatto, un piacere da fumare con un tiro saporito, dolce e intenso, botta potente e odore fresco. Un materiale molto più pulito di qualsiasi filtrato."
-                ),
-                "video_file_id": "BAACAgQAAxkBAAIXnGjWu4i8CNXPzvnzwSSTxwWySGbXAAKWHwACDyKwUq4zyybmyaaKNgQ",
             },
         }
 
