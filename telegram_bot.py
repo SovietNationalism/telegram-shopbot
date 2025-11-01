@@ -30,11 +30,7 @@ class ShopBot:
             "2": {
                 "name": "Sciroppo al THC",
                 "price": (
-                    "x 1 150 ml 30€\n"
-                    "x 2 300 ml 40€\n"
-                    "x 5 750 ml 100€\n"
-                    "x 10 1,5 l 190€\n"
-                    "x 20 3 l 335€"
+                    "."
                 ),
                 "caption": (
                     "📦 Sciroppo al THC, formato 100 ml 200 mg\n"
