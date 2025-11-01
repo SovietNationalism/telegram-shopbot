@@ -43,7 +43,7 @@ class ShopBot:
                     "x 2 45€\n"
                     "x 4 60€\n"
                     "x 5 75€\n"
-                    "x 10 140€€\n"
+                    "x 10 140€\n"
                     "x 20 265€\n"
                     "📝 Descrizione: \n"
                     "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo dolce per una stabilità e biodisponibilità superiore.\n"
@@ -112,7 +112,7 @@ class ShopBot:
                 "caption": (
                     "📦 *Filtrato*\n"
                     "💵 Prezzo:\n"
-                    "3g 30€\n5g 45\n10g 70€\n15g 110€\n20g 125\n25g 150€\n30g 175€\n50g 250€\n70g 335€\n100g 450€\n"
+                    "3g 30€\n5g 45€\n10g 70€\n15g 110€\n20g 125€\n25g 150€\n30g 175€\n50g 250€\n70g 335€\n100g 450€\n"
                     "📝 Descrizione: Un drysift filtrato a 90/73u.\nFumata piacevole e corposa, sapore pieno e naturale, con una botta lunga e pulita.\nUn hash lavorato bene, di alta qualità."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAKBFGj_z4A3oJEDk4Yj7NpUv8EawKKAAAJJHAAC6zEBUClCz0loabJtNgQ",
@@ -340,7 +340,8 @@ class ShopBot:
                 [
                     InlineKeyboardButton("🛠️ Servizi",      callback_data="services"),
                     InlineKeyboardButton("✨ Offerte",       callback_data="product_3"),
-                ],
+                ],  
+                [InlineKeyboardButton(“💸 Rimborsi Amazon”, callback_data=“amazon_refunds”)],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")],
             ]
             sent = await context.bot.send_message(
@@ -406,7 +407,6 @@ class ShopBot:
                 [InlineKeyboardButton(self.products["9"]["name"], callback_data="product_9")],
                 [InlineKeyboardButton(self.products["10"]["name"], callback_data="product_10")],
                 [InlineKeyboardButton(self.products["11"]["name"], callback_data="product_11")],
-                [InlineKeyboardButton(self.products["13"]["name"], callback_data="product_13")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]
             ]
             sent = await context.bot.send_message(
@@ -433,6 +433,26 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
+        if d == "amazon_refunds":
+            text = (
+                "Collab @ItalianEdibles x @F2rrar1 💥\n\n"
+                "VUOI RICEVERE MERCE ONLINE A PREZZI ALTAMENTE RIBASSATI? 👀\n\n"
+                "Il mio amico @F2rrar1 è qui per te!\n"
+                "Offre un servizio esclusivo per farti ricevere ordini da Amazon, Apple e molti altri store a meno della metà del prezzo originale.\n"
+                "Decidi cosa ordinare e lui farà in modo che tu venga rimborsato in pieno. 💸\n\n"
+                "💰 Bonus esclusivo per i nostri membri:\n"
+                "Se compri da lui, il 10% di quello che spendi si trasforma in crediti spendibili da noi!\n"
+                "Esempio: se lo paghi 200€ per un portatile, ricevi un buono da 20€ da utilizzare su qualsiasi ordine nel nostro store. 🔥\n\n"
+                "📋 Condizioni:\n"
+                "Quando ordini da @F2rrar1, ricorda di menzionare questo annuncio per ricevere il cashback."
+            )
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]]
+            sent = await context.bot.send_message(
+                chat_id=cid, text=text, reply_markup=InlineKeyboardMarkup(kb)
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
         if d.startswith("product_"):
             key = d.split("_", 1)[1]
             prod = self.products.get(key)
