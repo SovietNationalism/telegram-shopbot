@@ -337,7 +337,7 @@ class ShopBot:
                     InlineKeyboardButton("🛠️ Servizi",      callback_data="services"),
                     InlineKeyboardButton("✨ Offerte",       callback_data="product_3"),
                 ],  
-                [InlineKeyboardButton(“💸 Rimborsi Amazon”, callback_data=“amazon_refunds”)],
+                [InlineKeyboardButton("💸 Rimborsi Amazon", callback_data="amazon_refunds")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")],
             ]
             sent = await context.bot.send_message(
