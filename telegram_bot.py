@@ -56,12 +56,14 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAKFGWkBIwRzsDfApvLm5zxk_WBRChDAAAIvKwAC5UMJUK8HDZt1QSigNgQ",
             },
             "3": {
-                "name": "Promo sconto",
+                "name": "PROMO SCONTO AGGIORNATE NOVEMBRE",
                 "caption": (
                     "PROMO CLIENTI\n"
-                    "I pacchetti di Ottobre sono:\n"
-                    "5g frozen 5g weed 105€\n"
-                    "10g frozen + 1 sciroppo 135€\n"
+                    "I pacchetti di Novembre sono:\n"
+                    "2 THC Lean + 10g dry 105€\n"
+                    "1 THC Lean + 1 Packwoods + 5g dry 95€\n"
+                    "1 Packwoods + 10g dry 105€\n"
+                    "2 Packwoods + 15g dry 175€\n"
                     "+ Se aggiungi un brownie ai seguenti ordini costa solo 5€!\n"
                     "\n"
                     "PROGRAMMA REFERRAL\n"
@@ -84,7 +86,7 @@ class ShopBot:
                 "name": "THC Vapes Packwoods™ x Runtz",
                 "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
                 "description": "Con 1000 mg di distillato Delta-9 THC, basta una decina di tiri per sentire una fattanza potente.",
-                "special_note": "DISPONIBILI!!.",
+                "special_note": "DISPONIBILI!",
                 "video_file_id": "BAACAgQAAxkBAAIFf2jLLB8yvdGJo8oIv_8LTJ8HBethAAJ3HAACQu5gUmZ8c0unLksLNgQ",
             },
             "5": {
