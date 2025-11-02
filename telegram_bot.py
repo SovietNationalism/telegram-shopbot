@@ -436,7 +436,7 @@ class ShopBot:
                 "Collab @ItalianEdibles x @F2rrar1 💥\n\n"
                 "VUOI RICEVERE MERCE ONLINE A PREZZI ALTAMENTE RIBASSATI? 👀\n\n"
                 "Il mio amico @F2rrar1 è qui per te!\n"
-                "Offre un servizio esclusivo per farti ricevere ordini da Amazon, Apple e molti altri store a meno della metà del prezzo originale. (fee 30%)\n"
+                "Offre un servizio esclusivo per farti ricevere ordini da Amazon, Apple e molti altri store a meno della metà del prezzo originale. (fee 30% anticipata)\n"
                 "Decidi cosa ordinare e lui farà in modo che tu venga rimborsato in pieno. 💸\n\n"
                 "💰 Bonus esclusivo per i nostri membri:\n"
                 "Se compri da lui, il 10% di quello che spendi si trasforma in crediti spendibili da noi!\n"
