@@ -442,7 +442,8 @@ class ShopBot:
                 "Se compri da lui, il 10% di quello che spendi si trasforma in crediti spendibili da noi!\n"
                 "Esempio: se lo paghi 200€ per un portatile, ricevi un buono da 20€ da utilizzare su qualsiasi ordine nel nostro store. 🔥\n\n"
                 "📋 Condizioni:\n"
-                "Quando ordini da @F2rrar1, ricorda di menzionare questo annuncio per ricevere il cashback."
+                "- Quando ordini da @F2rrar1, ricorda di menzionare questo annuncio per ricevere il cashback.\n"
+                "- Parlare solo con @F2rrar1 per ordinare, prima del pagamento si deve stabilire tutti i dettagli dell'ordine, eventuali chiarimenti o etc."
             )
             kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]]
             sent = await context.bot.send_message(
