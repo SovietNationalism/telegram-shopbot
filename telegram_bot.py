@@ -84,7 +84,7 @@ class ShopBot:
             },
             "4": {
                 "name": "THC Vapes Packwoods™ x Runtz",
-                "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300",
+                "price": "1 - 45\n2 - 80\n3 - 110\n4 - 135\n5 - 160\n10 - 300\n12 - 350\n15 - 420",
                 "description": "Con 1000 mg di distillato Delta-9 THC, basta una decina di tiri per sentire una fattanza potente.",
                 "special_note": "DISPONIBILI!",
                 "video_file_id": "BAACAgQAAxkBAAIFf2jLLB8yvdGJo8oIv_8LTJ8HBethAAJ3HAACQu5gUmZ8c0unLksLNgQ",
@@ -110,7 +110,7 @@ class ShopBot:
                 "caption": (
                     "📦 *Filtrato*\n"
                     "💵 Prezzo:\n"
-                    "3g 30€\n5g 45€\n10g 70€\n15g 110€\n20g 125€\n25g 150€\n30g 175€\n50g 250€\n70g 335€\n100g 450€\n"
+                    "3g 30€\n5g 45€\n10g 70€\n15g 110€\n20g 135€\n25g 160€\n30g 180€\n40g 210€\ns50g 250€\n70g 335€\n100g 450€\n200g 880€\n300g 1260€"
                     "📝 Descrizione: Un drysift filtrato a 90/73u.\nFumata piacevole e corposa, sapore pieno e naturale, con una botta lunga e pulita.\nUn hash lavorato bene, di alta qualità."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAKBFGj_z4A3oJEDk4Yj7NpUv8EawKKAAAJJHAAC6zEBUClCz0loabJtNgQ",
