@@ -12,7 +12,7 @@ BOT_TOKEN         = os.getenv("BOT_TOKEN")
 ADMIN_USER_ID     = 6840588025
 ADMIN_CONTACT     = "https://t.me/RegularDope"
 
-WELCOME_IMAGE_URL = "https://i.postimg.cc/3wntg69X/Chat-GPT-Image-10-nov-2025-18-46-01.png"
+WELCOME_IMAGE_URL = ""
 WELCOME_TEXT = (
     "Benvenuto da Regular Dope!\n"
     "Un’esperienza pensata per farti rilassare, senza preoccupazioni né stress.\n"
