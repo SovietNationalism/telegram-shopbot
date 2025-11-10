@@ -12,12 +12,13 @@ BOT_TOKEN         = os.getenv("BOT_TOKEN")
 ADMIN_USER_ID     = 6840588025
 ADMIN_CONTACT     = "https://t.me/RegularDope"
 
-WELCOME_IMAGE_URL = ""
+WELCOME_IMAGE_URL = "https://i.postimg.cc/3wntg69X/Chat-GPT-Image-10-nov-2025-18-46-01.png"
 WELCOME_TEXT = (
     "Benvenuto da Regular Dope!\n"
     "Un’esperienza pensata per farti rilassare, senza preoccupazioni né stress.\n"
     "Scopri un mondo di prodotti selezionati attraverso questa pratica vetrina e inizia l’avventura con /start."
 )
+
 TOS_TEXT = (
     "COME ORDINARE\n\n"
     "Per effettuare un ordine, scrivi a @RegularDope e compila la seguente scheda:\n\n"
@@ -40,6 +41,7 @@ TOS_TEXT = (
     "In entrambi i video devono essere mostrati tutti i lati del pacco per verificare che non sia stato manomesso.\n\n"
     "In caso di pacco smarrito in transito con valore superiore a 150 €, è previsto automaticamente un rimborso o una rispedizione del 25%, a meno che non venga pagata un’assicurazione proporzionale al valore dell’ordine, che garantisce un rimborso o una rispedizione completa."
 )
+
 PAGAMENTI_TEXT = (
     "METODI DI PAGAMENTO\n\n"
     "• Bonifico istantaneo (0% commissione)\n"
@@ -55,11 +57,16 @@ PAGAMENTI_TEXT = (
     "• Altri corrieri 10€"
 )
 
-# ──────────────────────── BOT DATA ──────────────────────── #
+# ────────────────── LOGGER SETUP ────────────────── #
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    level=logging.INFO
+)
+logger = logging.getLogger(__name__)
 
+# ─────────────────────── BOT CLASS ─────────────────────── #
 class ShopBot:
     def __init__(self):
-        # --- (Any layout with file ID can be changed live by admin) --- #
         self.products = {
             "packwoods": {
                 "name": "THC Vapes Packwoods™ x Runtz",
@@ -79,10 +86,10 @@ class ShopBot:
         }
         self.categories = {
             "dry": [
-                # Insert products for DRY later
+                # Add DRY category products here later as dicts with keys: name, caption, video_file_id (opt)
             ],
             "weed": [
-                # Insert products for WEED later
+                # Add WEED category products here later the same way
             ]
         }
         self.user_ids = set()
@@ -104,11 +111,9 @@ class ShopBot:
                 pass
             context.user_data["last_menu_msg_id"] = None
 
-    # ──────────────────────────  COMMANDS  ────────────────────────── #
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         self.user_ids.add(update.effective_user.id)
         await self.delete_last_menu(context, update.effective_chat.id)
-
         kb = [
             [InlineKeyboardButton("🛍️ SHOP", callback_data="shop")],
             [InlineKeyboardButton("💳 PAGAMENTI", callback_data="pagamenti")],
@@ -141,10 +146,9 @@ class ShopBot:
                 logger.warning(f"Impossibile inviare a {uid}: {e}")
         await update.message.reply_text(f"✅ Messaggio inviato a {count} utenti.")
 
-    # ──────────────────────────  CALLBACKS  ────────────────────────── #
     async def button_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        q   = update.callback_query
-        d   = q.data
+        q = update.callback_query
+        d = q.data
         cid = q.message.chat.id
         self.user_ids.add(update.effective_user.id)
         await q.answer()
@@ -153,7 +157,7 @@ class ShopBot:
             await self._relay_to_admin(context, update.effective_user, f"Pressed button: {d}")
         await self.delete_last_menu(context, cid)
 
-        # Main menu buttons
+        # Main navigation
         if d in ("back_to_main", "main"):
             await self.start(update, context)
             return
@@ -205,24 +209,6 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        # --- Category lists (empty for now) --- #
-        if d in ("cat_dry", "cat_weed"):
-            cat = "dry" if d == "cat_dry" else "weed"
-            prods = self.categories.get(cat, [])
-            kb = [
-                [InlineKeyboardButton(p["name"], callback_data=f"prod_{cat}_{i}")]
-                for i, p in enumerate(prods)
-            ] + [[InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]]
-            txt = "Nessun prodotto disponibile." if not prods else "Scegli un prodotto:"
-            sent = await context.bot.send_message(
-                chat_id=cid,
-                text=txt,
-                reply_markup=InlineKeyboardMarkup(kb)
-            )
-            context.user_data["last_menu_msg_id"] = sent.message_id
-            return
-
-        # PACKWOODS direct
         if d == "prod_packwoods":
             prod = self.products["packwoods"]
             caption = f"📦 *{prod['name']}*\n💵 Prezzo:\n{prod['price']}\n📝 Descrizione: {prod['description']}"
@@ -250,14 +236,29 @@ class ShopBot:
                 context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        # Category products (expand as needed, keeping admin features)
+        if d in ("cat_dry", "cat_weed"):
+            cat = "dry" if d == "cat_dry" else "weed"
+            prods = self.categories.get(cat, [])
+            kb = [
+                [InlineKeyboardButton(p["name"], callback_data=f"prod_{cat}_{i}")]
+                for i, p in enumerate(prods)
+            ] + [[InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]]
+            txt = "Nessun prodotto disponibile." if not prods else "Scegli un prodotto:"
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text=txt,
+                reply_markup=InlineKeyboardMarkup(kb)
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
         if d.startswith("prod_dry_") or d.startswith("prod_weed_"):
             cat = "dry" if d.startswith("prod_dry_") else "weed"
             idx = int(d.rsplit("_", 1)[1])
             prods = self.categories.get(cat, [])
             if 0 <= idx < len(prods):
                 prod = prods[idx]
-                caption = prod["caption"] if "caption" in prod and prod["caption"] else f"📦 *{prod['name']}*"
+                caption = prod.get("caption", f"📦 *{prod.get('name', '')}*")
                 kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data=f"cat_{cat}")]]
                 if prod.get("video_file_id"):
                     try:
@@ -284,9 +285,8 @@ class ShopBot:
                 await q.answer("❌ Prodotto non trovato!")
             return
 
-    # ──────────────────────── MESSAGES ──────────────────────── #
     async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        m   = update.effective_message
+        m = update.effective_message
         usr = update.effective_user
         self.user_ids.add(usr.id)
         if usr and usr.id != ADMIN_USER_ID:
@@ -297,9 +297,11 @@ class ShopBot:
             await self._relay_to_admin(context, usr, txt)
         if usr and usr.id == ADMIN_USER_ID:
             if m.video:
-                await m.reply_text(f"File ID del video:\n<code>{m.video.file_id}</code>", parse_mode=ParseMode.HTML); return
+                await m.reply_text(f"File ID del video:\n<code>{m.video.file_id}</code>", parse_mode=ParseMode.HTML)
+                return
             if m.photo:
-                await m.reply_text(f"File ID della foto:\n<code>{m.photo[-1].file_id}</code>", parse_mode=ParseMode.HTML); return
+                await m.reply_text(f"File ID della foto:\n<code>{m.photo[-1].file_id}</code>", parse_mode=ParseMode.HTML)
+                return
         t = m.text.lower() if m.text else ""
         if any(w in t for w in ("ciao", "salve")):
             await m.reply_text("Ciao! 👋 Usa /start per iniziare.")
@@ -308,7 +310,7 @@ class ShopBot:
         else:
             await m.reply_text("Non ho capito. Usa /start per vedere le opzioni disponibili.")
 
-# ────────────────────────── MAIN ────────────────────────── #
+# ───────────────────────── MAIN ───────────────────────── #
 def main():
     logger.info("Avvio del bot...")
     try:
@@ -323,5 +325,6 @@ def main():
     except Exception as e:
         logger.exception(f"❌ Errore critico: {e}")
         sys.exit(1)
+
 if __name__ == "__main__":
     main()
