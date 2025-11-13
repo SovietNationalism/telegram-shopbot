@@ -97,10 +97,6 @@ class ShopBot:
                 ),
                 "video_file_id": "",  # Fill as needed
             },
-            "funghetti": {
-                "caption": " placeholder ",
-                "video_file_id": "",  # Fill as needed
-            },
         }
         self.categories = {
             "dry": [
