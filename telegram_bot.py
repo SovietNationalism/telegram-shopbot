@@ -83,12 +83,17 @@ class ShopBot:
                 "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
                 "video_file_id": "",  # Fill as needed
             },
+            "funghetti": {
+                "caption": " placeholder ",
+                "video_file_id": "",  # Fill as needed
+            },
         }
         self.categories = {
             "dry": [
                 {
                     "name": "STATIC 220/73",
                     "caption": "placeholder",
+                    "video_file_id": "",  # Fill as needed
                 },
             ],
             "weed": [
@@ -148,6 +153,29 @@ class ShopBot:
             except Exception as e:
                 logger.warning(f"Impossibile inviare a {uid}: {e}")
         await update.message.reply_text(f"✅ Messaggio inviato a {count} utenti.")
+
+    async def _send_media_or_text(self, context, chat_id, caption, back_callback, video_file_id=""):
+        kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data=back_callback)]]
+        if video_file_id:
+            try:
+                sent = await context.bot.send_video(
+                    chat_id=chat_id,
+                    video=video_file_id,
+                    caption=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    supports_streaming=True,
+                    reply_markup=InlineKeyboardMarkup(kb),
+                )
+                return sent
+            except BadRequest:
+                pass
+        sent = await context.bot.send_message(
+            chat_id=chat_id,
+            text=caption,
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(kb),
+        )
+        return sent
 
     async def button_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         q = update.callback_query
@@ -217,37 +245,29 @@ class ShopBot:
 
         if d == "prod_packwoods":
             prod = self.products["packwoods"]
-            caption = f"📦 *{prod['name']}*\n💵 Prezzo:\n{prod['price']}\n📝 Descrizione: {prod['description']}"
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]]
-            if prod.get("video_file_id"):
-                try:
-                    sent = await context.bot.send_video(
-                        chat_id=cid,
-                        video=prod["video_file_id"],
-                        caption=caption,
-                        parse_mode=ParseMode.MARKDOWN,
-                        supports_streaming=True,
-                        reply_markup=InlineKeyboardMarkup(kb)
-                    )
-                    context.user_data["last_menu_msg_id"] = sent.message_id
-                except BadRequest:
-                    sent = await context.bot.send_message(
-                        chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(kb)
-                    )
-                    context.user_data["last_menu_msg_id"] = sent.message_id
-            else:
-                sent = await context.bot.send_message(
-                    chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(kb)
-                )
-                context.user_data["last_menu_msg_id"] = sent.message_id
+            caption = (
+                f"📦 *{prod['name']}*\n"
+                f"💵 Prezzo:\n{prod['price']}\n"
+                f"📝 Descrizione: {prod['description']}"
+            )
+            sent = await self._send_media_or_text(
+                context,
+                cid,
+                caption,
+                back_callback="shop",
+                video_file_id=prod.get("video_file_id", ""),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
         if d == "prod_funghetti":
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]]
-            sent = await context.bot.send_message(
-                chat_id=cid,
-                text=" placeholder ",
-                reply_markup=InlineKeyboardMarkup(kb)
+            prod = self.products["funghetti"]
+            sent = await self._send_media_or_text(
+                context,
+                cid,
+                prod.get("caption", ""),
+                back_callback="shop",
+                video_file_id=prod.get("video_file_id", ""),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
