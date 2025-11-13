@@ -9,7 +9,7 @@ from telegram.error import BadRequest
 
 # ───────────────────────── CONFIG ───────────────────────── #
 BOT_TOKEN         = os.getenv("BOT_TOKEN")
-ADMIN_USER_ID     = 6840588025
+ADMIN_USER_ID     = 8219761049
 ADMIN_CONTACT     = "https://t.me/RegularDope"
 
 WELCOME_IMAGE_URL = "https://i.postimg.cc/3wntg69X/Chat-GPT-Image-10-nov-2025-18-46-01.png"
