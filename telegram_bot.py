@@ -32,7 +32,7 @@ TOS_TEXT = (
     "• Num di Tel / Email\n"
     "• Indirizzo o punto di ritiro\n"
     "• Eventuali note o richieste speciali\n"
-    "(Il nome e cognome non deve essere per forza reale.)\n\n"
+    "(I nomi e i cognomi non devono essere per forza reali.)\n\n"
     "POLITICA DI RESHIP E ASSISTENZA\n\n"
     "In caso di pacco smarrito in transito con valore inferiore a 150 €, è prevista automaticamente la piena rispedizione del materiale, se possibile, oppure il rimborso.\n\n"
     "Per resi o problemi sul prodotto è obbligatorio fornire:\n"
