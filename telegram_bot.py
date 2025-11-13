@@ -171,7 +171,10 @@ class ShopBot:
                     InlineKeyboardButton("DRY", callback_data="cat_dry"),
                     InlineKeyboardButton("WEED", callback_data="cat_weed")
                 ],
-                [InlineKeyboardButton("PACKWOODS X RUNTZ", callback_data="prod_packwoods")],
+                [
+                    InlineKeyboardButton("PACKWOODS X RUNTZ", callback_data="prod_packwoods"),
+                    InlineKeyboardButton("FUNGHETTI", callback_data="prod_funghetti")
+                ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
             ]
             sent = await context.bot.send_message(
@@ -237,6 +240,16 @@ class ShopBot:
                     chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(kb)
                 )
                 context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "prod_funghetti":
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text=" placeholder ",
+                reply_markup=InlineKeyboardMarkup(kb)
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
         if d in ("cat_dry", "cat_weed"):
