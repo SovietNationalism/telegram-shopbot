@@ -86,7 +86,10 @@ class ShopBot:
         }
         self.categories = {
             "dry": [
-                # Add DRY category products here later as dicts with keys: name, caption, video_file_id (opt)
+                {
+                    "name": "STATIC 220/73",
+                    "caption": "placeholder",
+                },
             ],
             "weed": [
                 # Add WEED category products here later the same way
