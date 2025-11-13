@@ -81,6 +81,20 @@ class ShopBot:
                     "20 - 550"
                 ),
                 "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
+                "video_file_id": "BAACAgQAAxkBAAIDQ2kWHNki6uK0P2M3PPNr4mVKJLXjAALKHQACdXSwUHCdt4u11IocNgQ",
+            },
+            "funghetti": {
+                "caption": (
+                    "📦 *Funghetti*\n"
+                    "In arrivo settimana prossima! Funghi Cubensis varietà McKennai e Golden Teacher\n\n"
+                    "3.5g 45\n"
+                    "5g 65\n"
+                    "10g 105\n"
+                    "15g 125\n\n"
+                    "Una miscela di varietà classiche e potenti, McKennai e Golden Teacher, note per la loro qualità e intensità. "
+                    "Effetto profondo e duraturo, ideale per esplorare nuove dimensioni. Disponibili subito per chi cerca un'esperienza "
+                    "autentica e coinvolgente."
+                ),
                 "video_file_id": "",  # Fill as needed
             },
             "funghetti": {
@@ -92,7 +106,21 @@ class ShopBot:
             "dry": [
                 {
                     "name": "STATIC 220/73",
-                    "caption": "placeholder",
+                    "caption": (
+                        "📦 *STATIC 220/73*\n"
+                        "DISPONIBILI SUBITO:\n"
+                        "5g 45\n"
+                        "10g 70\n"
+                        "15g 105\n"
+                        "TAGLI PIÙ GRANDI COMING SOON\n"
+                        "20g 130\n"
+                        "30g 175\n"
+                        "50g 250\n"
+                        "100g 450\n"
+                        "200g 830\n\n"
+                        "Classico dry sift commerciale, lavorazione a secco di qualità standard. Consistenza friabile facile da rollare. "
+                        "Aroma intenso con note speziate profonde, effetto corpo-mente bilanciato e potente, ideale per uso quotidiano."
+                    ),
                     "video_file_id": "",  # Fill as needed
                 },
             ],
@@ -100,6 +128,21 @@ class ShopBot:
                 # Add WEED category products here later the same way
             ]
         }
+        self.weed_overview = (
+            "🌿 *Weed*\n"
+            "Una Calispain dalla genetica agrumata, dal profilo aromatico fresco e deciso. Fiori compatti e resinosi, estremamente "
+            "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere. In arrivo settimana prossima!\n\n"
+            "Citronella Kush\n"
+            "5g 40\n"
+            "10g 75\n"
+            "15g 105\n"
+            "20g 135\n"
+            "30g 185\n"
+            "40g 220\n"
+            "50g 250\n"
+            "100g 420\n"
+            "200g 800"
+        )
         self.user_ids = set()
 
     async def _relay_to_admin(self, context, who, what):
@@ -272,8 +315,18 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        if d in ("cat_dry", "cat_weed"):
-            cat = "dry" if d == "cat_dry" else "weed"
+        if d == "cat_weed":
+            sent = await self._send_media_or_text(
+                context,
+                cid,
+                self.weed_overview,
+                back_callback="shop",
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "cat_dry":
+            cat = "dry"
             prods = self.categories.get(cat, [])
             kb = [
                 [InlineKeyboardButton(p["name"], callback_data=f"prod_{cat}_{i}")]
