@@ -81,6 +81,20 @@ class ShopBot:
                     "20 - 550"
                 ),
                 "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
+                "video_file_id": "BAACAgQAAxkBAAIDQ2kWHNki6uK0P2M3PPNr4mVKJLXjAALKHQACdXSwUHCdt4u11IocNgQ",
+            },
+            "funghetti": {
+                "caption": (
+                    "📦 *Funghetti*\n"
+                    "In arrivo settimana prossima! Funghi Cubensis varietà McKennai e Golden Teacher\n\n"
+                    "3.5g 45\n"
+                    "5g 65\n"
+                    "10g 105\n"
+                    "15g 125\n\n"
+                    "Una miscela di varietà classiche e potenti, McKennai e Golden Teacher, note per la loro qualità e intensità. "
+                    "Effetto profondo e duraturo, ideale per esplorare nuove dimensioni. Disponibili subito per chi cerca un'esperienza "
+                    "autentica e coinvolgente."
+                ),
                 "video_file_id": "",  # Fill as needed
             },
         }
@@ -88,13 +102,43 @@ class ShopBot:
             "dry": [
                 {
                     "name": "STATIC 220/73",
-                    "caption": "placeholder",
+                    "caption": (
+                        "📦 *STATIC 220/73*\n"
+                        "DISPONIBILI SUBITO:\n"
+                        "5g 45\n"
+                        "10g 70\n"
+                        "15g 105\n"
+                        "TAGLI PIÙ GRANDI COMING SOON\n"
+                        "20g 130\n"
+                        "30g 175\n"
+                        "50g 250\n"
+                        "100g 450\n"
+                        "200g 830\n\n"
+                        "Classico dry sift commerciale, lavorazione a secco di qualità standard. Consistenza friabile facile da rollare. "
+                        "Aroma intenso con note speziate profonde, effetto corpo-mente bilanciato e potente, ideale per uso quotidiano."
+                    ),
+                    "video_file_id": "",  # Fill as needed
                 },
             ],
             "weed": [
                 # Add WEED category products here later the same way
             ]
         }
+        self.weed_overview = (
+            "🌿 *Weed*\n"
+            "Una Calispain dalla genetica agrumata, dal profilo aromatico fresco e deciso. Fiori compatti e resinosi, estremamente "
+            "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere. In arrivo settimana prossima!\n\n"
+            "Citronella Kush\n"
+            "5g 40\n"
+            "10g 75\n"
+            "15g 105\n"
+            "20g 135\n"
+            "30g 185\n"
+            "40g 220\n"
+            "50g 250\n"
+            "100g 420\n"
+            "200g 800"
+        )
         self.user_ids = set()
 
     async def _relay_to_admin(self, context, who, what):
@@ -149,6 +193,29 @@ class ShopBot:
                 logger.warning(f"Impossibile inviare a {uid}: {e}")
         await update.message.reply_text(f"✅ Messaggio inviato a {count} utenti.")
 
+    async def _send_media_or_text(self, context, chat_id, caption, back_callback, video_file_id=""):
+        kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data=back_callback)]]
+        if video_file_id:
+            try:
+                sent = await context.bot.send_video(
+                    chat_id=chat_id,
+                    video=video_file_id,
+                    caption=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    supports_streaming=True,
+                    reply_markup=InlineKeyboardMarkup(kb),
+                )
+                return sent
+            except BadRequest:
+                pass
+        sent = await context.bot.send_message(
+            chat_id=chat_id,
+            text=caption,
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(kb),
+        )
+        return sent
+
     async def button_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         q = update.callback_query
         d = q.data
@@ -171,7 +238,10 @@ class ShopBot:
                     InlineKeyboardButton("DRY", callback_data="cat_dry"),
                     InlineKeyboardButton("WEED", callback_data="cat_weed")
                 ],
-                [InlineKeyboardButton("PACKWOODS X RUNTZ", callback_data="prod_packwoods")],
+                [
+                    InlineKeyboardButton("PACKWOODS X RUNTZ", callback_data="prod_packwoods"),
+                    InlineKeyboardButton("FUNGHETTI", callback_data="prod_funghetti")
+                ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
             ]
             sent = await context.bot.send_message(
@@ -214,33 +284,45 @@ class ShopBot:
 
         if d == "prod_packwoods":
             prod = self.products["packwoods"]
-            caption = f"📦 *{prod['name']}*\n💵 Prezzo:\n{prod['price']}\n📝 Descrizione: {prod['description']}"
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]]
-            if prod.get("video_file_id"):
-                try:
-                    sent = await context.bot.send_video(
-                        chat_id=cid,
-                        video=prod["video_file_id"],
-                        caption=caption,
-                        parse_mode=ParseMode.MARKDOWN,
-                        supports_streaming=True,
-                        reply_markup=InlineKeyboardMarkup(kb)
-                    )
-                    context.user_data["last_menu_msg_id"] = sent.message_id
-                except BadRequest:
-                    sent = await context.bot.send_message(
-                        chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(kb)
-                    )
-                    context.user_data["last_menu_msg_id"] = sent.message_id
-            else:
-                sent = await context.bot.send_message(
-                    chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(kb)
-                )
-                context.user_data["last_menu_msg_id"] = sent.message_id
+            caption = (
+                f"📦 *{prod['name']}*\n"
+                f"💵 Prezzo:\n{prod['price']}\n"
+                f"📝 Descrizione: {prod['description']}"
+            )
+            sent = await self._send_media_or_text(
+                context,
+                cid,
+                caption,
+                back_callback="shop",
+                video_file_id=prod.get("video_file_id", ""),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        if d in ("cat_dry", "cat_weed"):
-            cat = "dry" if d == "cat_dry" else "weed"
+        if d == "prod_funghetti":
+            prod = self.products["funghetti"]
+            sent = await self._send_media_or_text(
+                context,
+                cid,
+                prod.get("caption", ""),
+                back_callback="shop",
+                video_file_id=prod.get("video_file_id", ""),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "cat_weed":
+            sent = await self._send_media_or_text(
+                context,
+                cid,
+                self.weed_overview,
+                back_callback="shop",
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "cat_dry":
+            cat = "dry"
             prods = self.categories.get(cat, [])
             kb = [
                 [InlineKeyboardButton(p["name"], callback_data=f"prod_{cat}_{i}")]
