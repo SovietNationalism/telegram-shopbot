@@ -82,6 +82,7 @@ class ShopBot:
                 ),
                 "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
                 "video_file_id": "BAACAgQAAxkBAAIDQ2kWHNki6uK0P2M3PPNr4mVKJLXjAALKHQACdXSwUHCdt4u11IocNgQ",
+                "photo_file_ids": [],
             },
             "funghetti": {
                 "caption": (
@@ -96,6 +97,7 @@ class ShopBot:
                     "autentica e coinvolgente."
                 ),
                 "video_file_id": "",  # Fill as needed
+                "photo_file_ids": [],
             },
         }
         self.categories = {
@@ -118,6 +120,7 @@ class ShopBot:
                         "Aroma intenso con note speziate profonde, effetto corpo-mente bilanciato e potente, ideale per uso quotidiano."
                     ),
                     "video_file_id": "",  # Fill as needed
+                    "photo_file_ids": [],
                 },
             ],
             "weed": [
@@ -193,8 +196,19 @@ class ShopBot:
                 logger.warning(f"Impossibile inviare a {uid}: {e}")
         await update.message.reply_text(f"✅ Messaggio inviato a {count} utenti.")
 
-    async def _send_media_or_text(self, context, chat_id, caption, back_callback, video_file_id=""):
+    async def _send_media_or_text(
+        self,
+        context,
+        chat_id,
+        caption,
+        back_callback,
+        video_file_id="",
+        photo_file_ids=None,
+    ):
         kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data=back_callback)]]
+        markup = InlineKeyboardMarkup(kb)
+
+        # Prefer video when available, otherwise try photos, then fall back to text.
         if video_file_id:
             try:
                 sent = await context.bot.send_video(
@@ -203,16 +217,37 @@ class ShopBot:
                     caption=caption,
                     parse_mode=ParseMode.MARKDOWN,
                     supports_streaming=True,
-                    reply_markup=InlineKeyboardMarkup(kb),
+                    reply_markup=markup,
                 )
                 return sent
             except BadRequest:
                 pass
+
+        photo_file_ids = list(photo_file_ids or [])
+        if photo_file_ids:
+            primary_photo_id, *extra_photo_ids = photo_file_ids
+            try:
+                sent = await context.bot.send_photo(
+                    chat_id=chat_id,
+                    photo=primary_photo_id,
+                    caption=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=markup,
+                )
+                for pid in extra_photo_ids:
+                    try:
+                        await context.bot.send_photo(chat_id=chat_id, photo=pid)
+                    except BadRequest:
+                        continue
+                return sent
+            except BadRequest:
+                pass
+
         sent = await context.bot.send_message(
             chat_id=chat_id,
             text=caption,
             parse_mode=ParseMode.MARKDOWN,
-            reply_markup=InlineKeyboardMarkup(kb),
+            reply_markup=markup,
         )
         return sent
 
@@ -295,6 +330,7 @@ class ShopBot:
                 caption,
                 back_callback="shop",
                 video_file_id=prod.get("video_file_id", ""),
+                photo_file_ids=prod.get("photo_file_ids", []),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
@@ -307,6 +343,7 @@ class ShopBot:
                 prod.get("caption", ""),
                 back_callback="shop",
                 video_file_id=prod.get("video_file_id", ""),
+                photo_file_ids=prod.get("photo_file_ids", []),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
@@ -344,28 +381,15 @@ class ShopBot:
             if 0 <= idx < len(prods):
                 prod = prods[idx]
                 caption = prod.get("caption", f"📦 *{prod.get('name', '')}*")
-                kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data=f"cat_{cat}")]]
-                if prod.get("video_file_id"):
-                    try:
-                        sent = await context.bot.send_video(
-                            chat_id=cid,
-                            video=prod["video_file_id"],
-                            caption=caption,
-                            parse_mode=ParseMode.MARKDOWN,
-                            supports_streaming=True,
-                            reply_markup=InlineKeyboardMarkup(kb)
-                        )
-                        context.user_data["last_menu_msg_id"] = sent.message_id
-                    except BadRequest:
-                        sent = await context.bot.send_message(
-                            chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(kb)
-                        )
-                        context.user_data["last_menu_msg_id"] = sent.message_id
-                else:
-                    sent = await context.bot.send_message(
-                        chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(kb)
-                    )
-                    context.user_data["last_menu_msg_id"] = sent.message_id
+                sent = await self._send_media_or_text(
+                    context,
+                    cid,
+                    caption,
+                    back_callback=f"cat_{cat}",
+                    video_file_id=prod.get("video_file_id", ""),
+                    photo_file_ids=prod.get("photo_file_ids", []),
+                )
+                context.user_data["last_menu_msg_id"] = sent.message_id
             else:
                 await q.answer("❌ Prodotto non trovato!")
             return
