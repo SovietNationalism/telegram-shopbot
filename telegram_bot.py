@@ -127,6 +127,7 @@ class ShopBot:
                 # Add WEED category products here later the same way
             ]
         }
+        self.weed_video_file_id = "BAACAgQAAxkBAAIfGGksX9SvE4VCDU76INV67CCyjBRfAAJCGQACfFpgUb9qGHvsCn-ENgQ"
         self.weed_overview = (
             "🌿 *Weed*\n"
             "Una Calispain dalla genetica agrumata, dal profilo aromatico fresco e deciso. Fiori compatti e resinosi, estremamente "
@@ -354,6 +355,7 @@ class ShopBot:
                 cid,
                 self.weed_overview,
                 back_callback="shop",
+                video_file_id=self.weed_video_file_id,
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
