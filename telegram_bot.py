@@ -87,7 +87,7 @@ class ShopBot:
             "funghetti": {
                 "caption": (
                     "📦 *Funghetti*\n"
-                    "In arrivo settimana prossima! Funghi Cubensis varietà McKennai e Golden Teacher\n\n"
+                    "Disponibili.\n\n"
                     "3.5g 45\n"
                     "5g 65\n"
                     "10g 105\n"
@@ -96,7 +96,7 @@ class ShopBot:
                     "Effetto profondo e duraturo, ideale per esplorare nuove dimensioni. Disponibili subito per chi cerca un'esperienza "
                     "autentica e coinvolgente."
                 ),
-                "video_file_id": "",  # Fill as needed
+                "video_file_id": "BAACAgQAAxkBAAIfF2ksX9RrLjl6Zq0RkYlTl3vpSHIKAAICHgACY-ZgUT04ZuR9I1l-NgQ",  # Fill as needed
                 "photo_file_ids": [],
             },
         }
@@ -130,15 +130,15 @@ class ShopBot:
         self.weed_overview = (
             "🌿 *Weed*\n"
             "Una Calispain dalla genetica agrumata, dal profilo aromatico fresco e deciso. Fiori compatti e resinosi, estremamente "
-            "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere. In arrivo settimana prossima!\n\n"
+            "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere. Disponibile!\n\n"
             "Citronella Kush\n"
             "5g 40\n"
-            "10g 75\n"
-            "15g 105\n"
+            "10g 70\n"
+            "15g 100\n"
             "20g 135\n"
             "30g 185\n"
             "40g 220\n"
-            "50g 250\n"
+            "50g 245\n"
             "100g 420\n"
             "200g 800"
         )
