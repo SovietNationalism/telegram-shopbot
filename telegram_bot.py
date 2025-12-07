@@ -113,9 +113,9 @@ class ShopBot:
                         "20g 130\n"
                         "30g 175\n"
                         "50g 250\n"
-                        "100g 470\n"
+                        "100g 450\n"
                         "200g 850\n"
-                        "Meglio dei soliti dry sift commerciale. "
+                        "Card bufalo plein: Meglio dei soliti dry sift commerciali a un prezzo imbattibile."
                         "Effetto forte e duratore, ottimo odore e sapore, un piacere da fumare in tutti i modi."
                     ),
                     "video_file_id": "BAACAgQAAxkBAAIpLGk1eriw6PhQgnRcYqO9Eii-5OpvAAJsHgAC9lypUYj4r8UZBRQLNgQ",  # Fill as needed
