@@ -101,7 +101,7 @@ class ShopBot:
             },
         }
         self.categories = {
-            "dry": [
+            "hash": [
                 {
                     "name": "Filtered 120u",
                     "caption": (
@@ -270,7 +270,7 @@ class ShopBot:
         if d == "shop":
             kb = [
                 [
-                    InlineKeyboardButton("DRY", callback_data="cat_dry"),
+                    InlineKeyboardButton("HASH", callback_data="cat_hash"),
                     InlineKeyboardButton("WEED", callback_data="cat_weed")
                 ],
                 [
@@ -359,8 +359,8 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        if d == "cat_dry":
-            cat = "dry"
+        if d == "cat_hash":
+            cat = "hash"
             prods = self.categories.get(cat, [])
             kb = [
                 [InlineKeyboardButton(p["name"], callback_data=f"prod_{cat}_{i}")]
@@ -375,8 +375,8 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        if d.startswith("prod_dry_") or d.startswith("prod_weed_"):
-            cat = "dry" if d.startswith("prod_dry_") else "weed"
+        if d.startswith("prod_hash_") or d.startswith("prod_weed_"):
+            cat = "hash" if d.startswith("prod_hash_") else "weed"
             idx = int(d.rsplit("_", 1)[1])
             prods = self.categories.get(cat, [])
             if 0 <= idx < len(prods):
