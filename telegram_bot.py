@@ -75,7 +75,7 @@ class ShopBot:
                     "2 - 80\n"
                     "3 - 120\n"
                     "4 - 145\n"
-                    "5 - 160\n"
+                    "5 - 165\n"
                     "10 - 300\n"
                     "12 - 350\n"
                     "20 - 550"
@@ -103,23 +103,22 @@ class ShopBot:
         self.categories = {
             "dry": [
                 {
-                    "name": "STATIC 220/73",
+                    "name": "Filtered 120u",
                     "caption": (
-                        "📦 *STATIC 220/73*\n"
-                        "DISPONIBILI SUBITO:\n"
+                        "📦 *Filtrato 120u*\n"
+                        "DISPONIBILE:\n"
                         "5g 45\n"
                         "10g 70\n"
                         "15g 105\n"
-                        "TAGLI PIÙ GRANDI COMING SOON\n"
                         "20g 130\n"
                         "30g 175\n"
                         "50g 250\n"
-                        "100g 450\n"
-                        "200g 830\n\n"
-                        "Classico dry sift commerciale, lavorazione a secco di qualità standard. Consistenza friabile facile da rollare. "
-                        "Aroma intenso con note speziate profonde, effetto corpo-mente bilanciato e potente, ideale per uso quotidiano."
+                        "100g 470\n"
+                        "200g 850\n"
+                        "Meglio dei soliti dry sift commerciale. "
+                        "Effetto forte e duratore, ottimo odore e sapore, un piacere da fumare in tutti i modi."
                     ),
-                    "video_file_id": "",  # Fill as needed
+                    "video_file_id": "BAACAgQAAxkBAAIpLGk1eriw6PhQgnRcYqO9Eii-5OpvAAJsHgAC9lypUYj4r8UZBRQLNgQ",  # Fill as needed
                     "photo_file_ids": [],
                 },
             ],
