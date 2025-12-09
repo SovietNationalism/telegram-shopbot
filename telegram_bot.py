@@ -134,7 +134,7 @@ class ShopBot:
             "Citronella Kush\n"
             "5g 40\n"
             "10g 70\n"
-            "15g 100\n"
+            "15g 105\n"
             "20g 135\n"
             "30g 185\n"
             "40g 220\n"
