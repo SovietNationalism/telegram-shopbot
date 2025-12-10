@@ -170,6 +170,7 @@ class ShopBot:
             [InlineKeyboardButton("📜 T.O.S.", callback_data="tos")],
             [InlineKeyboardButton("📦 ORDINA QUI", url=ADMIN_CONTACT)],
             [InlineKeyboardButton("💬 CHAT CLIENTI", callback_data="chat_clienti")],
+            [InlineKeyboardButton("📝 CANALE UNICO", url="https://t.me/+d6qKcyCDRmQyNDg8")],
         ]
         m = update.effective_message
         try:
