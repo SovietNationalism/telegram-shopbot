@@ -77,8 +77,6 @@ class ShopBot:
                     "4 - 145\n"
                     "5 - 165\n"
                     "10 - 300\n"
-                    "12 - 350\n"
-                    "20 - 550"
                 ),
                 "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
                 "video_file_id": "BAACAgQAAxkBAAIDQ2kWHNki6uK0P2M3PPNr4mVKJLXjAALKHQACdXSwUHCdt4u11IocNgQ",
@@ -92,7 +90,7 @@ class ShopBot:
                     "5g 65\n"
                     "10g 105\n"
                     "15g 125\n\n"
-                    "Una miscela di varietà classiche e potenti, McKennai e Golden Teacher, note per la loro qualità e intensità. "
+                    "Una miscela di varietà classiche e potenti, McKennai, Golden Teacher, e Jedi Mind Fuck note per la loro qualità e intensità. "
                     "Effetto profondo e duraturo, ideale per esplorare nuove dimensioni. Disponibili subito per chi cerca un'esperienza "
                     "autentica e coinvolgente."
                 ),
@@ -108,10 +106,11 @@ class ShopBot:
                         "📦 *Filtrato 120u*\n"
                         "DISPONIBILE:\n"
                         "5g 45\n"
-                        "10g 70\n"
-                        "15g 105\n"
-                        "20g 130\n"
+                        "10g 75\n"
+                        "15g 110\n"
+                        "20g 135\n"
                         "30g 175\n"
+                        "40g 220\n"
                         "50g 250\n"
                         "100g 450\n"
                         "200g 850\n"
@@ -133,14 +132,14 @@ class ShopBot:
             "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere. Disponibile!\n\n"
             "Citronella Kush\n"
             "5g 40\n"
-            "10g 70\n"
+            "10g 75\n"
             "15g 105\n"
             "20g 135\n"
-            "30g 185\n"
+            "30g 175\n"
             "40g 220\n"
-            "50g 245\n"
+            "50g 230\n"
             "100g 420\n"
-            "200g 800"
+            "200g 780"
         )
         self.user_ids = set()
 
