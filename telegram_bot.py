@@ -39,7 +39,6 @@ TOS_TEXT = (
     "• Un video senza tagli dell’apertura del locker\n"
     "• Un video senza tagli dell’apertura del pacco\n\n"
     "In entrambi i video devono essere mostrati tutti i lati del pacco per verificare che non sia stato manomesso.\n\n"
-    "In caso di pacco smarrito in transito con valore superiore a 150 €, è previsto automaticamente un rimborso o una rispedizione del 25%, a meno che non venga pagata un’assicurazione proporzionale al valore dell’ordine, che garantisce un rimborso o una rispedizione completa."
 )
 
 PAGAMENTI_TEXT = (
@@ -53,7 +52,7 @@ PAGAMENTI_TEXT = (
     "• Gift card crypto (Bitnovo, ecc.) (+10% commissione)\n"
     "• Buoni regalo (Amazon, ecc.) (+50% commissione)\n\n"
     "COSTO SPEDIZIONE:\n"
-    "• Inpost 5€\n"
+    "• Inpost GRATUITA\n"
     "• Altri corrieri 10€"
 )
 
@@ -78,7 +77,7 @@ class ShopBot:
                     "5 - 165\n"
                     "10 - 300\n"
                 ),
-                "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
+                "description": "SOLD OUT AL MOMENTO NUOVE VAPES IN ARRIVO. Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
                 "video_file_id": "BAACAgQAAxkBAAIDQ2kWHNki6uK0P2M3PPNr4mVKJLXjAALKHQACdXSwUHCdt4u11IocNgQ",
                 "photo_file_ids": [],
             },
