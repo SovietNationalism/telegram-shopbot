@@ -97,6 +97,26 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAIfF2ksX9RrLjl6Zq0RkYlTl3vpSHIKAAICHgACY-ZgUT04ZuR9I1l-NgQ",  # Fill as needed
                 "photo_file_ids": [],
             },
+            "sciroppo": {
+                "name": "Sciroppo al THC",
+                "caption": (
+                    "📦 *Sciroppo al THC* (formato 100 ml, 200 mg)\n"
+                    "💵 Prezzo:\n"
+                    "x 1 30€ (non ordinabile singolarmente)\n"
+                    "x 2 45€\n"
+                    "x 4 65€\n"
+                    "x 5 80€\n"
+                    "x 10 140€\n"
+                    "x 20 265€\n\n"
+                    "📝 Descrizione:\n"
+                    "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo dolce per una stabilità e biodisponibilità superiore.\n"
+                    "Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi freddi e dolci per coprire il sapore.\n"
+                    "Scuotere la boccetta prima di ogni uso per distribuirlo bene.\n"
+                    "Gusti: Lampone."
+                ),
+                "video_file_id": "BAACAgQAAxkBAAI6VGk-4bW2wwGF5ZqzMxo3a_gSh_QKAAK-HQAC3yn5URJotpJrsLMVNgQ",  # metti qui il file_id del video se ce l'hai, altrimenti lascia vuoto
+                "photo_file_ids": [],
+            },
         }
         self.categories = {
             "hash": [
@@ -277,6 +297,9 @@ class ShopBot:
                     InlineKeyboardButton("PACKWOODS X RUNTZ", callback_data="prod_packwoods"),
                     InlineKeyboardButton("FUNGHETTI", callback_data="prod_funghetti")
                 ],
+                [
+                    InlineKeyboardButton("SCIROPP0 THC", callback_data="prod_sciroppo")
+                ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
             ]
             sent = await context.bot.send_message(
@@ -337,6 +360,19 @@ class ShopBot:
 
         if d == "prod_funghetti":
             prod = self.products["funghetti"]
+            sent = await self._send_media_or_text(
+                context,
+                cid,
+                prod.get("caption", ""),
+                back_callback="shop",
+                video_file_id=prod.get("video_file_id", ""),
+                photo_file_ids=prod.get("photo_file_ids", []),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+        if d == "prod_sciroppo":
+            prod = self.products["sciroppo"]
             sent = await self._send_media_or_text(
                 context,
                 cid,
