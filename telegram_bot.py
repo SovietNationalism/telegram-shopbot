@@ -110,10 +110,9 @@ class ShopBot:
                     "x 10 140€\n"
                     "x 20 265€\n\n"
                     "📝 Descrizione:\n"
-                    "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo dolce per una stabilità e biodisponibilità superiore.\n"
+                    "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo al lampone per una stabilità e biodisponibilità superiore.\n"
                     "Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi freddi e dolci per coprire il sapore.\n"
                     "Scuotere la boccetta prima di ogni uso per distribuirlo bene.\n"
-                    "Gusti: Lampone."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAI6VGk-4bW2wwGF5ZqzMxo3a_gSh_QKAAK-HQAC3yn5URJotpJrsLMVNgQ",  # metti qui il file_id del video se ce l'hai, altrimenti lascia vuoto
                 "photo_file_ids": [],
@@ -135,8 +134,8 @@ class ShopBot:
                         "50g 250\n"
                         "100g 450\n"
                         "200g 850\n"
-                        "Card bufalo plein: Meglio dei soliti dry sift commerciali a un prezzo imbattibile."
-                        "Effetto forte e duratore, ottimo odore e sapore, un piacere da fumare in tutti i modi."
+                        "Card bufalo plein. Meglio dei soliti dry sift commerciali a un prezzo imbattibile.\n"
+                        "Effetto intenso e prolungato, ottimo odore e sapore, Già curato, si sbriciola con facilità ed è un piacere da fumare in tutti i modi."
                     ),
                     "video_file_id": "BAACAgQAAxkBAAIpLGk1eriw6PhQgnRcYqO9Eii-5OpvAAJsHgAC9lypUYj4r8UZBRQLNgQ",  # Fill as needed
                     "photo_file_ids": [],
