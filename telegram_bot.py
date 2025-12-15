@@ -72,12 +72,12 @@ class ShopBot:
             "packwoods": {
                 "name": "THC Vapes Packwoods™ x Runtz",
                 "price": (
-                    "1 - 45\n"
-                    "2 - 80\n"
-                    "3 - 120\n"
-                    "4 - 145\n"
-                    "5 - 165\n"
-                    "10 - 300\n"
+                    "1 - 45€\n"
+                    "2 - 80€\n"
+                    "3 - 120€\n"
+                    "4 - 145€\n"
+                    "5 - 165€\n"
+                    "10 - 300€\n"
                 ),
                 "description": "SOLD OUT AL MOMENTO NUOVE VAPES IN ARRIVO. Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
                 "video_file_id": "BAACAgQAAxkBAAIDQ2kWHNki6uK0P2M3PPNr4mVKJLXjAALKHQACdXSwUHCdt4u11IocNgQ",
@@ -85,17 +85,17 @@ class ShopBot:
             },
             "funghetti": {
                 "caption": (
-                    "📦 *Funghetti Psylocibe Cubensis*\n"
+                    "📦 *Funghi Psylocibe Cubensis*\n"
                     "Disponibili.\n\n"
-                    "3.5g 45\n"
-                    "5g 65\n"
-                    "10g 105\n"
-                    "15g 125\n20g 160€\n"
-                    "Una miscela di varietà classiche e potenti, McKennai, Golden Teacher, e Jedi Mind Fuck."
+                    "3.5g 45€\n"
+                    "5g 65€\n"
+                    "10g 105€\n"
+                    "15g 125€\n20g 160€\n\n"
+                    "Una miscela di varietà classiche e potenti, McKennai, Golden Teacher, e Jedi Mind Fuck.\n"
                     "Effetto profondo e duraturo, ideale per esplorare nuove dimensioni. Disponibili subito per chi cerca un'esperienza "
                     "autentica e coinvolgente."
                 ),
-                "video_file_id": "BAACAgQAAxkBAAIfF2ksX9RrLjl6Zq0RkYlTl3vpSHIKAAICHgACY-ZgUT04ZuR9I1l-NgQ",  # Fill as needed
+                "video_file_id": "BAACAgQAAxkBAAI9gmk_9B6WfvUiC8Q6FWDumJqt_cZQAALaGgAC3ykBUjFj1UkcKnyCNgQ",  # Fill as needed
                 "photo_file_ids": [],
             },
             "sciroppo": {
@@ -125,15 +125,15 @@ class ShopBot:
                     "caption": (
                         "📦 *Filtrato 120u*\n"
                         "DISPONIBILE:\n"
-                        "5g 45\n"
-                        "10g 75\n"
-                        "15g 110\n"
-                        "20g 135\n"
-                        "30g 175\n"
-                        "40g 220\n"
-                        "50g 250\n"
-                        "100g 450\n"
-                        "200g 850\n"
+                        "5g 45€\n"
+                        "10g 75€\n"
+                        "15g 110€\n"
+                        "20g 135€\n"
+                        "30g 175€\n"
+                        "40g 220€\n"
+                        "50g 250€\n"
+                        "100g 450€\n"
+                        "200g 850€\n"
                         "Card bufalo plein. Meglio dei soliti dry sift commerciali a un prezzo imbattibile.\n"
                         "Effetto intenso e prolungato, ottimo odore e sapore, Già curato, si sbriciola con facilità ed è un piacere da fumare in tutti i modi."
                     ),
