@@ -11,6 +11,8 @@ from telegram.error import BadRequest
 BOT_TOKEN         = os.getenv("BOT_TOKEN")
 ADMIN_USER_ID     = 8219761049
 ADMIN_CONTACT     = "https://t.me/RegularDope"
+REQUIRED_GROUP_ID = -4860431787  # put the actual group ID here
+REQUIRED_GROUP_LINK = "https://t.me/+xwCcckoNERw2MWU0"
 
 WELCOME_IMAGE_URL = "https://i.postimg.cc/3wntg69X/Chat-GPT-Image-10-nov-2025-18-46-01.png"
 WELCOME_TEXT = (
@@ -170,6 +172,31 @@ class ShopBot:
             await context.bot.send_message(ADMIN_USER_ID, message)
         except Exception as e:
             logger.warning(f"Failed to relay to admin: {e}")
+    
+    async def _ask_to_join_group(self, context: ContextTypes.DEFAULT_TYPE, chat_id: int):
+        text = (
+            "Per vedere i prodotti devi prima entrare nel gruppo privato.\n"
+            "Unisciti qui e poi torna nel bot."
+        )
+        kb = [[InlineKeyboardButton("🔑 Entra nel gruppo", url=REQUIRED_GROUP_LINK)],
+              [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]]
+        sent = await context.bot.send_message(
+            chat_id=chat_id,
+            text=text,
+            reply_markup=InlineKeyboardMarkup(kb)
+        )
+        return sent
+
+    async def _is_member_of_required_group(self, context: ContextTypes.DEFAULT_TYPE, user_id: int) -> bool:
+        try:
+            member = await context.bot.get_chat_member(chat_id=REQUIRED_GROUP_ID, user_id=user_id)
+            return member.status in ("member", "administrator", "creator")
+        except BadRequest:
+            # user not found or bot not in group
+            return False
+        except Exception as e:
+            logger.warning(f"Error checking group membership: {e}")
+            return False
 
     async def delete_last_menu(self, context, chat_id):
         msg_id = context.user_data.get("last_menu_msg_id")
@@ -385,6 +412,12 @@ class ShopBot:
             return
 
         if d == "cat_weed":
+            is_member = await self._is_member_of_required_group(context, update.effective_user.id)
+            if not is_member:
+                sent = await self._ask_to_join_group(context, cid)
+                context.user_data["last_menu_msg_id"] = sent.message_id
+                return
+
             sent = await self._send_media_or_text(
                 context,
                 cid,
@@ -396,6 +429,12 @@ class ShopBot:
             return
 
         if d == "cat_hash":
+            is_member = await self._is_member_of_required_group(context, update.effective_user.id)
+            if not is_member:
+                sent = await self._ask_to_join_group(context, cid)
+                context.user_data["last_menu_msg_id"] = sent.message_id
+                return
+
             cat = "hash"
             prods = self.categories.get(cat, [])
             kb = [
