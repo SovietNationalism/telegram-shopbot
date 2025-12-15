@@ -85,14 +85,13 @@ class ShopBot:
             },
             "funghetti": {
                 "caption": (
-                    "📦 *Funghetti*\n"
+                    "📦 *Funghetti Psylocibe Cubensis*\n"
                     "Disponibili.\n\n"
                     "3.5g 45\n"
                     "5g 65\n"
                     "10g 105\n"
-                    "15g 125\n\n"
-                     "20g 155\n"
-                    "Una miscela di varietà classiche e potenti, McKennai, Golden Teacher, e Jedi Mind Fuck note per la loro qualità e intensità. "
+                    "15g 125\n20g 160€\n"
+                    "Una miscela di varietà classiche e potenti, McKennai, Golden Teacher, e Jedi Mind Fuck."
                     "Effetto profondo e duraturo, ideale per esplorare nuove dimensioni. Disponibili subito per chi cerca un'esperienza "
                     "autentica e coinvolgente."
                 ),
