@@ -11,7 +11,7 @@ from telegram.error import BadRequest
 BOT_TOKEN         = os.getenv("BOT_TOKEN")
 ADMIN_USER_ID     = 8219761049
 ADMIN_CONTACT     = "https://t.me/RegularDope"
-REQUIRED_GROUP_ID = -1003404229726  # put the actual group ID here
+REQUIRED_GROUP_ID = -4860431787  # put the actual group ID here
 REQUIRED_GROUP_LINK = "https://t.me/+xwCcckoNERw2MWU0"
 
 WELCOME_IMAGE_URL = "https://i.postimg.cc/5yBdW1BK/IMG-0466.jpg"
