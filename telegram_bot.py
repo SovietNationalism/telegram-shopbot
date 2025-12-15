@@ -14,7 +14,7 @@ ADMIN_CONTACT     = "https://t.me/RegularDope"
 REQUIRED_GROUP_ID = -4860431787  # put the actual group ID here
 REQUIRED_GROUP_LINK = "https://t.me/+xwCcckoNERw2MWU0"
 
-WELCOME_IMAGE_URL = "https://i.postimg.cc/3wntg69X/Chat-GPT-Image-10-nov-2025-18-46-01.png"
+WELCOME_IMAGE_URL = "https://i.postimg.cc/5yBdW1BK/IMG-0466.jpg"
 WELCOME_TEXT = (
     "Benvenuto da Regular Dope!\n"
     "Un’esperienza pensata per farti rilassare, senza preoccupazioni né stress.\n"
