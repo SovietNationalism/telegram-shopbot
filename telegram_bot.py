@@ -211,10 +211,10 @@ class ShopBot:
         kb = [
             [InlineKeyboardButton("🛍️ SHOP", callback_data="shop")],
             [InlineKeyboardButton("💳 PAGAMENTI", callback_data="pagamenti")],
-            [InlineKeyboardButton("📜 T.O.S.", callback_data="tos")],
+            [InlineKeyboardButton("📜 TERMINI DI SERVIZIO", callback_data="tos")],
             [InlineKeyboardButton("📦 ORDINA QUI", url=ADMIN_CONTACT)],
             [InlineKeyboardButton("💬 CHAT CLIENTI", url="https://t.me/+xwCcckoNERw2MWU0")],
-            [InlineKeyboardButton("📝 CANALE UNICO", url="https://t.me/+d6qKcyCDRmQyNDg8")],
+            [InlineKeyboardButton("📝 CANALE PRINCIPALE", url="https://t.me/Regular_Dope")],
         ]
         m = update.effective_message
         try:
