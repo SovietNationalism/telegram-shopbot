@@ -49,7 +49,7 @@ PAGAMENTI_TEXT = (
     "• Crypto LTC / BTC (0% commissione)\n"
     "• Carta di credito/debito (10% commissione)\n"
     "• Contanti spediti (+5 €)\n"
-    "• PayPal / Satispay (10% commissione)\n"
+    "• PayPal (10% commissione)\n"
     "• Bonifico dal tabacchino (0% commissione)\n"
     "• Gift card crypto (Bitnovo, ecc.) (+10% commissione)\n"
     "• Buoni regalo (Amazon, ecc.) (+50% commissione)\n\n"
@@ -79,7 +79,7 @@ class ShopBot:
                     "5 - 165€\n"
                     "10 - 300€\n"
                 ),
-                "description": "SOLD OUT AL MOMENTO NUOVE VAPES IN ARRIVO. Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
+                "description": "SOLD OUT AL MOMENTO NUOVE VAPES IN ARRIVO. (Due brand diversi)\nCon 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
                 "video_file_id": "BAACAgQAAxkBAAIDQ2kWHNki6uK0P2M3PPNr4mVKJLXjAALKHQACdXSwUHCdt4u11IocNgQ",
                 "photo_file_ids": [],
             },
@@ -316,10 +316,10 @@ class ShopBot:
             kb = [
                 [
                     InlineKeyboardButton("HASH", callback_data="cat_hash"),
-                    InlineKeyboardButton("WEED", callback_data="cat_weed")
+                    InlineKeyboardButton("ERBA", callback_data="cat_weed")
                 ],
                 [
-                    InlineKeyboardButton("PACKWOODS X RUNTZ", callback_data="prod_packwoods"),
+                    InlineKeyboardButton("PACKW0ODS X RUNTZ", callback_data="prod_packwoods"),
                     InlineKeyboardButton("FUNGHETTI", callback_data="prod_funghetti")
                 ],
                 [
