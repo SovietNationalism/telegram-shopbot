@@ -117,6 +117,23 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAAI6VGk-4bW2wwGF5ZqzMxo3a_gSh_QKAAK-HQAC3yn5URJotpJrsLMVNgQ",  # metti qui il file_id del video se ce l'hai, altrimenti lascia vuoto
                 "photo_file_ids": [],
             },
+            "neve": {
+                "name": "Neve",
+                "caption": (
+                    "📦 *Neve* (Sintetico)\n\n"
+                    "💵 Prezzi:\n"
+                    "1g 70€\n"
+                    "2g 135€\n"
+                    "5g 260€\n"
+                    "10g 450€\n"
+                    "20g 820€\n\n"
+                    "📝 Descrizione:\n"
+                    "Merce sana con purezza del 94/95%, niente merda aggiunta.\n"
+                    "Effetto potente e piacevole, qualità notevole dal primo uso."
+                ),
+                "video_file_id": "BAACAgQAAxkBAAJvOmlGs1caV_VuaAiwlLIXZIqd35FfAAKoHgAC0Tc4UosrKq7yuDT1NgQ",
+                "photo_file_ids": [],
+            },
         }
         self.categories = {
             "hash": [
@@ -137,7 +154,28 @@ class ShopBot:
                         "Card bufalo plein. Meglio dei soliti dry sift commerciali a un prezzo imbattibile.\n"
                         "Effetto intenso e prolungato, ottimo odore e sapore, Già curato, si sbriciola con facilità ed è un piacere da fumare in tutti i modi."
                     ),
-                    "video_file_id": "BAACAgQAAxkBAAIpLGk1eriw6PhQgnRcYqO9Eii-5OpvAAJsHgAC9lypUYj4r8UZBRQLNgQ",  # Fill as needed
+                    "video_file_id": "BAACAgQAAxkBAAIpLGk1eriw6PhQgnRcYqO9Eii-5OpvAAJsHgAC9lypUYj4r8UZBRQLNgQ",
+                    "photo_file_ids": [],
+                },
+                {
+                    "name": "Frozen 180/90",
+                    "caption": (
+                        "📦 *Frozen Sift 180/90* – Tropicana Cookies\n\n"
+                        "Qualità premium, molto superiore a qualsiasi dry o filtrato, con un rapporto qualità/prezzo davvero competitivo.\n"
+                        "Effetto deciso e duraturo, profilo aromatico intenso e gusto pulito.\n"
+                        "Il materiale è ancora nel processo di cura e nel video si mostra vetrato.\n\n"
+                        "💵 Prezzi:\n"
+                        "3g 40€\n"
+                        "5g 60€\n"
+                        "10g 115€\n"
+                        "15g 165€\n"
+                        "20g 210€\n"
+                        "25g 270€\n"
+                        "35g 340€\n"
+                        "50g 450€\n"
+                        "100g 850€"
+                    ),
+                    "video_file_id": "BAACAgQAAxkBAAJvNmlGsy_TAQ2z9PKMchUAAU2owFL_KwACph4AAtE3OFICcX6H57AUyDYE",
                     "photo_file_ids": [],
                 },
             ],
@@ -323,7 +361,8 @@ class ShopBot:
                     InlineKeyboardButton("FUNGHETTI", callback_data="prod_funghetti")
                 ],
                 [
-                    InlineKeyboardButton("SCIROPP0 THC", callback_data="prod_sciroppo")
+                    InlineKeyboardButton("SCIROPP0 THC", callback_data="prod_sciroppo"),
+                    InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico"),
                 ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
             ]
@@ -416,12 +455,49 @@ class ShopBot:
                 context.user_data["last_menu_msg_id"] = sent.message_id
                 return
 
+            kb = [
+                [InlineKeyboardButton("Calispain", callback_data="weed_calispain")],
+                [InlineKeyboardButton("Cali Usa", callback_data="weed_cali_usa")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text="Scegli il tipo di weed:",
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+        if d == "weed_calispain":
+            is_member = await self._is_member_of_required_group(context, update.effective_user.id)
+            if not is_member:
+                sent = await self._ask_to_join_group(context, cid)
+                context.user_data["last_menu_msg_id"] = sent.message_id
+                return
+
             sent = await self._send_media_or_text(
                 context,
                 cid,
                 self.weed_overview,
-                back_callback="shop",
+                back_callback="cat_weed",
                 video_file_id=self.weed_video_file_id,
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "weed_cali_usa":
+            is_member = await self._is_member_of_required_group(context, update.effective_user.id)
+            if not is_member:
+                sent = await self._ask_to_join_group(context, cid)
+                context.user_data["last_menu_msg_id"] = sent.message_id
+                return
+
+            text = "Arriva verso fine gennaio!"
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="cat_weed")]]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text=text,
+                reply_markup=InlineKeyboardMarkup(kb),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
@@ -444,6 +520,38 @@ class ShopBot:
                 chat_id=cid,
                 text=txt,
                 reply_markup=InlineKeyboardMarkup(kb)
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+        if d == "cat_sintetico":
+            is_member = await self._is_member_of_required_group(context, update.effective_user.id)
+            if not is_member:
+                sent = await self._ask_to_join_group(context, cid)
+                context.user_data["last_menu_msg_id"] = sent.message_id
+                return
+
+            kb = [
+                [InlineKeyboardButton("Neve", callback_data="prod_neve")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text="Scegli un prodotto sintetico:",
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+        if d == "prod_neve":
+            prod = self.products["neve"]
+            sent = await self._send_media_or_text(
+                context,
+                cid,
+                prod.get("caption", ""),
+                back_callback="cat_sintetico",
+                video_file_id=prod.get("video_file_id", ""),
+                photo_file_ids=prod.get("photo_file_ids", []),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
