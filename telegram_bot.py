@@ -120,7 +120,7 @@ class ShopBot:
             "neve": {
                 "name": "Neve",
                 "caption": (
-                    "📦 *Neve* (Sintetico)\n\n"
+                    "📦 *Coca*\n\n"
                     "💵 Prezzi:\n"
                     "1g 70€\n"
                     "2g 135€\n"
