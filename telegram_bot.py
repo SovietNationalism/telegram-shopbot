@@ -79,8 +79,8 @@ class ShopBot:
                     "5 - 165€\n"
                     "10 - 300€\n"
                 ),
-                "description": "SOLD OUT AL MOMENTO NUOVE VAPES IN ARRIVO. (Due brand diversi)\nCon 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
-                "video_file_id": "BAACAgQAAxkBAAIDQ2kWHNki6uK0P2M3PPNr4mVKJLXjAALKHQACdXSwUHCdt4u11IocNgQ",
+                "description": "Disponibile in due strain\nBlue Dream\nSkywalker Og\nCon 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
+                "video_file_id": "BAACAgQAAxkBAAK8e2lMUoehoRdmRCvBGfZPztZEp2qfAAIoHQACnZJgUilpkLWW64h4NgQ",
                 "photo_file_ids": [],
             },
             "funghetti": {
