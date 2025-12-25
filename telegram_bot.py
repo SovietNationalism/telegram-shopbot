@@ -401,7 +401,7 @@ class ShopBot:
                     InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico"),
                 ],
                 [
-                    InlineKeyboardButton("💡 Suggerisci un Prodotto", callback_data="suggest_product")
+                    InlineKeyboardButton("HAI QUALCHE CONSIGLIO?", callback_data="suggest_product")
                 ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
             ]
