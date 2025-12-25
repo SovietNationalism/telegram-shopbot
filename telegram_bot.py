@@ -103,14 +103,14 @@ class ShopBot:
                 "caption": (
                     "📦 *Sciroppo al THC* (formato 100 ml, 200 mg)\n"
                     "💵 Prezzo:\n"
-                    "x 1 30€ (non ordinabile singolarmente)\n"
+                    "x 1 30€\n"
                     "x 2 45€\n"
-                    "x 4 65€\n"
+                    "x 4 70€\n"
                     "x 5 80€\n"
-                    "x 10 140€\n"
+                    "x 10 145€\n"
                     "x 20 265€\n\n"
                     "📝 Descrizione:\n"
-                    "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo al lampone per una stabilità e biodisponibilità superiore.\n"
+                    "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo al lampone (o ciliega a scelta) per una stabilità e biodisponibilità superiore.\n"
                     "Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi freddi e dolci per coprire il sapore.\n"
                     "Scuotere la boccetta prima di ogni uso per distribuirlo bene.\n"
                 ),
