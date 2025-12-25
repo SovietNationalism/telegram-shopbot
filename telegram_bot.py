@@ -34,13 +34,16 @@ TOS_TEXT = (
     "• Num di Tel / Email\n"
     "• Indirizzo o punto di ritiro\n"
     "• Eventuali note o richieste speciali\n"
-    "(Il nome e cognome non deve essere per forza reale.)\n\n"
+    "(Il nome e cognome non deve essere per forza reale.)\n"
+)
+
+TOS_TERMS_TEXT = (
     "POLITICA DI RESHIP E ASSISTENZA\n\n"
     "In caso di pacco smarrito in transito con valore inferiore a 150 €, è prevista automaticamente la piena rispedizione del materiale, se possibile, oppure il rimborso.\n\n"
     "Per resi o problemi sul prodotto è obbligatorio fornire:\n"
     "• Un video senza tagli dell’apertura del locker\n"
     "• Un video senza tagli dell’apertura del pacco\n\n"
-    "In entrambi i video devono essere mostrati tutti i lati del pacco per verificare che non sia stato manomesso.\n\n"
+    "In entrambi i video devono essere mostrati tutti i lati del pacco per verificare che non sia stato manomesso."
 )
 
 PAGAMENTI_TEXT = (
@@ -111,12 +114,6 @@ class ShopBot:
                     "x 20 265€\n\n"
                     "📝 Descrizione:\n"
                     "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo al lampone (o ciliega a scelta) per una stabilità e biodisponibilità superiore.\n"
-                    "Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi freddi e dolci per coprire il sapore.\n"
-                    "Scuotere la boccetta prima di ogni uso per distribuirlo bene.\n"
-                    "Dose leggera - 10ml\n"
-                    "Dose media - 20 ml\n"
-                    "Dose pesante - 30+ ml\n" 
-                    "Per trovare la quantita' perfetta per te consigliamo di iniziare con una dose leggera, e raddoppiare la dose fino a raggiungere l'effetto desiderato."
                 ),
                 "video_file_id": "BAACAgQAAxkBAALA8WlM8ils5hJW6qELQ3rDIHhXlJFOAAKpGgACScdoUvDEPR-NjqSKNgQ",  # metti qui il file_id del video se ce l'hai, altrimenti lascia vuoto
                 "photo_file_ids": [],
@@ -253,7 +250,7 @@ class ShopBot:
         kb = [
             [InlineKeyboardButton("🛍️ SHOP", callback_data="shop")],
             [InlineKeyboardButton("💳 PAGAMENTI", callback_data="pagamenti")],
-            [InlineKeyboardButton("📜 TERMINI DI SERVIZIO", callback_data="tos")],
+            [InlineKeyboardButton("📜 COME ORDINARE", callback_data="tos")],
             [InlineKeyboardButton("📦 ORDINA QUI", url=ADMIN_CONTACT)],
             [InlineKeyboardButton("💬 CHAT CLIENTI", url="https://t.me/+xwCcckoNERw2MWU0")],
             [InlineKeyboardButton("📝 CANALE PRINCIPALE", url="https://t.me/Regular_Dope")],
@@ -389,11 +386,24 @@ class ShopBot:
             return
 
         if d == "tos":
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]]
+            kb = [
+                [InlineKeyboardButton("Termini di Servizio", callback_data="tos_terms")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")],
+            ]
             sent = await context.bot.send_message(
                 chat_id=cid,
                 text=TOS_TEXT,
-                reply_markup=InlineKeyboardMarkup(kb)
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+        if d == "tos_terms":
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="tos")]]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text=TOS_TERMS_TEXT,
+                reply_markup=InlineKeyboardMarkup(kb),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
@@ -441,11 +451,57 @@ class ShopBot:
             
         if d == "prod_sciroppo":
             prod = self.products["sciroppo"]
+            caption = prod.get("caption", "")
+            kb = [
+                [InlineKeyboardButton("📘 Consigli D’Uso", callback_data="sciroppo_consigli")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+            ]
+            markup = InlineKeyboardMarkup(kb)
+
+            if prod.get("video_file_id"):
+                try:
+                    sent = await context.bot.send_video(
+                        chat_id=cid,
+                        video=prod["video_file_id"],
+                        caption=caption,
+                        parse_mode=ParseMode.MARKDOWN,
+                        supports_streaming=True,
+                        reply_markup=markup,
+                    )
+                    context.user_data["last_menu_msg_id"] = sent.message_id
+                except BadRequest:
+                    sent = await context.bot.send_message(
+                        chat_id=cid,
+                        text=caption,
+                        parse_mode=ParseMode.MARKDOWN,
+                        reply_markup=markup,
+                    )
+                    context.user_data["last_menu_msg_id"] = sent.message_id
+            else:
+                sent = await context.bot.send_message(
+                    chat_id=cid,
+                    text=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=markup,
+                )
+                context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+        if d == "sciroppo_consigli":
+            prod = self.products["sciroppo"]
+            text = (
+                "Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi freddi e dolci per coprire il sapore.\n"
+                "Scuotere la boccetta prima di ogni uso per distribuirlo bene.\n"
+                "Dose leggera - 10ml\n"
+                "Dose media - 20 ml\n"
+                "Dose pesante - 30+ ml\n"
+                "Per trovare la quantita' perfetta per te consigliamo di iniziare con una dose leggera, e raddoppiare la dose fino a raggiungere l'effetto desiderato."
+            )
             sent = await self._send_media_or_text(
                 context,
                 cid,
-                prod.get("caption", ""),
-                back_callback="shop",
+                text,
+                back_callback="prod_sciroppo",
                 video_file_id=prod.get("video_file_id", ""),
                 photo_file_ids=prod.get("photo_file_ids", []),
             )
