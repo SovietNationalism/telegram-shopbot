@@ -143,7 +143,6 @@ class ShopBot:
                     "name": "Filtered 120u",
                     "caption": (
                         "📦 *Filtrato 120u*\n"
-                        "DISPONIBILE:\n"
                         "5g 45€\n"
                         "10g 75€\n"
                         "15g 110€\n"
@@ -190,7 +189,7 @@ class ShopBot:
             "🌿 *Weed*\n"
             "Ultime rimanenze!\n"
             "Una Calispain dalla genetica agrumata, dal profilo aromatico fresco e deciso. Fiori compatti e resinosi, estremamente "
-            "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere. Disponibile!\n\n"
+            "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere.\n\n"
             "Citronella Kush\n"
             "5g 40€\n"
             "10g 75€\n"
