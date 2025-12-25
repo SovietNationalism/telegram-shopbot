@@ -1,4 +1,4 @@
-import os, sys, logging
+import os, sys, logging, json
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.constants import ParseMode
 from telegram.ext import (
@@ -6,6 +6,7 @@ from telegram.ext import (
     MessageHandler, filters, ContextTypes
 )
 from telegram.error import BadRequest
+from pathlib import Path
 
 # ───────────────────────── CONFIG ───────────────────────── #
 BOT_TOKEN         = os.getenv("BOT_TOKEN")
@@ -13,12 +14,14 @@ ADMIN_USER_ID     = 8219761049
 ADMIN_CONTACT     = "https://t.me/RegularDope"
 REQUIRED_GROUP_ID = -1003514626970  # put the actual group ID here
 REQUIRED_GROUP_LINK = "https://t.me/+xwCcckoNERw2MWU0"
+USERS_FILE = "users.json"
+SUGGESTIONS_FILE = "suggestions.json"
 
 WELCOME_IMAGE_URL = "https://i.postimg.cc/5yBdW1BK/IMG-0466.jpg"
 WELCOME_TEXT = (
     "Benvenuto da Regular Dope!\n"
     "Un’esperienza pensata per farti rilassare, senza preoccupazioni né stress.\n"
-    "Scopri un mondo di prodotti selezionati attraverso questa pratica vetrina e inizia l’avventura con /start."
+    "Scopri un mondo di prodotti selezionati. Controlla ogni bottone!"
 )
 
 TOS_TEXT = (
@@ -58,7 +61,8 @@ PAGAMENTI_TEXT = (
     "• Buoni regalo (Amazon, ecc.) (+50% commissione)\n\n"
     "COSTO SPEDIZIONE:\n"
     "• Inpost GRATUITA\n"
-    "• Altri corrieri 10€"
+    "• Altri corrieri 10€\n"
+    "Il pacco arriva in 2-3 giorni lavorativi in genere, 3-4 per le isole."
 )
 
 # ────────────────── LOGGER SETUP ────────────────── #
@@ -119,7 +123,7 @@ class ShopBot:
                 "photo_file_ids": [],
             },
             "neve": {
-                "name": "Neve",
+                "name": "C0CA",
                 "caption": (
                     "📦 *Coca*\n\n"
                     "💵 Prezzi:\n"
@@ -200,6 +204,37 @@ class ShopBot:
             "100g 420€\n"
         )
         self.user_ids = set()
+        self.suggestions = []
+
+        # Load persistent data
+        try:
+            if Path(USERS_FILE).exists():
+                with open(USERS_FILE, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    self.user_ids = set(data)
+        except Exception as e:
+            logger.warning(f"Could not load {USERS_FILE}: {e}")
+
+        try:
+            if Path(SUGGESTIONS_FILE).exists():
+                with open(SUGGESTIONS_FILE, "r", encoding="utf-8") as f:
+                    self.suggestions = json.load(f)
+        except Exception as e:
+            logger.warning(f"Could not load {SUGGESTIONS_FILE}: {e}")
+            
+    def _save_users(self):
+        try:
+            with open(USERS_FILE, "w", encoding="utf-8") as f:
+                json.dump(list(self.user_ids), f)
+        except Exception as e:
+            logger.warning(f"Could not save {USERS_FILE}: {e}")
+
+    def _save_suggestions(self):
+        try:
+            with open(SUGGESTIONS_FILE, "w", encoding="utf-8") as f:
+                json.dump(self.suggestions, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            logger.warning(f"Could not save {SUGGESTIONS_FILE}: {e}")
 
     async def _relay_to_admin(self, context, who, what):
         message = f"👤 {who.full_name} ({who.id})\n💬 {what}"
@@ -245,6 +280,7 @@ class ShopBot:
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         self.user_ids.add(update.effective_user.id)
+        self._save_users()
         await self.delete_last_menu(context, update.effective_chat.id)
         kb = [
             [InlineKeyboardButton("🛍️ SHOP", callback_data="shop")],
@@ -364,6 +400,9 @@ class ShopBot:
                     InlineKeyboardButton("SCIROPP0 THC", callback_data="prod_sciroppo"),
                     InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico"),
                 ],
+                [
+                    InlineKeyboardButton("💡 Suggerisci un Prodotto", callback_data="suggest_product")
+                ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
             ]
             sent = await context.bot.send_message(
@@ -413,6 +452,23 @@ class ShopBot:
                 chat_id=cid,
                 text="In arrivo!",
                 reply_markup=InlineKeyboardMarkup(kb)
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+        if d == "suggest_product":
+            text = (
+                "Hai un'idea o un prodotto che vorresti vedere in vetrina?\n\n"
+                "Scrivi qui sotto il tuo suggerimento in **un solo messaggio**.\n"
+                "Il messaggio verrà inoltrato all'amministratore e salvato nella lista dei suggerimenti."
+            )
+            context.user_data["awaiting_suggestion"] = True
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="shop")]]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text=text,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(kb),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
@@ -639,12 +695,44 @@ class ShopBot:
         m = update.effective_message
         usr = update.effective_user
         self.user_ids.add(usr.id)
+        self._save_users()
+
+        # Handle product suggestion flow
+        if usr and usr.id != ADMIN_USER_ID and context.user_data.get("awaiting_suggestion"):
+            suggestion_text = (
+                m.text or m.caption or
+                (f"<{type(m.effective_attachment).__name__}>" if m.effective_attachment else "<no text>")
+            )
+
+            # Build suggestion entry
+            entry = {
+                "user_id": usr.id,
+                "username": usr.username,
+                "full_name": usr.full_name,
+                "suggestion": suggestion_text,
+            }
+            self.suggestions.append(entry)
+            self._save_suggestions()
+
+            # Relay to admin
+            await self._relay_to_admin(
+                context,
+                usr,
+                f"[SUGGERIMENTO PRODOTTO]\n{suggestion_text}"
+            )
+
+            # Reset flag and confirm to user
+            context.user_data["awaiting_suggestion"] = False
+            await m.reply_text("Grazie per il suggerimento! È stato inoltrato all'amministratore.")
+            return
+
         if usr and usr.id != ADMIN_USER_ID:
             txt = (
                 m.text or m.caption or
                 (f"<{type(m.effective_attachment).__name__}>" if m.effective_attachment else "<no text>")
             )
             await self._relay_to_admin(context, usr, txt)
+            
         if usr and usr.id == ADMIN_USER_ID:
             if m.video:
                 await m.reply_text(f"File ID del video:\n<code>{m.video.file_id}</code>", parse_mode=ParseMode.HTML)
