@@ -74,7 +74,7 @@ class ShopBot:
                 "price": (
                     "1 - 45€\n"
                     "2 - 80€\n"
-                    "3 - 120€\n"
+                    "3 - 115€\n"
                     "4 - 145€\n"
                     "5 - 165€\n"
                     "10 - 300€\n"
@@ -113,6 +113,10 @@ class ShopBot:
                     "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo al lampone (o ciliega a scelta) per una stabilità e biodisponibilità superiore.\n"
                     "Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi freddi e dolci per coprire il sapore.\n"
                     "Scuotere la boccetta prima di ogni uso per distribuirlo bene.\n"
+                    "Dose leggera - 10ml\n"
+                    "Dose media - 20 ml\n"
+                    "Dose pesante - 30+ ml\n" 
+                    "Per trovare la quantita' perfetta per te consigliamo di iniziare con una dose leggera, e raddoppiare la dose fino a raggiungere l'effetto desiderato."
                 ),
                 "video_file_id": "BAACAgQAAxkBAALA8WlM8ils5hJW6qELQ3rDIHhXlJFOAAKpGgACScdoUvDEPR-NjqSKNgQ",  # metti qui il file_id del video se ce l'hai, altrimenti lascia vuoto
                 "photo_file_ids": [],
@@ -147,9 +151,9 @@ class ShopBot:
                         "15g 110€\n"
                         "20g 135€\n"
                         "30g 175€\n"
-                        "40g 220€\n"
-                        "50g 250€\n"
-                        "100g 450€\n"
+                        "40g 210€\n"
+                        "50g 240€\n"
+                        "100g 430€\n"
                         "200g 850€\n"
                         "Card bufalo plein. Meglio dei soliti dry sift commerciali a un prezzo imbattibile.\n"
                         "Effetto intenso e prolungato, ottimo odore e sapore, Già curato, si sbriciola con facilità ed è un piacere da fumare in tutti i modi."
@@ -194,8 +198,8 @@ class ShopBot:
             "15g 110\n"
             "20g 135\n"
             "30g 175\n"
-            "40g 210\n"
-            "50g 230\n"
+            "40g 200\n"
+            "50g 220\n"
             "100g 420\n"
             "200g 780"
         )
