@@ -114,7 +114,7 @@ class ShopBot:
                     "Da mescolare con qualsiasi tipo di bevanda! Consigliamo liquidi freddi e dolci per coprire il sapore.\n"
                     "Scuotere la boccetta prima di ogni uso per distribuirlo bene.\n"
                 ),
-                "video_file_id": "BAACAgQAAxkBAAI6VGk-4bW2wwGF5ZqzMxo3a_gSh_QKAAK-HQAC3yn5URJotpJrsLMVNgQ",  # metti qui il file_id del video se ce l'hai, altrimenti lascia vuoto
+                "video_file_id": "BAACAgQAAxkBAALA8WlM8ils5hJW6qELQ3rDIHhXlJFOAAKpGgACScdoUvDEPR-NjqSKNgQ",  # metti qui il file_id del video se ce l'hai, altrimenti lascia vuoto
                 "photo_file_ids": [],
             },
             "neve": {
