@@ -104,13 +104,12 @@ class ShopBot:
             "sciroppo": {
                 "name": "Sciroppo al THC",
                 "caption": (
-                    "formato 100 ml 200 mg\n"
+                    "Formato 100 ml 200 mg\n"
                     "x 1 30€\n"
                     "x 2 45€\n"
-                    "x 4 70€\n"
                     "x 5 80€\n"
-                    "x 10 145€\n\n"
-                    "formato 50 100mg\n"
+                    "x 10 145€\n"
+                    "Formato 50 100mg\n"
                     "x 2 - 35€\n"
                     "x 4 - 60€\n"
                     "x 10 - 105€\n\n"
