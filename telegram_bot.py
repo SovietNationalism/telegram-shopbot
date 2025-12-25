@@ -104,15 +104,16 @@ class ShopBot:
             "sciroppo": {
                 "name": "Sciroppo al THC",
                 "caption": (
-                    "📦 *Sciroppo al THC* (formato 100 ml, 200 mg)\n"
-                    "💵 Prezzo:\n"
+                    "formato 100 ml 200 mg\n"
                     "x 1 30€\n"
                     "x 2 45€\n"
                     "x 4 70€\n"
                     "x 5 80€\n"
-                    "x 10 145€\n"
-                    "x 20 265€\n\n"
-                    "📝 Descrizione:\n"
+                    "x 10 145€\n\n"
+                    "formato 50 100mg\n"
+                    "x 2 - 35€\n"
+                    "x 4 - 60€\n"
+                    "x 10 - 105€\n\n"
                     "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo al lampone (o ciliega a scelta) per una stabilità e biodisponibilità superiore.\n"
                 ),
                 "video_file_id": "BAACAgQAAxkBAALA8WlM8ils5hJW6qELQ3rDIHhXlJFOAAKpGgACScdoUvDEPR-NjqSKNgQ",  # metti qui il file_id del video se ce l'hai, altrimenti lascia vuoto
@@ -187,18 +188,18 @@ class ShopBot:
         self.weed_video_file_id = "BAACAgQAAxkBAAIfGGksX9SvE4VCDU76INV67CCyjBRfAAJCGQACfFpgUb9qGHvsCn-ENgQ"
         self.weed_overview = (
             "🌿 *Weed*\n"
+            "Ultime rimanenze!\n"
             "Una Calispain dalla genetica agrumata, dal profilo aromatico fresco e deciso. Fiori compatti e resinosi, estremamente "
             "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere. Disponibile!\n\n"
             "Citronella Kush\n"
-            "5g 40\n"
-            "10g 75\n"
-            "15g 110\n"
-            "20g 135\n"
-            "30g 175\n"
-            "40g 200\n"
-            "50g 220\n"
-            "100g 420\n"
-            "200g 780"
+            "5g 40€\n"
+            "10g 75€\n"
+            "15g 110€\n"
+            "20g 135€\n"
+            "30g 175€\n"
+            "40g 200€\n"
+            "50g 220€\n"
+            "100g 420€\n"
         )
         self.user_ids = set()
 
