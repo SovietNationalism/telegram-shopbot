@@ -590,10 +590,7 @@ class ShopBot:
             return
 
         if d == "cat_weed":
-            is_member = await self._is_member_of_required_group(context, update.effective_user.id)
-            if not is_member:
-                sent = await self._ask_to_join_group(context, cid)
-                context.user_data["last_menu_msg_id"] = sent.message_id
+            if not await self._check_membership(context, update.effective_user.id, cid):
                 return
 
             kb = [
@@ -610,10 +607,7 @@ class ShopBot:
             return
             
         if d == "weed_calispain":
-            is_member = await self._is_member_of_required_group(context, update.effective_user.id)
-            if not is_member:
-                sent = await self._ask_to_join_group(context, cid)
-                context.user_data["last_menu_msg_id"] = sent.message_id
+            if not await self._check_membership(context, update.effective_user.id, cid):
                 return
 
             sent = await self._send_media_or_text(
@@ -655,10 +649,7 @@ class ShopBot:
             return
             
         if d == "cat_sintetico":
-            is_member = await self._is_member_of_required_group(context, update.effective_user.id)
-            if not is_member:
-                sent = await self._ask_to_join_group(context, cid)
-                context.user_data["last_menu_msg_id"] = sent.message_id
+            if not await self._check_membership(context, update.effective_user.id, cid):
                 return
 
             kb = [
