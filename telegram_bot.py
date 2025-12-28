@@ -623,7 +623,7 @@ class ShopBot:
         if d == "weed_cali_usa":
             await self._send_product(
                 context, cid,
-                "Purple Daddy's Real Cali Outdoor\nErba di qualità molto alta, genetica Californiana.\n\nIn arrivo tra il 7 e il 12 di Gennaio.\nPre-ordinazioni aperte per gli interessati.\n5g 50€\n10g 85€\n15g 120€\n20g 145€\n30g 205€\n40g 265€\n50g 320€\n100g 550€",
+                "Purple Daddy's Real Cali Outdoor\nErba di qualità molto alta, genetica Californiana.\n\nIn arrivo tra il 7 e il 12 di Gennaio.\nPre-ordinazioni aperte per gli interessati.\n5g 50€\n10g 85€\n15g 120€\n20g 145€\n30g 205€\n40g 265€\n50g 300€\n100g 550€",
                 video_id="BAACAgQAAxkBAAEBBZNpUQABzlM2EeplaCMdtLlrFdhcghMAAkwcAAJSQYlS9w0VKVYY8rA2BA",
                 back_callback="cat_weed"
             )
