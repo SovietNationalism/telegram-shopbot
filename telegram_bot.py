@@ -369,6 +369,39 @@ class ShopBot:
             reply_markup=markup,
         )
         return sent
+        
+    async def _send_product(self, context, cid, caption, photo_id=None, video_id=None, back_callback="shop"):
+        """Unified product sender with photo/video fallback"""
+        kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data=back_callback)]]
+        markup = InlineKeyboardMarkup(kb)
+        
+        if photo_id:
+            try:
+                sent = await context.bot.send_photo(
+                    chat_id=cid, photo=photo_id, caption=caption,
+                    parse_mode=ParseMode.MARKDOWN, reply_markup=markup
+                )
+                context.user_data["last_menu_msg_id"] = sent.message_id
+                return
+            except BadRequest:
+                pass
+        
+        if video_id:
+            try:
+                sent = await context.bot.send_video(
+                    chat_id=cid, video=video_id, caption=caption,
+                    parse_mode=ParseMode.MARKDOWN, supports_streaming=True, reply_markup=markup
+                )
+                context.user_data["last_menu_msg_id"] = sent.message_id
+                return
+            except BadRequest:
+                pass
+        
+        # Fallback to text
+        sent = await context.bot.send_message(
+            chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN, reply_markup=markup
+        )
+        context.user_data["last_menu_msg_id"] = sent.message_id
 
     async def button_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         q = update.callback_query
@@ -478,20 +511,8 @@ class ShopBot:
 
         if d == "prod_packwoods":
             prod = self.products["packwoods"]
-            caption = (
-                f"📦 *{prod['name']}*\n"
-                f"💵 Prezzo:\n{prod['price']}\n"
-                f"📝 Descrizione: {prod['description']}"
-            )
-            sent = await self._send_media_or_text(
-                context,
-                cid,
-                caption,
-                back_callback="shop",
-                video_file_id=prod.get("video_file_id", ""),
-                photo_file_ids=prod.get("photo_file_ids", []),
-            )
-            context.user_data["last_menu_msg_id"] = sent.message_id
+            caption = f"📦 *{prod['name']}*\n💵 Prezzo:\n{prod['price']}\n📝 Descrizione: {prod['description']}"
+            await self._send_product(context, cid, caption, video_id=prod["video_file_id"])
             return
 
         if d == "prod_funghetti":
