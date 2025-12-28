@@ -518,15 +518,7 @@ class ShopBot:
 
         if d == "prod_funghetti":
             prod = self.products["funghetti"]
-            sent = await self._send_media_or_text(
-                context,
-                cid,
-                prod.get("caption", ""),
-                back_callback="shop",
-                video_file_id=prod.get("video_file_id", ""),
-                photo_file_ids=prod.get("photo_file_ids", []),
-            )
-            context.user_data["last_menu_msg_id"] = sent.message_id
+            await self._send_product(context, cid, prod["caption"], video_id=prod["video_file_id"])
             return
             
         if d == "prod_sciroppo":
@@ -730,34 +722,12 @@ class ShopBot:
             return
         
         if d == "tab_backwoods":
-            caption = (
-                "Gli originali Backwoods.\n"
-                "Sigari americani iconici, apparsi in decine di videoclip. Tabacco e foglia aromatizzata alla vaniglia, "
-                "con una botta di nicotina ben percepibile. Ideali da svuotare e riempire con il fiore di vostra scelta.\n"
-                "Ogni confezione contiene 5 sigari.\n"
-                "x1 conf. 20€\n"
-                "x2 conf. 30€\n"
-                "x3 conf. 40€\n"
-                "x5 conf. 55€\n"
-                "x8 conf. 80€"
+            await self._send_product(
+                context, cid,
+                "Gli originali Backwoods.\nSigari americani iconici, apparsi in decine di videoclip. Tabacco e foglia aromatizzata alla vaniglia, con una botta di nicotina ben percepibile. Ideali da svuotare e riempire con il fiore di vostra scelta.\nOgni confezione contiene 5 sigari.\nx1 conf. 20€ \nx2 conf. 30€\nx3 conf. 40€\nx5 conf. 55€\nx8 conf. 80€",
+                photo_id="AgACAgQAAxkBAAEBBRZpUNroBO0J-Zyun5Pzp1_04JBJbAACYgtrG1JBiVLtQL9kIU6wGgEAAwIAA3gAAzYE",
+                back_callback="cat_tabaccheria"
             )
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="cat_tabaccheria")]]
-            try:
-                sent = await context.bot.send_photo(
-                    chat_id=cid,
-                    photo="AgACAgQAAxkBAAEBBRZpUNroBO0J-Zyun5Pzp1_04JBJbAACYgtrG1JBiVLtQL9kIU6wGgEAAwIAA3gAAzYE",
-                    caption=caption,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=InlineKeyboardMarkup(kb),
-                )
-            except BadRequest:
-                sent = await context.bot.send_message(
-                    chat_id=cid,
-                    text=caption,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=InlineKeyboardMarkup(kb),
-                )
-            context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
         if d == "tab_cartine_filtri":
@@ -939,15 +909,7 @@ class ShopBot:
 
         if d == "prod_neve":
             prod = self.products["neve"]
-            sent = await self._send_media_or_text(
-                context,
-                cid,
-                prod.get("caption", ""),
-                back_callback="cat_sintetico",
-                video_file_id=prod.get("video_file_id", ""),
-                photo_file_ids=prod.get("photo_file_ids", []),
-            )
-            context.user_data["last_menu_msg_id"] = sent.message_id
+            await self._send_product(context, cid, prod["caption"], video_id=prod["video_file_id"], back_callback="cat_sintetico")
             return
 
         if d.startswith("prod_hash_") or d.startswith("prod_weed_"):
