@@ -607,13 +607,39 @@ class ShopBot:
                 context.user_data["last_menu_msg_id"] = sent.message_id
                 return
 
-            text = "Arriva verso fine gennaio!"
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="cat_weed")]]
-            sent = await context.bot.send_message(
-                chat_id=cid,
-                text=text,
-                reply_markup=InlineKeyboardMarkup(kb),
+            text = (
+                "Purple Daddy’s Real Cali Outdoor\n"
+                "Erba di qualità molto alta, genetica Californiana.\n\n"
+                "In arrivo tra il 7 e il 12 di Gennaio.\n"
+                "Pre-ordinazioni aperte per gli interessati.\n"
+                "5g 50€\n"
+                "10g 85€\n"
+                "15g 120€\n"
+                "20g 145€\n"
+                "30g 205€\n"
+                "40g 265€\n"
+                "50g 320€\n"
+                "100g 570€"
             )
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="cat_weed")]]
+            markup = InlineKeyboardMarkup(kb)
+
+            try:
+                sent = await context.bot.send_video(
+                    chat_id=cid,
+                    video="BAACAgQAAxkBAAEBBZNpUQABzlM2EeplaCMdtLlrFdhcghMAAkwcAAJSQYlS9w0VKVYY8rA2BA",
+                    caption=text,
+                    parse_mode=ParseMode.MARKDOWN,
+                    supports_streaming=True,
+                    reply_markup=markup,
+                )
+            except BadRequest:
+                sent = await context.bot.send_message(
+                    chat_id=cid,
+                    text=text,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=markup,
+                )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
