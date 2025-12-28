@@ -735,7 +735,7 @@ class ShopBot:
         if d == "tab_elements":
             await self._send_product(
                 context, cid,
-                "Cartine Elements\n—\nCartine per intenditori, combustione ultra lenta, sono fatte di pura carta di riso, bruciano senza creare cenere. Colla in gomma di zucchero.\n1 pacchetto 1.20€\n5 pacchetti 5€\n10 pacchetti 8.50€\n25 pacchetti 20€\n\nFiltri Elements\n—\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n20 pacchetti 13€Questi filtri Elements sono ecosostenibili e naturali, senza traccia di sostanze chimiche, ma sopratutto sono facili da usare.\n\nElements Kit\n—\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 32€\nOgni kit contiene un pacchetto di cartine e un pacchetto di filtri, gli stessi visibili precedentemente.",
+                "Cartine Elements\n—\nCartine per intenditori, combustione ultra lenta, sono fatte di pura carta di riso, bruciano senza creare cenere. Colla in gomma di zucchero.\n1 pacchetto 1.20€\n5 pacchetti 5€\n10 pacchetti 8.50€\n25 pacchetti 20€\n\nFiltri Elements\n—\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n20 pacchetti 13€\nQuesti filtri Elements sono ecosostenibili e naturali, senza traccia di sostanze chimiche, ma sopratutto sono facili da usare.\n\nElements Kit\n—\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 32€\nOgni kit contiene un pacchetto di cartine e un pacchetto di filtri, gli stessi visibili precedentemente.",
                 photo_id="AgACAgQAAxkBAAEBBSVpUOiV7GwSb1NX0fJeTwaJPd9VqgACfQtrG1JBiVJzDmdQmw_p5AEAAwIAA3kAAzYE",
                 back_callback="tab_cartine_filtri"
             )
