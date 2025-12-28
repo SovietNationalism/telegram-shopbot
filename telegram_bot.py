@@ -851,7 +851,7 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
-                if d == "tab_bluntwraps":
+        if d == "tab_bluntwraps":
             caption = (
                 "Juicy Jays Wraps Blue di canapa\n"
                 "—\n"
