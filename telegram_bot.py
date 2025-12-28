@@ -403,6 +403,15 @@ class ShopBot:
             chat_id=cid, text=caption, parse_mode=ParseMode.MARKDOWN, reply_markup=markup
         )
         context.user_data["last_menu_msg_id"] = sent.message_id
+        
+    async def _check_membership(self, context, user_id, cid):
+        """Check group membership and show join prompt if needed"""
+        is_member = await self._is_member_of_required_group(context, user_id)
+        if not is_member:
+            sent = await self._ask_to_join_group(context, cid)
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return False
+        return True
 
     async def button_handler(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         q = update.callback_query
@@ -627,10 +636,8 @@ class ShopBot:
             return
 
         if d == "cat_hash":
-            is_member = await self._is_member_of_required_group(context, update.effective_user.id)
-            if not is_member:
-                sent = await self._ask_to_join_group(context, cid)
-                context.user_data["last_menu_msg_id"] = sent.message_id
+            if d == "cat_hash":
+            if not await self._check_membership(context, update.effective_user.id, cid):
                 return
 
             cat = "hash"
@@ -727,112 +734,30 @@ class ShopBot:
             return
             
         if d == "tab_elements":
-            caption = (
-                "Cartine Elements\n"
-                "—\n"
-                "Cartine per intenditori, combustione ultra lenta, sono fatte di pura carta di riso, "
-                "bruciano senza creare cenere. Colla in gomma di zucchero.\n"
-                "1 pacchetto 1.20€\n"
-                "5 pacchetti 5€\n"
-                "10 pacchetti 8.50€\n"
-                "25 pacchetti 20€\n\n"
-                "Filtri Elements\n"
-                "—\n"
-                "1 pacchetto 1€\n"
-                "5 pacchetti 4€\n"
-                "10 pacchetti 7€\n"
-                "20 pacchetti 13€\n\n"
-                "Questi filtri Elements sono ecosostenibili e naturali, senza traccia di sostanze chimiche, "
-                "ma sopratutto sono facili da usare.\n"
-                "Elements Kit\n"
-                "—\n"
-                "1 kit 1.80€\n"
-                "5 kit 8€\n"
-                "10 kit 15€\n"
-                "25 kit 32€\n"
-                "Ogni kit contiene un pacchetto di cartine e un pacchetto di filtri, gli stessi visibili precedentemente."
+            await self._send_product(
+                context, cid,
+                "Cartine Elements\n—\nCartine per intenditori, combustione ultra lenta, sono fatte di pura carta di riso, bruciano senza creare cenere. Colla in gomma di zucchero.\n1 pacchetto 1.20€\n5 pacchetti 5€\n10 pacchetti 8.50€\n25 pacchetti 20€\n\nFiltri Elements\n—\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n20 pacchetti 13€\nQuesti filtri Elements sono ecosostenibili e naturali, senza traccia di sostanze chimiche, ma sopratutto sono facili da usare.\n\nElements Kit\n—\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 32€\nOgni kit contiene un pacchetto di cartine e un pacchetto di filtri, gli stessi visibili precedentemente.",
+                photo_id="AgACAgQAAxkBAAEBBSVpUOiV7GwSb1NX0fJeTwaJPd9VqgACfQtrG1JBiVJzDmdQmw_p5AEAAwIAA3kAAzYE",
+                back_callback="tab_cartine_filtri"
             )
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="tab_cartine_filtri")]]
-            try:
-                sent = await context.bot.send_photo(
-                    chat_id=cid,
-                    photo="AgACAgQAAxkBAAEBBSVpUOiV7GwSb1NX0fJeTwaJPd9VqgACfQtrG1JBiVJzDmdQmw_p5AEAAwIAA3kAAzYE",
-                    caption=caption,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=InlineKeyboardMarkup(kb),
-                )
-            except BadRequest:
-                sent = await context.bot.send_message(
-                    chat_id=cid,
-                    text=caption,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=InlineKeyboardMarkup(kb),
-                )
-            context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
         if d == "tab_bluntwraps":
-            caption = (
-                "Juicy Jays Wraps Blue di canapa\n"
-                "—\n"
-                "1 pacchetto 2€\n"
-                "2 pacchetti 3.80€\n"
-                "5 pacchetti 8.50€\n"
-                "10 pacchetti 14.50€\n"
-                "20 pacchetti 20€\n"
-                "Fatti da foglia di canapa aromatizzata al mirtillo, brucia lentamente ed e’ piu’ facile da rollare "
-                "rispetto alle foglie di tabacco, ed e’ completamente priva di nicotina. Perfetto per blunt."
+            await self._send_product(
+                context, cid,
+                "Juicy Jays Wraps Blue di canapa\n—\n1 pacchetto 2€\n2 pacchetti 3.80€\n5 pacchetti 8.50€\n10 pacchetti 14.50€\n20 pacchetti 20€\nFatti da foglia di canapa aromatizzata al mirtillo, brucia lentamente ed e' piu' facile da rollare rispetto alle foglie di tabacco, ed e' completamente priva di nicotina. Perfetto per blunt.",
+                photo_id="AgACAgQAAxkBAAEBBRtpUORvVKgNiIyIt9L5NsVpWE_qrwACeQtrG1JBiVIa3xODPSP6MwEAAwIAA3gAAzYE",
+                back_callback="tab_cartine_filtri"
             )
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="tab_cartine_filtri")]]
-            try:
-                sent = await context.bot.send_photo(
-                    chat_id=cid,
-                    photo="AgACAgQAAxkBAAEBBRtpUORvVKgNiIyIt9L5NsVpWE_qrwACeQtrG1JBiVIa3xODPSP6MwEAAwIAA3gAAzYE",
-                    caption=caption,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=InlineKeyboardMarkup(kb),
-                )
-            except BadRequest:
-                sent = await context.bot.send_message(
-                    chat_id=cid,
-                    text=caption,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=InlineKeyboardMarkup(kb),
-                )
-            context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
         if d == "tab_actitube":
-            caption = (
-                "Filtri a carboni attivi Actitube 7mm\n"
-                "—\n"
-                "1 pacchetto 3€\n"
-                "2 pacchetti 5€\n"
-                "5 pacchetti 10€\n"
-                "10 pacchetti 18€\n"
-                "Filtri ai carboni attivi utili per ridurre l’assunzione di catrame. "
-                "Dotati di cappuccio in ceramica su entrambe le estremità.\n"
-                "Migliorano il sapore delle boccate. Diametro di 7mm. Di origine vegetale e biodegradabili. "
-                "Riutilizzabili.\n"
-                "Ogni pacchetto contiene 10 filtri."
+            await self._send_product(
+                context, cid,
+                "Filtri a carboni attivi Actitube 7mm\n—\n1 pacchetto 3€\n2 pacchetti 5€\n5 pacchetti 10€\n10 pacchetti 18€\nFiltri ai carboni attivi utili per ridurre l'assunzione di catrame. Dotati di cappuccio in ceramica su entrambe le estremita'.\nMigliorano il sapore delle boccate. Diametro di 7mm. Di origine vegetale e biodegradabili. Riutilizzabili.\nOgni pacchetto contiene 10 filtri.",
+                photo_id="AgACAgQAAxkBAAEBBSNpUOS0Oh4YRmjxychZ30bAe1C4pQACegtrG1JBiVLziPgOsBazfQEAAwIAA3gAAzYE",
+                back_callback="tab_cartine_filtri"
             )
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="tab_cartine_filtri")]]
-            try:
-                sent = await context.bot.send_photo(
-                    chat_id=cid,
-                    photo="AgACAgQAAxkBAAEBBSNpUOS0Oh4YRmjxychZ30bAe1C4pQACegtrG1JBiVLziPgOsBazfQEAAwIAA3gAAzYE",
-                    caption=caption,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=InlineKeyboardMarkup(kb),
-                )
-            except BadRequest:
-                sent = await context.bot.send_message(
-                    chat_id=cid,
-                    text=caption,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=InlineKeyboardMarkup(kb),
-                )
-            context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
         if d == "prod_neve":
