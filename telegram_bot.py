@@ -618,46 +618,12 @@ class ShopBot:
             return
 
         if d == "weed_cali_usa":
-            is_member = await self._is_member_of_required_group(context, update.effective_user.id)
-            if not is_member:
-                sent = await self._ask_to_join_group(context, cid)
-                context.user_data["last_menu_msg_id"] = sent.message_id
-                return
-
-            text = (
-                "Purple Daddy’s Real Cali Outdoor\n"
-                "Erba di qualità molto alta, genetica Californiana.\n\n"
-                "In arrivo tra il 7 e il 12 di Gennaio.\n"
-                "Pre-ordinazioni aperte per gli interessati.\n"
-                "5g 50€\n"
-                "10g 85€\n"
-                "15g 120€\n"
-                "20g 145€\n"
-                "30g 205€\n"
-                "40g 265€\n"
-                "50g 320€\n"
-                "100g 570€"
+            await self._send_product(
+                context, cid,
+                "Purple Daddy's Real Cali Outdoor\nErba di qualità molto alta, genetica Californiana.\n\nIn arrivo tra il 7 e il 12 di Gennaio.\nPre-ordinazioni aperte per gli interessati.\n5g 50€\n10g 85€\n15g 120€\n20g 145€\n30g 205€\n40g 265€\n50g 320€\n100g 570€",
+                video_id="BAACAgQAAxkBAAEBBZNpUQABzlM2EeplaCMdtLlrFdhcghMAAkwcAAJSQYlS9w0VKVYY8rA2BA",
+                back_callback="cat_weed"
             )
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="cat_weed")]]
-            markup = InlineKeyboardMarkup(kb)
-
-            try:
-                sent = await context.bot.send_video(
-                    chat_id=cid,
-                    video="BAACAgQAAxkBAAEBBZNpUQABzlM2EeplaCMdtLlrFdhcghMAAkwcAAJSQYlS9w0VKVYY8rA2BA",
-                    caption=text,
-                    parse_mode=ParseMode.MARKDOWN,
-                    supports_streaming=True,
-                    reply_markup=markup,
-                )
-            except BadRequest:
-                sent = await context.bot.send_message(
-                    chat_id=cid,
-                    text=text,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=markup,
-                )
-            context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
         if d == "cat_hash":
@@ -752,50 +718,12 @@ class ShopBot:
             return
             
         if d == "tab_raw":
-            caption = (
-                "Cartine RAW\n"
-                "—\n"
-                "1 pacchetto 1.20€\n"
-                "5 pacchetti 5€\n"
-                "10 pacchetti 8.50€\n"
-                "25 pacchetti 20€\n"
-                "Per veri appassionati, non sbiancate, combustione ultra lenta e totalmente insapori. "
-                "Ogni cartina viene filigranata individualmente, cosi evita che un lato bruci piu’ velocemente dell’altro.\n"
-                "32 cartine per pacchetto.\n\n"
-                "Filtri RAW\n"
-                "—\n"
-                "1 pacchetto 1€\n"
-                "5 pacchetti 4€\n"
-                "10 pacchetti 7€\n"
-                "20 pacchetti 13€\n"
-                "Filtri RAW facilmente modellabili, regolabili in grandezza, non sbiancati. "
-                "Privi di additivi chimici o cloro.\n"
-                "50 filtri per pacchetto.\n\n"
-                "RAW Kit\n"
-                "—\n"
-                "1 kit 1.80€\n"
-                "5 kit 8€\n"
-                "10 kit 15€\n"
-                "25 kit 33€\n"
-                "Ogni kit contiene un pacchetto di cartine e un pacchetto di filtri, gli stessi visibili precedentemente."
+            await self._send_product(
+                context, cid,
+                "Cartine RAW\n—\n1 pacchetto 1.20€\n5 pacchetti 5€\n10 pacchetti 8.50€\n25 pacchetti 20€\nPer veri appassionati, non sbiancate, combustione ultra lenta e totalmente insapori. Ogni cartina viene filigranata individualmente, cosi evita che un lato bruci piu' velocemente dell'altro.\n32 cartine per pacchetto.\n\nFiltri RAW \n—\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n20 pacchetti 13€\nFiltri RAW facilmente modellabili, regolabili in grandezza, non sbiancati. Privi di additivi chimici o cloro.\n50 filtri per pacchetto.\n\nRAW Kit\n—\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33€\nOgni kit contiene un pacchetto di cartine e un pacchetto di filtri, gli stessi visibili precedentemente.",
+                photo_id="AgACAgQAAxkBAAEBBRhpUOP8GifRxCRvc90TdB-MoTZvrQACeAtrG1JBiVI7j4Fw7QPmBwEAAwIAA3gAAzYE",
+                back_callback="tab_cartine_filtri"
             )
-            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="tab_cartine_filtri")]]
-            try:
-                sent = await context.bot.send_photo(
-                    chat_id=cid,
-                    photo="AgACAgQAAxkBAAEBBRhpUOP8GifRxCRvc90TdB-MoTZvrQACeAtrG1JBiVI7j4Fw7QPmBwEAAwIAA3gAAzYE",
-                    caption=caption,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=InlineKeyboardMarkup(kb),
-                )
-            except BadRequest:
-                sent = await context.bot.send_message(
-                    chat_id=cid,
-                    text=caption,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=InlineKeyboardMarkup(kb),
-                )
-            context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
         if d == "tab_elements":
@@ -815,7 +743,7 @@ class ShopBot:
                 "10 pacchetti 7€\n"
                 "20 pacchetti 13€\n\n"
                 "Questi filtri Elements sono ecosostenibili e naturali, senza traccia di sostanze chimiche, "
-                "ma sopratutto sono facili da usare.\n\n"
+                "ma sopratutto sono facili da usare.\n"
                 "Elements Kit\n"
                 "—\n"
                 "1 kit 1.80€\n"
