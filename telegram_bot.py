@@ -636,7 +636,6 @@ class ShopBot:
             return
 
         if d == "cat_hash":
-            if d == "cat_hash":
             if not await self._check_membership(context, update.effective_user.id, cid):
                 return
 
