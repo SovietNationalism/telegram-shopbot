@@ -401,6 +401,9 @@ class ShopBot:
                     InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico"),
                 ],
                 [
+                    InlineKeyboardButton("TABACCHERIA", callback_data="cat_tabaccheria")
+                ],
+                [
                     InlineKeyboardButton("HAI QUALCHE CONSIGLIO?", callback_data="suggest_product")
                 ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
@@ -684,6 +687,234 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
+        if d == "cat_tabaccheria":
+            text = (
+                "Abbiamo allestito una sezione tabaccheria per la vostra comodita’. "
+                "Al momento gli oggetti devono ancora arrivare. (Previsti per il 8 - 12 gennaio)."
+            )
+            kb = [
+                [
+                    InlineKeyboardButton("Backwoods", callback_data="tab_backwoods"),
+                    InlineKeyboardButton("Cartine e Filtri", callback_data="tab_cartine_filtri"),
+                ],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text=text,
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+        
+        if d == "tab_backwoods":
+            caption = (
+                "Gli originali Backwoods.\n"
+                "Sigari americani iconici, apparsi in decine di videoclip. Tabacco e foglia aromatizzata alla vaniglia, "
+                "con una botta di nicotina ben percepibile. Ideali da svuotare e riempire con il fiore di vostra scelta.\n"
+                "Ogni confezione contiene 5 sigari.\n"
+                "x1 conf. 20€\n"
+                "x2 conf. 30€\n"
+                "x3 conf. 40€\n"
+                "x5 conf. 55€\n"
+                "x8 conf. 80€"
+            )
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="cat_tabaccheria")]]
+            try:
+                sent = await context.bot.send_photo(
+                    chat_id=cid,
+                    photo="AgACAgQAAxkBAAEBBRZpUNroBO0J-Zyun5Pzp1_04JBJbAACYgtrG1JBiVLtQL9kIU6wGgEAAwIAA3gAAzYE",
+                    caption=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup(kb),
+                )
+            except BadRequest:
+                sent = await context.bot.send_message(
+                    chat_id=cid,
+                    text=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup(kb),
+                )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+        if d == "tab_cartine_filtri":
+            text = "Visualizza la nostra selezione di cartine e filtri"
+            kb = [
+                [
+                    InlineKeyboardButton("RAW", callback_data="tab_raw"),
+                    InlineKeyboardButton("Elements", callback_data="tab_elements"),
+                ],
+                [
+                    InlineKeyboardButton("Blunt Wraps", callback_data="tab_bluntwraps"),
+                    InlineKeyboardButton("Filtri ActiTube", callback_data="tab_actitube"),
+                ],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="cat_tabaccheria")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text=text,
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+        if d == "tab_raw":
+            caption = (
+                "Cartine RAW\n"
+                "—\n"
+                "1 pacchetto 1.20€\n"
+                "5 pacchetti 5€\n"
+                "10 pacchetti 8.50€\n"
+                "25 pacchetti 20€\n"
+                "Per veri appassionati, non sbiancate, combustione ultra lenta e totalmente insapori. "
+                "Ogni cartina viene filigranata individualmente, cosi evita che un lato bruci piu’ velocemente dell’altro.\n"
+                "32 cartine per pacchetto.\n\n"
+                "Filtri RAW\n"
+                "—\n"
+                "1 pacchetto 1€\n"
+                "5 pacchetti 4€\n"
+                "10 pacchetti 7€\n"
+                "20 pacchetti 13€\n"
+                "Filtri RAW facilmente modellabili, regolabili in grandezza, non sbiancati. "
+                "Privi di additivi chimici o cloro.\n"
+                "50 filtri per pacchetto.\n\n"
+                "RAW Kit\n"
+                "—\n"
+                "1 kit 1.80€\n"
+                "5 kit 8€\n"
+                "10 kit 15€\n"
+                "25 kit 33€\n"
+                "Ogni kit contiene un pacchetto di cartine e un pacchetto di filtri, gli stessi visibili precedentemente."
+            )
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="tab_cartine_filtri")]]
+            try:
+                sent = await context.bot.send_photo(
+                    chat_id=cid,
+                    photo="AgACAgQAAxkBAAEBBRhpUOP8GifRxCRvc90TdB-MoTZvrQACeAtrG1JBiVI7j4Fw7QPmBwEAAwIAA3gAAzYE",
+                    caption=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup(kb),
+                )
+            except BadRequest:
+                sent = await context.bot.send_message(
+                    chat_id=cid,
+                    text=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup(kb),
+                )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+        if d == "tab_elements":
+            caption = (
+                "Cartine Elements\n"
+                "—\n"
+                "Cartine per intenditori, combustione ultra lenta, sono fatte di pura carta di riso, "
+                "bruciano senza creare cenere. Colla in gomma di zucchero.\n"
+                "1 pacchetto 1.20€\n"
+                "5 pacchetti 5€\n"
+                "10 pacchetti 8.50€\n"
+                "25 pacchetti 20€\n\n"
+                "Filtri Elements\n"
+                "—\n"
+                "1 pacchetto 1€\n"
+                "5 pacchetti 4€\n"
+                "10 pacchetti 7€\n"
+                "20 pacchetti 13€\n\n"
+                "Questi filtri Elements sono ecosostenibili e naturali, senza traccia di sostanze chimiche, "
+                "ma sopratutto sono facili da usare.\n\n"
+                "Elements Kit\n"
+                "—\n"
+                "1 kit 1.80€\n"
+                "5 kit 8€\n"
+                "10 kit 15€\n"
+                "25 kit 32€\n"
+                "Ogni kit contiene un pacchetto di cartine e un pacchetto di filtri, gli stessi visibili precedentemente."
+            )
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="tab_cartine_filtri")]]
+            try:
+                sent = await context.bot.send_photo(
+                    chat_id=cid,
+                    photo="AgACAgQAAxkBAAEBBSVpUOiV7GwSb1NX0fJeTwaJPd9VqgACfQtrG1JBiVJzDmdQmw_p5AEAAwIAA3kAAzYE",
+                    caption=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup(kb),
+                )
+            except BadRequest:
+                sent = await context.bot.send_message(
+                    chat_id=cid,
+                    text=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup(kb),
+                )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+                if d == "tab_bluntwraps":
+            caption = (
+                "Juicy Jays Wraps Blue di canapa\n"
+                "—\n"
+                "1 pacchetto 2€\n"
+                "2 pacchetti 3.80€\n"
+                "5 pacchetti 8.50€\n"
+                "10 pacchetti 14.50€\n"
+                "20 pacchetti 20€\n"
+                "Fatti da foglia di canapa aromatizzata al mirtillo, brucia lentamente ed e’ piu’ facile da rollare "
+                "rispetto alle foglie di tabacco, ed e’ completamente priva di nicotina. Perfetto per blunt."
+            )
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="tab_cartine_filtri")]]
+            try:
+                sent = await context.bot.send_photo(
+                    chat_id=cid,
+                    photo="AgACAgQAAxkBAAEBBRtpUORvVKgNiIyIt9L5NsVpWE_qrwACeQtrG1JBiVIa3xODPSP6MwEAAwIAA3gAAzYE",
+                    caption=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup(kb),
+                )
+            except BadRequest:
+                sent = await context.bot.send_message(
+                    chat_id=cid,
+                    text=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup(kb),
+                )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+            
+        if d == "tab_actitube":
+            caption = (
+                "Filtri a carboni attivi Actitube 7mm\n"
+                "—\n"
+                "1 pacchetto 3€\n"
+                "2 pacchetti 5€\n"
+                "5 pacchetti 10€\n"
+                "10 pacchetti 18€\n"
+                "Filtri ai carboni attivi utili per ridurre l’assunzione di catrame. "
+                "Dotati di cappuccio in ceramica su entrambe le estremità.\n"
+                "Migliorano il sapore delle boccate. Diametro di 7mm. Di origine vegetale e biodegradabili. "
+                "Riutilizzabili.\n"
+                "Ogni pacchetto contiene 10 filtri."
+            )
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="tab_cartine_filtri")]]
+            try:
+                sent = await context.bot.send_photo(
+                    chat_id=cid,
+                    photo="AgACAgQAAxkBAAEBBSNpUOS0Oh4YRmjxychZ30bAe1C4pQACegtrG1JBiVLziPgOsBazfQEAAwIAA3gAAzYE",
+                    caption=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup(kb),
+                )
+            except BadRequest:
+                sent = await context.bot.send_message(
+                    chat_id=cid,
+                    text=caption,
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup(kb),
+                )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
         if d == "prod_neve":
             prod = self.products["neve"]
             sent = await self._send_media_or_text(
