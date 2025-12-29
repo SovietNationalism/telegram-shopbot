@@ -93,15 +93,13 @@ class ShopBot:
             "funghetti": {
                 "caption": (
                     "📦 *Funghi Psylocibe Cubensis*\n"
-                    "Disponibili.\n\n"
                     "3.5g 45€\n"
                     "5g 65€\n"
-                    "10g 105€\n"
-                    "15g 125€\n20g 160€\n\n"
+                    "10g 105€\n15g 125€\n20g 160€\n"
                     "Una miscela di varietà classiche e potenti, McKennai, Golden Teacher, e Jedi Mind Fuck.\n"
                     "Effetto profondo e duraturo, ideale per esplorare nuove dimensioni. Disponibili subito per chi cerca un'esperienza "
                     "autentica e coinvolgente.\n"
-                    "Dosaggi:\n0.25-1g effetto lieve | 1-2.5 g effetto medio | 2.5-5 g effetto forte"
+                    "Dosaggi:\n0.25-1 g effetto lieve | 1-2.5 g effetto medio | 2.5-5 g effetto forte"
                 ),
                 "video_file_id": "BAACAgQAAxkBAAI9gmk_9B6WfvUiC8Q6FWDumJqt_cZQAALaGgAC3ykBUjFj1UkcKnyCNgQ",  # Fill as needed
                 "photo_file_ids": [],
