@@ -100,8 +100,7 @@ class ShopBot:
                     "15g 125€\n20g 160€\n\n"
                     "Una miscela di varietà classiche e potenti, McKennai, Golden Teacher, e Jedi Mind Fuck.\n"
                     "Effetto profondo e duraturo, ideale per esplorare nuove dimensioni. Disponibili subito per chi cerca un'esperienza "
-                    "autentica e coinvolgente.\n"
-                    "https://erowid.org/plants/mushrooms/mushrooms_dose.shtml"
+                    "autentica e coinvolgente."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAI9gmk_9B6WfvUiC8Q6FWDumJqt_cZQAALaGgAC3ykBUjFj1UkcKnyCNgQ",  # Fill as needed
                 "photo_file_ids": [],
