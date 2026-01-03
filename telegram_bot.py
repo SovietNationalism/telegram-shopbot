@@ -189,7 +189,7 @@ class ShopBot:
         self.weed_video_file_id = "BAACAgQAAxkBAAIfGGksX9SvE4VCDU76INV67CCyjBRfAAJCGQACfFpgUb9qGHvsCn-ENgQ"
         self.weed_overview = (
             "🌿 *Weed*\n"
-            "Ultime rimanenze!\n"
+            "Out of stock - non disponibile\n"
             "Una Calispain dalla genetica agrumata, dal profilo aromatico fresco e deciso. Fiori compatti e resinosi, estremamente "
             "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere.\n\n"
             "Citronella Kush\n"
@@ -287,6 +287,7 @@ class ShopBot:
             [InlineKeyboardButton("📜 COME ORDINARE", callback_data="tos")],
             [InlineKeyboardButton("📦 ORDINA QUI", url=ADMIN_CONTACT)],
             [InlineKeyboardButton("💬 CHAT CLIENTI", url="https://t.me/+xwCcckoNERw2MWU0")],
+            [InlineKeyboardButton("📩 RECENSIONI", url="https://t.me/+mX8bV3BF-otlNDZk")],
             [InlineKeyboardButton("📝 CANALE PRINCIPALE", url="https://t.me/Regular_Dope")],
         ]
         m = update.effective_message
