@@ -154,7 +154,7 @@ class ShopBot:
                         "50g 240€\n"
                         "100g 430€\n"
                         "200g 850€\n"
-                        "Card bufalo plein. Meglio dei soliti dry sift commerciali a un prezzo imbattibile.\n"
+                        "Ultimissime rimanenze card bufalo plein. Meglio dei soliti dry sift commerciali a un prezzo imbattibile.\n"
                         "Effetto intenso e prolungato, ottimo odore e sapore, Già curato, si sbriciola con facilità ed è un piacere da fumare in tutti i modi."
                     ),
                     "video_file_id": "BAACAgQAAxkBAAIpLGk1eriw6PhQgnRcYqO9Eii-5OpvAAJsHgAC9lypUYj4r8UZBRQLNgQ",
