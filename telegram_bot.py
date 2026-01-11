@@ -647,12 +647,17 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
-        if d == "cat_sintetico":
+                if d == "cat_sintetico":
             if not await self._check_membership(context, update.effective_user.id, cid):
                 return
 
             kb = [
                 [InlineKeyboardButton("Neve", callback_data="prod_neve")],
+                [InlineKeyboardButton("X4NAX", callback_data="prod_xanax")],
+                [InlineKeyboardButton("0XY", callback_data="prod_oxy")],
+                [InlineKeyboardButton("PARACOD1NA", callback_data="prod_paracodina")],
+                [InlineKeyboardButton("LSD", callback_data="prod_lsd")],
+                [InlineKeyboardButton("MD", callback_data="prod_md")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
             sent = await context.bot.send_message(
@@ -752,6 +757,131 @@ class ShopBot:
         if d == "prod_neve":
             prod = self.products["neve"]
             await self._send_product(context, cid, prod["caption"], video_id=prod["video_file_id"], back_callback="cat_sintetico")
+            return
+            
+        if d == "prod_xanax":
+            caption = (
+                "Xanax 1mg\n"
+                "Prezzo:\n"
+                "5 pillole - 30€\n"
+                "10 pillole - 40€\n\n"
+                "Diretto da Estero 🇵🇱 (7-10 gg. lav.)\n"
+                "5 blister (50 pillole) - 130€\n"
+                "10 blister - 190€\n\n"
+                "Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti, "
+                "sostituendoli con un relax muscolare profondo e una calma mentale totale. "
+                "Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole. "
+                "Blister diversi di provenienza farmaceutica.\n\n"
+                "⚖️ Dose Consigliata:\n"
+                "• Principianti: 2mg\n"
+                "• Esperti: 4mg"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEB8pZpY4zIBl1rw-BgBTGfqDjDAAFPgpoAAscdAAIi5iFToJi2HP8P1oo4BA",
+                back_callback="cat_sintetico",
+            )
+            return
+            
+        if d == "prod_oxy":
+            caption = (
+                "Oxypronal 40/20\n"
+                "1 pillola 15€\n"
+                "5 pillole 45€\n"
+                "10 pillole 75€\n"
+                "Conf. (28) 140€\n\n"
+                "Analgesico a base di ossicodone. L'ossicodone offre un'onda calda di pura euforia, benessere totale e un relax corporeo profondo, "
+                "con formulazione a durata prolungata. L'esperienza definitiva per il sollievo ricreativo. Provenienza farmaceutica. "
+                "(Non rompere le pillole, ma si possono dividere in due.)\n\n"
+                "⚖️ Dose Consigliata:\n"
+                "• Principianti: 20mg\n"
+                "• Esperti: 40mg"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEB8phpY4zPAb4f9uqzU8MzRg_zCqthkAACyB0AAiLmIVP3W179OOt9TzgE",
+                back_callback="cat_sintetico",
+            )
+            return
+            
+        if d == "prod_paracodina":
+            caption = (
+                "Paracodina 10,25mg/ml Gocce\n"
+                "Prezzo:\n"
+                "1 flacone (14,63ml) - 70€\n"
+                "2 flaconi (29,26ml) - 120€\n\n"
+                "Sciroppo a base di diidrocodeina. Per un effetto sedativo e calmante, profondo e distensivo, che ti accompagna in uno stato di quiete e piacere duraturo. "
+                "Meno potente dell’ossicodone. Provenienza farmaceutica.\n\n"
+                "⚖️ Dose Consigliata:\n"
+                "• Principianti: 60mg\n"
+                "• Esperti: 150mg"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEB8hFpY4gSw_SVeHXMdeK8GJZyYluFMgACvB0AAiLmIVP61CA3WBz_XjgE",
+                back_callback="cat_sintetico",
+            )
+            return
+            
+        if d == "prod_lsd":
+            caption = (
+                "LSD 250µg Blotter\n"
+                "Prezzo:\n"
+                "1 cartone - 15€\n"
+                "2 cartoni - 25€\n"
+                "5 cartoni - 50€\n"
+                "10 cartoni - 75€\n"
+                "20 cartoni - 125€\n"
+                "30 cartoni - 165€\n"
+                "Diretto da Estero 🇩🇪 (7-10 gg. lav.)\n"
+                "50 cartoni - 200€\n"
+                "100 cartoni - 330€\n\n"
+                "Psichedelico classico su blotter tema Spongebob & Patrick. 250µg di pura esperienza visiva e mentale, per un viaggio intenso tra pattern geometrici, "
+                "esplorazione introspettiva e percezione amplificata. Purezza certificata.\n\n"
+                "⚖️ Dose Consigliata:\n"
+                "• Principianti: 1 cartone.\n"
+                "• Esperti: 1.5-2 cartoni."
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEB8g9pY4gLdV6CDdzQLU_UFV6BHMjgAQACux0AAiLmIVPbx9TTHMVuGDgE",
+                back_callback="cat_sintetico",
+            )
+            return
+            
+        if d == "prod_md":
+            caption = (
+                "MDMA 300mg Pills (Blue Punisher)\n\n"
+                "IN ARRIVO TRA IL 20-21 GENNAIO\n"
+                "1 pillola - 25€\n"
+                "2 pillole - 35€\n"
+                "5 pillole - 60€\n"
+                "10 pillole - 90€\n"
+                "20 pillole - 135€\n"
+                "Diretto da Estero 🇩🇪 (7-10 gg. lav.)\n"
+                "50 pillole - 210€\n"
+                "100 pillole - 320€\n\n"
+                "Pillola iconica da 300mg di MDMA puro. Per un'onda di euforia schiacciante, energia inesauribile e empatia totale. "
+                "L'esperienza classica e potente per una serata di pura connessione e piacere sensoriale amplificato.\n\n"
+                "⚖️ Dose Consigliata:\n"
+                "• Principianti: ½ pillola.\n"
+                "• Esperti: 1 pillola per il roll completo."
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                photo_id="AgACAgQAAxkBAAEB8tppY46gsiseZfCkTiH7BDN0PnoDGAACLgxrG6lJEVPNKMTCFb62PwEAAwIAA3kAAzgE",
+                back_callback="cat_sintetico",
+            )
             return
 
         if d.startswith("prod_hash_") or d.startswith("prod_weed_"):
