@@ -647,7 +647,7 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
-                if d == "cat_sintetico":
+        if d == "cat_sintetico":
             if not await self._check_membership(context, update.effective_user.id, cid):
                 return
 
