@@ -77,7 +77,7 @@ class ShopBot:
     def __init__(self):
         self.products = {
             "packwoods": {
-                "name": "THC Vapes Packwoods™ x Runtz",
+                "name": "THC Vapes Dabwoods™",
                 "price": (
                     "1 - 45€\n"
                     "2 - 80€\n"
@@ -86,8 +86,8 @@ class ShopBot:
                     "5 - 165€\n"
                     "10 - 300€\n"
                 ),
-                "description": "Disponibile in due strain\nBlue Dream\nSkywalker Og\nCon 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
-                "video_file_id": "BAACAgQAAxkBAAK8e2lMUoehoRdmRCvBGfZPztZEp2qfAAIoHQACnZJgUilpkLWW64h4NgQ",
+                "description": "Nuovo carico tra mercoledi e giovedi!\nCon 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
+                "video_file_id": "BAACAgQAAxkBAAEB9a1pY50hsUky3uJZIBFfBjf9csmpmAAC0R0AAiLmIVMUd64FCRfPFjgE",
                 "photo_file_ids": [],
             },
             "funghetti": {
@@ -435,7 +435,7 @@ class ShopBot:
                     InlineKeyboardButton("ERBA", callback_data="cat_weed")
                 ],
                 [
-                    InlineKeyboardButton("PACKW0ODS X RUNTZ", callback_data="prod_packwoods"),
+                    InlineKeyboardButton("DABW0ODS", callback_data="prod_packwoods"),
                     InlineKeyboardButton("FUNGHETTI", callback_data="prod_funghetti")
                 ],
                 [
