@@ -164,10 +164,7 @@ class ShopBot:
                     "name": "Frozen 180/90",
                     "caption": (
                         "📦 *Frozen Sift 180/90* – Tropicana Cookies\n\n"
-                        "Qualità premium, molto superiore a qualsiasi dry o filtrato, con un rapporto qualità/prezzo davvero competitivo.\n"
-                        "Effetto deciso e duraturo, profilo aromatico intenso e gusto pulito.\n"
-                        "Il materiale è ancora nel processo di cura e nel video si mostra vetrato.\n\n"
-                        "💵 Prezzi:\n"
+                        "Terminato."
                         "3g 40€\n"
                         "5g 60€\n"
                         "10g 115€\n"
