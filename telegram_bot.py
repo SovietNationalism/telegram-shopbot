@@ -591,7 +591,6 @@ class ShopBot:
 
             kb = [
                 [InlineKeyboardButton("Calispain", callback_data="weed_calispain")],
-                [InlineKeyboardButton("Cali Usa", callback_data="weed_cali_usa")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
             sent = await context.bot.send_message(
