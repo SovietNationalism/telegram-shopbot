@@ -150,21 +150,21 @@ class ShopBot:
                         "15g 110€\n"
                         "20g 135€\n"
                         "30g 175€\n"
-                        "40g 210€\n"
+                        "40g 205€\n"
                         "50g 240€\n"
-                        "100g 430€\n"
-                        "200g 850€\n"
-                        "Ultimissime rimanenze card bufalo plein. Meglio dei soliti dry sift commerciali a un prezzo imbattibile.\n"
+                        "100g 420€\n"
+                        "200g 835€\n"
+                        "Terminato - Nuovo carico Venerdi. Meglio dei soliti dry sift commerciali a un prezzo imbattibile.\n"
                         "Effetto intenso e prolungato, ottimo odore e sapore, Già curato, si sbriciola con facilità ed è un piacere da fumare in tutti i modi."
                     ),
-                    "video_file_id": "BAACAgQAAxkBAAIpLGk1eriw6PhQgnRcYqO9Eii-5OpvAAJsHgAC9lypUYj4r8UZBRQLNgQ",
+                    "video_file_id": "BAACAgQAAxkBAAECNHFpZg0fR7gPu3wsnbFM25rMWtfxUQACoSIAAopMMFNZ9d8ZhRCkqDgE",
                     "photo_file_ids": [],
                 },
                 {
                     "name": "Frozen 180/90",
                     "caption": (
                         "📦 *Frozen Sift 180/90* – Tropicana Cookies\n\n"
-                        "Terminato."
+                        "Terminato. Nuovo frozen sett prossima."
                         "3g 40€\n"
                         "5g 60€\n"
                         "10g 115€\n"
@@ -614,15 +614,6 @@ class ShopBot:
                 video_file_id=self.weed_video_file_id,
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
-            return
-
-        if d == "weed_cali_usa":
-            await self._send_product(
-                context, cid,
-                "Purple Daddy's Real Cali Outdoor\nErba di qualità molto alta, genetica Californiana.\n\nIn arrivo tra il 7 e il 12 di Gennaio.\nPre-ordinazioni aperte per gli interessati.\n5g 50€\n10g 85€\n15g 120€\n20g 145€\n30g 205€\n40g 265€\n50g 300€\n100g 550€",
-                video_id="BAACAgQAAxkBAAEBBZNpUQABzlM2EeplaCMdtLlrFdhcghMAAkwcAAJSQYlS9w0VKVYY8rA2BA",
-                back_callback="cat_weed"
-            )
             return
 
         if d == "cat_hash":
