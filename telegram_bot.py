@@ -157,7 +157,7 @@ class ShopBot:
                         "Meglio dei soliti dry sift commerciali a un prezzo imbattibile.\n"
                         "Effetto intenso e prolungato, ottimo odore e sapore, Già curato, si sbriciola con facilità ed è un piacere da fumare in tutti i modi."
                     ),
-                    "video_file_id": "BAACAgQAAxkBAAECNHFpZg0fR7gPu3wsnbFM25rMWtfxUQACoSIAAopMMFNZ9d8ZhRCkqDgE",
+                    "video_file_id": "BAACAgQAAxkBAAECjLVpao2jGcI4aklKWAp6J9wnyZ8TyAACsBgAAnNpWFP5FyMj6qMDczgE",
                     "photo_file_ids": [],
                 },
                 {
@@ -658,7 +658,7 @@ class ShopBot:
         if d == "cat_tabaccheria":
             text = (
                 "Abbiamo allestito una sezione tabaccheria per la vostra comodita’. "
-                "Al momento gli oggetti devono ancora arrivare. (Previsti per il 8 - 12 gennaio)."
+                "Al momento gli oggetti devono ancora arrivare. (Previsti per il 16-18 gennaio visto un leggero ritardo)."
             )
             kb = [
                 [
