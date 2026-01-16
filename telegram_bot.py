@@ -86,7 +86,7 @@ class ShopBot:
                     "5 - 165€\n"
                     "10 - 300€\n"
                 ),
-                "description": "Nuovo carico tra mercoledi e giovedi!\nCon 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
+                "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
                 "video_file_id": "BAACAgQAAxkBAAEB9a1pY50hsUky3uJZIBFfBjf9csmpmAAC0R0AAiLmIVMUd64FCRfPFjgE",
                 "photo_file_ids": [],
             },
@@ -154,7 +154,7 @@ class ShopBot:
                         "50g 240€\n"
                         "100g 420€\n"
                         "200g 835€\n"
-                        "Terminato - Nuovo carico Venerdi. Meglio dei soliti dry sift commerciali a un prezzo imbattibile.\n"
+                        "Meglio dei soliti dry sift commerciali a un prezzo imbattibile.\n"
                         "Effetto intenso e prolungato, ottimo odore e sapore, Già curato, si sbriciola con facilità ed è un piacere da fumare in tutti i modi."
                     ),
                     "video_file_id": "BAACAgQAAxkBAAECNHFpZg0fR7gPu3wsnbFM25rMWtfxUQACoSIAAopMMFNZ9d8ZhRCkqDgE",
@@ -164,7 +164,7 @@ class ShopBot:
                     "name": "Frozen 180/90",
                     "caption": (
                         "📦 *Frozen Sift 180/90* – Tropicana Cookies\n\n"
-                        "Terminato. Nuovo frozen sett prossima."
+                        "Terminato. Nuovo frozen arriva verso il 22-23 gen."."
                         "3g 40€\n"
                         "5g 60€\n"
                         "10g 115€\n"
