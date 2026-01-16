@@ -145,7 +145,7 @@ class ShopBot:
                     "name": "Filtered 120u",
                     "caption": (
                         "📦 *Filtrato 120u*\n"
-                        "5g 45€\n"
+                        "5g 40€\n"
                         "10g 75€\n"
                         "15g 110€\n"
                         "20g 135€\n"
@@ -164,7 +164,7 @@ class ShopBot:
                     "name": "Frozen 180/90",
                     "caption": (
                         "📦 *Frozen Sift 180/90* – Tropicana Cookies\n\n"
-                        "Terminato. Nuovo frozen arriva verso il 22-23 gen."."
+                        "Terminato. Nuovo frozen arriva verso il 22-23 gen."
                         "3g 40€\n"
                         "5g 60€\n"
                         "10g 115€\n"
