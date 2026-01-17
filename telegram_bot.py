@@ -564,6 +564,31 @@ class ShopBot:
                 )
                 context.user_data["last_menu_msg_id"] = sent.message_id
             return
+
+        if d == "weed_caliusa_outdoor":
+            if not await self._check_membership(context, update.effective_user.id, cid):
+                return
+
+            caption = (
+                "Grape Haze Caliusa Outdoor\n"
+                "Bud densi con sfumature violacee e cristalli brillanti, dal profilo terpenico fruttato con note di uva matura "
+                "e leggero tocco di haze speziata. Fumata morbida e zuccherina, sprigiona un’energia creativa e un effetto rilassante ma ancora lucido.\n\n"
+                "5g 50€\n"
+                "10g 85€\n"
+                "15g 120€\n"
+                "20g 150€\n"
+                "30g 210€\n"
+                "50g 310€\n"
+                "100g 560€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAECoblpa-EgjLClfMnzXX4oXFz3m9JmwAAChiMAAvFyYVNBWYlHdKY64TgE",
+                back_callback="cat_weed",
+            )
+            return
             
         if d == "sciroppo_consigli":
             prod = self.products["sciroppo"]
@@ -592,6 +617,7 @@ class ShopBot:
 
             kb = [
                 [InlineKeyboardButton("Calispain", callback_data="weed_calispain")],
+                [InlineKeyboardButton("Caliusa Outdoor", callback_data="weed_caliusa_outdoor")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
             sent = await context.bot.send_message(
