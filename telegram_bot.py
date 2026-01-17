@@ -147,15 +147,15 @@ class ShopBot:
                         "📦 *Filtrato 120u*\n"
                         "5g 40€\n"
                         "10g 75€\n"
-                        "15g 110€\n"
-                        "20g 135€\n"
-                        "30g 175€\n"
-                        "40g 205€\n"
-                        "50g 240€\n"
+                        "15g 105€\n"
+                        "20g 130€\n"
+                        "30g 170€\n"
+                        "40g 200€\n"
+                        "50g 230€\n"
                         "100g 420€\n"
                         "200g 835€\n"
-                        "Meglio dei soliti dry sift commerciali a un prezzo imbattibile.\n"
-                        "Effetto intenso e prolungato, ottimo odore e sapore, Già curato, si sbriciola con facilità ed è un piacere da fumare in tutti i modi."
+                        "Un dry sift commerciale di buona qualità.\n"
+                        "Aroma intenso e naturale, facile da lavorare e piacevole da fumare in ogni modo. Colpisce con una botta potente e duratura, lasciando un effetto rilassante e pulito."
                     ),
                     "video_file_id": "BAACAgQAAxkBAAECjLVpao2jGcI4aklKWAp6J9wnyZ8TyAACsBgAAnNpWFP5FyMj6qMDczgE",
                     "photo_file_ids": [],
@@ -164,7 +164,7 @@ class ShopBot:
                     "name": "Frozen 180/90",
                     "caption": (
                         "📦 *Frozen Sift 180/90* – Tropicana Cookies\n\n"
-                        "Terminato. Nuovo frozen arriva verso il 22-23 gen."
+                        "Terminato. Nuovo frozen arriva verso il 22-26 gen."
                         "3g 40€\n"
                         "5g 60€\n"
                         "10g 115€\n"
@@ -183,13 +183,13 @@ class ShopBot:
                 # Add WEED category products here later the same way
             ]
         }
-        self.weed_video_file_id = "BAACAgQAAxkBAAIfGGksX9SvE4VCDU76INV67CCyjBRfAAJCGQACfFpgUb9qGHvsCn-ENgQ"
+        self.weed_video_file_id = "BAACAgQAAxkBAAECn5Bpa9Tt1lZ3DbMS7nhH9vPz58QHTwACfCMAAvFyYVMvz-OESFo6MDgE"
         self.weed_overview = (
             "🌿 *Weed*\n"
-            "Out of stock - non disponibile\n"
-            "Una Calispain dalla genetica agrumata, dal profilo aromatico fresco e deciso. Fiori compatti e resinosi, estremamente "
+            "Out of stock - in arrivo tra il 26 gennaio.\n"
+            "Una strain classica, ottima Calispain dall'odore intenso e fresco. Fiori compatti e resinosi, estremamente "
             "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere.\n\n"
-            "Citronella Kush\n"
+            "OG Kush\n"
             "5g 40€\n"
             "10g 75€\n"
             "15g 110€\n"
@@ -440,7 +440,8 @@ class ShopBot:
                     InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico"),
                 ],
                 [
-                    InlineKeyboardButton("TABACCHERIA", callback_data="cat_tabaccheria")
+                    InlineKeyboardButton("TABACCHERIA", callback_data="cat_tabaccheria"),
+                    InlineKeyboardButton("CARAMELLE", callback_data="prod_caramelle"),
                 ],
                 [
                     InlineKeyboardButton("HAI QUALCHE CONSIGLIO?", callback_data="suggest_product")
@@ -771,7 +772,28 @@ class ShopBot:
                 back_callback="cat_sintetico",
             )
             return
-            
+
+        if d == "prod_caramelle":
+            caption = (
+                "Dank Gummies – caramelle al THC da 500 mg\n"
+                "IN ARRIVO SETTIMANA PROSSIMA.\n"
+                "Morbide, gustose e incredibilmente potenti. Basta mezza caramella per sentire un effetto intenso e prolungato che si fa sentire dopo più o meno un'ora. "
+                "Ogni morso regala un'esperienza dolce, rilassante e duratura, perfette per chi vuole il massimo senza dare nell'occhio, "
+                "o semplicemente per chi vuole provare qualcosa di diverso. Ogni pacchetto contiene 5 caramelle con 100 mg di THC.\n\n"
+                "1 pacchetto - 30€\n"
+                "2 pacchetti - 45€\n"
+                "5 pacchetti - 95€\n"
+                "10 pacchetti - 180€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAECn45pa9RavFAHDaX4fr42cBmZLDh-pAACeyMAAvFyYVOyKX3nBnOuBDgE",
+                back_callback="shop",
+            )
+            return
+
         if d == "prod_oxy":
             caption = (
                 "Oxypronal 40/20\n"
