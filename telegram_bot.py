@@ -571,8 +571,9 @@ class ShopBot:
 
             caption = (
                 "Grape Haze Caliusa Outdoor\n"
-                "Bud densi con sfumature violacee e cristalli brillanti, dal profilo terpenico fruttato con note di uva matura "
-                "e leggero tocco di haze speziata. Fumata morbida e zuccherina, sprigiona un’energia creativa e un effetto rilassante ma ancora lucido.\n\n"
+                "In arrivo il 26 gennaio.\n"
+                "Bud densi con sfumature violacee e cristalli brillanti, dal profilo terpenico fruttato con note di uva matura"
+                "e leggero tocco speziato. Fumata morbida che sprigiona un’energia creativa e un effetto rilassante ed euforico.\n\n"
                 "5g 50€\n"
                 "10g 85€\n"
                 "15g 120€\n"
