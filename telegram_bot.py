@@ -778,7 +778,7 @@ class ShopBot:
                 "Dank Gummies – caramelle al THC da 500 mg\n"
                 "IN ARRIVO SETTIMANA PROSSIMA.\n"
                 "Morbide, gustose e incredibilmente potenti. Basta mezza caramella per sentire un effetto intenso e prolungato che si fa sentire dopo più o meno un'ora. "
-                "Ogni morso regala un'esperienza dolce, rilassante e duratura, perfette per chi vuole il massimo senza dare nell'occhio, "
+                "Perfette per chi vuole il massimo senza dare nell'occhio, "
                 "o semplicemente per chi vuole provare qualcosa di diverso. Ogni pacchetto contiene 5 caramelle con 100 mg di THC.\n\n"
                 "1 pacchetto - 30€\n"
                 "2 pacchetti - 45€\n"
