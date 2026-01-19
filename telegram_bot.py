@@ -684,7 +684,7 @@ class ShopBot:
         if d == "cat_tabaccheria":
             text = (
                 "Abbiamo allestito una sezione tabaccheria per la vostra comodita’. "
-                "Al momento gli oggetti devono ancora arrivare. (Previsti per il 16-18 gennaio visto un leggero ritardo)."
+                "Al momento gli oggetti devono ancora arrivare. (BACKWOODS ARRIVATI - Il resto previsto per il 16-18 gennaio visto un leggero ritardo)."
             )
             kb = [
                 [
@@ -704,7 +704,7 @@ class ShopBot:
         if d == "tab_backwoods":
             await self._send_product(
                 context, cid,
-                "Gli originali Backwoods.\nSigari americani iconici, apparsi in decine di videoclip. Tabacco e foglia aromatizzata alla vaniglia, con una botta di nicotina ben percepibile. Ideali da svuotare e riempire con il fiore di vostra scelta.\nOgni confezione contiene 5 sigari.\nx1 conf. 20€ \nx2 conf. 30€\nx3 conf. 40€\nx5 conf. 55€\nx8 conf. 80€",
+                "DISPONIBILI!!! Gli originali Backwoods.\nSigari americani iconici, apparsi in decine di videoclip. Tabacco e foglia aromatizzata alla vaniglia, con una botta di nicotina ben percepibile. Ideali da svuotare e riempire con il fiore di vostra scelta.\nOgni confezione contiene 5 sigari.\nx1 conf. 20€ \nx2 conf. 30€\nx3 conf. 40€\nx5 conf. 55€\nx8 conf. 80€",
                 photo_id="AgACAgQAAxkBAAEBBRZpUNroBO0J-Zyun5Pzp1_04JBJbAACYgtrG1JBiVLtQL9kIU6wGgEAAwIAA3gAAzYE",
                 back_callback="cat_tabaccheria"
             )
