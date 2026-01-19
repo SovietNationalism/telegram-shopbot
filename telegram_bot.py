@@ -181,7 +181,7 @@ class ShopBot:
                 # Add WEED category products here later the same way
             ]
         }
-        self.weed_video_file_id = "BAACAgQAAxkBAAECn5Bpa9Tt1lZ3DbMS7nhH9vPz58QHTwACfCMAAvFyYVMvz-OESFo6MDgE"
+        self.weed_video_file_id = "BAACAgQAAxkBAAEC045pbmuZIYKe8DwaSiFCahi4aTzPrwACJhsAApIBeFOi6C9CEsJSXTgE"
         self.weed_overview = (
             "🌿 *Weed*\n"
             "Out of stock - in arrivo tra il 26 gennaio.\n"
