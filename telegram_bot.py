@@ -162,7 +162,7 @@ class ShopBot:
                     "name": "Frozen",
                     "caption": (
                         "📦 *Frozen Sift*\n\n"
-                        "VIDEO DA VETRATO!!! Questo Frozen arriva verso il 23-26 gen.\n"
+                        "VIDEO DA VETRATO!!! Quando arriva il materiale sará fornito curato. Questo Frozen arriva verso il 23-26 gen.\n"
                         "3g 40€\n"
                         "5g 60€\n"
                         "10g 110€\n"
