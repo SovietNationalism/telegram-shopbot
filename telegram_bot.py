@@ -159,10 +159,10 @@ class ShopBot:
                     "photo_file_ids": [],
                 },
                 {
-                    "name": "Frozen 180/90",
+                    "name": "Frozen",
                     "caption": (
                         "📦 *Frozen Sift*\n\n"
-                        "Questo Frozen arriva verso il 23-26 gen."
+                        "Questo Frozen arriva verso il 23-26 gen.\n"
                         "3g 40€\n"
                         "5g 60€\n"
                         "10g 110€\n"
