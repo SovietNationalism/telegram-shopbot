@@ -151,7 +151,7 @@ class ShopBot:
                         "40g 200€\n"
                         "50g 230€\n"
                         "100g 420€\n"
-                        "200g 835€\n"
+                        "200g 805€\n"
                         "Un dry sift commerciale di buona qualità.\n"
                         "Fumo dall'aroma intenso e naturale, facile da lavorare e piacevole da fumare in ogni modo. Colpisce con una botta potente e duratura, lasciando un effetto rilassante e pulito."
                     ),
