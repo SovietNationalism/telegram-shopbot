@@ -153,7 +153,7 @@ class ShopBot:
                         "100g 420€\n"
                         "200g 835€\n"
                         "Un dry sift commerciale di buona qualità.\n"
-                        "Fumo dall'armo intenso e naturale, facile da lavorare e piacevole da fumare in ogni modo. Colpisce con una botta potente e duratura, lasciando un effetto rilassante e pulito."
+                        "Fumo dall'aroma intenso e naturale, facile da lavorare e piacevole da fumare in ogni modo. Colpisce con una botta potente e duratura, lasciando un effetto rilassante e pulito."
                     ),
                     "video_file_id": "BAACAgQAAxkBAAECjLVpao2jGcI4aklKWAp6J9wnyZ8TyAACsBgAAnNpWFP5FyMj6qMDczgE",
                     "photo_file_ids": [],
