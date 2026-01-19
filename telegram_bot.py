@@ -153,7 +153,7 @@ class ShopBot:
                         "100g 420€\n"
                         "200g 835€\n"
                         "Un dry sift commerciale di buona qualità.\n"
-                        "Aroma intenso e naturale, facile da lavorare e piacevole da fumare in ogni modo. Colpisce con una botta potente e duratura, lasciando un effetto rilassante e pulito."
+                        "Fumo dall'armo intenso e naturale, facile da lavorare e piacevole da fumare in ogni modo. Colpisce con una botta potente e duratura, lasciando un effetto rilassante e pulito."
                     ),
                     "video_file_id": "BAACAgQAAxkBAAECjLVpao2jGcI4aklKWAp6J9wnyZ8TyAACsBgAAnNpWFP5FyMj6qMDczgE",
                     "photo_file_ids": [],
@@ -162,7 +162,7 @@ class ShopBot:
                     "name": "Frozen",
                     "caption": (
                         "📦 *Frozen Sift*\n\n"
-                        "VIDEO DA VETRATO!!! Quando arriva il materiale sará fornito curato. Questo Frozen arriva verso il 23-26 gen.\n"
+                        "VIDEO DA VETRATO - Quando arriva il materiale sará fornito curato. Questo Frozen arriva verso il 23-26 gen.\n"
                         "3g 40€\n"
                         "5g 60€\n"
                         "10g 110€\n"
@@ -183,18 +183,17 @@ class ShopBot:
         }
         self.weed_video_file_id = "BAACAgQAAxkBAAEC045pbmuZIYKe8DwaSiFCahi4aTzPrwACJhsAApIBeFOi6C9CEsJSXTgE"
         self.weed_overview = (
-            "🌿 *Weed*\n"
+            "🌿 *OG KUSH*\n"
             "Out of stock - in arrivo tra il 26 gennaio.\n"
             "Una strain classica, ottima Calispain dall'odore intenso e fresco. Fiori compatti e resinosi, estremamente "
             "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere.\n\n"
-            "OG Kush\n"
             "5g 40€\n"
             "10g 75€\n"
             "15g 110€\n"
             "20g 135€\n"
             "30g 175€\n"
             "40g 200€\n"
-            "50g 220€\n"
+            "50g 235€\n"
             "100g 420€\n"
         )
         self.user_ids = set()
