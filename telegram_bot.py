@@ -85,7 +85,7 @@ class ShopBot:
                     "10 - 300€\n"
                 ),
                 "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
-                "video_file_id": "BAACAgQAAxkBAAEB9a1pY50hsUky3uJZIBFfBjf9csmpmAAC0R0AAiLmIVMUd64FCRfPFjgE",
+                "video_file_id": "BAACAgQAAxkBAAECyH1pbiqrGG8sR6bpaNlzAbJFgtdGyAAC8xkAApIBcFNkjhQrxUtMRjgE",
                 "photo_file_ids": [],
             },
             "funghetti": {
