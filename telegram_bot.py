@@ -144,7 +144,7 @@ class ShopBot:
                     "caption": (
                         "📦 *Filtrato 120u*\n"
                         "5g 40€\n"
-                        "10g 75€\n"
+                        "10g 70€\n"
                         "15g 105€\n"
                         "20g 130€\n"
                         "30g 170€\n"
@@ -161,19 +161,19 @@ class ShopBot:
                 {
                     "name": "Frozen 180/90",
                     "caption": (
-                        "📦 *Frozen Sift 180/90* – Tropicana Cookies\n\n"
-                        "Terminato. Nuovo frozen arriva verso il 22-26 gen."
+                        "📦 *Frozen Sift*\n\n"
+                        "Questo Frozen arriva verso il 23-26 gen."
                         "3g 40€\n"
                         "5g 60€\n"
-                        "10g 115€\n"
-                        "15g 165€\n"
-                        "20g 210€\n"
-                        "25g 270€\n"
-                        "35g 340€\n"
-                        "50g 450€\n"
-                        "100g 850€"
+                        "10g 110€\n"
+                        "15g 155€\n"
+                        "20g 200€\n"
+                        "25g 235€\n"
+                        "35g 315€\n"
+                        "50g 425€\n"
+                        "100g 800€"
                     ),
-                    "video_file_id": "BAACAgQAAxkBAAJvNmlGsy_TAQ2z9PKMchUAAU2owFL_KwACph4AAtE3OFICcX6H57AUyDYE",
+                    "video_file_id": "BAACAgQAAxkBAAECyXdpbi6VuNKXrFW1JGK4YDqGVYnquAAC9RkAApIBcFN_FukpFg1sLTgE",
                     "photo_file_ids": [],
                 },
             ],
@@ -584,7 +584,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAECoblpa-EgjLClfMnzXX4oXFz3m9JmwAAChiMAAvFyYVNBWYlHdKY64TgE",
+                video_id="BAACAgQAAxkBAAECyYRpbi7Sda__oBWO-VXZKGQj48Pb7gAC9hkAApIBcFMCDtlzmOQB_TgE",
                 back_callback="cat_weed",
             )
             return
