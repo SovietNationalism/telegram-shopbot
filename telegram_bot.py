@@ -705,7 +705,7 @@ class ShopBot:
             await self._send_product(
                 context, cid,
                 "DISPONIBILI!!! Gli originali Backwoods.\nSigari americani iconici, apparsi in decine di videoclip. Tabacco e foglia aromatizzata alla vaniglia, con una botta di nicotina ben percepibile. Ideali da svuotare e riempire con il fiore di vostra scelta.\nOgni confezione contiene 5 sigari.\nx1 conf. 20€ \nx2 conf. 30€\nx3 conf. 40€\nx5 conf. 55€\nx8 conf. 80€",
-                photo_id="AgACAgQAAxkBAAEBBRZpUNroBO0J-Zyun5Pzp1_04JBJbAACYgtrG1JBiVLtQL9kIU6wGgEAAwIAA3gAAzYE",
+                video_id="BAACAgQAAxkBAAEC0mdpbmGtQPJ_Gm7Y3_IieT2f9jQOMgACHBsAApIBeFOj0sWNQwteazgE",
                 back_callback="cat_tabaccheria"
             )
             return
