@@ -683,7 +683,7 @@ class ShopBot:
         if d == "cat_tabaccheria":
             text = (
                 "Abbiamo allestito una sezione tabaccheria per la vostra comodita’. "
-                "Al momento gli oggetti devono ancora arrivare. (BACKWOODS ARRIVATI - Il resto previsto per il 16-18 gennaio visto un leggero ritardo)."
+                "Tutto disponibile per l'acquisto."
             )
             kb = [
                 [
@@ -800,7 +800,7 @@ class ShopBot:
         if d == "prod_caramelle":
             caption = (
                 "Dank Gummies – caramelle al THC da 500 mg\n"
-                "IN ARRIVO SETTIMANA PROSSIMA.\n"
+                "DISPONIBILI\n"
                 "Morbide, gustose e incredibilmente potenti. Basta mezza caramella per sentire un effetto intenso e prolungato che si fa sentire dopo più o meno un'ora. "
                 "Perfette per chi vuole il massimo senza dare nell'occhio, "
                 "o semplicemente per chi vuole provare qualcosa di diverso. Ogni pacchetto contiene 5 caramelle con 100 mg di THC.\n\n"
