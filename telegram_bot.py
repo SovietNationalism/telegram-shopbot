@@ -893,7 +893,7 @@ class ShopBot:
         if d == "prod_md":
             caption = (
                 "MDMA 300mg Pills (Blue Punisher)\n\n"
-                "IN ARRIVO TRA IL 20-21 GENNAIO\n"
+                ".\n"
                 "1 pillola - 25€\n"
                 "2 pillole - 35€\n"
                 "5 pillole - 60€\n"
