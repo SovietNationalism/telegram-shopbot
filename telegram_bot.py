@@ -162,7 +162,7 @@ class ShopBot:
                     "name": "Frozen",
                     "caption": (
                         "📦 *Frozen Sift*\n\n"
-                        "VIDEO DA VETRATO - Quando arriva il materiale sará fornito curato. Questo Frozen arriva verso il 23-26 gen.\n"
+                        "VIDEO DA VETRATO - Quando arriva il materiale sará fornito curato. Questo Frozen ha leggermente ritardato arriva il 28.\n"
                         "3g 40€\n"
                         "5g 60€\n"
                         "10g 110€\n"
@@ -184,7 +184,7 @@ class ShopBot:
         self.weed_video_file_id = "BAACAgQAAxkBAAEC045pbmuZIYKe8DwaSiFCahi4aTzPrwACJhsAApIBeFOi6C9CEsJSXTgE"
         self.weed_overview = (
             "🌿 *OG KUSH*\n"
-            "Out of stock - in arrivo tra il 26 gennaio.\n"
+            "Out of stock - in arrivo tra il 28 gennaio.\n"
             "Una strain classica, ottima Calispain dall'odore intenso e fresco. Fiori compatti e resinosi, estremamente "
             "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere.\n\n"
             "5g 40€\n"
