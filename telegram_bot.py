@@ -568,7 +568,7 @@ class ShopBot:
 
             caption = (
                 "Grape Haze Caliusa Outdoor\n"
-                "In arrivo il 26 gennaio.\n"
+                "In arrivo il 28 gennaio.\n"
                 "Bud densi con sfumature violacee e cristalli brillanti, dal profilo terpenico fruttato con note di uva matura"
                 "e leggero tocco speziato. Fumata morbida che sprigiona un’energia creativa e un effetto rilassante ed euforico.\n\n"
                 "5g 50€\n"
