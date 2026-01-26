@@ -184,7 +184,7 @@ class ShopBot:
         self.weed_video_file_id = "BAACAgQAAxkBAAEC045pbmuZIYKe8DwaSiFCahi4aTzPrwACJhsAApIBeFOi6C9CEsJSXTgE"
         self.weed_overview = (
             "🌿 *OG KUSH*\n"
-            "Out of stock - in arrivo tra il 28 gennaio.\n"
+            "Out of stock - in arrivo  il 28 gennaio.\n"
             "Una strain classica, ottima Calispain dall'odore intenso e fresco. Fiori compatti e resinosi, estremamente "
             "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere.\n\n"
             "5g 40€\n"
@@ -568,7 +568,7 @@ class ShopBot:
 
             caption = (
                 "Grape Haze Caliusa Outdoor\n"
-                "In arrivo il 28 gennaio.\n"
+                "In arrivo il 28 gennaio per via di un leggero ritardo.\n"
                 "Bud densi con sfumature violacee e cristalli brillanti, dal profilo terpenico fruttato con note di uva matura"
                 "e leggero tocco speziato. Fumata morbida che sprigiona un’energia creativa e un effetto rilassante ed euforico.\n\n"
                 "5g 50€\n"
