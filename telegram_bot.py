@@ -114,7 +114,7 @@ class ShopBot:
                     "x 2 - 35€\n"
                     "x 4 - 60€\n"
                     "x 10 - 105€\n\n"
-                    "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo al lampone (o ciliega a scelta) per una stabilità e biodisponibilità superiore.\n"
+                    "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo al lampone per una stabilità e biodisponibilità superiore.\n"
                 ),
                 "video_file_id": "BAACAgQAAxkBAALA8WlM8ils5hJW6qELQ3rDIHhXlJFOAAKpGgACScdoUvDEPR-NjqSKNgQ",  # metti qui il file_id del video se ce l'hai, altrimenti lascia vuoto
                 "photo_file_ids": [],
