@@ -155,7 +155,7 @@ class ShopBot:
                         "Un dry sift commerciale di buona qualità.\n"
                         "Fumo dall'aroma intenso e naturale, facile da lavorare e piacevole da fumare in ogni modo. Colpisce con una botta potente e duratura, lasciando un effetto rilassante e pulito."
                     ),
-                    "video_file_id": "BAACAgQAAxkBAAECjLVpao2jGcI4aklKWAp6J9wnyZ8TyAACsBgAAnNpWFP5FyMj6qMDczgE",
+                    "video_file_id": "BAACAgQAAxkBAAEDmnlpexqZ9OuXLuUbiwx8jv3IQ_UThgACyhsAAhiT2VMBBEuchAa-djgE",
                     "photo_file_ids": [],
                 },
                 {
@@ -568,8 +568,7 @@ class ShopBot:
 
             caption = (
                 "Grape Haze Caliusa Outdoor\n"
-                "In arrivo il 28 gennaio per via di un leggero ritardo.\n"
-                "Bud densi con sfumature violacee e cristalli brillanti, dal profilo terpenico fruttato con note di uva matura"
+                "Bud densi con sfumature violacee e cristalli brillanti, dal profilo terpenico fruttato con note di uva matura e pompelmo."
                 "e leggero tocco speziato. Fumata morbida che sprigiona un’energia creativa e un effetto rilassante ed euforico.\n\n"
                 "5g 50€\n"
                 "10g 85€\n"
@@ -583,7 +582,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAECyYRpbi7Sda__oBWO-VXZKGQj48Pb7gAC9hkAApIBcFMCDtlzmOQB_TgE",
+                video_id="BAACAgQAAxkBAAEDmndpexp3UNtbDTUyTcLwO_3nJw5-LAACVBoAAr4h2FN0E9wenXLS4jgE",
                 back_callback="cat_weed",
             )
             return
