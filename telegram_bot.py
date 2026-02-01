@@ -86,7 +86,7 @@ class ShopBot:
     def __init__(self):
         self.products = {
             "packwoods": {
-                "name": "THC Vapes Miste™",
+                "name": "THC Vapes Mix: Cookies, Cookies x Jungle Boys, Packwoods x Runtz™",
                 "price": (
                     "1 - 45€\n"
                     "2 - 80€\n"
@@ -94,6 +94,7 @@ class ShopBot:
                     "4 - 145€\n"
                     "5 - 165€\n"
                     "10 - 300€\n"
+                    "25 - 600€\n"
                 ),
                 "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
                 "video_file_id": "BAACAgQAAxkBAAED1RJpf1IVSi27nniRYFdVGuyMP70AAZ4AAkwfAAJPRgABUAlJbVKYKJqNOAQ",
@@ -134,13 +135,12 @@ class ShopBot:
                 "name": "C0CA",
                 "caption": (
                     "📦 *Coca*\n\n"
-                    "💵 Prezzi:\n"
                     "1g 70€\n"
                     "2g 135€\n"
                     "5g 260€\n"
                     "10g 450€\n"
                     "20g 820€\n\n"
-                    "📝 Descrizione:\n"
+                    "Temporaneamente non disponibile."
                     "Merce sana con purezza del 94/95%, niente merda aggiunta.\n"
                     "Effetto potente e piacevole, qualità notevole dal primo uso."
                 ),
@@ -778,12 +778,12 @@ class ShopBot:
             caption = (
                 "Xanax 1mg\n"
                 "Prezzo:\n"
-                "5 pillole - 30€\n"
-                "10 pillole - 40€\n\n"
+                "5 pillole - 15€\n"
+                "10 pillole - 30€\n\n"
                 "Diretto da Estero 🇵🇱 (7-10 gg. lav.)\n"
                 "5 blister (50 pillole) - 130€\n"
                 "10 blister - 190€\n\n"
-                "Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti, "
+                "SOLD OUT AL MOMENTO - Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti, "
                 "sostituendoli con un relax muscolare profondo e una calma mentale totale. "
                 "Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole. "
                 "Blister diversi di provenienza farmaceutica.\n\n"
@@ -828,7 +828,7 @@ class ShopBot:
                 "5 pillole 45€\n"
                 "10 pillole 75€\n"
                 "Conf. (28) 140€\n\n"
-                "Analgesico a base di ossicodone. L'ossicodone offre un'onda calda di pura euforia, benessere totale e un relax corporeo profondo, "
+                "SOLD OUT AL MOMENTO - Analgesico a base di ossicodone. L'ossicodone offre un'onda calda di pura euforia, benessere totale e un relax corporeo profondo, "
                 "con formulazione a durata prolungata. L'esperienza definitiva per il sollievo ricreativo. Provenienza farmaceutica. "
                 "(Non rompere le pillole, ma si possono dividere in due.)\n\n"
                 "⚖️ Dose Consigliata:\n"
@@ -905,7 +905,7 @@ class ShopBot:
                 "Diretto da Estero 🇩🇪 (7-10 gg. lav.)\n"
                 "50 pillole - 210€\n"
                 "100 pillole - 320€\n\n"
-                "Pillola iconica da 300mg di MDMA puro. Per un'onda di euforia schiacciante, energia inesauribile e empatia totale. "
+                "SOLD OUT AL MOMENTO - Pillola iconica da 300mg di MDMA puro. Per un'onda di euforia schiacciante, energia inesauribile e empatia totale. "
                 "L'esperienza classica e potente per una serata di pura connessione e piacere sensoriale amplificato.\n\n"
                 "⚖️ Dose Consigliata:\n"
                 "• Principianti: ½ pillola.\n"
