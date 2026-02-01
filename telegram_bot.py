@@ -586,7 +586,8 @@ class ShopBot:
                 "Foglie piccole e gemme di cannabis con sfumature violacee. "
                 "Il profilo terpenico è composto da note di pompelmo e te nero. "
                 "Perfetto per rollare, infusi e preparazioni, il trim offre un effetto rilassante e stimolante, "
-                "ideale per momenti di socializzazione e creatività."
+                "ideale per momenti di socializzazione e creatività.\n"
+                "5g 30€\n10g 45€\n15g 60€."
             )
             await self._send_product(context, cid, caption, video_id="BAACAgQAAxkBAAED1RBpf1IHgrZiCQczXutdgt4GqL-hOgACSx8AAk9GAAFQvEIZPUFjRy44BA", back_callback="cat_weed")
             return
