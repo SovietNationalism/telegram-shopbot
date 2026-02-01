@@ -75,7 +75,7 @@ class ShopBot:
     def __init__(self):
         self.products = {
             "packwoods": {
-                "name": "THC Vapes Dabwoods™",
+                "name": "THC Vapes Miste™",
                 "price": (
                     "1 - 45€\n"
                     "2 - 80€\n"
@@ -85,7 +85,7 @@ class ShopBot:
                     "10 - 300€\n"
                 ),
                 "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
-                "video_file_id": "BAACAgQAAxkBAAECyH1pbiqrGG8sR6bpaNlzAbJFgtdGyAAC8xkAApIBcFNkjhQrxUtMRjgE",
+                "video_file_id": "BAACAgQAAxkBAAED1RJpf1IVSi27nniRYFdVGuyMP70AAZ4AAkwfAAJPRgABUAlJbVKYKJqNOAQ",
                 "photo_file_ids": [],
             },
             "funghetti": {
@@ -162,7 +162,7 @@ class ShopBot:
                     "name": "Frozen",
                     "caption": (
                         "📦 *Frozen Sift*\n\n"
-                        "VIDEO DA VETRATO - Materiale fornito curato.\n"
+                        "Tagazzi me lo avete finito subito nuovo restock coming soon...\n"
                         "3g 40€\n"
                         "5g 60€\n"
                         "10g 110€\n"
@@ -181,10 +181,10 @@ class ShopBot:
                 # Add WEED category products here later the same way
             ]
         }
-        self.weed_video_file_id = "BAACAgQAAxkBAAEC045pbmuZIYKe8DwaSiFCahi4aTzPrwACJhsAApIBeFOi6C9CEsJSXTgE"
+        self.weed_video_file_id = "BAACAgQAAxkBAAED1Qxpf1H-_DVg72o1vlT8lZafKWqAPwACSR8AAk9GAAFQXa13uunz1804BA"
         self.weed_overview = (
             "🌿 *OG KUSH*\n"
-            "Out of stock - leggermente ritardata\n"
+            "Disponibilita' limitata.\n"
             "Una strain classica, ottima Calispain dall'odore intenso e fresco. Fiori compatti e resinosi, estremamente "
             "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere.\n\n"
             "5g 40€\n"
@@ -429,7 +429,7 @@ class ShopBot:
                     InlineKeyboardButton("ERBA", callback_data="cat_weed")
                 ],
                 [
-                    InlineKeyboardButton("DABW0ODS", callback_data="prod_packwoods"),
+                    InlineKeyboardButton("VAPES AL THC", callback_data="prod_packwoods"),
                     InlineKeyboardButton("FUNGHETTI", callback_data="prod_funghetti")
                 ],
                 [
