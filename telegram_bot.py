@@ -63,6 +63,17 @@ PAGAMENTI_TEXT = (
     "Il pacco arriva in 2-3 giorni lavorativi in genere, 3-4 per le isole."
 )
 
+PROMO_TEXT = (
+    "PROMO CLIENTI\n"
+    "Vuoi fumare GRATIS? Porta clienti e ottieni ricompense!\n"
+    "Ogni volta che un amico compra e indica il tuo @username, guadagni:\n"
+    "• 1g gratis di erba/hash ogni 50€ spesi dal tuo amico, oppure 5€ di credito su altri prodotti.\n\n"
+    "Regole:\n"
+    "• Il cliente deve comunicare il tuo @username al momento dell'ordine.\n"
+    "• I crediti possono essere accumulati e usati quando vuoi.\n"
+    "• I crediti valgono su qualsiasi altro prodotto (vape, edibili, sciroppi).\n\n"
+)
+
 # ────────────────── LOGGER SETUP ────────────────── #
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -279,6 +290,7 @@ class ShopBot:
             [InlineKeyboardButton("🛍️ SHOP", callback_data="shop")],
             [InlineKeyboardButton("💳 PAGAMENTI", callback_data="pagamenti")],
             [InlineKeyboardButton("📜 COME ORDINARE", callback_data="tos")],
+            [InlineKeyboardButton("🎁 PROMOZIONE", callback_data="promo")],
             [InlineKeyboardButton("📦 ORDINA QUI", url=ADMIN_CONTACT)],
             [InlineKeyboardButton("💬 CHAT CLIENTI", url="https://t.me/+xwCcckoNERw2MWU0")],
             [InlineKeyboardButton("📩 RECENSIONI", url="https://t.me/+mX8bV3BF-otlNDZk")],
@@ -475,6 +487,10 @@ class ShopBot:
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
+
+        if d == "promo":
+            await self._send_menu(context, cid, PROMO_TEXT, [], "back_to_main")
+            return
             
         if d == "tos_terms":
             kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="tos")]]
@@ -562,29 +578,17 @@ class ShopBot:
                 context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        if d == "weed_caliusa_outdoor":
+        if d == "weed_cali_trim":
             if not await self._check_membership(context, update.effective_user.id, cid):
                 return
-
             caption = (
-                "Grape Haze Caliusa Outdoor\n"
-                "Bud densi con sfumature violacee e cristalli brillanti, dal profilo terpenico fruttato con note di uva matura e pompelmo."
-                "e leggero tocco speziato. Fumata morbida che sprigiona un’energia creativa e un effetto rilassante ed euforico.\n\n"
-                "5g 50€\n"
-                "10g 85€\n"
-                "15g 120€\n"
-                "20g 150€\n"
-                "30g 210€\n"
-                "50g 310€\n"
-                "100g 560€"
+                "Cali Usa Trim\n"
+                "Foglie piccole e gemme di cannabis con sfumature violacee. "
+                "Il profilo terpenico è composto da note di pompelmo e te nero. "
+                "Perfetto per rollare, infusi e preparazioni, il trim offre un effetto rilassante e stimolante, "
+                "ideale per momenti di socializzazione e creatività."
             )
-            await self._send_product(
-                context,
-                cid,
-                caption,
-                video_id="BAACAgQAAxkBAAEDmndpexp3UNtbDTUyTcLwO_3nJw5-LAACVBoAAr4h2FN0E9wenXLS4jgE",
-                back_callback="cat_weed",
-            )
+            await self._send_product(context, cid, caption, video_id="BAACAgQAAxkBAAED1RBpf1IHgrZiCQczXutdgt4GqL-hOgACSx8AAk9GAAFQvEIZPUFjRy44BA", back_callback="cat_weed")
             return
             
         if d == "sciroppo_consigli":
@@ -614,7 +618,7 @@ class ShopBot:
 
             kb = [
                 [InlineKeyboardButton("Calispain", callback_data="weed_calispain")],
-                [InlineKeyboardButton("Caliusa Outdoor", callback_data="weed_caliusa_outdoor")],
+                [InlineKeyboardButton("Caliusa Trim", callback_data="weed_cali_trim")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
             sent = await context.bot.send_message(
