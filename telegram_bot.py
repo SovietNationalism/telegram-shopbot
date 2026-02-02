@@ -489,7 +489,14 @@ class ShopBot:
             return
 
         if d == "promo":
-            await self._send_menu(context, cid, PROMO_TEXT, [], "back_to_main")
+            kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text=PROMO_TEXT,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
         if d == "tos_terms":
