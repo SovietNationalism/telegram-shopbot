@@ -536,28 +536,25 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-            if d.startswith("prod_") and d not in ("prod_sciroppo",):  # sciroppo is custom
-                key = d.replace("prod_", "")
-                prod = self.products.get(key)
-                if not prod:
-                    await q.answer("❌ Prodotto non trovato!")
-                    return
-    
-                caption = self._product_caption(key)
-                back = prod.get("back", "shop")
-                v_id = prod.get("video_file_id")
-                photos = prod.get("photo_file_ids") or []
-                p_id = photos[0] if photos else None
-    
-                await self._send_product(
-                    context,
-                    cid,
-                    caption,
-                    photo_id=p_id if prod.get("type") == "photo" else None,
-                    video_id=v_id if prod.get("type") == "video" else None,
-                    back_callback=back,
-                )
-                return
+        if d == "prod_packwoods":
+            prod = self.products["packwoods"]
+            caption = f"📦 *{prod['name']}*\n💵 Prezzo:\n{prod['price']}\n📝 Descrizione: {prod['description']}"
+            await self._send_product(context, cid, caption, video_id=prod["video_file_id"])
+            return
+
+        if d == "prod_funghetti":
+            prod = self.products["funghetti"]
+            await self._send_product(context, cid, prod["caption"], video_id=prod["video_file_id"])
+            return
+            
+        if d == "prod_sciroppo":
+            prod = self.products["sciroppo"]
+            caption = prod.get("caption", "")
+            kb = [
+                [InlineKeyboardButton("📘 Consigli D’Uso", callback_data="sciroppo_consigli")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+            ]
+            markup = InlineKeyboardMarkup(kb)
 
             if prod.get("video_file_id"):
                 try:
