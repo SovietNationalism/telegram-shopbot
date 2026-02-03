@@ -65,13 +65,14 @@ PAGAMENTI_TEXT = (
 
 PROMO_TEXT = (
     "PROMO CLIENTI\n"
+    "Trovi prezzi migliori altrove? Chiedici di batterli magari riusciamo :).\n"
     "Vuoi fumare GRATIS? Porta clienti e ottieni ricompense!\n"
     "Ogni volta che un amico compra e indica il tuo @username, guadagni:\n"
     "• 1g gratis di erba/hash ogni 50€ spesi dal tuo amico, oppure 5€ di credito su altri prodotti.\n\n"
     "Regole:\n"
     "• Il cliente deve comunicare il tuo @username al momento dell'ordine.\n"
     "• I crediti possono essere accumulati e usati quando vuoi.\n"
-    "• I crediti valgono su qualsiasi altro prodotto (vape, edibili, sciroppi).\n\n"
+    "• I crediti valgono su qualsiasi altro prodotto (vape, edibili, sciroppi).\n"
 )
 
 # ────────────────── LOGGER SETUP ────────────────── #
