@@ -94,7 +94,8 @@ class ShopBot:
                     "4 - 145€\n"
                     "5 - 165€\n"
                     "10 - 300€\n"
-                    "25 - 600€\n"
+                    "20 - 500€\n"
+                    "50 - 960€\n"
                 ),
                 "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
                 "video_file_id": "BAACAgQAAxkBAAED1RJpf1IVSi27nniRYFdVGuyMP70AAZ4AAkwfAAJPRgABUAlJbVKYKJqNOAQ",
