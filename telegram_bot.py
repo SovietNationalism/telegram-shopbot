@@ -64,8 +64,7 @@ PAGAMENTI_TEXT = (
 )
 
 PROMO_TEXT = (
-    "PROMO CLIENTI\n"
-    "Trovi prezzi migliori altrove? Chiedici di batterli magari riusciamo :).\n"
+    "Trovi prezzi migliori altrove? Chiedici di batterli magari riusciamo :)\n\n"
     "Vuoi fumare GRATIS? Porta clienti e ottieni ricompense!\n"
     "Ogni volta che un amico compra e indica il tuo @username, guadagni:\n"
     "• 1g gratis di erba/hash ogni 50€ spesi dal tuo amico, oppure 5€ di credito su altri prodotti.\n\n"
