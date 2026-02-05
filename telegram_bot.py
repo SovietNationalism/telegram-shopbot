@@ -196,7 +196,7 @@ class ShopBot:
         self.weed_video_file_id = "BAACAgQAAxkBAAED1Qxpf1H-_DVg72o1vlT8lZafKWqAPwACSR8AAk9GAAFQXa13uunz1804BA"
         self.weed_overview = (
             "🌿 *OG KUSH*\n"
-            "Disponibilita' limitata.\n"
+            "SOLD OUT.\n"
             "Una strain classica, ottima Calispain dall'odore intenso e fresco. Fiori compatti e resinosi, estremamente "
             "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere.\n\n"
             "5g 40€\n"
