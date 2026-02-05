@@ -155,26 +155,26 @@ class ShopBot:
                     "name": "Filtered 120u",
                     "caption": (
                         "📦 *Filtrato 120u*\n"
-                        "5g 45€\n"
-                        "10g 75€\n"
-                        "15g 110€\n"
-                        "20g 130€\n"
-                        "30g 180€\n"
-                        "40g 205€\n"
-                        "50g 240€\n"
-                        "100g 420€\n"
-                        "200g 805€\n"
-                        "Un dry sift commerciale di buona qualità.\n"
+                        "5g 40€\n"
+                        "10g 70€\n"
+                        "15g 105€\n"
+                        "20g 125€\n"
+                        "30g 175€\n"
+                        "40g 200€\n"
+                        "50g 220€\n"
+                        "100g 400€\n"
+                        "200g 760€\n"
+                        "VIDEO DA VETRATO - disponibile curato. Un dry sift commerciale di buona qualità.\n"
                         "Fumo dall'aroma intenso e naturale, facile da lavorare e piacevole da fumare in ogni modo. Colpisce con una botta potente e duratura, lasciando un effetto rilassante e pulito."
                     ),
-                    "video_file_id": "BAACAgQAAxkBAAEDmnlpexqZ9OuXLuUbiwx8jv3IQ_UThgACyhsAAhiT2VMBBEuchAa-djgE",
+                    "video_file_id": "BAACAgQAAxkBAAEEUkNphP06qY9tlaCXmWp813mFfl4oFQACUB0AAkksKFAzX737xSHfMTgE",
                     "photo_file_ids": [],
                 },
                 {
                     "name": "Frozen",
                     "caption": (
                         "📦 *Frozen Sift*\n\n"
-                        "Tagazzi me lo avete finito subito nuovo restock coming soon...\n"
+                        "Disponibile!!!\n"
                         "3g 40€\n"
                         "5g 60€\n"
                         "10g 110€\n"
@@ -182,10 +182,10 @@ class ShopBot:
                         "20g 200€\n"
                         "25g 235€\n"
                         "35g 315€\n"
-                        "50g 425€\n"
-                        "100g 800€"
+                        "50g 400€\n"
+                        "100g 750€"
                     ),
-                    "video_file_id": "BAACAgQAAxkBAAECyXdpbi6VuNKXrFW1JGK4YDqGVYnquAAC9RkAApIBcFN_FukpFg1sLTgE",
+                    "video_file_id": "BAACAgQAAxkBAAEEUkFphPzAme9snxwjZiQSSDzn-Kg89AACTx0AAkksKFD4rGRAwyGpXDgE",
                     "photo_file_ids": [],
                 },
             ],
