@@ -590,7 +590,7 @@ class ShopBot:
             if not await self._check_membership(context, update.effective_user.id, cid):
                 return
             caption = (
-                "Cali Usa Trim\n"
+                "Cali Usa Trinciato di Grape Haze\n"
                 "Foglie piccole e gemme di cannabis con sfumature violacee. "
                 "Il profilo terpenico è composto da note di pompelmo e te nero. "
                 "Perfetto per rollare, infusi e preparazioni, il trim offre un effetto rilassante e stimolante, "
