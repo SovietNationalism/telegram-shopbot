@@ -183,7 +183,7 @@ class ShopBot:
                         "25g 235€\n"
                         "35g 300€\n"
                         "50g 380€\n"
-                        "100g 720€"
+                        "100g 720€\n"
                         "Un frozen sift no farm di qualità superiore.  Aroma intenso e profondo con note speziate.\nGodibile in ogni modo. Colpisce con una botta potente e prolungata, lasciando un effetto superiore a qualsiasi filtrato."
                     ),
                     "video_file_id": "BAACAgQAAxkBAAEEu0JpiMUKh-xxdiI_22ipJ88FAv4cmAACnR8AAswcSFAAAar4QRQuQVE6BA",
