@@ -185,7 +185,7 @@ class ShopBot:
                         "50g 400€\n"
                         "100g 750€"
                     ),
-                    "video_file_id": "BAACAgQAAxkBAAEEUkFphPzAme9snxwjZiQSSDzn-Kg89AACTx0AAkksKFD4rGRAwyGpXDgE",
+                    "video_file_id": "BAACAgQAAxkBAAEEu0JpiMUKh-xxdiI_22ipJ88FAv4cmAACnR8AAswcSFAAAar4QRQuQVE6BA",
                     "photo_file_ids": [],
                 },
             ],
