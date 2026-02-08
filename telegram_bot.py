@@ -60,7 +60,7 @@ PAGAMENTI_TEXT = (
     "COSTO SPEDIZIONE:\n"
     "• Inpost GRATUITA\n"
     "• Altri corrieri 10€\n"
-    "Con il corriere InPost, il pacco arriva 2-3 giorni lavorativi per la penisola e 3-4 per le isole, e lo ritiri con anonimità a uno dei vari Locker o punti di ritiro."
+    "Con il corriere InPost, il pacco arriva 2-3 giorni lavorativi per la penisola e 3-4 per le isole, e lo ritiri con anonimità a uno dei vari Locker o punti di ritiro.\n"
     "Il codice di tracciamento della vostra spedizione verra fornito entro 48h dal pagamento, a meno che non si è concordato altro." 
 )
 
@@ -165,20 +165,19 @@ class ShopBot:
                         "50g 220€\n"
                         "100g 400€\n"
                         "200g 760€\n"
-                        "VIDEO DA VETRATO - disponibile curato. Un dry sift commerciale di buona qualità.\n"
+                        "Un dry sift commerciale di buona qualità.\n"
                         "Fumo dall'aroma intenso e naturale, facile da lavorare e piacevole da fumare in ogni modo. Colpisce con una botta potente e duratura, lasciando un effetto rilassante e pulito."
                     ),
-                    "video_file_id": "BAACAgQAAxkBAAEEUkNphP06qY9tlaCXmWp813mFfl4oFQACUB0AAkksKFAzX737xSHfMTgE",
+                    "video_file_id": "BAACAgQAAxkBAAEEqmppiIsmJJSFH76HbrofVs-RFv99lgACxhsAAswcQFC9sWytoa__XToE",
                     "photo_file_ids": [],
                 },
                 {
                     "name": "Frozen",
                     "caption": (
                         "📦 *Frozen Sift*\n\n"
-                        "Disponibile!!!\n"
                         "3g 40€\n"
                         "5g 60€\n"
-                        "10g 110€\n"
+                        "10g 105€\n"
                         "15g 155€\n"
                         "20g 200€\n"
                         "25g 235€\n"
@@ -197,9 +196,7 @@ class ShopBot:
         self.weed_video_file_id = "BAACAgQAAxkBAAED1Qxpf1H-_DVg72o1vlT8lZafKWqAPwACSR8AAk9GAAFQXa13uunz1804BA"
         self.weed_overview = (
             "🌿 *OG KUSH*\n"
-            "SOLD OUT.\n"
-            "Una strain classica, ottima Calispain dall'odore intenso e fresco. Fiori compatti e resinosi, estremamente "
-            "appiccicosi al tatto. L’effetto è forte, persistente e si fa notare subito per purezza e carattere.\n\n"
+            "SOLD OUT - Nuova Erba in arrivo data da fissare.\n"
             "5g 40€\n"
             "10g 75€\n"
             "15g 110€\n"
