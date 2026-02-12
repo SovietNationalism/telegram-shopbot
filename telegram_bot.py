@@ -194,7 +194,7 @@ class ShopBot:
                 # Add WEED category products here later the same way
             ]
         }
-        self.weed_video_file_id = "BAACAgQAAxkBAAED1Qxpf1H-_DVg72o1vlT8lZafKWqAPwACSR8AAk9GAAFQXa13uunz1804BA"
+        self.weed_video_file_id = "BAACAgQAAxkBAAEFKTRpjYlu-3X-2wABFucqxPx897tuLKkAAsQdAALbgHFQnYOEokyUnpM6BA"
         self.weed_overview = (
             "Cherry Bomb -\n"
             "IN ARRIVO TRA IL 20 E IL 23 FEBBRAIO\n"
@@ -202,12 +202,12 @@ class ShopBot:
             "Infiorescenze chiare e accattivanti con risalti arancioni. Effetto potente e immediato, con una carica energica "
             "che dura a lungo e invita a sessioni creative.\n"
             "5g 40€\n"
-            "10g 75€\n"
-            "15g 110€\n"
-            "20g 135€\n"
-            "30g 175€\n"
-            "40g 200€\n"
-            "50g 235€\n"
+            "10g 70€\n"
+            "15g 105€\n"
+            "20g 130€\n"
+            "30g 170€\n"
+            "40g 190€\n"
+            "50g 230€\n"
             "100g 420€\n"
         )
         self.user_ids = set()
