@@ -752,7 +752,7 @@ class ShopBot:
                 "IN ARRIVO ...\n"
                 "Distillato Delta-9 THC RAW purissimo.\n"
                 "Aroma neutro e essenziale, senza terpeni aggiunti per un’esperienza pulita e versatile. "
-                "Perfetto per dosaggi precisi in penna o mix, entra in circolo rapido con un effetto forte "
+                "Perfetto per dosaggi precisi in penna o per edibili, entra in circolo rapido con un effetto forte "
                 "e persistente, più raffinato di qualsiasi altro estratto grezzo."
             )
             await self._send_product(
