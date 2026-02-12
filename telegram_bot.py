@@ -196,8 +196,11 @@ class ShopBot:
         }
         self.weed_video_file_id = "BAACAgQAAxkBAAED1Qxpf1H-_DVg72o1vlT8lZafKWqAPwACSR8AAk9GAAFQXa13uunz1804BA"
         self.weed_overview = (
-            "🌿 *OG KUSH*\n"
-            "SOLD OUT - Nuova Erba in arrivo data da fissare.\n"
+            "Cherry Bomb -\n"
+            "IN ARRIVO TRA IL 20 E IL 23 FEBBRAIO\n"
+            "Una Calispain (erba spagnola con genetiche Californiane) di buona qualità, aroma esplosivo e fruttato. "
+            "Infiorescenze chiare e accattivanti con risalti arancioni. Effetto potente e immediato, con una carica energica "
+            "che dura a lungo e invita a sessioni creative.\n"
             "5g 40€\n"
             "10g 75€\n"
             "15g 110€\n"
@@ -442,7 +445,7 @@ class ShopBot:
                 ],
                 [
                     InlineKeyboardButton("VAPES AL THC", callback_data="prod_packwoods"),
-                    InlineKeyboardButton("FUNGHETTI", callback_data="prod_funghetti")
+                    InlineKeyboardButton("PSICHEDELICI", callback_data="cat_psichedelici")
                 ],
                 [
                     InlineKeyboardButton("SCIROPP0 THC", callback_data="prod_sciroppo"),
@@ -453,7 +456,8 @@ class ShopBot:
                     InlineKeyboardButton("CARAMELLE", callback_data="prod_caramelle"),
                 ],
                 [
-                    InlineKeyboardButton("HAI QUALCHE CONSIGLIO?", callback_data="suggest_product")
+                    InlineKeyboardButton("CONSIGLI?", callback_data="suggest_product"),
+                    InlineKeyboardButton("ESTRATTI", callback_data="cat_estratti")
                 ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="back_to_main")]
             ]
@@ -544,7 +548,47 @@ class ShopBot:
 
         if d == "prod_funghetti":
             prod = self.products["funghetti"]
-            await self._send_product(context, cid, prod["caption"], video_id=prod["video_file_id"])
+            await self._send_product(
+                context,
+                cid,
+                prod["caption"],
+                video_id=prod["video_file_id"],
+                back_callback="cat_psichedelici",
+            )
+            return
+
+        if d == "cat_psichedelici":
+            if not await self._check_membership(context, update.effective_user.id, cid):
+                return
+
+            kb = [
+                [InlineKeyboardButton("FUNGHETTI", callback_data="prod_funghetti")],
+                [InlineKeyboardButton("LSD", callback_data="prod_lsd")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text="Scegli un prodotto psichedelico:",
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "cat_estratti":
+            if not await self._check_membership(context, update.effective_user.id, cid):
+                return
+
+            kb = [
+                [InlineKeyboardButton("WAX", callback_data="prod_wax")],
+                [InlineKeyboardButton("DISTILLATO", callback_data="prod_distillato")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text="Scegli un estratto:",
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
         if d == "prod_sciroppo":
@@ -625,7 +669,8 @@ class ShopBot:
                 return
 
             kb = [
-                [InlineKeyboardButton("Calispain", callback_data="weed_calispain")],
+                [InlineKeyboardButton("Cherry Bomb", callback_data="weed_cherry_bomb")],
+                [InlineKeyboardButton("Juicy Fruit", callback_data="weed_juicy_fruit")],
                 [InlineKeyboardButton("Caliusa Trim", callback_data="weed_cali_trim")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
@@ -637,7 +682,7 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
-        if d == "weed_calispain":
+        if d in ("weed_calispain", "weed_cherry_bomb"):
             if not await self._check_membership(context, update.effective_user.id, cid):
                 return
 
@@ -649,6 +694,74 @@ class ShopBot:
                 video_file_id=self.weed_video_file_id,
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "weed_juicy_fruit":
+            if not await self._check_membership(context, update.effective_user.id, cid):
+                return
+
+            caption = (
+                "Juicy Fruit -\n"
+                "IN ARRIVO TRA IL 20 E IL 23 FEBBRAIO\n"
+                "Una Calispain ancora più invitante, odore succoso e dolce di frutta fresca. Bud compatti, "
+                "resinosi con sfumature dorate. Effetto avvolgente, un high euforico e bilanciato che supera "
+                "le aspettative e tiene compagnia per ore.\n"
+                "5g 45€\n"
+                "10g 75€\n"
+                "15g 110€\n"
+                "20g 135€\n"
+                "30g 175€\n"
+                "40g 200€\n"
+                "50g 240€\n"
+                "100g 450€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEFKTdpjYtecJShHyEFKeMhrDbH7DScHwACxR0AAtuAcVAgq0ejt-1sdDoE",
+                back_callback="cat_weed",
+            )
+            return
+
+        if d == "prod_wax":
+            caption = (
+                "IN ARRIVO ...\n"
+                "Wax - estratto americano di qualità superiore.\n"
+                "Aroma intenso e pulito, con note resinose e un profilo terpenico ricco. Godibile in ogni modo, "
+                "dalla canna al dab. Colpisce con una botta immediata e prolungata, lasciando un effetto deciso "
+                "e superiore a qualsiasi hashish commerciale.\n"
+                "1g 25€\n"
+                "5g 80€\n"
+                "10g 130€\n"
+                "15g 185€\n"
+                "20g 240€\n"
+                "50g 550€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                photo_id="AgACAgQAAxkBAAEFKMZpjYWfHsXGfzfzqYqc7h7QBGxa9AACMg5rG9uAcVAiaEfNAa305QEAAwIAA3kAAzoE",
+                back_callback="cat_estratti",
+            )
+            return
+
+        if d == "prod_distillato":
+            caption = (
+                "IN ARRIVO ...\n"
+                "Distillato Delta-9 THC RAW purissimo.\n"
+                "Aroma neutro e essenziale, senza terpeni aggiunti per un’esperienza pulita e versatile. "
+                "Perfetto per dosaggi precisi in penna o mix, entra in circolo rapido con un effetto forte "
+                "e persistente, più raffinato di qualsiasi altro estratto grezzo."
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                photo_id="AgACAgQAAxkBAAEFKS5pjYgK9oOmzaAwq53fRBIVzdvw0AACNQ5rG9uAcVDIqIPibm9t_wEAAwIAA3kAAzoE",
+                back_callback="cat_estratti",
+            )
             return
 
         if d == "cat_hash":
@@ -679,7 +792,6 @@ class ShopBot:
                 [InlineKeyboardButton("X4NAX", callback_data="prod_xanax")],
                 [InlineKeyboardButton("0XY", callback_data="prod_oxy")],
                 [InlineKeyboardButton("PARACOD1NA", callback_data="prod_paracodina")],
-                [InlineKeyboardButton("LSD", callback_data="prod_lsd")],
                 [InlineKeyboardButton("MD", callback_data="prod_md")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
@@ -897,7 +1009,7 @@ class ShopBot:
                 cid,
                 caption,
                 video_id="BAACAgQAAxkBAAEB8g9pY4gLdV6CDdzQLU_UFV6BHMjgAQACux0AAiLmIVPbx9TTHMVuGDgE",
-                back_callback="cat_sintetico",
+                back_callback="cat_psichedelici",
             )
             return
             
