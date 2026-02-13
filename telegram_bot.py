@@ -726,8 +726,7 @@ class ShopBot:
 
         if d == "prod_wax":
             caption = (
-                "IN ARRIVO ...\n"
-                "Wax - estratto americano di qualità superiore.\n"
+                "Disponibile - estratto americano di qualità superiore.\n"
                 "Aroma intenso e pulito, con note resinose e un profilo terpenico ricco. Godibile in ogni modo, "
                 "dalla canna al dab. Colpisce con una botta immediata e prolungata, lasciando un effetto deciso "
                 "e superiore a qualsiasi hashish commerciale.\n"
@@ -749,11 +748,10 @@ class ShopBot:
 
         if d == "prod_distillato":
             caption = (
-                "IN ARRIVO ...\n"
                 "Distillato Delta-9 THC RAW purissimo.\n"
                 "Aroma neutro e essenziale, senza terpeni aggiunti per un’esperienza pulita e versatile. "
                 "Perfetto per dosaggi precisi in penna o per edibili, entra in circolo rapido con un effetto forte "
-                "e persistente, più raffinato di qualsiasi altro estratto grezzo."
+                "e persistente, più raffinato di qualsiasi altro estratto grezzo. Prezzi in Dm. "
             )
             await self._send_product(
                 context,
