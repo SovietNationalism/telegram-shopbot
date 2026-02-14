@@ -741,7 +741,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                photo_id="AgACAgQAAxkBAAEFKMZpjYWfHsXGfzfzqYqc7h7QBGxa9AACMg5rG9uAcVAiaEfNAa305QEAAwIAA3kAAzoE",
+                photo_id="BAACAgQAAxkBAAEFb1ppkDToQFhOpQ51rHxhHJ_mjRyOYAACzhsAAknngFBGgRbdZcKHnToE",
                 back_callback="cat_estratti",
             )
             return
@@ -751,13 +751,17 @@ class ShopBot:
                 "Distillato Delta-9 THC RAW purissimo.\n"
                 "Aroma neutro e essenziale, senza terpeni aggiunti per un’esperienza pulita e versatile. "
                 "Perfetto per dosaggi precisi in penna o per edibili, entra in circolo rapido con un effetto forte "
-                "e persistente, più raffinato di qualsiasi altro estratto grezzo. Prezzi in Dm. "
+                "e persistente, più raffinato di qualsiasi altro estratto grezzo. \n"
+                "25ml 220€\n"
+                "50ml 360€\n"
+                "100ml 600€\n"
+                "500ml 1900€"
             )
             await self._send_product(
                 context,
                 cid,
                 caption,
-                photo_id="AgACAgQAAxkBAAEFKS5pjYgK9oOmzaAwq53fRBIVzdvw0AACNQ5rG9uAcVDIqIPibm9t_wEAAwIAA3kAAzoE",
+                photo_id="BAACAgQAAxkBAAEFb1hpkDTfkydh9vC9iHvi7Dm4AQb9vQACzRsAAknngFAQM7IjSrzmdDoE",
                 back_callback="cat_estratti",
             )
             return
