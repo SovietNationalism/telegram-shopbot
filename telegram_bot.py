@@ -741,7 +741,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                photo_id="BAACAgQAAxkBAAEFb1ppkDToQFhOpQ51rHxhHJ_mjRyOYAACzhsAAknngFBGgRbdZcKHnToE",
+                video_id="BAACAgQAAxkBAAEFb1ppkDToQFhOpQ51rHxhHJ_mjRyOYAACzhsAAknngFBGgRbdZcKHnToE",
                 back_callback="cat_estratti",
             )
             return
@@ -761,7 +761,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                photo_id="BAACAgQAAxkBAAEFb1hpkDTfkydh9vC9iHvi7Dm4AQb9vQACzRsAAknngFAQM7IjSrzmdDoE",
+                video_id="BAACAgQAAxkBAAEFb1hpkDTfkydh9vC9iHvi7Dm4AQb9vQACzRsAAknngFAQM7IjSrzmdDoE",
                 back_callback="cat_estratti",
             )
             return
