@@ -174,19 +174,19 @@ class ShopBot:
                 {
                     "name": "Frozen",
                     "caption": (
-                        "📦 *Frozen Sift*\n"
+                        "*Frozen Sift vari*\n"
                         "3g 40€\n"
                         "5g 60€\n"
-                        "10g 105€\n"
-                        "15g 155€\n"
-                        "20g 200€\n"
-                        "25g 235€\n"
-                        "35g 300€\n"
-                        "50g 380€\n"
-                        "100g 720€\n"
-                        "Un frozen sift no farm di qualità superiore.  Aroma intenso e profondo con note speziate.\nGodibile in ogni modo. Colpisce con una botta potente e prolungata, lasciando un effetto superiore a qualsiasi filtrato."
+                        "10g 100€\n"
+                        "15g 145€\n"
+                        "20g 175€\n"
+                        "25g 210€\n"
+                        "35g 280€\n"
+                        "50g 365€\n"
+                        "100g 680€\n"
+                        "PREZZI BOMBA!!! Dei frozen sift di qualità superiore.  Aroma intenso e profondo con note speziate.\nGodibile in ogni modo. Colpisce con una botta potente e prolungata, lasciando un effetto superiore a qualsiasi filtrato."
                     ),
-                    "video_file_id": "BAACAgQAAxkBAAEEu0JpiMUKh-xxdiI_22ipJ88FAv4cmAACnR8AAswcSFAAAar4QRQuQVE6BA",
+                    "video_file_id": "BAACAgQAAxkBAAEF8TJplCt6eflb1nt47Gych4wyc0uPtwACCB0AAkVqoVDrMVS4A8wp-joE",
                     "photo_file_ids": [],
                 },
             ],
