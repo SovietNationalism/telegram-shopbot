@@ -629,20 +629,6 @@ class ShopBot:
                 context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        if d == "weed_cali_trim":
-            if not await self._check_membership(context, update.effective_user.id, cid):
-                return
-            caption = (
-                "Cali Usa Trinciato di Grape Haze\n"
-                "Foglie piccole e gemme di cannabis con sfumature violacee. "
-                "Il profilo terpenico è composto da note di pompelmo e te nero. "
-                "Perfetto per rollare, infusi e preparazioni, il trim offre un effetto rilassante e stimolante, "
-                "ideale per momenti di socializzazione e creatività.\n"
-                "5g 30€\n10g 45€\n15g 60€."
-            )
-            await self._send_product(context, cid, caption, video_id="BAACAgQAAxkBAAED1RBpf1IHgrZiCQczXutdgt4GqL-hOgACSx8AAk9GAAFQvEIZPUFjRy44BA", back_callback="cat_weed")
-            return
-            
         if d == "sciroppo_consigli":
             prod = self.products["sciroppo"]
             text = (
@@ -671,7 +657,6 @@ class ShopBot:
             kb = [
                 [InlineKeyboardButton("Cherry Bomb", callback_data="weed_cherry_bomb")],
                 [InlineKeyboardButton("Juicy Fruit", callback_data="weed_juicy_fruit")],
-                [InlineKeyboardButton("Caliusa Trim", callback_data="weed_cali_trim")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
             sent = await context.bot.send_message(
