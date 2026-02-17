@@ -53,7 +53,7 @@ PAGAMENTI_TEXT = (
     "METODI DI PAGAMENTO\n\n"
     "• Bonifico istantaneo (0% commissione)\n"
     "• Crypto LTC / BTC (0% commissione)\n"
-    "• Contanti spediti (10% commissione, disponibile solo per alcuni ordini)\n"
+    "• Contanti spediti (10% commissione, disponibile solo per ordini sotto 100€)\n"
     "• Bonifico dal tabacchino (0% commissione)\n"
     "• Gift card Bitnovo (+10% commissione)\n"
     "• Buoni regalo (Amazon, ecc.) (+50% commissione)\n\n"
