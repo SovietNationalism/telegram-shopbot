@@ -711,7 +711,7 @@ class ShopBot:
 
         if d == "prod_wax":
             caption = (
-                "Disponibile - estratto americano di qualità superiore.\n"
+                "SOLD OUT - nuovo restock data da decidere - estratto americano di qualità superiore.\n"
                 "Aroma intenso e pulito, con note resinose e un profilo terpenico ricco. Godibile in ogni modo, "
                 "dalla canna al dab. Colpisce con una botta immediata e prolungata, lasciando un effetto deciso "
                 "e superiore a qualsiasi hashish commerciale.\n"
