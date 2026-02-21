@@ -197,7 +197,7 @@ class ShopBot:
         self.weed_video_file_id = "BAACAgQAAxkBAAEFKTRpjYlu-3X-2wABFucqxPx897tuLKkAAsQdAALbgHFQnYOEokyUnpM6BA"
         self.weed_overview = (
             "Cherry Bomb -\n"
-            "IN ARRIVO TRA IL 20 E IL 23 FEBBRAIO\n"
+            "IN ARRIVO IL 23 FEBBRAIO\n"
             "Una Calispain (erba spagnola con genetiche Californiane) di buona qualità, aroma esplosivo e fruttato. "
             "Infiorescenze chiare e accattivanti con risalti arancioni. Effetto potente e immediato, con una carica energica "
             "che dura a lungo e invita a sessioni creative.\n"
@@ -687,7 +687,7 @@ class ShopBot:
 
             caption = (
                 "Juicy Fruit -\n"
-                "IN ARRIVO TRA IL 20 E IL 23 FEBBRAIO\n"
+                "IN ARRIVO IL 23 FEBBRAIO\n"
                 "Una Calispain ancora più invitante, odore succoso e dolce di frutta fresca. Bud compatti, "
                 "resinosi con sfumature dorate. Effetto avvolgente, un high euforico e bilanciato che supera "
                 "le aspettative e tiene compagnia per ore.\n"
