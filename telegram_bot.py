@@ -644,8 +644,8 @@ class ShopBot:
                 cid,
                 text,
                 back_callback="prod_sciroppo",
-                video_file_id=prod.get("video_file_id", ""),
-                photo_file_ids=prod.get("photo_file_ids", []),
+                video_file_id="",
+                photo_file_ids=["AgACAgQAAxkBAAEG_jVpnq9BFKErIbtXH11TqTnUeJMmNgAC1Q1rG1gP8VB6oofSBjdUmQEAAwIAA3kAAzoE"],
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
