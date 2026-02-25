@@ -87,7 +87,7 @@ class ShopBot:
     def __init__(self):
         self.products = {
             "packwoods": {
-                "name": "THC Vapes Mix: Cookies, Cookies x Jungle Boys, Packwoods x Runtz™",
+                "name": "THC Vapes Packwoods x Runtz™",
                 "price": (
                     "1 - 45€\n"
                     "2 - 80€\n"
@@ -98,8 +98,8 @@ class ShopBot:
                     "20 - 500€\n"
                     "50 - 960€\n"
                 ),
-                "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.",
-                "video_file_id": "BAACAgQAAxkBAAED1RJpf1IVSi27nniRYFdVGuyMP70AAZ4AAkwfAAJPRgABUAlJbVKYKJqNOAQ",
+                "description": "Con 1000 mg di distillato Delta-9 THC in ogni pennetta, basta una dozzina di tiri per sentire un effetto potente e duraturo.\nStrain disponibili: Horchata, Cinnamon Apple Donuts e Aurora Runtz.",
+                "video_file_id": "BAACAgQAAxkBAAEG_P5pnpvrvhKfGepiAjSZrEO4Z4gHKAAC7ycAAlgP8VBHW9Eg6K7mmzoE",
                 "photo_file_ids": [],
             },
             "funghetti": {
