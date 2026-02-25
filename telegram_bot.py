@@ -948,7 +948,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAEB8phpY4zPAb4f9uqzU8MzRg_zCqthkAACyB0AAiLmIVP3W179OOt9TzgE",
+                video_id="AgACAgQAAxkBAAEG_i9pnq7Bx0Jy2Bw4ecjHac60e1eNygAC1A1rG1gP8VAnRwaXoIKwPwEAAwIAA3gAAzoE",
                 back_callback="cat_sintetico",
             )
             return
