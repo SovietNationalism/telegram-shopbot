@@ -1002,7 +1002,7 @@ class ShopBot:
             
         if d == "prod_md":
             caption = (
-                "MDMA 300mg Pills (Blue Punisher)\n\n"
+                "MDMA/ECSTASY 300mg Pills (Blue Punisher)\n\n"
                 ".\n"
                 "1 pillola - 25€\n"
                 "2 pillole - 35€\n"
@@ -1012,7 +1012,7 @@ class ShopBot:
                 "Diretto da Estero 🇩🇪 (7-10 gg. lav.)\n"
                 "50 pillole - 210€\n"
                 "100 pillole - 320€\n\n"
-                "FINALMENTE IN ARRIVO SETTIMANA PROSSIMA - Pillola iconica da 300mg di MDMA puro. Per un'onda di euforia schiacciante, energia inesauribile e empatia totale. "
+                "FINALMENTE IN ARRIVO SETTIMANA PROSSIMA INSIEME A MDMA ROCCIE - Pillola iconica da 300mg di MDMA puro. Per un'onda di euforia schiacciante, energia inesauribile e empatia totale. "
                 "L'esperienza classica e potente per una serata di pura connessione e piacere sensoriale amplificato.\n\n"
                 "⚖️ Dose Consigliata:\n"
                 "• Principianti: ½ pillola.\n"
