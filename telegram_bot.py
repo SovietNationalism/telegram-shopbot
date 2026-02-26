@@ -136,11 +136,11 @@ class ShopBot:
             "neve": {
                 "name": "C0CA",
                 "caption": (
-                    "📦 *Coca*\n\n"
+                    "📦 *Coca*\n"
                     "5g 230€\n"
                     "10g 420€\n"
-                    "20g 760€\n\n"
-                    "Spedizione da Francia 🇫🇷 (7-10gg lav.)."
+                    "20g 760€\n"
+                    "Spedizione da Francia 🇫🇷 (7-10gg lav.).\n"
                     "Merce sana con purezza di piu' del 90%, niente merda aggiunta.\n"
                     "Effetto potente e piacevole, qualità notevole dal primo uso."
                 ),
