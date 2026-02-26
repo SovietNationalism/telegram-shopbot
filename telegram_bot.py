@@ -882,13 +882,13 @@ class ShopBot:
         if d == "prod_xanax":
             caption = (
                 "Xanax 1mg\n"
-                "Prezzo:\n"
-                "5 pillole - 15€\n"
-                "10 pillole - 30€\n\n"
+                "SOLD OUT AL MOMENTO - DA ITA 🇮🇹:\n"
+                "10 pillole - 25€\n"
+                "20 pillole - 40€\n\n"
                 "Diretto da Estero 🇵🇱 (7-10 gg. lav.)\n"
                 "5 blister (50 pillole) - 130€\n"
                 "10 blister - 190€\n\n"
-                "SOLD OUT AL MOMENTO - Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti, "
+                "SEMPRE DISPONIBILE DA ESTERO - Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti, "
                 "sostituendoli con un relax muscolare profondo e una calma mentale totale. "
                 "Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole. "
                 "Blister diversi di provenienza farmaceutica.\n\n"
