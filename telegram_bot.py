@@ -140,7 +140,7 @@ class ShopBot:
                     "5g 230€\n"
                     "10g 420€\n"
                     "20g 760€\n"
-                    "Spedizione da Francia 🇫🇷 (7-10gg lav.).\n"
+                    "Spedizione da Francia 🇫🇷 (7-10gg lav.)\n"
                     "Merce sana con purezza di piu' del 90%, niente merda aggiunta.\n"
                     "Effetto potente e piacevole, qualità notevole dal primo uso."
                 ),
