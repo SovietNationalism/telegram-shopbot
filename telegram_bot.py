@@ -137,13 +137,11 @@ class ShopBot:
                 "name": "C0CA",
                 "caption": (
                     "📦 *Coca*\n\n"
-                    "1g 70€\n"
-                    "2g 135€\n"
-                    "5g 260€\n"
-                    "10g 450€\n"
-                    "20g 820€\n\n"
-                    "Temporaneamente non disponibile."
-                    "Merce sana con purezza del 94/95%, niente merda aggiunta.\n"
+                    "5g 230€\n"
+                    "10g 420€\n"
+                    "20g 760€\n\n"
+                    "Spedizione da Francia 🇫🇷 (7-10gg lav.)."
+                    "Merce sana con purezza di piu' del 90%, niente merda aggiunta.\n"
                     "Effetto potente e piacevole, qualità notevole dal primo uso."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAJvOmlGs1caV_VuaAiwlLIXZIqd35FfAAKoHgAC0Tc4UosrKq7yuDT1NgQ",
