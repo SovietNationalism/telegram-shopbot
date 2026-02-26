@@ -959,7 +959,7 @@ class ShopBot:
                 "Prezzo:\n"
                 "1 flacone (14,63ml) - 70€\n"
                 "2 flaconi (29,26ml) - 120€\n\n"
-                "Sciroppo a base di diidrocodeina. Per un effetto sedativo e calmante, profondo e distensivo, che ti accompagna in uno stato di quiete e piacere duraturo. "
+                "ULTIME RIMANENZE - Sciroppo a base di diidrocodeina. Per un effetto sedativo e calmante, profondo e distensivo, che ti accompagna in uno stato di quiete e piacere duraturo. "
                 "Meno potente dell’ossicodone. Provenienza farmaceutica.\n\n"
                 "⚖️ Dose Consigliata:\n"
                 "• Principianti: 60mg\n"
