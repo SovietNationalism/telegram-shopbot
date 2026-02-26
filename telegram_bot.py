@@ -61,7 +61,7 @@ PAGAMENTI_TEXT = (
     "• Inpost GRATUITA\n"
     "• Altri corrieri 10€\n"
     "Con il corriere InPost, il pacco arriva 2-3 giorni lavorativi per la penisola e 3-4 per le isole, e lo ritiri con anonimità a uno dei vari Locker o punti di ritiro.\n"
-    "Il codice di tracciamento della vostra spedizione verra fornito entro 48h dal pagamento, a meno che non si è concordato altro." 
+    "Il codice di tracciamento della vostra spedizione verra fornito entro 72h dal pagamento, a meno che non si è concordato altro." 
 )
 
 PROMO_TEXT = (
