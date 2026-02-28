@@ -447,12 +447,12 @@ class ShopBot:
                     InlineKeyboardButton("PSICHEDELICI", callback_data="cat_psichedelici")
                 ],
                 [
-                    InlineKeyboardButton("SCIROPP0 THC", callback_data="prod_sciroppo"),
+                    InlineKeyboardButton("EDIBILI", callback_data="cat_edibili"),
                     InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico"),
                 ],
                 [
                     InlineKeyboardButton("TABACCHERIA", callback_data="cat_tabaccheria"),
-                    InlineKeyboardButton("CARAMELLE", callback_data="prod_caramelle"),
+                    InlineKeyboardButton("ESTERO", callback_data="cat_estero"),
                 ],
                 [
                     InlineKeyboardButton("CONSIGLI?", callback_data="suggest_product"),
@@ -589,13 +589,105 @@ class ShopBot:
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
+
+        if d == "cat_edibili":
+            if not await self._check_membership(context, update.effective_user.id, cid):
+                return
+
+            kb = [
+                [InlineKeyboardButton("SCIROPPO AL THC", callback_data="prod_sciroppo")],
+                [InlineKeyboardButton("CARAMELLE", callback_data="prod_caramelle")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text="Scegli un prodotto edibile:",
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "cat_estero":
+            if not await self._check_membership(context, update.effective_user.id, cid):
+                return
+
+            kb = [
+                [
+                    InlineKeyboardButton("ERBA", callback_data="cat_estero_erba"),
+                    InlineKeyboardButton("SINTETICO", callback_data="cat_estero_sintetico"),
+                ],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text="Sezione Estero:",
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "cat_estero_sintetico":
+            if not await self._check_membership(context, update.effective_user.id, cid):
+                return
+
+            kb = [
+                [
+                    InlineKeyboardButton("COC4", callback_data="prod_neve"),
+                    InlineKeyboardButton("X4NAX", callback_data="prod_xanax"),
+                ],
+                [
+                    InlineKeyboardButton("0XY", callback_data="prod_oxy"),
+                    InlineKeyboardButton("2CB", callback_data="prod_estero_2cb"),
+                ],
+                [
+                    InlineKeyboardButton("Keta", callback_data="prod_estero_keta"),
+                    InlineKeyboardButton("LSD", callback_data="prod_estero_lsd"),
+                ],
+                [
+                    InlineKeyboardButton("MD ROCKS", callback_data="prod_estero_md_rocks"),
+                    InlineKeyboardButton("XTC", callback_data="prod_estero_xtc"),
+                ],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="cat_estero")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text="Scegli un prodotto sintetico estero:",
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "cat_estero_erba":
+            if not await self._check_membership(context, update.effective_user.id, cid):
+                return
+
+            text = (
+                "Catalogo di strain di diversi tipi di erba, la spedizione proviene dalla Repubblica Ceca e impiega dai 3 ai 4 giorni lavorativi ad arrivare. "
+                "La spedizione è possibile solo a domicilio, e il pacco verra depositato entro 48h dal pagamento "
+                "(tranne se si ordina mercoledi, giovedi, venerdi o sabato, in quel caso ci potrebbe volere di più.)\n"
+                "RESHIP 100%"
+            )
+            kb = [
+                [InlineKeyboardButton("Super Lemon Haze", callback_data="prod_estero_super_lemon_haze")],
+                [InlineKeyboardButton("Sweet Candy", callback_data="prod_estero_sweet_candy")],
+                [InlineKeyboardButton("Wedding Cake", callback_data="prod_estero_wedding_cake")],
+                [InlineKeyboardButton("Sour Skittlez", callback_data="prod_estero_sour_skittlez")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="cat_estero")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text=text,
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
             
         if d == "prod_sciroppo":
             prod = self.products["sciroppo"]
             caption = prod.get("caption", "")
             kb = [
                 [InlineKeyboardButton("📘 Consigli D’Uso", callback_data="sciroppo_consigli")],
-                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="cat_edibili")],
             ]
             markup = InlineKeyboardMarkup(kb)
 
@@ -775,8 +867,6 @@ class ShopBot:
 
             kb = [
                 [InlineKeyboardButton("COC4", callback_data="prod_neve")],
-                [InlineKeyboardButton("X4NAX", callback_data="prod_xanax")],
-                [InlineKeyboardButton("0XY", callback_data="prod_oxy")],
                 [InlineKeyboardButton("PARACOD1NA", callback_data="prod_paracodina")],
                 [InlineKeyboardButton("MD", callback_data="prod_md")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
@@ -923,7 +1013,105 @@ class ShopBot:
                 cid,
                 caption,
                 video_id="BAACAgQAAxkBAAECn45pa9RavFAHDaX4fr42cBmZLDh-pAACeyMAAvFyYVOyKX3nBnOuBDgE",
-                back_callback="shop",
+                back_callback="cat_edibili",
+            )
+            return
+
+        if d in {
+            "prod_estero_2cb",
+            "prod_estero_keta",
+            "prod_estero_lsd",
+            "prod_estero_md_rocks",
+            "prod_estero_xtc",
+        }:
+            await self._send_product(
+                context,
+                cid,
+                "Placeholder",
+                back_callback="cat_estero_sintetico",
+            )
+            return
+
+        if d == "prod_estero_super_lemon_haze":
+            caption = (
+                "Super Lemon Haze –\n"
+                "Erba spagnola con genetica Californiana, cime grandi, chiare e sgargianti. Profilo terpenico semplicemente favoloso, "
+                "con note agrumate e di limone che riempiono la stanza appena si apre il barattolo. Fumata fresca e pungente, "
+                "regala un effetto energico e mentale, perfetta per chi cerca una top weed da giorno a un prezzo incredibile, "
+                "senza rinunciare a qualità e sapore.\n"
+                "100g 450€\n"
+                "200g 780€\n"
+                "500g 1450€\n"
+                "1kg 2400€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEHdvppoyWYKutPc_THP8vBw_ZhFamZuQAC1RwAAuv8IVFJUoJBK-jWSjoE",
+                back_callback="cat_estero_erba",
+            )
+            return
+
+        if d == "prod_estero_sweet_candy":
+            caption = (
+                "Sweet Candy –\n"
+                "Erba con genetica Californiana, colori sgargianti con sfumature arancioni forti e toni violacei più subdoli. "
+                "Sapore dolce e intenso, succulenta al palato con cime spettacolari all’occhio che catturano subito l’attenzione. "
+                "Fumata cremosa e avvolgente, porta un effetto euforico e rilassante, perfetta per chi cerca un’esperienza visiva e sensoriale di livello superiore.\n"
+                "100g 480€\n"
+                "200g 800€\n"
+                "300g 1150€\n"
+                "500g 1800€\n"
+                "1kg 3000€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEHdvxpoyWcPFmvQ360RrR2EoyABFt6hgAC1hwAAuv8IVFeu2FqVcDKQjoE",
+                back_callback="cat_estero_erba",
+            )
+            return
+
+        if d == "prod_estero_wedding_cake":
+            caption = (
+                "Wedding Cake –\n"
+                "Un capolavoro di genetica Californiana indoor, cresciuto in Svizzera da grower esperti. Raffinatezza pura con colori brillanti "
+                "e cristalli visibili a occhio nudo che brillano come diamanti. Effetto stordente quasi immediato, profondo e seducente, "
+                "che avvolge corpo e mente in un relax totale e appagante.\n"
+                "100g 520€\n"
+                "200g 950€\n"
+                "300g 1300€\n"
+                "500g 1900€\n"
+                "1kg 3500€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEHdv5poyWhuo3uG7hdfURS7AzIkCbJeAAC1xwAAuv8IVFjpbSqp061wjoE",
+                back_callback="cat_estero_erba",
+            )
+            return
+
+        if d == "prod_estero_sour_skittlez":
+            caption = (
+                "Sour Skittles -\n"
+                "Weed prodotta in serra, ottima da lavorare grazie al rapporto qualità-prezzo imbattibile. Cime resinose e facili da maneggiare, "
+                "con un aroma con note di gas e agrumate che evolve in fumata pulita e bilanciata. Effetto energizzante e produttivo, "
+                "ideale per sessioni diurne senza appesantire.\n"
+                "100g 400€\n"
+                "200g 730€\n"
+                "500g 1300€\n"
+                "1kg 2200€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEHdvhpoyU7fqlRkdCLsbfL3qRJ_wyhGwAC1BwAAuv8IVHfSGrku8Yf8joE",
+                back_callback="cat_estero_erba",
             )
             return
 
