@@ -866,7 +866,7 @@ class ShopBot:
                 return
 
             kb = [
-                [InlineKeyboardButton("COC4", callback_data="prod_neve")],
+                [InlineKeyboardButton("LSD", callback_data="prod_lsd_sintetico")],
                 [InlineKeyboardButton("PARACOD1NA", callback_data="prod_paracodina")],
                 [InlineKeyboardButton("MD", callback_data="prod_md")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
@@ -1024,7 +1024,7 @@ class ShopBot:
             await self._send_product(
                 context,
                 cid,
-                "Placeholder",
+                "placeholder",
                 back_callback="cat_estero_sintetico",
             )
             return
@@ -1183,6 +1183,34 @@ class ShopBot:
                 caption,
                 video_id="BAACAgQAAxkBAAEB8g9pY4gLdV6CDdzQLU_UFV6BHMjgAQACux0AAiLmIVPbx9TTHMVuGDgE",
                 back_callback="cat_psichedelici",
+            )
+            return
+
+        if d == "prod_lsd_sintetico":
+            caption = (
+                "LSD 250µg Blotter\n"
+                "Prezzo:\n"
+                "1 cartone - 15€\n"
+                "2 cartoni - 25€\n"
+                "5 cartoni - 50€\n"
+                "10 cartoni - 75€\n"
+                "20 cartoni - 125€\n"
+                "30 cartoni - 165€\n"
+                "Per ulteriori quantitá spedito dalla 🇩🇪 (7-10 gg. lav.)\n"
+                "50 cartoni - 180€\n"
+                "100 cartoni - 280€\n\n"
+                "ANCORA DISPONIBILE + NUOVO BLOTTER IN ARRIVO - Psichedelico classico su blotter tema Spongebob & Patrick. 250µg di pura esperienza visiva e mentale, per un viaggio intenso tra pattern geometrici, "
+                "esplorazione introspettiva e percezione amplificata. Purezza certificata.\n\n"
+                "⚖️ Dose Consigliata:\n"
+                "• Principianti: 1 cartone.\n"
+                "• Esperti: 1.5-2 cartoni."
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEB8g9pY4gLdV6CDdzQLU_UFV6BHMjgAQACux0AAiLmIVPbx9TTHMVuGDgE",
+                back_callback="cat_sintetico",
             )
             return
             
