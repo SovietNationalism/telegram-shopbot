@@ -1022,10 +1022,39 @@ class ShopBot:
             "prod_estero_2cb",
             "prod_estero_lsd",
         }:
+            if d == "prod_estero_2cb":
+                caption = (
+                    "2C-B pillole ~20mg – Spedizione da Francia.\n"
+                    "Composto psichedelico niche, un ibrido tra MDMA (euforia e empatia) e LSD (visuali colorate e distorsioni), ma più leggero e controllato. "
+                    "Dosaggio da 20mg porta effetti vividi entro 45-60 minuti: colori intensi, sensazioni tattili amplificate, energia stimolante senza ansia eccessiva, durata 4-8 ore. "
+                    "Godibile per party o introspezione, meno pesante di funghi ma con più \"vibe\" sociali rispetto a LSD puro.\n"
+                    "50 pillole 180€\n"
+                    "100 pillole 300€\n"
+                    "250 pillole 450€"
+                )
+                await self._send_product(
+                    context,
+                    cid,
+                    caption,
+                    photo_id="AgACAgQAAxkBAAEHfTBpoz_3CXFFPt5sgWjABpiOSLsUdgACsgxrG-v8IVGBuX1NEvcqaQEAAwIAA3gAAzoE",
+                    back_callback="cat_estero_sintetico",
+                )
+                return
+
+            caption = (
+                "LSD Hofmann Blotters 250ug –\n"
+                "Blotter di qualità pura, dosaggio alto per un viaggio psichedelico profondo e controllato. "
+                "Effetti entro 30-60 minuti: visuali geometriche intense, sinestesia e insight mentali, durata 8-12 ore. "
+                "Ideale per esplorazioni interiori, energia mentale pulita senza bodyload pesante.\n"
+                "50 cartoni - 150\n"
+                "100 cartoni - 240\n"
+                "250 cartoni - 380"
+            )
             await self._send_product(
                 context,
                 cid,
-                "placeholder",
+                caption,
+                photo_id="AgACAgQAAxkBAAEHfbBpo0D0KGdbnA5vccNbZ_65GMh9ygACswxrG-v8IVEoRNy78RLl5gEAAwIAA3gAAzoE",
                 back_callback="cat_estero_sintetico",
             )
             return
