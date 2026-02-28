@@ -440,15 +440,11 @@ class ShopBot:
             kb = [
                 [
                     InlineKeyboardButton("HASH", callback_data="cat_hash"),
-                    InlineKeyboardButton("ERBA", callback_data="cat_weed")
+                    InlineKeyboardButton("ESTERO", callback_data="cat_estero")
                 ],
                 [
                     InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico"),
                     InlineKeyboardButton("ESTERO", callback_data="cat_estero")
-                ],
-                [
-                    InlineKeyboardButton("VAPES AL THC", callback_data="prod_packwoods"),
-                    InlineKeyboardButton("PSICHEDELICI", callback_data="cat_psichedelici")
                 ],
                 [
                     InlineKeyboardButton("EDIBILI", callback_data="cat_edibili"),
@@ -490,26 +486,14 @@ class ShopBot:
                 return
 
             kb = [
-                [InlineKeyboardButton("ERBA", callback_data="cat_weed_estero")],
-                [InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico_estero")],
+                [InlineKeyboardButton("ERBA", callback_data="cat_weed")],
+                [InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
             sent = await context.bot.send_message(
                 chat_id=cid,
                 text="Scegli una categoria estero:",
                 reply_markup=InlineKeyboardMarkup(kb),
-            )
-            context.user_data["last_menu_msg_id"] = sent.message_id
-            return
-
-        if d in ("cat_weed_estero", "cat_sintetico_estero"):
-            if not await self._check_membership(context, update.effective_user.id, cid):
-                return
-
-            sent = await context.bot.send_message(
-                chat_id=cid,
-                text="In arrivo.",
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Indietro", callback_data="cat_estero")]]),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
@@ -702,7 +686,7 @@ class ShopBot:
             kb = [
                 [InlineKeyboardButton("Cherry Bomb", callback_data="weed_cherry_bomb")],
                 [InlineKeyboardButton("Juicy Fruit", callback_data="weed_juicy_fruit")],
-                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="cat_estero")],
             ]
             sent = await context.bot.send_message(
                 chat_id=cid,
@@ -825,7 +809,7 @@ class ShopBot:
                 [InlineKeyboardButton("0XY", callback_data="prod_oxy")],
                 [InlineKeyboardButton("PARACOD1NA", callback_data="prod_paracodina")],
                 [InlineKeyboardButton("MD", callback_data="prod_md")],
-                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="cat_estero")],
             ]
             sent = await context.bot.send_message(
                 chat_id=cid,
