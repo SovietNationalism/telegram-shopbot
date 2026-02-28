@@ -133,6 +133,20 @@ class ShopBot:
                 "video_file_id": "BAACAgQAAxkBAALA8WlM8ils5hJW6qELQ3rDIHhXlJFOAAKpGgACScdoUvDEPR-NjqSKNgQ",  # metti qui il file_id del video se ce l'hai, altrimenti lascia vuoto
                 "photo_file_ids": [],
             },
+            "nutella_thc": {
+                "caption": (
+                    "IMMAGINE IA PER FARVI VEDERE PIU' O MENO COME SARA ESTETICAMENTE NEL MENTRE CHE CI ARRIVA LA SETTIMANA PROSSIMA\n"
+                    "Nutella al THC RegularDope™ –\n"
+                    "Autoprodotta da noi proprio come il nostro sciroppo, 350g di Nutella originale infusi con 1000mg di THC totale. "
+                    "La classica crema vellutata e golosa, si spalma perfettamente su pane o crackers. Un cucchiaino basta per un "
+                    "effetto potente e duraturo, dolcezza intensa con high rilassante e appagante.\n"
+                    "1 vasetto 45€\n"
+                    "2 vasetti 80€\n"
+                    "5 vasetti 175€\n"
+                    "10 vasetti 300€"
+                ),
+                "photo_file_ids": ["AgACAgQAAxkBAAEHgBVpo0z5xgGsN0o4eCsqlm0xshLrtwACwQxrG-v8IVH41UxfuAs67QEAAwIAA3kAAzoE"],
+            },
             "neve": {
                 "name": "C0CA",
                 "caption": (
@@ -595,6 +609,7 @@ class ShopBot:
 
             kb = [
                 [InlineKeyboardButton("SCIROPPO AL THC", callback_data="prod_sciroppo")],
+                [InlineKeyboardButton("NUTELLA AL THC", callback_data="prod_nutella_thc")],
                 [InlineKeyboardButton("CARAMELLE", callback_data="prod_caramelle")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
@@ -736,6 +751,18 @@ class ShopBot:
                 back_callback="prod_sciroppo",
                 video_file_id="",
                 photo_file_ids=["AgACAgQAAxkBAAEG_jVpnq9BFKErIbtXH11TqTnUeJMmNgAC1Q1rG1gP8VB6oofSBjdUmQEAAwIAA3kAAzoE"],
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "prod_nutella_thc":
+            prod = self.products["nutella_thc"]
+            sent = await self._send_media_or_text(
+                context,
+                cid,
+                prod["caption"],
+                back_callback="cat_edibili",
+                photo_file_ids=prod.get("photo_file_ids", []),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
