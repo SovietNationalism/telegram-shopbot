@@ -911,8 +911,7 @@ class ShopBot:
             
         if d == "cat_tabaccheria":
             text = (
-                "Abbiamo allestito una sezione tabaccheria per la vostra comodita’. "
-                "Tutto disponibile per l'acquisto."
+                "Abbiamo allestito una sezione tabaccheria per la vostra comodità. Tutto disponibile."
             )
             kb = [
                 [
