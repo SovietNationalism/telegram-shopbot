@@ -1002,13 +1002,11 @@ class ShopBot:
         if d == "prod_xanax":
             caption = (
                 "Xanax 1mg\n"
-                "Diretto da Estero 🇵🇱\n"
+                "Spedizione da Spagna - Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti,"
+                "sostituendoli con un relax muscolare profondo e una calma mentale totale."
+                "Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole. Per formato 2mg DM."
                 "50 pillole - 130€\n"
                 "100 pillole - 190€\n"
-                "SEMPRE DISPONIBILE DA ESTERO - Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti, "
-                "sostituendoli con un relax muscolare profondo e una calma mentale totale. "
-                "Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole. "
-                "Blister diversi di provenienza farmaceutica.\n\n"
                 "⚖️ Dose Consigliata:\n"
                 "• Principianti: 2mg\n"
                 "• Esperti: 4mg"
