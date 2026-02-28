@@ -138,9 +138,9 @@ class ShopBot:
                 "name": "C0CA",
                 "caption": (
                     "📦 *Coca*\n"
-                    "5g 230€\n"
                     "10g 420€\n"
                     "20g 760€\n"
+                    "50g 1750€\n"
                     "Spedizione da Francia 🇫🇷\n"
                     "Merce sana con purezza di piu' del 90%, niente merda aggiunta.\n"
                     "Effetto potente e piacevole, qualità notevole dal primo uso."
