@@ -866,9 +866,14 @@ class ShopBot:
                 return
 
             kb = [
-                [InlineKeyboardButton("LSD", callback_data="prod_lsd_sintetico")],
-                [InlineKeyboardButton("PARACOD1NA", callback_data="prod_paracodina")],
-                [InlineKeyboardButton("MD", callback_data="prod_md")],
+                [
+                    InlineKeyboardButton("PARACOD1NA", callback_data="prod_paracodina"),
+                    InlineKeyboardButton("MD", callback_data="prod_md"),
+                ],
+                [
+                    InlineKeyboardButton("LSD", callback_data="prod_lsd_sintetico"),
+                    InlineKeyboardButton("XTC", callback_data="prod_xtc"),
+                ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
             sent = await context.bot.send_message(
@@ -1018,13 +1023,30 @@ class ShopBot:
             "prod_estero_2cb",
             "prod_estero_keta",
             "prod_estero_lsd",
-            "prod_estero_md_rocks",
             "prod_estero_xtc",
         }:
             await self._send_product(
                 context,
                 cid,
                 "placeholder",
+                back_callback="cat_estero_sintetico",
+            )
+            return
+
+        if d == "prod_estero_md_rocks":
+            caption = (
+                "MDMA Champagne 90% purity –\n"
+                "Cristalli puri di alta qualità creati in laboratori Francesi. Spedizione da Francia.\n"
+                "Aspetto champagne scintillante e pulito, facile da maneggiare. Entra rapido con un effetto euforico potente e duraturo, sostanza altamente eccitante, fornisce empatia totale, senso di leggerezza e spensieratezza e vibe da festa superiore a tutto il resto. La droga dell'amore.\n"
+                "50g 280€\n"
+                "100g 500€\n"
+                "250g 1000€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                photo_id="AgACAgQAAxkBAAEHerJpozKZbiZQxgMlUA-9KetsytUv5AAClwxrG-v8IVFyoyU2M4wt0QEAAwIAA3kAAzoE",
                 back_callback="cat_estero_sintetico",
             )
             return
@@ -1212,6 +1234,27 @@ class ShopBot:
             return
             
         if d == "prod_md":
+            caption = (
+                "MDMA Champagne 90% purity –\n"
+                "Cristalli puri di alta qualità creati in laboratori Francesi.\n"
+                "Aspetto champagne scintillante e pulito, facile da maneggiare. Entra rapido con un effetto euforico potente e duraturo, sostanza altamente eccitante, fornisce empatia totale, senso di leggerezza e spensieratezza e vibe da festa superiore a tutto il resto. La droga dell'amore.\n"
+                "IN ARRIVO SETTIMANA PROSSIMA\n"
+                "1g 25\n"
+                "5g 65\n"
+                "10g 100\n"
+                "25 200\n"
+                "50g 320"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                photo_id="AgACAgQAAxkBAAEHerJpozKZbiZQxgMlUA-9KetsytUv5AAClwxrG-v8IVFyoyU2M4wt0QEAAwIAA3kAAzoE",
+                back_callback="cat_sintetico",
+            )
+            return
+
+        if d == "prod_xtc":
             caption = (
                 "MDMA/ECSTASY 300mg Pills (Blue Punisher)\n"
                 "1 pillola - 25€\n"
