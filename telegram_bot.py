@@ -640,18 +640,18 @@ class ShopBot:
                     InlineKeyboardButton("2CB", callback_data="prod_estero_2cb"),
                 ],
                 [
-                    InlineKeyboardButton("Keta", callback_data="prod_estero_keta"),
+                    InlineKeyboardButton("K3TA", callback_data="prod_estero_keta"),
                     InlineKeyboardButton("LSD", callback_data="prod_estero_lsd"),
                 ],
                 [
-                    InlineKeyboardButton("MD ROCKS", callback_data="prod_estero_md_rocks"),
+                    InlineKeyboardButton("MD", callback_data="prod_estero_md_rocks"),
                     InlineKeyboardButton("XTC", callback_data="prod_estero_xtc"),
                 ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="cat_estero")],
             ]
             sent = await context.bot.send_message(
                 chat_id=cid,
-                text="Scegli un prodotto sintetico estero:",
+                text="Prodotti sintetici disponibili dall'estero, da vari paesi dipendendo dal prodotto. La spedizione ci mette 7-10 giorni lavorativi ad arrivarmi, può essere fatta a punti di ritiro o a domicilio:",
                 reply_markup=InlineKeyboardMarkup(kb),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
@@ -973,9 +973,9 @@ class ShopBot:
         if d == "prod_xanax":
             caption = (
                 "Xanax 1mg\n"
-                "Diretto da Estero 🇵🇱 (7-10 gg. lav.)\n"
+                "Diretto da Estero 🇵🇱\n"
                 "50 pillole - 130€\n"
-                "100 pillole - 190€\n\n"
+                "100 pillole - 190€\n"
                 "SEMPRE DISPONIBILE DA ESTERO - Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti, "
                 "sostituendoli con un relax muscolare profondo e una calma mentale totale. "
                 "Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole. "
