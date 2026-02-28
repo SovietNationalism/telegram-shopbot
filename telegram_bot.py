@@ -1025,7 +1025,7 @@ class ShopBot:
             if d == "prod_estero_2cb":
                 caption = (
                     "2C-B pillole ~20mg – Spedizione da Francia.\n"
-                    "Composto psichedelico niche, un ibrido tra MDMA (euforia e empatia) e LSD (visuali colorate e distorsioni), ma più leggero e controllato. "
+                    "Composto psichedelico niche, un ibrido tra MDMA e LSD. "
                     "Dosaggio da 20mg porta effetti vividi entro 45-60 minuti: colori intensi, sensazioni tattili amplificate, energia stimolante senza ansia eccessiva, durata 4-8 ore. "
                     "Godibile per party o introspezione, meno pesante di funghi ma con più \"vibe\" sociali rispetto a LSD puro.\n"
                     "50 pillole 180€\n"
@@ -1046,9 +1046,9 @@ class ShopBot:
                 "Blotter di qualità pura, dosaggio alto per un viaggio psichedelico profondo e controllato. "
                 "Effetti entro 30-60 minuti: visuali geometriche intense, sinestesia e insight mentali, durata 8-12 ore. "
                 "Ideale per esplorazioni interiori, energia mentale pulita senza bodyload pesante.\n"
-                "50 cartoni - 150\n"
-                "100 cartoni - 240\n"
-                "250 cartoni - 380"
+                "50 cartoni - 150€\n"
+                "100 cartoni - 240€\n"
+                "250 cartoni - 380€"
             )
             await self._send_product(
                 context,
@@ -1216,7 +1216,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="AgACAgQAAxkBAAEG_i9pnq7Bx0Jy2Bw4ecjHac60e1eNygAC1A1rG1gP8VAnRwaXoIKwPwEAAwIAA3gAAzoE",
+                photo_id="AgACAgQAAxkBAAEHfk9po0OxV9AGwwqq49gh2SJ8wN0iSgACtQxrG-v8IVE_VxrwBKHtSAEAAwIAA3gAAzoE",
                 back_callback="cat_estero_sintetico",
             )
             return
@@ -1298,7 +1298,7 @@ class ShopBot:
                 "MDMA Champagne 90% purity –\n"
                 "Cristalli puri di alta qualità creati in laboratori Francesi.\n"
                 "Aspetto champagne scintillante e pulito, facile da maneggiare. Entra rapido con un effetto euforico potente e duraturo, sostanza altamente eccitante, fornisce empatia totale, senso di leggerezza e spensieratezza e vibe da festa superiore a tutto il resto. La droga dell'amore.\n"
-                "IN ARRIVO SETTIMANA PROSSIMA\n"
+                "IN ARRIVO IL 3 MARZO\n"
                 "1g 25\n"
                 "5g 65\n"
                 "10g 100\n"
@@ -1323,7 +1323,7 @@ class ShopBot:
                 "10 pillole - 90€\n"
                 "20 pillole - 135€\n"
                 "50 pillole - 210€\n"
-                "FINALMENTE IN ARRIVO SETTIMANA PROSSIMA INSIEME A MDMA CRISTALLI - Pillola iconica da 300mg di MDMA puro. Per un'onda di euforia schiacciante, energia inesauribile e empatia totale. "
+                "IN ARRIVO IL 3 MARZO  - Pillola iconica da 300mg di MDMA puro. Per un'onda di euforia schiacciante, energia inesauribile e empatia totale. "
                 "L'esperienza classica e potente per una serata di pura connessione e piacere sensoriale amplificato.\n\n"
                 "⚖️ Dose Consigliata:\n"
                 "• Principianti: ½ pillola.\n"
