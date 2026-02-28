@@ -59,7 +59,8 @@ PAGAMENTI_TEXT = (
     "• Buoni regalo (Amazon, ecc.) (+50% commissione)\n\n"
     "COSTO SPEDIZIONE:\n"
     "• Inpost GRATUITA\n"
-    "• Altri corrieri 10€\n"
+    "• PosteItaliane 7€\n"
+    "• BRT o UPS 15€\n"
     "Con il corriere InPost, il pacco arriva 2-3 giorni lavorativi per la penisola e 3-4 per le isole, e lo ritiri con anonimità a uno dei vari Locker o punti di ritiro.\n"
     "Il codice di tracciamento della vostra spedizione verra fornito entro 72h dal pagamento, a meno che non si è concordato altro." 
 )
