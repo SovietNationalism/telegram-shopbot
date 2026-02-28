@@ -633,7 +633,7 @@ class ShopBot:
             kb = [
                 [
                     InlineKeyboardButton("COC4", callback_data="prod_neve"),
-                    InlineKeyboardButton("X4NAX", callback_data="prod_ax"),
+                    InlineKeyboardButton("X4NAX", callback_data="prod_xanax"),
                 ],
                 [
                     InlineKeyboardButton("0XY", callback_data="prod_oxy"),
