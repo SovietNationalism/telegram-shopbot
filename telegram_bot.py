@@ -29,15 +29,14 @@ TOS_TEXT = (
     "Per effettuare un ordine, scrivi a @RegularDope e compila la seguente scheda:\n\n"
     "INFORMAZIONI ORDINE:\n"
     "• Username Telegram\n"
-    "• Prodotto/i\n"
-    "• Quantità\n"
+    "• Prodotto/i e Quantità\n"
     "• Metodo di pagamento scelto\n\n"
     "INFORMAZIONI SPEDIZIONE:\n"
     "• Nome e Cognome\n"
-    "• Num di Tel / Email\n"
+    "• Num di Tel e Email\n"
     "• Indirizzo o punto di ritiro\n"
     "• Eventuali note o richieste speciali\n"
-    "(Il nome e cognome non deve essere per forza reale.)\n"
+    "(Il nome e cognome non deve essere per forza reale. Consigliamo fortemente di fornire sia un email che un numero valido, siccome Il codice di ritiro del pacco verrà fornito li)\n"
 )
 
 TOS_TERMS_TEXT = (
@@ -53,7 +52,7 @@ PAGAMENTI_TEXT = (
     "METODI DI PAGAMENTO\n\n"
     "• Bonifico istantaneo (0% commissione)\n"
     "• Crypto LTC / BTC (0% commissione)\n"
-    "• Contanti spediti (10% commissione, disponibile solo per ordini sotto 100€)\n"
+    "• Contanti spediti (10% commissione)\n"
     "• Bonifico dal tabacchino (0% commissione)\n"
     "• Gift card Bitnovo (+10% commissione)\n"
     "• Buoni regalo (Amazon, ecc.) (+50% commissione)\n\n"
@@ -137,7 +136,7 @@ class ShopBot:
             "neve": {
                 "name": "C0CA",
                 "caption": (
-                    "📦 *Coca*\n"
+                    "📦 **\n"
                     "10g 420€\n"
                     "20g 760€\n"
                     "50g 1750€\n"
