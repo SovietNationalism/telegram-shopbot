@@ -1046,7 +1046,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                photo_id="AgACAgQAAxkBAAEHerJpozKZbiZQxgMlUA-9KetsytUv5AAClwxrG-v8IVFyoyU2M4wt0QEAAwIAA3kAAzoE",
+                photo_id="AgACAgQAAxkBAAEHfDRpozhmbc0hCgyng8x-S6kBRIv2FwACqAxrG-v8IVGGfkpQoonGxQEAAwIAA3kAAzoE",
                 back_callback="cat_estero_sintetico",
             )
             return
@@ -1247,7 +1247,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                photo_id="AgACAgQAAxkBAAEHerJpozKZbiZQxgMlUA-9KetsytUv5AAClwxrG-v8IVFyoyU2M4wt0QEAAwIAA3kAAzoE",
+                photo_id="AgACAgQAAxkBAAEHfDRpozhmbc0hCgyng8x-S6kBRIv2FwACqAxrG-v8IVGGfkpQoonGxQEAAwIAA3kAAzoE",
                 back_callback="cat_sintetico",
             )
             return
