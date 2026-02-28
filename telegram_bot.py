@@ -967,7 +967,7 @@ class ShopBot:
 
         if d == "prod_neve":
             prod = self.products["neve"]
-            await self._send_product(context, cid, prod["caption"], video_id=prod["video_file_id"], back_callback="cat_sintetico")
+            await self._send_product(context, cid, prod["caption"], video_id=prod["video_file_id"], back_callback="cat_estero_sintetico")
             return
             
         if d == "prod_xanax":
@@ -1133,7 +1133,7 @@ class ShopBot:
                 cid,
                 caption,
                 video_id="AgACAgQAAxkBAAEG_i9pnq7Bx0Jy2Bw4ecjHac60e1eNygAC1A1rG1gP8VAnRwaXoIKwPwEAAwIAA3gAAzoE",
-                back_callback="cat_sintetico",
+                back_callback="cat_estero_sintetico",
             )
             return
             
