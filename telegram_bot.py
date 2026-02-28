@@ -619,7 +619,7 @@ class ShopBot:
             ]
             sent = await context.bot.send_message(
                 chat_id=cid,
-                text="Sezione Estero:",
+                text="Seleziona la categoria di prodotti disponibili dall'estero che vorresti vedere:",
                 reply_markup=InlineKeyboardMarkup(kb),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
