@@ -113,7 +113,7 @@ class ShopBot:
                     "autentica e coinvolgente.\n"
                     "Dosaggi:\n0.25-1 g effetto lieve | 1-2.5 g effetto medio | 2.5-5 g effetto forte"
                 ),
-                "video_file_id": "BAACAgQAAxkBAAI9gmk_9B6WfvUiC8Q6FWDumJqt_cZQAALaGgAC3ykBUjFj1UkcKnyCNgQ",  # Fill as needed
+                "video_file_id": "BAACAgQAAxkBAAI9gmk_9B6WfvUiC8Q6FWDumJqt_cZQAALaGgAC3ykBUjFj1UkcKnyCNgQ", 
                 "photo_file_ids": [],
             },
             "sciroppo": {
@@ -130,16 +130,15 @@ class ShopBot:
                     "x 10 - 105€\n\n"
                     "Composta da estratto di hashish a base di etanolo, emulsionato in uno sciroppo al lampone per una stabilità e biodisponibilità superiore.\n"
                 ),
-                "video_file_id": "BAACAgQAAxkBAALA8WlM8ils5hJW6qELQ3rDIHhXlJFOAAKpGgACScdoUvDEPR-NjqSKNgQ",  # metti qui il file_id del video se ce l'hai, altrimenti lascia vuoto
+                "video_file_id": "BAACAgQAAxkBAALA8WlM8ils5hJW6qELQ3rDIHhXlJFOAAKpGgACScdoUvDEPR-NjqSKNgQ", 
                 "photo_file_ids": [],
             },
             "nutella_thc": {
                 "caption": (
                     "IMMAGINE IA PER FARVI VEDERE PIU' O MENO COME SARA ESTETICAMENTE NEL MENTRE CHE CI ARRIVA LA SETTIMANA PROSSIMA\n"
-                    "Nutella al THC RegularDope™ –\n"
-                    "Autoprodotta da noi proprio come il nostro sciroppo, 350g di Nutella originale infusi con 1000mg di THC totale. "
-                    "La classica crema vellutata e golosa, si spalma perfettamente su pane o crackers. Un cucchiaino basta per un "
-                    "effetto potente e duraturo, dolcezza intensa con high rilassante e appagante.\n"
+                    "Nutella al THC Regular™ –\n"
+                    "Autoprodotta da noi proprio come il nostro sciroppo, 350g di Nutella originale infusi con 1000mg di THC totale.\n"
+                    "Un cucchiaino basta per un effetto potente e duraturo, dolcezza intensa con high rilassante e appagante.\n"
                     "1 vasetto 45€\n"
                     "2 vasetti 80€\n"
                     "5 vasetti 175€\n"
