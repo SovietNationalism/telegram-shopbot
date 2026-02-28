@@ -665,7 +665,7 @@ class ShopBot:
                 "Catalogo di strain di diversi tipi di erba, la spedizione proviene dalla Repubblica Ceca e impiega dai 3 ai 4 giorni lavorativi ad arrivare. "
                 "La spedizione è possibile solo a domicilio, e il pacco verra depositato entro 48h dal pagamento "
                 "(tranne se si ordina mercoledi, giovedi, venerdi o sabato, in quel caso ci potrebbe volere di più.)\n"
-                "RESHIP 100%"
+                "RESHIP 100% - ORDINE MIN. 100G"
             )
             kb = [
                 [InlineKeyboardButton("Super Lemon Haze", callback_data="prod_estero_super_lemon_haze")],
