@@ -443,8 +443,8 @@ class ShopBot:
                     InlineKeyboardButton("ESTERO", callback_data="cat_estero")
                 ],
                 [
-                    InlineKeyboardButton("VAPES AL THC", callback_data="prod_packwoods"),
-                    InlineKeyboardButton("PSICHEDELICI", callback_data="cat_psichedelici")
+                    InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico"),
+                    InlineKeyboardButton("ESTERO", callback_data="cat_estero")
                 ],
                 [
                     InlineKeyboardButton("EDIBILI", callback_data="cat_edibili"),
