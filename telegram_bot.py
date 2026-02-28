@@ -136,13 +136,13 @@ class ShopBot:
             "neve": {
                 "name": "C0CA",
                 "caption": (
-                    "📦 **\n"
+                    "Coca\n"
                     "10g 420€\n"
                     "20g 760€\n"
                     "50g 1750€\n"
                     "Spedizione da Francia 🇫🇷\n"
-                    "Merce sana con purezza di piu' del 90%, niente merda aggiunta.\n"
-                    "Effetto potente e piacevole, qualità notevole dal primo uso."
+                    "Merce sana con purezza di più del 90%, niente merda aggiunta.\n"
+                    "Effetto potente e piacevole, energizzante e duraturo, qualità notevole dal primo uso."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAJvOmlGs1caV_VuaAiwlLIXZIqd35FfAAKoHgAC0Tc4UosrKq7yuDT1NgQ",
                 "photo_file_ids": [],
