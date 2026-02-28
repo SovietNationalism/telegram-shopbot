@@ -108,7 +108,7 @@ class ShopBot:
                     "3.5g 45€\n"
                     "5g 65€\n"
                     "10g 105€\n15g 125€\n20g 160€\n"
-                    "Una miscela di varietà classiche e potenti, McKennai, Golden Teacher, e Jedi Mind Fuck.\n"
+                    "Una miscela di varietà classiche e potenti, McKennai, Golden Teacher, e Jedi Mind Fuck. (Nuove varietà in crescita, arrivo ad inizio Aprile.)\n"
                     "Effetto profondo e duraturo, ideale per esplorare nuove dimensioni. Disponibili subito per chi cerca un'esperienza "
                     "autentica e coinvolgente.\n"
                     "Dosaggi:\n0.25-1 g effetto lieve | 1-2.5 g effetto medio | 2.5-5 g effetto forte"
