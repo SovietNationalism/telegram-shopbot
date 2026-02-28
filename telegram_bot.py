@@ -633,7 +633,7 @@ class ShopBot:
             kb = [
                 [
                     InlineKeyboardButton("COC4", callback_data="prod_neve"),
-                    InlineKeyboardButton("X4NAX", callback_data="prod_xanax"),
+                    InlineKeyboardButton("X4NAX", callback_data="prod_ax"),
                 ],
                 [
                     InlineKeyboardButton("0XY", callback_data="prod_oxy"),
@@ -973,12 +973,9 @@ class ShopBot:
         if d == "prod_xanax":
             caption = (
                 "Xanax 1mg\n"
-                "SOLD OUT AL MOMENTO - DA ITA 🇮🇹:\n"
-                "10 pillole - 25€\n"
-                "20 pillole - 40€\n\n"
                 "Diretto da Estero 🇵🇱 (7-10 gg. lav.)\n"
-                "5 blister (50 pillole) - 130€\n"
-                "10 blister - 190€\n\n"
+                "50 pillole - 130€\n"
+                "100 pillole - 190€\n\n"
                 "SEMPRE DISPONIBILE DA ESTERO - Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti, "
                 "sostituendoli con un relax muscolare profondo e una calma mentale totale. "
                 "Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole. "
@@ -992,7 +989,7 @@ class ShopBot:
                 cid,
                 caption,
                 video_id="BAACAgQAAxkBAAEB8pZpY4zIBl1rw-BgBTGfqDjDAAFPgpoAAscdAAIi5iFToJi2HP8P1oo4BA",
-                back_callback="cat_sintetico",
+                back_callback="cat_estero_sintetico",
             )
             return
 
@@ -1198,9 +1195,7 @@ class ShopBot:
                 "5 pillole - 60€\n"
                 "10 pillole - 90€\n"
                 "20 pillole - 135€\n"
-                "Diretto da Estero 🇩🇪 (7-10 gg. lav.)\n"
                 "50 pillole - 210€\n"
-                "100 pillole - 320€\n\n"
                 "FINALMENTE IN ARRIVO SETTIMANA PROSSIMA INSIEME A MDMA ROCCIE - Pillola iconica da 300mg di MDMA puro. Per un'onda di euforia schiacciante, energia inesauribile e empatia totale. "
                 "L'esperienza classica e potente per una serata di pura connessione e piacere sensoriale amplificato.\n\n"
                 "⚖️ Dose Consigliata:\n"
