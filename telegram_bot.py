@@ -443,16 +443,16 @@ class ShopBot:
                     InlineKeyboardButton("ERBA", callback_data="cat_weed")
                 ],
                 [
+                    InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico"),
+                    InlineKeyboardButton("ESTERO", callback_data="cat_estero")
+                ],
+                [
                     InlineKeyboardButton("VAPES AL THC", callback_data="prod_packwoods"),
                     InlineKeyboardButton("PSICHEDELICI", callback_data="cat_psichedelici")
                 ],
                 [
-                    InlineKeyboardButton("SCIROPP0 THC", callback_data="prod_sciroppo"),
-                    InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico"),
-                ],
-                [
+                    InlineKeyboardButton("EDIBILI", callback_data="cat_edibili"),
                     InlineKeyboardButton("TABACCHERIA", callback_data="cat_tabaccheria"),
-                    InlineKeyboardButton("CARAMELLE", callback_data="prod_caramelle"),
                 ],
                 [
                     InlineKeyboardButton("CONSIGLI?", callback_data="suggest_product"),
@@ -464,6 +464,40 @@ class ShopBot:
                 chat_id=cid,
                 text="Scegli una categoria:",
                 reply_markup=InlineKeyboardMarkup(kb)
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "cat_edibili":
+            if not await self._check_membership(context, update.effective_user.id, cid):
+                return
+
+            kb = [
+                [InlineKeyboardButton("SCIROPP0 THC", callback_data="prod_sciroppo")],
+                [InlineKeyboardButton("CARAMELLE", callback_data="prod_caramelle")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text="Scegli un prodotto edibile:",
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "cat_estero":
+            if not await self._check_membership(context, update.effective_user.id, cid):
+                return
+
+            kb = [
+                [InlineKeyboardButton("ERBA", callback_data="cat_weed_estero")],
+                [InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico_estero")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text="Scegli una categoria estero:",
+                reply_markup=InlineKeyboardMarkup(kb),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
@@ -595,7 +629,7 @@ class ShopBot:
             caption = prod.get("caption", "")
             kb = [
                 [InlineKeyboardButton("📘 Consigli D’Uso", callback_data="sciroppo_consigli")],
-                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="cat_edibili")],
             ]
             markup = InlineKeyboardMarkup(kb)
 
@@ -649,14 +683,19 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        if d == "cat_weed":
+        if d in ("cat_weed", "cat_weed_estero"):
             if not await self._check_membership(context, update.effective_user.id, cid):
                 return
 
+            is_estero_menu = d == "cat_weed_estero"
+            cherry_callback = "weed_cherry_bomb_estero" if is_estero_menu else "weed_cherry_bomb"
+            juicy_callback = "weed_juicy_fruit_estero" if is_estero_menu else "weed_juicy_fruit"
+            back_callback = "cat_estero" if is_estero_menu else "shop"
+
             kb = [
-                [InlineKeyboardButton("Cherry Bomb", callback_data="weed_cherry_bomb")],
-                [InlineKeyboardButton("Juicy Fruit", callback_data="weed_juicy_fruit")],
-                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+                [InlineKeyboardButton("Cherry Bomb", callback_data=cherry_callback)],
+                [InlineKeyboardButton("Juicy Fruit", callback_data=juicy_callback)],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data=back_callback)],
             ]
             sent = await context.bot.send_message(
                 chat_id=cid,
@@ -666,23 +705,27 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
-        if d in ("weed_calispain", "weed_cherry_bomb"):
+        if d in ("weed_calispain", "weed_cherry_bomb", "weed_cherry_bomb_estero"):
             if not await self._check_membership(context, update.effective_user.id, cid):
                 return
+
+            back_callback = "cat_weed_estero" if d == "weed_cherry_bomb_estero" else "cat_weed"
 
             sent = await self._send_media_or_text(
                 context,
                 cid,
                 self.weed_overview,
-                back_callback="cat_weed",
+                back_callback=back_callback,
                 video_file_id=self.weed_video_file_id,
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        if d == "weed_juicy_fruit":
+        if d in ("weed_juicy_fruit", "weed_juicy_fruit_estero"):
             if not await self._check_membership(context, update.effective_user.id, cid):
                 return
+
+            back_callback = "cat_weed_estero" if d == "weed_juicy_fruit_estero" else "cat_weed"
 
             caption = (
                 "Juicy Fruit -\n"
@@ -704,7 +747,7 @@ class ShopBot:
                 cid,
                 caption,
                 video_id="BAACAgQAAxkBAAEFKTdpjYtecJShHyEFKeMhrDbH7DScHwACxR0AAtuAcVAgq0ejt-1sdDoE",
-                back_callback="cat_weed",
+                back_callback=back_callback,
             )
             return
 
@@ -769,17 +812,25 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
-        if d == "cat_sintetico":
+        if d in ("cat_sintetico", "cat_sintetico_estero"):
             if not await self._check_membership(context, update.effective_user.id, cid):
                 return
 
+            is_estero_menu = d == "cat_sintetico_estero"
+            neve_callback = "prod_neve_estero" if is_estero_menu else "prod_neve"
+            xanax_callback = "prod_xanax_estero" if is_estero_menu else "prod_xanax"
+            oxy_callback = "prod_oxy_estero" if is_estero_menu else "prod_oxy"
+            paracodina_callback = "prod_paracodina_estero" if is_estero_menu else "prod_paracodina"
+            md_callback = "prod_md_estero" if is_estero_menu else "prod_md"
+            back_callback = "cat_estero" if is_estero_menu else "shop"
+
             kb = [
-                [InlineKeyboardButton("COC4", callback_data="prod_neve")],
-                [InlineKeyboardButton("X4NAX", callback_data="prod_xanax")],
-                [InlineKeyboardButton("0XY", callback_data="prod_oxy")],
-                [InlineKeyboardButton("PARACOD1NA", callback_data="prod_paracodina")],
-                [InlineKeyboardButton("MD", callback_data="prod_md")],
-                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+                [InlineKeyboardButton("COC4", callback_data=neve_callback)],
+                [InlineKeyboardButton("X4NAX", callback_data=xanax_callback)],
+                [InlineKeyboardButton("0XY", callback_data=oxy_callback)],
+                [InlineKeyboardButton("PARACOD1NA", callback_data=paracodina_callback)],
+                [InlineKeyboardButton("MD", callback_data=md_callback)],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data=back_callback)],
             ]
             sent = await context.bot.send_message(
                 chat_id=cid,
@@ -875,12 +926,13 @@ class ShopBot:
             )
             return
 
-        if d == "prod_neve":
+        if d in ("prod_neve", "prod_neve_estero"):
             prod = self.products["neve"]
-            await self._send_product(context, cid, prod["caption"], video_id=prod["video_file_id"], back_callback="cat_sintetico")
+            back_callback = "cat_sintetico_estero" if d == "prod_neve_estero" else "cat_sintetico"
+            await self._send_product(context, cid, prod["caption"], video_id=prod["video_file_id"], back_callback=back_callback)
             return
             
-        if d == "prod_xanax":
+        if d in ("prod_xanax", "prod_xanax_estero"):
             caption = (
                 "Xanax 1mg\n"
                 "SOLD OUT AL MOMENTO - DA ITA 🇮🇹:\n"
@@ -902,7 +954,7 @@ class ShopBot:
                 cid,
                 caption,
                 video_id="BAACAgQAAxkBAAEB8pZpY4zIBl1rw-BgBTGfqDjDAAFPgpoAAscdAAIi5iFToJi2HP8P1oo4BA",
-                back_callback="cat_sintetico",
+                back_callback="cat_sintetico_estero" if d == "prod_xanax_estero" else "cat_sintetico",
             )
             return
 
@@ -923,11 +975,11 @@ class ShopBot:
                 cid,
                 caption,
                 video_id="BAACAgQAAxkBAAECn45pa9RavFAHDaX4fr42cBmZLDh-pAACeyMAAvFyYVOyKX3nBnOuBDgE",
-                back_callback="shop",
+                back_callback="cat_edibili",
             )
             return
 
-        if d == "prod_oxy":
+        if d in ("prod_oxy", "prod_oxy_estero"):
             caption = (
                 "Disponibile in 20 e 40mg.\n"
                 "Oxydolor 20mg\n"
@@ -948,11 +1000,11 @@ class ShopBot:
                 cid,
                 caption,
                 video_id="AgACAgQAAxkBAAEG_i9pnq7Bx0Jy2Bw4ecjHac60e1eNygAC1A1rG1gP8VAnRwaXoIKwPwEAAwIAA3gAAzoE",
-                back_callback="cat_sintetico",
+                back_callback="cat_sintetico_estero" if d == "prod_oxy_estero" else "cat_sintetico",
             )
             return
             
-        if d == "prod_paracodina":
+        if d in ("prod_paracodina", "prod_paracodina_estero"):
             caption = (
                 "Paracodina 10,25mg/ml Gocce\n"
                 "Prezzo:\n"
@@ -969,7 +1021,7 @@ class ShopBot:
                 cid,
                 caption,
                 video_id="BAACAgQAAxkBAAEB8hFpY4gSw_SVeHXMdeK8GJZyYluFMgACvB0AAiLmIVP61CA3WBz_XjgE",
-                back_callback="cat_sintetico",
+                back_callback="cat_sintetico_estero" if d == "prod_paracodina_estero" else "cat_sintetico",
             )
             return
             
@@ -1001,7 +1053,7 @@ class ShopBot:
             )
             return
             
-        if d == "prod_md":
+        if d in ("prod_md", "prod_md_estero"):
             caption = (
                 "MDMA/ECSTASY 300mg Pills (Blue Punisher)\n\n"
                 ".\n"
@@ -1024,7 +1076,7 @@ class ShopBot:
                 cid,
                 caption,
                 photo_id="AgACAgQAAxkBAAEB8tppY46gsiseZfCkTiH7BDN0PnoDGAACLgxrG6lJEVPNKMTCFb62PwEAAwIAA3kAAzgE",
-                back_callback="cat_sintetico",
+                back_callback="cat_sintetico_estero" if d == "prod_md_estero" else "cat_sintetico",
             )
             return
 
