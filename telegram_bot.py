@@ -1021,9 +1021,7 @@ class ShopBot:
 
         if d in {
             "prod_estero_2cb",
-            "prod_estero_keta",
             "prod_estero_lsd",
-            "prod_estero_xtc",
         }:
             await self._send_product(
                 context,
@@ -1047,6 +1045,42 @@ class ShopBot:
                 cid,
                 caption,
                 photo_id="AgACAgQAAxkBAAEHfDRpozhmbc0hCgyng8x-S6kBRIv2FwACqAxrG-v8IVGGfkpQoonGxQEAAwIAA3kAAzoE",
+                back_callback="cat_estero_sintetico",
+            )
+            return
+
+        if d == "prod_estero_keta":
+            caption = (
+                "Ketamine Sugar –\n"
+                "Cristalli puri di qualità molto alta. Spedizione da Francia.\n"
+                "Formato zuccherino facile da dosare, si scioglie rapido e pulito. Entra in circolo veloce con un effetto dissociativo forte e prolungato, provoca distacco dalla realtà, euforia e alterazione sensoriale profonda. Su richiesta possiamo farvela avere anche sotto forma di aghi, il prezzo non cambia.\n"
+                "50g 320€\n"
+                "100g 550€\n"
+                "250g 1100€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                photo_id="AgACAgQAAxkBAAEHfFZpozkAAeAz3guqF-uzAhhUflrQpXEAAqsMaxvr_CFReGhQ6w_zt6EBAAMCAAN4AAM6BA",
+                back_callback="cat_estero_sintetico",
+            )
+            return
+
+        if d == "prod_estero_xtc":
+            caption = (
+                "MDMA/ECSTASY 300mg pillole. Spedizione da Francia.\n"
+                "\n"
+                "50 pillole - 180€\n"
+                "100 pillole - 250€\n"
+                "250 pillole - 450€\n"
+                "Pillola iconica da 300mg di MDMA puro. Per un'onda di euforia schiacciante, energia inesauribile e empatia totale. L'esperienza classica e potente per una serata di pura connessione e piacere sensoriale amplificato. Altri formati disponibili, chiedere in DM per info e prezzi."
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEHfHdpozs72tt57_YxA9IwIX5jsf3TkgAC6xwAAuv8IVFFmWoG0X-C_DoE",
                 back_callback="cat_estero_sintetico",
             )
             return
