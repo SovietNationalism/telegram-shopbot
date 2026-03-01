@@ -17,7 +17,7 @@ REQUIRED_GROUP_LINK = "https://t.me/+xwCcckoNERw2MWU0"
 USERS_FILE = "users.json"
 SUGGESTIONS_FILE = "suggestions.json"
 
-WELCOME_IMAGE_URL = "https://i.postimg.cc/5yBdW1BK/IMG-0466.jpg"
+WELCOME_IMAGE_URL = "https://i.postimg.cc/nzy74mhh/IMG-0466.jpg"
 WELCOME_TEXT = (
     "Benvenuto da Regular Dope!\n"
     "Un’esperienza pensata per farti rilassare, senza preoccupazioni né stress.\n"
