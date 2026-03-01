@@ -1011,7 +1011,7 @@ class ShopBot:
                 "Xanax 1mg\n"
                 "Spedizione da Spagna - Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti,"
                 "sostituendoli con un relax muscolare profondo e una calma mentale totale."
-                "Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole. Per formato 2mg DM."
+                "Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole. Per formato 2mg DM.\n"
                 "50 pillole - 130€\n"
                 "100 pillole - 190€\n"
                 "⚖️ Dose Consigliata:\n"
@@ -1128,11 +1128,10 @@ class ShopBot:
         if d == "prod_estero_xtc":
             caption = (
                 "MDMA/ECSTASY 300mg pillole. Spedizione da Francia.\n"
-                "\n"
+                "Pillola iconica da 300mg di MDMA puro. Per un'onda di euforia schiacciante, energia inesauribile e empatia totale. L'esperienza classica e potente per una serata di pura connessione e piacere sensoriale amplificato. Altri formati disponibili, chiedere in DM per info e prezzi.\n"
                 "50 pillole - 180€\n"
                 "100 pillole - 250€\n"
                 "250 pillole - 450€\n"
-                "Pillola iconica da 300mg di MDMA puro. Per un'onda di euforia schiacciante, energia inesauribile e empatia totale. L'esperienza classica e potente per una serata di pura connessione e piacere sensoriale amplificato. Altri formati disponibili, chiedere in DM per info e prezzi."
             )
             await self._send_product(
                 context,
