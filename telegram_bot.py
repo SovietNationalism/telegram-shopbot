@@ -301,22 +301,14 @@ class ShopBot:
         self._save_users()
         await self.delete_last_menu(context, update.effective_chat.id)
         kb = [
-            [
-                InlineKeyboardButton("🛍️ SHOP", callback_data="shop"),
-                InlineKeyboardButton("📦 ORDINA QUI", url=ADMIN_CONTACT),
-            ],
-            [
-                InlineKeyboardButton("💳 PAGAMENTI", callback_data="pagamenti"),
-                InlineKeyboardButton("💬 CHAT CLIENTI", url="https://t.me/+xwCcckoNERw2MWU0"),
-            ],
-            [
-                InlineKeyboardButton("📜 COME ORDINARE", callback_data="tos"),
-                InlineKeyboardButton("📩 RECENSIONI", url="https://t.me/+mX8bV3BF-otlNDZk"),
-            ],
-            [
-                InlineKeyboardButton("🎁 PROMOZIONE", callback_data="promo"),
-                InlineKeyboardButton("📝 CANALE PRINCIPALE", url="https://t.me/Regular_Dope"),
-            ],
+            [InlineKeyboardButton("🛍️ SHOP", callback_data="shop")],
+            [InlineKeyboardButton("💳 PAGAMENTI", callback_data="pagamenti")],
+            [InlineKeyboardButton("📜 COME ORDINARE", callback_data="tos")],
+            [InlineKeyboardButton("🎁 PROMOZIONE", callback_data="promo")],
+            [InlineKeyboardButton("📦 ORDINA QUI", url=ADMIN_CONTACT)],
+            [InlineKeyboardButton("💬 CHAT CLIENTI", url="https://t.me/+xwCcckoNERw2MWU0")],
+            [InlineKeyboardButton("📩 RECENSIONI", url="https://t.me/+mX8bV3BF-otlNDZk")],
+            [InlineKeyboardButton("📝 CANALE PRINCIPALE", url="https://t.me/Regular_Dope")],
         ]
         m = update.effective_message
         try:
