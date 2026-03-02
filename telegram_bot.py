@@ -176,14 +176,14 @@ class ShopBot:
                         "50g 220€\n"
                         "100g 400€\n"
                         "200g 760€\n"
-                        "Un dry sift commerciale di buona qualità.\n"
+                        "Un drysift commerciale di buona qualità.\n"
                         "Fumo dall'aroma intenso e naturale, facile da lavorare e piacevole da fumare in ogni modo. Colpisce con una botta potente e duratura, lasciando un effetto rilassante e pulito."
                     ),
                     "video_file_id": "BAACAgQAAxkBAAEEqmppiIsmJJSFH76HbrofVs-RFv99lgACxhsAAswcQFC9sWytoa__XToE",
                     "photo_file_ids": [],
                 },
                 {
-                    "name": "Frozen",
+                    "name": "Frozen sift",
                     "caption": (
                         "*Frozen Sift vari*\n"
                         "3g 40€\n"
@@ -195,7 +195,7 @@ class ShopBot:
                         "35g 280€\n"
                         "50g 365€\n"
                         "100g 680€\n"
-                        "PREZZI BOMBA!!! Dei frozen sift di qualità superiore.  Aroma intenso e profondo con note speziate.\nGodibile in ogni modo. Colpisce con una botta potente e prolungata, lasciando un effetto superiore a qualsiasi filtrato."
+                        "Frozen sift di qualità superiore di note farm marocchine.  Aroma intenso e profondo con note speziate.\nGodibile in ogni modo. Colpisce con una botta potente e prolungata, lasciando un effetto superiore a qualsiasi filtrato."
                     ),
                     "video_file_id": "BAACAgQAAxkBAAEF8TJplCt6eflb1nt47Gych4wyc0uPtwACCB0AAkVqoVDrMVS4A8wp-joE",
                     "photo_file_ids": [],
