@@ -1014,9 +1014,7 @@ class ShopBot:
                 "Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole. Per formato 2mg DM.\n"
                 "50 pillole - 130€\n"
                 "100 pillole - 190€\n"
-                "⚖️ Dose Consigliata:\n"
-                "• Principianti: 2mg\n"
-                "• Esperti: 4mg"
+                "In arrivo da Italia per tagli piccoli nelle prossime settimane!"
             )
             await self._send_product(
                 context,
@@ -1060,7 +1058,8 @@ class ShopBot:
                     "Godibile per party o introspezione, meno pesante di funghi ma con più \"vibe\" sociali rispetto a LSD puro.\n"
                     "50 pillole 180€\n"
                     "100 pillole 300€\n"
-                    "250 pillole 450€"
+                    "250 pillole 450€\n"
+                    "In arrivo da Italia per tagli piccoli nelle prossime settimane!"
                 )
                 await self._send_product(
                     context,
@@ -1073,7 +1072,7 @@ class ShopBot:
 
             caption = (
                 "LSD Hofmann Blotters 250ug –\n"
-                "Blotter di qualità pura, dosaggio alto per un viaggio psichedelico profondo e controllato. "
+                "Spedizione da Francia. Blotter di qualità pura, dosaggio alto per un viaggio psichedelico profondo e controllato. "
                 "Effetti entro 30-60 minuti: visuali geometriche intense, sinestesia e insight mentali, durata 8-12 ore. "
                 "Ideale per esplorazioni interiori, energia mentale pulita senza bodyload pesante.\n"
                 "50 cartoni - 150€\n"
@@ -1114,7 +1113,8 @@ class ShopBot:
                 "Formato zuccherino facile da dosare, si scioglie rapido e pulito. Entra in circolo veloce con un effetto dissociativo forte e prolungato, provoca distacco dalla realtà, euforia e alterazione sensoriale profonda. Su richiesta possiamo farvela avere anche sotto forma di aghi, il prezzo non cambia.\n"
                 "50g 320€\n"
                 "100g 550€\n"
-                "250g 1100€"
+                "250g 1100€\n"
+                "In arrivo da Italia per tagli piccoli nelle prossime settimane!"
             )
             await self._send_product(
                 context,
