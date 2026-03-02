@@ -676,11 +676,11 @@ class ShopBot:
 
             text = (
                     "COME FUNZIONA?\n"
-                    "1. **Magazzino in Repubblica Ceca:**\n"
+                    "1. *Magazzino in Repubblica Ceca:*\n"
                     "Le nostre scorte d'erba sono conservate in condizioni eccellenti nel nostro magazzino.\n"
-                    "2. **Preparazione e Spedizione:**\n"
+                    "2. *Preparazione e Spedizione:*\n"
                     "Quando effettui un ordine, il tuo pacco viene imballato e preparato. Entro 48 ore dal pagamento (salvo eccezioni), il tuo pacco sarà spedito.\n"
-                    "3. **Consegna:**\n"
+                    "3. *Consegna:*\n"
                     "Il pacco, spedito tramite corriere BRT o GLS, arriverà al tuo domicilio in 2 o 3 giorni lavorativi.\n"
                     "Dettagli Importanti:\n"
                     "- La spedizione è effettuata solo a domicilio.\n"
