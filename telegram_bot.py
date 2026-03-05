@@ -968,8 +968,8 @@ class ShopBot:
         if d == "tab_raw":
             await self._send_product(
                 context, cid,
-                "Cartine RAW\n—\n1 pacchetto 1.20€\n5 pacchetti 5€\n10 pacchetti 8.50€\n25 pacchetti 20€\nPer veri appassionati, non sbiancate, combustione ultra lenta e totalmente insapori. Ogni cartina viene filigranata individualmente, cosi evita che un lato bruci piu' velocemente dell'altro.\n32 cartine per pacchetto.\n\nFiltri RAW \n—\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n20 pacchetti 13€\nFiltri RAW facilmente modellabili, regolabili in grandezza, non sbiancati. Privi di additivi chimici o cloro.\n50 filtri per pacchetto.\n\nRAW Kit\n—\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33€\nOgni kit contiene un pacchetto di cartine e un pacchetto di filtri, gli stessi visibili precedentemente.",
-                photo_id="AgACAgQAAxkBAAEBBRhpUOP8GifRxCRvc90TdB-MoTZvrQACeAtrG1JBiVI7j4Fw7QPmBwEAAwIAA3gAAzYE",
+                "Cartine RAW\n—\n1 pacchetto 1.20€\n5 pacchetti 5€\n10 pacchetti 8.50€\n25 pacchetti 20€\nPer veri appassionati, non sbiancate, combustione ultra lenta e totalmente insapori. Ogni cartina viene filigranata individualmente, cosi evita che un lato bruci piu' velocemente dell'altro.\n32 cartine per pacchetto.\n\nFiltri RAW \n—\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n20 pacchetti 13€\nFiltri RAW facilmente modellabili, regolabili in grandezza, non sbiancati. Privi di additivi chimici o cloro. (Non wide)\n50 filtri per pacchetto.\n\nRAW Kit\n—\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33€\nOgni kit contiene un pacchetto di cartine e un pacchetto di filtri, gli stessi visibili precedentemente.\nRAW Black King Size Slim\n—\n\nCartine ultra-sottili e a combustione lenta, pensate per chi vuole esaltare al massimo l’aroma dell’erba senza sapori extra. Formato king size slim, perfette per spinelli lunghi e ben riempiti, con carta non sbiancata e naturale che brucia in modo uniforme dalla prima all’ultima boccata.\n1 pacchetto 1.50€ \n5 pacchetti 6€ \n10 pacchetti 10€ \n25 pacchetti 22€",
+                video_id="BAACAgQAAxkBAAEIaARpqRrI_Cwg7PwfTbJsAkB0QBsHagACqxwAAs5zSFGL5NuFZ3brYjoE",
                 back_callback="tab_cartine_filtri"
             )
             return
@@ -984,11 +984,37 @@ class ShopBot:
             return
             
         if d == "tab_bluntwraps":
+            text = "Scegli i blunt wraps che preferisci"
+            kb = [
+                [
+                    InlineKeyboardButton("Juicy Jays Hemp Wraps", callback_data="tab_bluntwraps_juicy_jays"),
+                    InlineKeyboardButton("Al Capone Tobacco Wraps", callback_data="tab_bluntwraps_al_capone"),
+                ],
+                [InlineKeyboardButton("⬅️ Indietro", callback_data="tab_cartine_filtri")],
+            ]
+            sent = await context.bot.send_message(
+                chat_id=cid,
+                text=text,
+                reply_markup=InlineKeyboardMarkup(kb),
+            )
+            context.user_data["last_menu_msg_id"] = sent.message_id
+            return
+
+        if d == "tab_bluntwraps_juicy_jays":
             await self._send_product(
                 context, cid,
                 "Juicy Jays Wraps Blue di canapa\n—\n1 pacchetto 2€\n2 pacchetti 3.80€\n5 pacchetti 8.50€\n10 pacchetti 14.50€\n20 pacchetti 20€\nFatti da foglia di canapa aromatizzata al mirtillo, brucia lentamente ed e' piu' facile da rollare rispetto alle foglie di tabacco, ed e' completamente priva di nicotina. Perfetto per blunt.",
                 photo_id="AgACAgQAAxkBAAEBBRtpUORvVKgNiIyIt9L5NsVpWE_qrwACeQtrG1JBiVIa3xODPSP6MwEAAwIAA3gAAzYE",
-                back_callback="tab_cartine_filtri"
+                back_callback="tab_bluntwraps"
+            )
+            return
+
+        if d == "tab_bluntwraps_al_capone":
+            await self._send_product(
+                context, cid,
+                "Al Capone Tobacco Wraps x5 – Original, Glow, Mixx\nConfezione da 5 wrap in vera foglia di tabacco, perfetti per blunt puliti e lenti. La versione Original offre il gusto naturale del tabacco, la Glow aggiunge una nota dolce alla vaniglia, mentre la Mixx porta un tocco fruttato ai frutti di bosco. Ideali per chi vuole scegliere ogni volta tra sapore classico, aromatico o berry senza rinunciare a una combustione uniforme e a una fumata morbida.\n1 pacchetto 10€\n2 pacchetti 18€\n5 pacchetti 35€",
+                video_id="BAACAgQAAxkBAAEIZ_BpqReMMKK0mSZrBgI-87hvBJF1vAACpxwAAs5zSFFl95uPTe75UToE",
+                back_callback="tab_bluntwraps"
             )
             return
             
