@@ -1127,7 +1127,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                photo_id="AgACAgQAAxkBAAEHfDRpozhmbc0hCgyng8x-S6kBRIv2FwACqAxrG-v8IVGGfkpQoonGxQEAAwIAA3kAAzoE",
+                video_id="BAACAgQAAxkBAAEJGGdprxk175LdSCbi3Ip5CWfTsugMXAAC3iIAAm9deVH0io9-g7Xp2DoE",
                 back_callback="cat_estero_sintetico",
             )
             return
@@ -1163,7 +1163,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAEHfHdpozs72tt57_YxA9IwIX5jsf3TkgAC6xwAAuv8IVFFmWoG0X-C_DoE",
+                video_id="BAACAgQAAxkBAAEJGGVprxkvz35i8qVwIH1yJ-6H2IEuQQAC3SIAAm9deVFMYe84xKwVwDoE",
                 back_callback="cat_estero_sintetico",
             )
             return
@@ -1354,18 +1354,19 @@ class ShopBot:
                 "Cristalli puri di alta qualità creati in laboratori Francesi.\n"
                 "Aspetto champagne scintillante e pulito, facile da maneggiare. Entra rapido con un effetto euforico potente e duraturo, sostanza altamente eccitante, fornisce empatia totale, senso di leggerezza e spensieratezza e vibe da festa superiore a tutto il resto. La droga dell'amore.\n"
                 "DISPONIBILE\n"
-                "1g 25\n"
+                "1g 25€\n"
                 "2g 45€\n"
-                "5g 65\n"
-                "10g 100\n"
-                "25 200\n"
-                "50g 320"
+                "5g 65€\n"
+                "10g 100€\n"
+                "25 200€\n"
+                "50g 350€"
+                "100g 600€"
             )
             await self._send_product(
                 context,
                 cid,
                 caption,
-                photo_id="AgACAgQAAxkBAAEHfDRpozhmbc0hCgyng8x-S6kBRIv2FwACqAxrG-v8IVGGfkpQoonGxQEAAwIAA3kAAzoE",
+                video_id="BAACAgQAAxkBAAEJGGdprxk175LdSCbi3Ip5CWfTsugMXAAC3iIAAm9deVH0io9-g7Xp2DoE",
                 back_callback="cat_sintetico",
             )
             return
@@ -1389,7 +1390,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                photo_id="AgACAgQAAxkBAAEB8tppY46gsiseZfCkTiH7BDN0PnoDGAACLgxrG6lJEVPNKMTCFb62PwEAAwIAA3kAAzgE",
+                video_id="BAACAgQAAxkBAAEJGGVprxkvz35i8qVwIH1yJ-6H2IEuQQAC3SIAAm9deVFMYe84xKwVwDoE",
                 back_callback="cat_sintetico",
             )
             return
