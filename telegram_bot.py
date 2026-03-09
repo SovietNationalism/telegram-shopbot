@@ -1355,6 +1355,7 @@ class ShopBot:
                 "Aspetto champagne scintillante e pulito, facile da maneggiare. Entra rapido con un effetto euforico potente e duraturo, sostanza altamente eccitante, fornisce empatia totale, senso di leggerezza e spensieratezza e vibe da festa superiore a tutto il resto. La droga dell'amore.\n"
                 "DISPONIBILE\n"
                 "1g 25\n"
+                "2g 45€\n"
                 "5g 65\n"
                 "10g 100\n"
                 "25 200\n"
