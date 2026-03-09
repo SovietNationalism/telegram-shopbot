@@ -205,7 +205,7 @@ class ShopBot:
                 # Add WEED category products here later the same way
             ]
         }
-        self.weed_video_file_id = "BAACAgQAAxkBAAEFKTRpjYlu-3X-2wABFucqxPx897tuLKkAAsQdAALbgHFQnYOEokyUnpM6BA"
+        self.weed_video_file_id = "BAACAgQAAxkBAAEJH95pr0DhS4K09YW86tH-8K_1DSbZ-QADIwACb115UeeOxhMUBUBZOgQ"
         self.weed_overview = (
             "Cherry Bomb -\n"
             "DISPONIBILE\n"
@@ -827,7 +827,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAEFKTdpjYtecJShHyEFKeMhrDbH7DScHwACxR0AAtuAcVAgq0ejt-1sdDoE",
+                video_id="BAACAgQAAxkBAAEJH9xpr0C6ybWHRR9_KpyPKhETqjusqQAC_iIAAm9deVFXpyc6jM4kcDoE",
                 back_callback="cat_weed",
             )
             return
