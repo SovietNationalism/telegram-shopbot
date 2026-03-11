@@ -900,6 +900,9 @@ class ShopBot:
             kb = [
                 [
                     InlineKeyboardButton("PARACOD1NA", callback_data="prod_paracodina"),
+                    InlineKeyboardButton("CODE1NA", callback_data="prod_code1na"),
+                ],
+                [
                     InlineKeyboardButton("MD", callback_data="prod_md"),
                 ],
                 [
@@ -1293,6 +1296,34 @@ class ShopBot:
                 cid,
                 caption,
                 video_id="BAACAgQAAxkBAAEB8hFpY4gSw_SVeHXMdeK8GJZyYluFMgACvB0AAiLmIVP61CA3WBz_XjgE",
+                back_callback="cat_sintetico",
+            )
+            return
+
+        if d == "prod_code1na":
+            caption = (
+                "AMNEAL LEAN (Codeina/Prometazina) – Sciroppo 100 ml Homebrew con etichetta\n"
+                "\n"
+                "Homebrew di alta qualità, prodotto in modo igienico con attrezzatura da laboratorio professionale da un nostro contatto in Germania.\n"
+                "Ogni bottiglia da 115 ml contiene circa 350 mg di diidrocodeina e 200 mg di prometazina cloridrato, gusto lampone e colore viola.\n"
+                "\n"
+                "Dose consigliata da mischiare con soft drink:\n"
+                "\n"
+                "25 ml in 500 ml di bevanda – dose media\n"
+                "\n"
+                "50 ml in 500–1000 ml di bevanda – dose forte (per utenti esperti)\n"
+                "\n"
+                "1 - 65€\n"
+                "2 - 120€\n"
+                "5 - 250€\n"
+                "10 - 430€\n"
+                "(Per I tagli da 5 e 10 far sapere con più preavviso possibile)"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEJTRZpsUrQy2RSqFayLDvq40dR8tClIQACeBwAAi4KkFE_PapNg4TL_ToE",
                 back_callback="cat_sintetico",
             )
             return
