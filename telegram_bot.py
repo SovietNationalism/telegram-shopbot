@@ -1405,11 +1405,11 @@ class ShopBot:
         if d == "prod_xtc":
             caption = (
                 "MDMA/ECSTASY 300mg Pills (Blue Punisher)\n"
-                "1 pillola - 25€\n"
-                "2 pillole - 35€\n"
-                "5 pillole - 60€\n"
-                "10 pillole - 90€\n"
-                "20 pillole - 135€\n"
+                "1 pillola - 20€\n"
+                "2 pillole - 30€\n"
+                "5 pillole - 55€\n"
+                "10 pillole - 85€\n"
+                "20 pillole - 130€\n"
                 "50 pillole - 210€\n"
                 "DISPONIBILI  - Pillola iconica da 300mg di MDMA puro. Per un'onda di euforia schiacciante, energia inesauribile e empatia totale. "
                 "L'esperienza classica e potente per una serata di pura connessione e piacere sensoriale amplificato.\n\n"
