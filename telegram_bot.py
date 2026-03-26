@@ -390,9 +390,19 @@ class ShopBot:
         )
         return sent
         
-    async def _send_product(self, context, cid, caption, photo_id=None, video_id=None, back_callback="shop"):
+    async def _send_product(
+        self,
+        context,
+        cid,
+        caption,
+        photo_id=None,
+        video_id=None,
+        back_callback="shop",
+        extra_buttons=None,
+    ):
         """Unified product sender with photo/video fallback"""
-        kb = [[InlineKeyboardButton("⬅️ Indietro", callback_data=back_callback)]]
+        kb = list(extra_buttons or [])
+        kb.append([InlineKeyboardButton("⬅️ Indietro", callback_data=back_callback)])
         markup = InlineKeyboardMarkup(kb)
         
         if photo_id:
@@ -944,7 +954,20 @@ class ShopBot:
                 context, cid,
                 "DISPONIBILI!!! Gli originali Backwoods.\nSigari americani iconici, apparsi in decine di videoclip. Tabacco e foglia aromatizzata alla vaniglia, con una botta di nicotina ben percepibile. Ideali da svuotare e riempire con il fiore di vostra scelta.\nOgni confezione contiene 5 sigari.\nx1 conf. 20€ \nx2 conf. 30€\nx3 conf. 40€\nx5 conf. 55€\nx8 conf. 80€",
                 video_id="BAACAgQAAxkBAAEC0mdpbmGtQPJ_Gm7Y3_IieT2f9jQOMgACHBsAApIBeFOj0sWNQwteazgE",
-                back_callback="cat_tabaccheria"
+                back_callback="cat_tabaccheria",
+                extra_buttons=[
+                    [InlineKeyboardButton("Esempio D'Uso", callback_data="tab_backwoods_esempio_uso")]
+                ],
+            )
+            return
+
+        if d == "tab_backwoods_esempio_uso":
+            await self._send_product(
+                context,
+                cid,
+                "Per molti, rollare un Backwoods è difficile, e in pochi riescono al primo tentativo. Prova a seguire questa guida:\n\nTaglia la foglia con forbici per un bordo pulito. Assicurati che la tua foglia non sia troppo secca.\n\nRiempi con erba macinata fine (1-1.5g), distribuiscila dritta lungo il centro senza pressare troppo.\n\nArrotola stretto dalla base verso la punta, usa entrambe le mani.\n\nChiudi le estremità pizzicando e lecca ripetutamente e molto, lasciando riposare un paio di secondi prima di accendere.\n\nRisultato? Fumata dolce e profumata, effetto pulito senza gusto di carta bruciata e superiore ai wraps economici di canapa sia per sapore e durata.",
+                video_id="BAACAgQAAxkBAAELLw9pxLe3BKJ7OCYeorvjzpwC4wlZmAACSSEAAn5lKVJ5-8Aiz1h2KzoE",
+                back_callback="tab_backwoods",
             )
             return
             
@@ -1018,7 +1041,20 @@ class ShopBot:
                 context, cid,
                 "Al Capone Tobacco Wraps x5 – Original, Glow, Mixx\nConfezione da 5 wrap in vera foglia di tabacco, perfetti per blunt puliti e lenti. La versione Original offre il gusto naturale del tabacco, la Glow aggiunge una nota dolce alla vaniglia, mentre la Mixx porta un tocco fruttato ai frutti di bosco. Ideali per chi vuole scegliere ogni volta tra sapore classico, aromatico o berry senza rinunciare a una combustione uniforme e a una fumata morbida.\n1 pacchetto 10€\n2 pacchetti 18€\n5 pacchetti 35€",
                 video_id="BAACAgQAAxkBAAEIZ_BpqReMMKK0mSZrBgI-87hvBJF1vAACpxwAAs5zSFFl95uPTe75UToE",
-                back_callback="tab_bluntwraps"
+                back_callback="tab_bluntwraps",
+                extra_buttons=[
+                    [InlineKeyboardButton("Esempio D'Uso", callback_data="tab_al_capone_esempio_uso")]
+                ],
+            )
+            return
+
+        if d == "tab_al_capone_esempio_uso":
+            await self._send_product(
+                context,
+                cid,
+                "Per molti, rollare un Al Capone blunt wrap è facilissimo grazie al formato pretagliato (L'unica pecca di ciò è che cosi naturalmente risultano più corti dei Backwoods) e riescono già al primo colpo. Segui questa guida veloce:\n\nScegli il tuo aroma (Original naturale, Glow alla vaniglia o Mixx fruttato ai frutti di bosco).\n\nRiempi con erba macinata fine (1-1.5g), distribuiscila dritta lungo il centro senza pressare troppo.\n\nArrotola stretto dalla base verso la punta con le mqani.\n\nChiudi le estremità pizzicando leggermente e lecca un paio di volte sia sotto che sopra, lascia riposare 10 secondi prima di accendere.\n\nRisultato? Fumata aromatica e pulita con una combustione lenta e uniforme, con un risultato estetico spesso superiore a quella dei Backwoods.",
+                video_id="BAACAgQAAxkBAAELLxFpxLfao5-8J8zu-xPb9NEo-OpsaAACSiEAAn5lKVLutkX7JbBtJToE",
+                back_callback="tab_bluntwraps_al_capone",
             )
             return
             
