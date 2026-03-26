@@ -11,7 +11,7 @@ from pathlib import Path
 # ───────────────────────── CONFIG ───────────────────────── #
 BOT_TOKEN         = os.getenv("BOT_TOKEN")
 ADMIN_USER_ID     = 8219761049
-ADMIN_CONTACT     = "https://t.me/RegularDope"
+ADMIN_CONTACT     = "https://t.me/regularsupportobot"
 REQUIRED_GROUP_ID = -1003514626970  # put the actual group ID here
 REQUIRED_GROUP_LINK = "https://t.me/+xwCcckoNERw2MWU0"
 USERS_FILE = "users.json"
