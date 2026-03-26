@@ -1435,7 +1435,7 @@ class ShopBot:
                 "20 cartoni - 125€\n"
                 "30 cartoni - 165€\n"
                 "50 cartoni - 180€\n"
-                "DISPONIBILE + NUOVO BLOTTER IN ARRIVO - Psichedelico classico su blotter tema Spongebob & Patrick. 250µg di pura esperienza visiva e mentale, per un viaggio intenso tra pattern geometrici, "
+                "Psichedelico classico su blotter tema Spongebob & Patrick. 250µg di pura esperienza visiva e mentale, per un viaggio intenso tra pattern geometrici, "
                 "esplorazione introspettiva e percezione amplificata. Purezza certificata.\n\n"
                 "⚖️ Dose Consigliata:\n"
                 "• Principianti: 1 cartone.\n"
@@ -1461,7 +1461,7 @@ class ShopBot:
                 "5g 65€\n"
                 "10g 100€\n"
                 "25 200€\n"
-                "50g 350€"
+                "50g 350€\n"
                 "100g 600€"
             )
             await self._send_product(
