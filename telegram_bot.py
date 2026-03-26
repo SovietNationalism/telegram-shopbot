@@ -1379,7 +1379,7 @@ class ShopBot:
 
         if d == "prod_code1na":
             caption = (
-                "LEAN AMNEAL (Codeina/Prometazina) – Sciroppo da ~118 ml con etichetta\n"
+                "Lean AMNEAL (Codeina/Prometazina) – Sciroppo da ~118 ml con etichetta\n"
                 "\n"
                 "Sciroppo di alta qualità, prodotto in modo igienico con attrezzatura da laboratorio professionale da un nostro fornitore in Germania.\n"
                 "Ogni bottiglia da 115 ml contiene circa 350 mg di diidrocodeina e 200 mg di prometazina cloridrato di provenienza farmaceutica, gusto lampone e colore viola. Per ulteriori informazioni DM.\n"
@@ -1409,11 +1409,12 @@ class ShopBot:
                 "10 cartoni - 75€\n"
                 "20 cartoni - 125€\n"
                 "30 cartoni - 165€\n"
+                "50 cartoni - 180€\n"
                 "Psichedelico classico su blotter tema Albert Hoffman. 250µg di pura esperienza visiva e mentale, per un viaggio intenso tra pattern geometrici, "
-                "esplorazione introspettiva e percezione amplificata. \n\n"
+                "esplorazione introspettiva e percezione amplificata.\n\n"
                 "⚖️ Dose Consigliata:\n"
                 "• Principianti: 1 cartone.\n"
-                "• Esperti: 1.5-2 cartoni."
+                "• Esperti: 2 cartoni."
             )
             await self._send_product(
                 context,
@@ -1436,10 +1437,10 @@ class ShopBot:
                 "30 cartoni - 165€\n"
                 "50 cartoni - 180€\n"
                 "Psichedelico classico su blotter tema Albert Hoffman. 250µg di pura esperienza visiva e mentale, per un viaggio intenso tra pattern geometrici, "
-                "esplorazione introspettiva e percezione amplificata. Purezza certificata.\n\n"
+                "esplorazione introspettiva e percezione amplificata.\n\n"
                 "⚖️ Dose Consigliata:\n"
                 "• Principianti: 1 cartone.\n"
-                "• Esperti: 1.5-2 cartoni."
+                "• Esperti: 2 cartoni."
             )
             await self._send_product(
                 context,
