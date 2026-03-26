@@ -982,6 +982,7 @@ class ShopBot:
                     InlineKeyboardButton("Blunt Wraps", callback_data="tab_bluntwraps"),
                     InlineKeyboardButton("Filtri ActiTube", callback_data="tab_actitube"),
                 ],
+                [InlineKeyboardButton("Filtri in Vetro", callback_data="tab_filtri_vetro")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="cat_tabaccheria")],
             ]
             sent = await context.bot.send_message(
@@ -1064,6 +1065,16 @@ class ShopBot:
                 "Filtri a carboni attivi Actitube 7mm\n—\n1 pacchetto 3€\n2 pacchetti 5€\n5 pacchetti 10€\n10 pacchetti 18€\nFiltri ai carboni attivi utili per ridurre l'assunzione di catrame. Dotati di cappuccio in ceramica su entrambe le estremita'.\nMigliorano il sapore delle boccate. Diametro di 7mm. Di origine vegetale e biodegradabili. Riutilizzabili.\nOgni pacchetto contiene 10 filtri.",
                 photo_id="AgACAgQAAxkBAAEBBSNpUOS0Oh4YRmjxychZ30bAe1C4pQACegtrG1JBiVLziPgOsBazfQEAAwIAA3gAAzYE",
                 back_callback="tab_cartine_filtri"
+            )
+            return
+
+        if d == "tab_filtri_vetro":
+            await self._send_product(
+                context,
+                cid,
+                "Raw 6mm x 35mm Authentic Glass Rolling Tips –\nTip in vetro autentico con mouthpiece piatto, pratico e comodo da usare.\nFormato 6x35mm perfetto per rollate pulite e stabili, raffredda meglio il fumo e rende ogni tiro più morbido. Riutilizzabile, facile da pulire e ideale per chi vuole un tocco più premium rispetto ai classici filtri.\n1 - 15€\n2 - 25€\n5 - 50€\n10 - 85€",
+                video_id="BAACAgQAAxkBAAELLyJpxL1jNtRClMt-kn4zStARGjxfxgACTSEAAn5lKVKuc_2nOYhB2zoE",
+                back_callback="tab_cartine_filtri",
             )
             return
 
