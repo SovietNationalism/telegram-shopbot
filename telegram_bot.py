@@ -1189,7 +1189,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAEJGN1prx3Qa2q0M8bmK5fjZIC6GAYt9wAC4yIAAm9deVE5qCMrirZLAToE",
+                video_id="BAACAgQAAxkBAAELLyJpxL1jNtRClMt-kn4zStARGjxfxgACTSEAAn5lKVKuc_2nOYhB2zoE",
                 back_callback="cat_estero_sintetico",
             )
             return
@@ -1409,7 +1409,7 @@ class ShopBot:
                 "10 cartoni - 75€\n"
                 "20 cartoni - 125€\n"
                 "30 cartoni - 165€\n"
-                "Psichedelico classico su blotter tema Spongebob & Patrick. 250µg di pura esperienza visiva e mentale, per un viaggio intenso tra pattern geometrici, "
+                "Psichedelico classico su blotter tema Albert Hoffman. 250µg di pura esperienza visiva e mentale, per un viaggio intenso tra pattern geometrici, "
                 "esplorazione introspettiva e percezione amplificata. \n\n"
                 "⚖️ Dose Consigliata:\n"
                 "• Principianti: 1 cartone.\n"
@@ -1419,7 +1419,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAEJGN1prx3Qa2q0M8bmK5fjZIC6GAYt9wAC4yIAAm9deVE5qCMrirZLAToE",
+                video_id="BAACAgQAAxkBAAELLyJpxL1jNtRClMt-kn4zStARGjxfxgACTSEAAn5lKVKuc_2nOYhB2zoE",
                 back_callback="cat_psichedelici",
             )
             return
@@ -1435,7 +1435,7 @@ class ShopBot:
                 "20 cartoni - 125€\n"
                 "30 cartoni - 165€\n"
                 "50 cartoni - 180€\n"
-                "Psichedelico classico su blotter tema Spongebob & Patrick. 250µg di pura esperienza visiva e mentale, per un viaggio intenso tra pattern geometrici, "
+                "Psichedelico classico su blotter tema Albert Hoffman. 250µg di pura esperienza visiva e mentale, per un viaggio intenso tra pattern geometrici, "
                 "esplorazione introspettiva e percezione amplificata. Purezza certificata.\n\n"
                 "⚖️ Dose Consigliata:\n"
                 "• Principianti: 1 cartone.\n"
@@ -1445,7 +1445,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAEB8g9pY4gLdV6CDdzQLU_UFV6BHMjgAQACux0AAiLmIVPbx9TTHMVuGDgE",
+                video_id="BAACAgQAAxkBAAELLyJpxL1jNtRClMt-kn4zStARGjxfxgACTSEAAn5lKVKuc_2nOYhB2zoE",
                 back_callback="cat_sintetico",
             )
             return
