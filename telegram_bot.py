@@ -664,7 +664,7 @@ class ShopBot:
             ]
             sent = await context.bot.send_message(
                 chat_id=cid,
-                text="Prodotti sintetici disponibili dall'estero, da vari paesi dipendendo dal prodotto. La spedizione ci mette 5-7gg lavorativi ad arrivarvi, può essere fatta a punti di ritiro o a domicilio:",
+                text="Prodotti sintetici disponibili dall'estero, da vari paesi dipendendo dal prodotto. Molti sono timorosi sull'ordinare dall'estero. Abbiamo organizzato un metodo per garantire la vostra sicurezza. Una volta effettuato l’ordine, il prodotto ci viene spedito dal fornitore e impiega circa 5-7 giorni lavorativi per arrivare a noi. Una volta ricevuto in Italia, verrà rispedita verso di voi come una normale spedizione.",
                 reply_markup=InlineKeyboardMarkup(kb),
             )
             context.user_data["last_menu_msg_id"] = sent.message_id
