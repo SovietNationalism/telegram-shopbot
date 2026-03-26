@@ -201,9 +201,6 @@ class ShopBot:
                     "photo_file_ids": [],
                 },
             ],
-            "weed": [
-                # Add WEED category products here later the same way
-            ]
         }
         self.weed_video_file_id = "BAACAgQAAxkBAAEJH95pr0DhS4K09YW86tH-8K_1DSbZ-QADIwACb115UeeOxhMUBUBZOgQ"
         self.weed_overview = (
@@ -1367,27 +1364,6 @@ class ShopBot:
             )
             return
             
-        if d == "prod_paracodina":
-            caption = (
-                "Paracodina 10,25mg/ml Gocce\n"
-                "Prezzo:\n"
-                "1 flacone (14,63ml) - 70€\n"
-                "2 flaconi (29,26ml) - 120€\n\n"
-                "ULTIMISSIME RIMANENZE - Sciroppo a base di diidrocodeina. Per un effetto sedativo e calmante, profondo e distensivo, che ti accompagna in uno stato di quiete e piacere duraturo. "
-                "Meno potente dell’ossicodone. Provenienza farmaceutica.\n\n"
-                "⚖️ Dose Consigliata:\n"
-                "• Principianti: 60mg\n"
-                "• Esperti: 150mg"
-            )
-            await self._send_product(
-                context,
-                cid,
-                caption,
-                video_id="BAACAgQAAxkBAAEB8hFpY4gSw_SVeHXMdeK8GJZyYluFMgACvB0AAiLmIVP61CA3WBz_XjgE",
-                back_callback="cat_sintetico",
-            )
-            return
-
         if d == "prod_code1na":
             caption = (
                 "Lean AMNEAL (Codeina/Prometazina) – Sciroppo da ~118 ml con etichetta\n"
@@ -1509,8 +1485,8 @@ class ShopBot:
             )
             return
 
-        if d.startswith("prod_hash_") or d.startswith("prod_weed_"):
-            cat = "hash" if d.startswith("prod_hash_") else "weed"
+        if d.startswith("prod_hash_"):
+            cat = "hash"
             idx = int(d.rsplit("_", 1)[1])
             prods = self.categories.get(cat, [])
             if 0 <= idx < len(prods):
