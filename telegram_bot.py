@@ -1343,15 +1343,10 @@ class ShopBot:
 
         if d == "prod_code1na":
             caption = (
-                "LEAN AMNEAL (Codeina/Prometazina) – Sciroppo 118 ml con etichetta\n"
+                "LEAN AMNEAL (Codeina/Prometazina) – Sciroppo da ~118 ml con etichetta\n"
                 "\n"
                 "Sciroppo di alta qualità, prodotto in modo igienico con attrezzatura da laboratorio professionale da un nostro fornitore in Germania.\n"
-                "Ogni bottiglia da 115 ml contiene circa 350 mg di diidrocodeina e 200 mg di prometazina cloridrato di provenienza farmaceutica, gusto lampone e colore viola.\n"
-                "\n"
-                "Dose consigliata da mischiare con soft drink (meglio quelli meno zuccherati):\n"
-                "25 ml – dose media\n"
-                "50 ml – dose forte (per utenti esperti)\n"
-                "\n"
+                "Ogni bottiglia da 115 ml contiene circa 350 mg di diidrocodeina e 200 mg di prometazina cloridrato di provenienza farmaceutica, gusto lampone e colore viola. Per ulteriori informazioni DM.\n"
                 "1 - 65€\n"
                 "2 - 120€\n"
                 "5 - 250€\n"
