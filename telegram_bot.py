@@ -899,7 +899,8 @@ class ShopBot:
 
             kb = [
                 [
-                    InlineKeyboardButton("PARACOD1NA", callback_data="prod_paracodina"),
+                    InlineKeyboardButton("2-CB", callback_data="prod_sintetico_2cb"),
+                    InlineKeyboardButton("X4NAX", callback_data="prod_sintetico_xanax"),
                     InlineKeyboardButton("CODE1NA", callback_data="prod_code1na"),
                 ],
                 [
@@ -1042,8 +1043,7 @@ class ShopBot:
                 "sostituendoli con un relax muscolare profondo e una calma mentale totale."
                 "Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole. Per formato 2mg DM.\n"
                 "50 pillole - 130€\n"
-                "100 pillole - 190€\n"
-                "In arrivo da Italia per tagli piccoli nelle prossime settimane!"
+                "100 pillole - 190€"
             )
             await self._send_product(
                 context,
@@ -1051,6 +1051,48 @@ class ShopBot:
                 caption,
                 video_id="BAACAgQAAxkBAAEB8pZpY4zIBl1rw-BgBTGfqDjDAAFPgpoAAscdAAIi5iFToJi2HP8P1oo4BA",
                 back_callback="cat_estero_sintetico",
+            )
+            return
+
+        if d == "prod_sintetico_2cb":
+            caption = (
+                "2C-B NASA – pillole 20 mg forma razzo\n"
+                "Composto psichedelico niche in comode pillole a forma di razzo NASA.\n"
+                "Mezzo tra MDMA (euforia, empatia) e LSD (visuali colorate), ma più leggero: colori vividi, tatto amplificato, energia senza ansia. Entra in 45 minuti, dura 4-8 ore, godibile per party o introspezione.\n"
+                "1 - 25\n"
+                "2 - 40\n"
+                "5 - 65\n"
+                "10 - 90\n"
+                "20 - 150\n"
+                "50 - 250\n"
+                "100 - 350"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAELLddpxH_0C99kz60Q_R01k2M_6d4s0wACPyEAAn5lKVKI_nySL0hfwToE",
+                back_callback="cat_sintetico",
+            )
+            return
+
+        if d == "prod_sintetico_xanax":
+            caption = (
+                "Xanax 1mg\n"
+                "Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti, sostituendoli con un relax muscolare profondo, una sensazione di ubriacatezza e una calma mentale totale. Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole.\n"
+                "2 pillole - 15€\n"
+                "5 pillole - 30€\n"
+                "10 pillole - 40€\n"
+                "25 pillole - 85€\n"
+                "50 pillole - 150€\n"
+                "100 pillole - 220€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAELLd9pxICUufrsKlVxneD8Uq3P2TMmbgACQCEAAn5lKVJKtx9teuW0xToE",
+                back_callback="cat_sintetico",
             )
             return
 
@@ -1087,8 +1129,7 @@ class ShopBot:
                     "Godibile per party o introspezione, meno pesante di funghi ma con più \"vibe\" sociali rispetto a LSD puro.\n"
                     "50 pillole 180€\n"
                     "100 pillole 300€\n"
-                    "250 pillole 450€\n"
-                    "In arrivo da Italia per tagli piccoli nelle prossime settimane!"
+                    "250 pillole 450€"
                 )
                 await self._send_product(
                     context,
