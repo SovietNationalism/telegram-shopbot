@@ -979,7 +979,10 @@ class ShopBot:
                     InlineKeyboardButton("Blunt Wraps", callback_data="tab_bluntwraps"),
                     InlineKeyboardButton("Filtri ActiTube", callback_data="tab_actitube"),
                 ],
-                [InlineKeyboardButton("Filtri in Vetro", callback_data="tab_filtri_vetro")],
+                [
+                    InlineKeyboardButton("Filtri in Vetro", callback_data="tab_filtri_vetro"),
+                    InlineKeyboardButton("Cartine Cellulosa", callback_data="tab_cellulosa"),
+                ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="cat_tabaccheria")],
             ]
             sent = await context.bot.send_message(
@@ -993,8 +996,8 @@ class ShopBot:
         if d == "tab_raw":
             await self._send_product(
                 context, cid,
-                "Cartine RAW\n—\n1 pacchetto 1.20€\n5 pacchetti 5€\n10 pacchetti 8.50€\n25 pacchetti 20€\nPer veri appassionati, non sbiancate, combustione ultra lenta e totalmente insapori. Ogni cartina viene filigranata individualmente, cosi evita che un lato bruci piu' velocemente dell'altro.\n32 cartine per pacchetto.\n\nFiltri RAW \n—\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n20 pacchetti 13€\nFiltri RAW facilmente modellabili, regolabili in grandezza, non sbiancati. Privi di additivi chimici o cloro. (Non wide)\n50 filtri per pacchetto.\n\nRAW Kit\n—\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33€\nOgni kit contiene un pacchetto di cartine e un pacchetto di filtri, gli stessi visibili precedentemente.\nRAW Black King Size Slim\n—\n\nCartine ultra-sottili e a combustione lenta, pensate per chi vuole esaltare al massimo l’aroma dell’erba senza sapori extra. Formato king size slim, perfette per spinelli lunghi e ben riempiti, con carta non sbiancata e naturale che brucia in modo uniforme dalla prima all’ultima boccata.\n1 pacchetto 1.50€ \n5 pacchetti 6€ \n10 pacchetti 10€ \n25 pacchetti 22€",
-                video_id="BAACAgQAAxkBAAEIaARpqRrI_Cwg7PwfTbJsAkB0QBsHagACqxwAAs5zSFGL5NuFZ3brYjoE",
+                "Cartine RAW\n—\n1 pacchetto 1.20€\n5 pacchetti 5€\n10 pacchetti 8.50€\n25 pacchetti 20€\nPer veri appassionati, non sbiancate, combustione ultra lenta e totalmente insapori. Ogni cartina viene filigranata individualmente, cosi evita che un lato bruci piu' velocemente dell'altro.\n32 cartine per pacchetto.\n\nFiltri RAW Wide\n—\n1 pacchetto 1€\n5 pacchetti 4€\n10 pacchetti 7€\n20 pacchetti 13€\nFiltri RAW facilmente modellabili, regolabili in grandezza, non sbiancati. Privi di additivi chimici o cloro. Ora disponibili in formato wide.\n50 filtri per pacchetto.\n\nRAW Kit\n—\n1 kit 1.80€\n5 kit 8€\n10 kit 15€\n25 kit 33€\nOgni kit contiene un pacchetto di cartine e un pacchetto di filtri, gli stessi visibili precedentemente.\nRAW Black King Size Slim\n—\n\nCartine ultra-sottili e a combustione lenta, pensate per chi vuole esaltare al massimo l’aroma dell’erba senza sapori extra. Formato king size slim, perfette per spinelli lunghi e ben riempiti, con carta non sbiancata e naturale che brucia in modo uniforme dalla prima all’ultima boccata.\n1 pacchetto 1.50€ \n5 pacchetti 6€ \n10 pacchetti 10€ \n25 pacchetti 22€",
+                video_id="BAACAgQAAxkBAAEMlo1p3Un_GtcapENCIHk55hVZy1eCswACHiAAAq8Z6FIUg42EDVUpYTsE",
                 back_callback="tab_cartine_filtri"
             )
             return
@@ -1060,8 +1063,18 @@ class ShopBot:
             await self._send_product(
                 context, cid,
                 "Filtri a carboni attivi Actitube 7mm\n—\n1 pacchetto 3€\n2 pacchetti 5€\n5 pacchetti 10€\n10 pacchetti 18€\nFiltri ai carboni attivi utili per ridurre l'assunzione di catrame. Dotati di cappuccio in ceramica su entrambe le estremita'.\nMigliorano il sapore delle boccate. Diametro di 7mm. Di origine vegetale e biodegradabili. Riutilizzabili.\nOgni pacchetto contiene 10 filtri.",
-                photo_id="AgACAgQAAxkBAAEBBSNpUOS0Oh4YRmjxychZ30bAe1C4pQACegtrG1JBiVLziPgOsBazfQEAAwIAA3gAAzYE",
+                video_id="BAACAgQAAxkBAAEMlolp3Uk-j_N4mJWHu0PSdthjeQyQaAACHCAAAq8Z6FLiWYQ61AcD8DsE",
                 back_callback="tab_cartine_filtri"
+            )
+            return
+
+        if d == "tab_cellulosa":
+            await self._send_product(
+                context,
+                cid,
+                "Cartine in Cellulosa trasparenti\n—\n1 pacchetto 2€\n2 pacchetti 3.50€\n5 pacchetti 8€\n10 pacchetti 14€\n25 pacchetti 30€\nCartine trasparenti in pura cellulosa vegetale, combustione lenta e uniforme con gusto neutro per esaltare al massimo il sapore del contenuto. Flessibili e resistenti, facili da rollare anche per chi non ha molta esperienza.\n32 cartine per pacchetto.",
+                video_id="BAACAgQAAxkBAAEMlotp3UnNc5ne1sOTbpbzqTl8gu1BSwACHSAAAq8Z6FIVvWGdBDfUhzsE",
+                back_callback="tab_cartine_filtri",
             )
             return
 
@@ -1093,7 +1106,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAEB8pZpY4zIBl1rw-BgBTGfqDjDAAFPgpoAAscdAAIi5iFToJi2HP8P1oo4BA",
+                video_id="BAACAgQAAxkBAAEMlftp3UXF4SO3RsOIyRpElksoFHsgYgACGSAAAq8Z6FKeMpMCY-dv4zsE",
                 back_callback="cat_estero_sintetico",
             )
             return
@@ -1135,7 +1148,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAELLd9pxICUufrsKlVxneD8Uq3P2TMmbgACQCEAAn5lKVJKtx9teuW0xToE",
+                video_id="BAACAgQAAxkBAAEMlftp3UXF4SO3RsOIyRpElksoFHsgYgACGSAAAq8Z6FKeMpMCY-dv4zsE",
                 back_callback="cat_sintetico",
             )
             return
@@ -1146,7 +1159,7 @@ class ShopBot:
                 "DISPONIBILI\n"
                 "Morbide, gustose e incredibilmente potenti. Basta mezza caramella per sentire un effetto intenso e prolungato che si fa sentire dopo più o meno un'ora. "
                 "Perfette per chi vuole il massimo senza dare nell'occhio, "
-                "o semplicemente per chi vuole provare qualcosa di diverso. Ogni pacchetto contiene 10 caramelle con 50mg di THC. (non 5 mi ero confuso)\n\n"
+                "o semplicemente per chi vuole provare qualcosa di diverso. Ogni pacchetto contiene 20 caramelle con 25mg di THC ciascuna.\n\n"
                 "1 pacchetto - 30€\n"
                 "2 pacchetti - 45€\n"
                 "5 pacchetti - 95€\n"
@@ -1156,7 +1169,7 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAECn45pa9RavFAHDaX4fr42cBmZLDh-pAACeyMAAvFyYVOyKX3nBnOuBDgE",
+                video_id="BAACAgQAAxkBAAEMlpdp3Uoi68Sy84OcZXv2-C2jEO0UDAACHyAAAq8Z6FKpl_qbSAQwvTsE",
                 back_callback="cat_edibili",
             )
             return
