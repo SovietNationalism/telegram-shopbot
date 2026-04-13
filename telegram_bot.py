@@ -179,7 +179,7 @@ class ShopBot:
                         "Un drysift commerciale di buona qualità.\n"
                         "Fumo dall'aroma intenso e naturale, facile da lavorare e piacevole da fumare in ogni modo. Colpisce con una botta potente e duratura, lasciando un effetto rilassante e pulito."
                     ),
-                    "video_file_id": "BAACAgQAAxkBAAEEqmppiIsmJJSFH76HbrofVs-RFv99lgACxhsAAswcQFC9sWytoa__XToE",
+                    "video_file_id": "BAACAgQAAxkBAAEMmCVp3Wzs_MPvxgOv1uD1qaRzTXYmCAACCBoAAq8Z8FI0ovWFB8N9RjsE",
                     "photo_file_ids": [],
                 },
                 {
@@ -467,7 +467,7 @@ class ShopBot:
                 ],
                 [
                     InlineKeyboardButton("EDIBILI", callback_data="cat_edibili"),
-                    InlineKeyboardButton("SINTETICO", callback_data="cat_sintetico"),
+                    InlineKeyboardButton("NOVITA", callback_data="cat_sintetico"),
                 ],
                 [
                     InlineKeyboardButton("TABACCHERIA", callback_data="cat_tabaccheria"),
@@ -559,9 +559,12 @@ class ShopBot:
             return
 
         if d == "prod_packwoods":
-            prod = self.products["packwoods"]
-            caption = f"📦 *{prod['name']}*\n💵 Prezzo:\n{prod['price']}\n📝 Descrizione: {prod['description']}"
-            await self._send_product(context, cid, caption, video_id=prod["video_file_id"])
+            await self._send_product(
+                context,
+                cid,
+                "VAPES AL THC — SOLD OUT\nData di ritorno da fissare.",
+                back_callback="shop",
+            )
             return
 
         if d == "prod_funghetti":
@@ -658,6 +661,10 @@ class ShopBot:
                 [
                     InlineKeyboardButton("0XY", callback_data="prod_oxy"),
                     InlineKeyboardButton("2CB", callback_data="prod_estero_2cb"),
+                ],
+                [
+                    InlineKeyboardButton("RIVOTRIL", callback_data="prod_estero_rivotril"),
+                    InlineKeyboardButton("0XY SCIROPPO", callback_data="prod_estero_oxy_sciroppo"),
                 ],
                 [
                     InlineKeyboardButton("K3TA", callback_data="prod_estero_keta"),
@@ -912,10 +919,14 @@ class ShopBot:
                 ],
                 [
                     InlineKeyboardButton("MD", callback_data="prod_md"),
+                    InlineKeyboardButton("RIVOTRIL", callback_data="prod_sintetico_rivotril"),
                 ],
                 [
                     InlineKeyboardButton("LSD", callback_data="prod_lsd_sintetico"),
                     InlineKeyboardButton("XTC", callback_data="prod_xtc"),
+                ],
+                [
+                    InlineKeyboardButton("0XY SCIROPPO", callback_data="prod_sintetico_oxy_sciroppo"),
                 ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
@@ -1083,7 +1094,7 @@ class ShopBot:
                 context,
                 cid,
                 "Raw 6mm x 35mm Authentic Glass Rolling Tips –\nTip in vetro autentico con mouthpiece piatto, pratico e comodo da usare.\nFormato 6x35mm perfetto per rollate pulite e stabili, raffredda meglio il fumo e rende ogni tiro più morbido. Riutilizzabile, facile da pulire e ideale per chi vuole un tocco più premium rispetto ai classici filtri.\n1 - 15€\n2 - 25€\n5 - 50€\n10 - 85€",
-                video_id="BAACAgQAAxkBAAELLyJpxL1jNtRClMt-kn4zStARGjxfxgACTSEAAn5lKVKuc_2nOYhB2zoE",
+                video_id="BAACAgQAAxkBAAEMmBpp3WqjOP6UVlsG-9VEw-YfhrezvAACBhoAAq8Z8FKH78f21YyXpjsE",
                 back_callback="tab_cartine_filtri",
             )
             return
@@ -1150,6 +1161,46 @@ class ShopBot:
                 caption,
                 video_id="BAACAgQAAxkBAAEMlftp3UXF4SO3RsOIyRpElksoFHsgYgACGSAAAq8Z6FKeMpMCY-dv4zsE",
                 back_callback="cat_sintetico",
+            )
+            return
+
+        if d == "prod_sintetico_rivotril":
+            caption = (
+                "Rivotril 2 mg –\n"
+                "Compresse ben dosate e pratiche da gestire, apprezzate per un effetto calmante netto e di lunga durata. Azione rapida e pulita, ideale per chi cerca relax profondo, distensione mentale e un impatto più morbido ma persistente rispetto ad altri sedativi comuni. Blister da 10.\n"
+                "2 pillole - 15€\n"
+                "5 pillole - 30€\n"
+                "10 pillole - 45€\n"
+                "25 pillole - 85€\n"
+                "50 pillole - 150€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEMlfFp3UWYWAPBk1gZ-DuRm1Si-oiMDAACGCAAAq8Z6FLzPYrvWscwATsE",
+                back_callback="cat_sintetico",
+            )
+            return
+
+        if d == "prod_sintetico_oxy_sciroppo":
+            caption = (
+                "Oxycodone Hydrochloride Oral Solution, USP 100mg –\n"
+                "Soluzione orale blu chiaro al gusto mirtillo, dosaggio farmaceutico . Gusto dolce che maschera il sapore dell'ossicodone, entra fluida e costante per un effetto caldo e avvolgente che dura ore. Perfetta per chi cerca onset morbido senza sorprese, perfetta mischiata con una Sprite fredda.\n"
+                "1 - 85\n"
+                "2 - 150\n"
+                "5 - 300\n"
+                "10 - 530"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEMledp3UUyRkw5LYq8xYmt4EjQ7uytqgACFiAAAq8Z6FIfbMhoeMZFrTsE",
+                back_callback="cat_sintetico",
+                extra_buttons=[
+                    [InlineKeyboardButton("Esempio", callback_data="prod_oxy_sciroppo_esempio_it")]
+                ],
             )
             return
 
@@ -1266,6 +1317,42 @@ class ShopBot:
                 caption,
                 video_id="BAACAgQAAxkBAAEJGGVprxkvz35i8qVwIH1yJ-6H2IEuQQAC3SIAAm9deVFMYe84xKwVwDoE",
                 back_callback="cat_estero_sintetico",
+            )
+            return
+
+        if d == "prod_estero_rivotril":
+            caption = (
+                "Rivotril 2 mg –\n"
+                "Compresse ben dosate e pratiche da gestire, apprezzate per un effetto calmante netto e di lunga durata. Azione rapida e pulita, ideale per chi cerca relax profondo, distensione mentale e un impatto più morbido ma persistente rispetto ad altri sedativi comuni. Blister da 10.\n"
+                "100 pillole - 180€\n"
+                "200 pillole - 300€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEMlfFp3UWYWAPBk1gZ-DuRm1Si-oiMDAACGCAAAq8Z6FLzPYrvWscwATsE",
+                back_callback="cat_estero_sintetico",
+            )
+            return
+
+        if d == "prod_estero_oxy_sciroppo":
+            caption = (
+                "Oxycodone Hydrochloride Oral Solution, USP 100mg –\n"
+                "Soluzione orale blu chiaro al gusto mirtillo, dosaggio farmaceutico . Gusto dolce che maschera il sapore dell'ossicodone, entra fluida e costante per un effetto caldo e avvolgente che dura ore. Perfetta per chi cerca onset morbido senza sorprese, perfetta mischiata con una Sprite fredda.\n"
+                "5 - 280\n"
+                "10 - 500\n"
+                "20 - 880"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEMledp3UUyRkw5LYq8xYmt4EjQ7uytqgACFiAAAq8Z6FIfbMhoeMZFrTsE",
+                back_callback="cat_estero_sintetico",
+                extra_buttons=[
+                    [InlineKeyboardButton("Esempio", callback_data="prod_oxy_sciroppo_esempio_estero")]
+                ],
             )
             return
 
@@ -1394,11 +1481,44 @@ class ShopBot:
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAEJTRZpsUrQy2RSqFayLDvq40dR8tClIQACeBwAAi4KkFE_PapNg4TL_ToE",
+                video_id="BAACAgQAAxkBAAEMle9p3UV6h6sxynXPvGAWCk4KCZyhlgACFyAAAq8Z6FKM7BcXQcQq0jsE",
                 back_callback="cat_sintetico",
+                extra_buttons=[
+                    [InlineKeyboardButton("Esempio", callback_data="prod_code1na_esempio")]
+                ],
             )
             return
             
+        if d == "prod_code1na_esempio":
+            await self._send_product(
+                context,
+                cid,
+                "Esempio prodotto Lean AMNEAL.",
+                video_id="BAACAgQAAxkBAAEMmBhp3WnpzyDeFFwJol51Ps95yDZ66wACBRoAAq8Z8FIBwZ1FUgx1oDsE",
+                back_callback="prod_code1na",
+            )
+            return
+
+        if d == "prod_oxy_sciroppo_esempio_it":
+            await self._send_product(
+                context,
+                cid,
+                "Esempio 0xy Sciroppo.",
+                video_id="BAACAgQAAxkBAAEMlpxp3UpDBnrcRO9JoNI0Q1AjqmbmSwACISAAAq8Z6FJ3t_EsTt9YODsE",
+                back_callback="cat_sintetico",
+            )
+            return
+
+        if d == "prod_oxy_sciroppo_esempio_estero":
+            await self._send_product(
+                context,
+                cid,
+                "Esempio 0xy Sciroppo.",
+                video_id="BAACAgQAAxkBAAEMlpxp3UpDBnrcRO9JoNI0Q1AjqmbmSwACISAAAq8Z6FJ3t_EsTt9YODsE",
+                back_callback="cat_estero_sintetico",
+            )
+            return
+
         if d == "prod_lsd":
             caption = (
                 "LSD 250µg Blotter\n"
