@@ -1106,12 +1106,13 @@ class ShopBot:
             
         if d == "prod_xanax":
             caption = (
-                "Xanax 1mg\n"
-                "Spedizione da Spagna - Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti,"
-                "sostituendoli con un relax muscolare profondo e una calma mentale totale."
+                "Xanax\n"
+                "Benzo ad azione ultra-rapida che cancella ansia, stress e tensioni in pochi minuti,"
+                "sostituendoli con un relax muscolare profondo e una calma mentale totale. Blister Ksalol da 15 pillole da 1mg."
                 "Perfetto per un \"reset\" immediato o per accompagnare qualsiasi esperienza con un'onda di distacco tranquillo e piacevole. Per formato 2mg DM.\n"
                 "50 pillole - 130€\n"
-                "100 pillole - 190€"
+                "100 pillole - 170€\n"
+                "250 pillole - 300€"
             )
             await self._send_product(
                 context,
@@ -1132,8 +1133,8 @@ class ShopBot:
                 "5 - 65\n"
                 "10 - 90\n"
                 "20 - 150\n"
-                "50 - 250\n"
-                "100 - 350"
+                "50 - 240\n"
+                "100 - 300"
             )
             await self._send_product(
                 context,
