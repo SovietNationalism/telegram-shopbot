@@ -467,7 +467,7 @@ class ShopBot:
                 ],
                 [
                     InlineKeyboardButton("EDIBILI", callback_data="cat_edibili"),
-                    InlineKeyboardButton("NOVITA", callback_data="cat_sintetico"),
+                    InlineKeyboardButton("DROG4", callback_data="cat_sintetico"),
                 ],
                 [
                     InlineKeyboardButton("TABACCHERIA", callback_data="cat_tabaccheria"),
