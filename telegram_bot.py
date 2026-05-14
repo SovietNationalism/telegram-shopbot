@@ -108,10 +108,7 @@ class ShopBot:
                     "3.5g 45€\n"
                     "5g 65€\n"
                     "10g 105€\n15g 125€\n20g 160€\n"
-                    "Una miscela di varietà classiche e potenti, McKennai, Golden Teacher, e Jedi Mind Fuck. (Nuove varietà in crescita, arrivo ad inizio Aprile.)\n"
-                    "Effetto profondo e duraturo, ideale per esplorare nuove dimensioni. Disponibili subito per chi cerca un'esperienza "
-                    "autentica e coinvolgente.\n"
-                    "Dosaggi:\n0.25-1 g effetto lieve | 1-2.5 g effetto medio | 2.5-5 g effetto forte"
+                    "WIP. successo un bel problema."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAI9gmk_9B6WfvUiC8Q6FWDumJqt_cZQAALaGgAC3ykBUjFj1UkcKnyCNgQ", 
                 "photo_file_ids": [],
@@ -618,9 +615,7 @@ class ShopBot:
 
             kb = [
                 [InlineKeyboardButton("SCIROPPO AL THC", callback_data="prod_sciroppo")],
-                [InlineKeyboardButton("NUTELLA AL THC", callback_data="prod_nutella_thc")],
-                [InlineKeyboardButton("CARAMELLE", callback_data="prod_caramelle")],
-                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
+                                [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
             sent = await context.bot.send_message(
                 chat_id=cid,
@@ -663,7 +658,6 @@ class ShopBot:
                     InlineKeyboardButton("2CB", callback_data="prod_estero_2cb"),
                 ],
                 [
-                    InlineKeyboardButton("RIVOTRIL", callback_data="prod_estero_rivotril"),
                     InlineKeyboardButton("0XY SCIROPPO", callback_data="prod_estero_oxy_sciroppo"),
                 ],
                 [
@@ -702,10 +696,7 @@ class ShopBot:
                     "- L'ordine minimo è di 100 grammi."
             )
             kb = [
-                [InlineKeyboardButton("Super Lemon Haze", callback_data="prod_estero_super_lemon_haze")],
-                [InlineKeyboardButton("Sweet Candy", callback_data="prod_estero_sweet_candy")],
                 [InlineKeyboardButton("Wedding Cake", callback_data="prod_estero_wedding_cake")],
-                [InlineKeyboardButton("Sour Skittlez", callback_data="prod_estero_sour_skittlez")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="cat_estero")],
             ]
             sent = await context.bot.send_message(
@@ -775,17 +766,6 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        if d == "prod_nutella_thc":
-            prod = self.products["nutella_thc"]
-            sent = await self._send_media_or_text(
-                context,
-                cid,
-                prod["caption"],
-                back_callback="cat_edibili",
-                photo_file_ids=prod.get("photo_file_ids", []),
-            )
-            context.user_data["last_menu_msg_id"] = sent.message_id
-            return
 
         if d == "cat_weed":
             if not await self._check_membership(context, update.effective_user.id, cid):
@@ -919,7 +899,6 @@ class ShopBot:
                 ],
                 [
                     InlineKeyboardButton("MD", callback_data="prod_md"),
-                    InlineKeyboardButton("RIVOTRIL", callback_data="prod_sintetico_rivotril"),
                 ],
                 [
                     InlineKeyboardButton("LSD", callback_data="prod_lsd_sintetico"),
@@ -927,6 +906,10 @@ class ShopBot:
                 ],
                 [
                     InlineKeyboardButton("0XY SCIROPPO", callback_data="prod_sintetico_oxy_sciroppo"),
+                    InlineKeyboardButton("Oxydolor 80", callback_data="prod_sintetico_oxydolor_80"),
+                ],
+                [
+                    InlineKeyboardButton("Morfina 200", callback_data="prod_sintetico_morfina_200"),
                 ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
@@ -1165,24 +1148,6 @@ class ShopBot:
             )
             return
 
-        if d == "prod_sintetico_rivotril":
-            caption = (
-                "Rivotril 2 mg –\n"
-                "Compresse ben dosate e pratiche da gestire, apprezzate per un effetto calmante netto e di lunga durata. Azione rapida e pulita, ideale per chi cerca relax profondo, distensione mentale e un impatto più morbido ma persistente rispetto ad altri sedativi comuni. Blister da 10.\n"
-                "2 pillole - 15€\n"
-                "5 pillole - 30€\n"
-                "10 pillole - 45€\n"
-                "25 pillole - 85€\n"
-                "50 pillole - 150€"
-            )
-            await self._send_product(
-                context,
-                cid,
-                caption,
-                video_id="BAACAgQAAxkBAAEMlfFp3UWYWAPBk1gZ-DuRm1Si-oiMDAACGCAAAq8Z6FLzPYrvWscwATsE",
-                back_callback="cat_sintetico",
-            )
-            return
 
         if d == "prod_sintetico_oxy_sciroppo":
             caption = (
@@ -1205,26 +1170,6 @@ class ShopBot:
             )
             return
 
-        if d == "prod_caramelle":
-            caption = (
-                "Dank Gummies – caramelle al THC da 500 mg\n"
-                "DISPONIBILI\n"
-                "Morbide, gustose e incredibilmente potenti. Basta mezza caramella per sentire un effetto intenso e prolungato che si fa sentire dopo più o meno un'ora. "
-                "Perfette per chi vuole il massimo senza dare nell'occhio, "
-                "o semplicemente per chi vuole provare qualcosa di diverso. Ogni pacchetto contiene 20 caramelle con 25mg di THC ciascuna.\n\n"
-                "1 pacchetto - 30€\n"
-                "2 pacchetti - 45€\n"
-                "5 pacchetti - 95€\n"
-                "10 pacchetti - 180€"
-            )
-            await self._send_product(
-                context,
-                cid,
-                caption,
-                video_id="BAACAgQAAxkBAAEMlpdp3Uoi68Sy84OcZXv2-C2jEO0UDAACHyAAAq8Z6FKpl_qbSAQwvTsE",
-                back_callback="cat_edibili",
-            )
-            return
 
         if d in {
             "prod_estero_2cb",
@@ -1321,21 +1266,6 @@ class ShopBot:
             )
             return
 
-        if d == "prod_estero_rivotril":
-            caption = (
-                "Rivotril 2 mg –\n"
-                "Compresse ben dosate e pratiche da gestire, apprezzate per un effetto calmante netto e di lunga durata. Azione rapida e pulita, ideale per chi cerca relax profondo, distensione mentale e un impatto più morbido ma persistente rispetto ad altri sedativi comuni. Blister da 10.\n"
-                "100 pillole - 180€\n"
-                "200 pillole - 300€"
-            )
-            await self._send_product(
-                context,
-                cid,
-                caption,
-                video_id="BAACAgQAAxkBAAEMlfFp3UWYWAPBk1gZ-DuRm1Si-oiMDAACGCAAAq8Z6FLzPYrvWscwATsE",
-                back_callback="cat_estero_sintetico",
-            )
-            return
 
         if d == "prod_estero_oxy_sciroppo":
             caption = (
@@ -1357,88 +1287,29 @@ class ShopBot:
             )
             return
 
-        if d == "prod_estero_super_lemon_haze":
-            caption = (
-                "Super Lemon Haze –\n"
-                "Erba spagnola con genetica Californiana, cime grandi, chiare e sgargianti. Profilo terpenico semplicemente favoloso, "
-                "con note agrumate e di limone che riempiono la stanza appena si apre il barattolo. Fumata fresca e pungente, "
-                "regala un effetto energico e mentale, perfetta per chi cerca una top weed da giorno a un prezzo incredibile, "
-                "senza rinunciare a qualità e sapore.\n"
-                "100g 450€\n"
-                "200g 780€\n"
-                "500g 1450€\n"
-                "1kg 2400€"
-            )
-            await self._send_product(
-                context,
-                cid,
-                caption,
-                video_id="BAACAgQAAxkBAAEHdvppoyWYKutPc_THP8vBw_ZhFamZuQAC1RwAAuv8IVFJUoJBK-jWSjoE",
-                back_callback="cat_estero_erba",
-            )
-            return
 
-        if d == "prod_estero_sweet_candy":
-            caption = (
-                "Sweet Candy –\n"
-                "Erba con genetica Californiana, colori sgargianti con sfumature arancioni forti e toni violacei più subdoli. "
-                "Sapore dolce e intenso, succulenta al palato con cime spettacolari all’occhio che catturano subito l’attenzione. "
-                "Fumata cremosa e avvolgente, porta un effetto euforico e rilassante, perfetta per chi cerca un’esperienza visiva e sensoriale di livello superiore.\n"
-                "100g 480€\n"
-                "200g 800€\n"
-                "300g 1150€\n"
-                "500g 1800€\n"
-                "1kg 3000€"
-            )
-            await self._send_product(
-                context,
-                cid,
-                caption,
-                video_id="BAACAgQAAxkBAAEHdvxpoyWcPFmvQ360RrR2EoyABFt6hgAC1hwAAuv8IVFeu2FqVcDKQjoE",
-                back_callback="cat_estero_erba",
-            )
-            return
 
         if d == "prod_estero_wedding_cake":
             caption = (
                 "Wedding Cake –\n"
-                "Un capolavoro di genetica Californiana indoor, cresciuto in Svizzera da grower esperti. Raffinatezza pura con colori brillanti "
-                "e cristalli visibili a occhio nudo che brillano come diamanti. Effetto stordente quasi immediato, profondo e seducente, "
-                "che avvolge corpo e mente in un relax totale e appagante.\n"
-                "100g 520€\n"
-                "200g 950€\n"
-                "300g 1300€\n"
-                "500g 1900€\n"
-                "1kg 3500€"
+                "Top shelf con genetica californiana, cime compatte e molto resinose dal profilo dolce-cremoso con fondo gassoso. "
+                "Fumata morbida e piena, effetto bilanciato tra euforia iniziale e rilassamento progressivo. "
+                "Qualità stabile e lavorazione pulita, in linea con gli altri top di categoria.\n"
+                "100g 485€\n"
+                "200g 805€\n"
+                "300g 1155€\n"
+                "500g 1805€\n"
+                "1kg 3005€"
             )
             await self._send_product(
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAEHdv5poyWhuo3uG7hdfURS7AzIkCbJeAAC1xwAAuv8IVFjpbSqp061wjoE",
+                video_id="BAACAgQAAxkBAAEO0YNqBaaUBkYuKnDSxU4ksBRmvWE_rwACchwAAupGKVAM_3gMMTiR4jsE",
                 back_callback="cat_estero_erba",
             )
             return
 
-        if d == "prod_estero_sour_skittlez":
-            caption = (
-                "Sour Skittles -\n"
-                "Weed prodotta in serra, ottima da lavorare grazie al rapporto qualità-prezzo imbattibile. Cime resinose e facili da maneggiare, "
-                "con un aroma con note di gas e agrumate che evolve in fumata pulita e bilanciata. Effetto energizzante e produttivo, "
-                "ideale per sessioni diurne senza appesantire.\n"
-                "100g 400€\n"
-                "200g 730€\n"
-                "500g 1300€\n"
-                "1kg 2200€"
-            )
-            await self._send_product(
-                context,
-                cid,
-                caption,
-                video_id="BAACAgQAAxkBAAEHdvhpoyU7fqlRkdCLsbfL3qRJ_wyhGwAC1BwAAuv8IVHfSGrku8Yf8joE",
-                back_callback="cat_estero_erba",
-            )
-            return
 
         if d == "prod_oxy":
             caption = (
@@ -1465,6 +1336,42 @@ class ShopBot:
             )
             return
             
+        if d == "prod_sintetico_oxydolor_80":
+            caption = (
+                "Oxydolor 80mg –\n"
+                "Compresse ad alto dosaggio con rilascio regolare e qualità farmaceutica. Effetto caldo, distensivo e molto persistente, con un onset abbastanza rapido e una discesa progressiva. Pensato per chi cerca un impatto più intenso rispetto ai formati standard.\n"
+                "1 pillola - 35€\n"
+                "2 pillole - 65€\n"
+                "5 pillole - 150€\n"
+                "10 pillole - 280€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEO0ZNqBaavpB_x6QJGZ2x_sqN6QR_O4AACcxwAAupGKVCUC6SY6zSBazsE",
+                back_callback="cat_sintetico",
+            )
+            return
+
+        if d == "prod_sintetico_morfina_200":
+            caption = (
+                "Morfina 200mg –\n"
+                "Formato potente con profilo profondo e sedativo, adatto a chi preferisce una spinta oppioide piena e continua. Qualità consistente, effetto corposo e duraturo con sensazione di calma marcata e rilascio mentale.\n"
+                "1 pillola - 40€\n"
+                "2 pillole - 75€\n"
+                "5 pillole - 180€\n"
+                "10 pillole - 340€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEO0ZRqBaavzpvxhw4gK-aKk8NcT_6p1AACdBwAAupGKVC1aIMRQiaooTsE",
+                back_callback="cat_sintetico",
+            )
+            return
+
         if d == "prod_code1na":
             caption = (
                 "Lean AMNEAL (Codeina/Prometazina) – Sciroppo da ~118 ml con etichetta\n"
