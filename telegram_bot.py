@@ -906,10 +906,10 @@ class ShopBot:
                 ],
                 [
                     InlineKeyboardButton("0XY SCIROPPO", callback_data="prod_sintetico_oxy_sciroppo"),
-                    InlineKeyboardButton("Oxydolor 80", callback_data="prod_sintetico_oxydolor_80"),
+                    InlineKeyboardButton("0XY 80", callback_data="prod_sintetico_oxydolor_80"),
                 ],
                 [
-                    InlineKeyboardButton("Morfina 200", callback_data="prod_sintetico_morfina_200"),
+                    InlineKeyboardButton("M0RFINA 200", callback_data="prod_sintetico_morfina_200"),
                 ],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
@@ -1341,9 +1341,11 @@ class ShopBot:
                 "Oxydolor 80mg –\n"
                 "Compresse ad alto dosaggio con rilascio regolare e qualità farmaceutica. Effetto caldo, distensivo e molto persistente, con un onset abbastanza rapido e una discesa progressiva. Pensato per chi cerca un impatto più intenso rispetto ai formati standard.\n"
                 "1 pillola - 35€\n"
-                "2 pillole - 65€\n"
-                "5 pillole - 150€\n"
-                "10 pillole - 280€"
+                "2 pillole - 60€\n"
+                "5 pillole - 90€\n"
+                "10 pillole - 150€\n"
+                "20 pillole - 250€\n"
+                "Per di piu da estero."
             )
             await self._send_product(
                 context,
@@ -1356,12 +1358,14 @@ class ShopBot:
 
         if d == "prod_sintetico_morfina_200":
             caption = (
-                "Morfina 200mg –\n"
+                "Morfina 200mg Extended Release\n"
                 "Formato potente con profilo profondo e sedativo, adatto a chi preferisce una spinta oppioide piena e continua. Qualità consistente, effetto corposo e duraturo con sensazione di calma marcata e rilascio mentale.\n"
                 "1 pillola - 40€\n"
-                "2 pillole - 75€\n"
-                "5 pillole - 180€\n"
-                "10 pillole - 340€"
+                "2 pillole - 70€\n"
+                "5 pillole - 100€\n"
+                "10 pillole - 190€\n"
+                "20 pillole - 270€\n"
+                "Per di piu da estero."
             )
             await self._send_product(
                 context,
