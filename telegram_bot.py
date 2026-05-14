@@ -178,7 +178,7 @@ class ShopBot:
                         "100g 680€\n"
                         "Frozen sift di qualità superiore di note farm marocchine.  Aroma intenso e profondo con note speziate.\nGodibile in ogni modo. Colpisce con una botta potente e prolungata, lasciando un effetto superiore a qualsiasi filtrato."
                     ),
-                    "video_file_id": "BAACAgQAAxkBAAEF8TJplCt6eflb1nt47Gych4wyc0uPtwACCB0AAkVqoVDrMVS4A8wp-joE",
+                    "video_file_id": "BAACAgQAAxkBAAEO1f9qBd31-OCbJYPr7wjbc17Jyz1JPQACTiUAAupGMVBXqe8RKpdktTsE",
                     "photo_file_ids": [],
                 },
             ],
@@ -832,7 +832,8 @@ class ShopBot:
                 [
                     InlineKeyboardButton("2-CB", callback_data="prod_sintetico_2cb"),
                     InlineKeyboardButton("X4NAX", callback_data="prod_sintetico_xanax"),
-                    InlineKeyboardButton("CODE1NA", callback_data="prod_code1na"),
+                    InlineKeyboardButton("2MG BARS", callback_data="prod_sintetico_xanax_bars"),
+                    InlineKeyboardButton("AMNEAL LE4N", callback_data="prod_code1na"),
                 ],
                 [
                     InlineKeyboardButton("MD", callback_data="prod_md"),
@@ -1085,6 +1086,26 @@ class ShopBot:
             return
 
 
+        if d == "prod_sintetico_xanax_bars":
+            caption = (
+                "Xanax 2mg Bars\n"
+                "Bars pressate da un venditore affidabile tedesco, con profilo deciso e costante come il resto della linea Xanax. Effetto rapido, rilassamento profondo e sensazione mentale distesa, ideale per chi cerca il formato 2mg in versione bars.\n"
+                "2 pillole - 20€\n"
+                "5 pillole - 40€\n"
+                "10 pillole - 55€\n"
+                "25 pillole - 105€\n"
+                "50 pillole - 175€\n"
+                "100 pillole - 250€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEO1lVqBeixxWX67zX-AAGXIrA0Zfu2V70AAmElAALqRjFQ23u5PNyjcpo7BA",
+                back_callback="cat_sintetico",
+            )
+            return
+
         if d == "prod_sintetico_oxy_80":
             caption = (
                 "Oxydolor 80mg –\n"
@@ -1127,7 +1148,7 @@ class ShopBot:
 
         if d == "prod_sintetico_ketamina_4":
             caption = (
-                "Ketamina 4g –\n"
+                "Ketamina Sugar pronta all’uso –\n"
                 "Cristalli selezionati con profilo pulito e costante, effetto dissociativo nitido con ingresso graduale e persistenza lunga. Struttura compatta, resa alta e sensazione mentale profonda, pensata per chi cerca qualità stabile in ogni sessione.\n"
                 "10g 90€\n"
                 "20g 140€\n"
