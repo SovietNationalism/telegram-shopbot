@@ -189,7 +189,7 @@ class ShopBot:
             "DISPONIBILE\n"
             "Una genetica italiana premium con cime compatte e resinose, profilo dolce-cremoso e fumata piena. "
             "Effetto deciso ma bilanciato, parte rapido e resta a lungo con una sensazione rilassata e mentale pulita.\n"
-            "5g 50€\n"
+            "5g 45\n"
             "10g 80€\n"
             "15g 115€\n"
             "20g 140€\n"
