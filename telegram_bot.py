@@ -105,13 +105,7 @@ class ShopBot:
             "funghetti": {
                 "caption": (
                     "📦 *Funghi Psylocibe Cubensis*\n"
-                    "3.5g 45€\n"
-                    "5g 65€\n"
-                    "10g 105€\n15g 125€\n20g 160€\n"
-                    "Una miscela di varietà classiche e potenti, McKennai, Golden Teacher, e Jedi Mind Fuck. (Nuove varietà in crescita, arrivo ad inizio Aprile.)\n"
-                    "Effetto profondo e duraturo, ideale per esplorare nuove dimensioni. Disponibili subito per chi cerca un'esperienza "
-                    "autentica e coinvolgente.\n"
-                    "Dosaggi:\n0.25-1 g effetto lieve | 1-2.5 g effetto medio | 2.5-5 g effetto forte"
+                    "WIP. successo un bel problema."
                 ),
                 "video_file_id": "BAACAgQAAxkBAAI9gmk_9B6WfvUiC8Q6FWDumJqt_cZQAALaGgAC3ykBUjFj1UkcKnyCNgQ", 
                 "photo_file_ids": [],
@@ -132,19 +126,6 @@ class ShopBot:
                 ),
                 "video_file_id": "BAACAgQAAxkBAALA8WlM8ils5hJW6qELQ3rDIHhXlJFOAAKpGgACScdoUvDEPR-NjqSKNgQ", 
                 "photo_file_ids": [],
-            },
-            "nutella_thc": {
-                "caption": (
-                    "IMMAGINE IA PER FARVI VEDERE PIU' O MENO COME SARA ESTETICAMENTE NEL MENTRE CHE CI ARRIVA LA SETTIMANA PROSSIMA\n"
-                    "Nutella al THC Regular™ –\n"
-                    "Autoprodotta da noi proprio come il nostro sciroppo, 350g di Nutella originale infusi con 1000mg di THC totale.\n"
-                    "Un cucchiaino basta per un effetto potente e duraturo, dolcezza intensa con high rilassante e appagante.\n"
-                    "1 vasetto 45€\n"
-                    "2 vasetti 80€\n"
-                    "5 vasetti 175€\n"
-                    "10 vasetti 300€"
-                ),
-                "photo_file_ids": ["AgACAgQAAxkBAAEHgBVpo0z5xgGsN0o4eCsqlm0xshLrtwACwQxrG-v8IVH41UxfuAs67QEAAwIAA3kAAzoE"],
             },
             "neve": {
                 "name": "C0CA",
@@ -202,21 +183,20 @@ class ShopBot:
                 },
             ],
         }
-        self.weed_video_file_id = "BAACAgQAAxkBAAEJH95pr0DhS4K09YW86tH-8K_1DSbZ-QADIwACb115UeeOxhMUBUBZOgQ"
+        self.weed_video_file_id = "BAACAgQAAxkBAAEO0YNqBaaUBkYuKnDSxU4ksBRmvWE_rwACchwAAupGKVAM_3gMMTiR4jsE"
         self.weed_overview = (
-            "Cherry Bomb -\n"
+            "Wedding Cake -\n"
             "DISPONIBILE\n"
-            "Una Calispain (erba spagnola con genetiche Californiane) di buona qualità, aroma esplosivo e fruttato. "
-            "Infiorescenze chiare e accattivanti con risalti arancioni. Effetto potente e immediato, con una carica energica "
-            "che dura a lungo e invita a sessioni creative.\n"
-            "5g 40€\n"
-            "10g 70€\n"
-            "15g 105€\n"
-            "20g 130€\n"
-            "30g 170€\n"
-            "40g 190€\n"
-            "50g 230€\n"
-            "100g 420€\n"
+            "Una genetica italiana premium con cime compatte e resinose, profilo dolce-cremoso e fumata piena. "
+            "Effetto deciso ma bilanciato, parte rapido e resta a lungo con una sensazione rilassata e mentale pulita.\n"
+            "5g 50€\n"
+            "10g 80€\n"
+            "15g 115€\n"
+            "20g 140€\n"
+            "30g 180€\n"
+            "40g 205€\n"
+            "50g 245€\n"
+            "100g 455€\n"
         )
         self.user_ids = set()
         self.suggestions = []
@@ -600,7 +580,6 @@ class ShopBot:
                 return
 
             kb = [
-                [InlineKeyboardButton("WAX", callback_data="prod_wax")],
                 [InlineKeyboardButton("DISTILLATO", callback_data="prod_distillato")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
@@ -618,8 +597,6 @@ class ShopBot:
 
             kb = [
                 [InlineKeyboardButton("SCIROPPO AL THC", callback_data="prod_sciroppo")],
-                [InlineKeyboardButton("NUTELLA AL THC", callback_data="prod_nutella_thc")],
-                [InlineKeyboardButton("CARAMELLE", callback_data="prod_caramelle")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
             sent = await context.bot.send_message(
@@ -663,7 +640,6 @@ class ShopBot:
                     InlineKeyboardButton("2CB", callback_data="prod_estero_2cb"),
                 ],
                 [
-                    InlineKeyboardButton("RIVOTRIL", callback_data="prod_estero_rivotril"),
                     InlineKeyboardButton("0XY SCIROPPO", callback_data="prod_estero_oxy_sciroppo"),
                 ],
                 [
@@ -775,25 +751,13 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        if d == "prod_nutella_thc":
-            prod = self.products["nutella_thc"]
-            sent = await self._send_media_or_text(
-                context,
-                cid,
-                prod["caption"],
-                back_callback="cat_edibili",
-                photo_file_ids=prod.get("photo_file_ids", []),
-            )
-            context.user_data["last_menu_msg_id"] = sent.message_id
-            return
 
         if d == "cat_weed":
             if not await self._check_membership(context, update.effective_user.id, cid):
                 return
 
             kb = [
-                [InlineKeyboardButton("Cherry Bomb", callback_data="weed_cherry_bomb")],
-                [InlineKeyboardButton("Juicy Fruit", callback_data="weed_juicy_fruit")],
+                [InlineKeyboardButton("Wedding Cake", callback_data="weed_wedding_cake")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
             sent = await context.bot.send_message(
@@ -804,7 +768,7 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
             
-        if d in ("weed_calispain", "weed_cherry_bomb"):
+        if d in ("weed_calispain", "weed_cherry_bomb", "weed_wedding_cake"):
             if not await self._check_membership(context, update.effective_user.id, cid):
                 return
 
@@ -818,58 +782,11 @@ class ShopBot:
             context.user_data["last_menu_msg_id"] = sent.message_id
             return
 
-        if d == "weed_juicy_fruit":
-            if not await self._check_membership(context, update.effective_user.id, cid):
-                return
 
-            caption = (
-                "Juicy Fruit -\n"
-                "DISPONIBILE\n"
-                "Una Calispain ancora più invitante, odore succoso e dolce di frutta fresca. Bud compatti, "
-                "resinosi con sfumature dorate. Effetto avvolgente, un high euforico e bilanciato che supera "
-                "le aspettative e tiene compagnia per ore.\n"
-                "5g 45€\n"
-                "10g 75€\n"
-                "15g 110€\n"
-                "20g 135€\n"
-                "30g 175€\n"
-                "40g 200€\n"
-                "50g 240€\n"
-                "100g 450€"
-            )
-            await self._send_product(
-                context,
-                cid,
-                caption,
-                video_id="BAACAgQAAxkBAAEJH9xpr0C6ybWHRR9_KpyPKhETqjusqQAC_iIAAm9deVFXpyc6jM4kcDoE",
-                back_callback="cat_weed",
-            )
-            return
-
-        if d == "prod_wax":
-            caption = (
-                "SOLD OUT - nuovo restock data da decidere - estratto americano di qualità superiore.\n"
-                "Aroma intenso e pulito, con note resinose e un profilo terpenico ricco. Godibile in ogni modo, "
-                "dalla canna al dab. Colpisce con una botta immediata e prolungata, lasciando un effetto deciso "
-                "e superiore a qualsiasi hashish commerciale.\n"
-                "1g 25€\n"
-                "5g 80€\n"
-                "10g 130€\n"
-                "15g 185€\n"
-                "20g 240€\n"
-                "50g 550€"
-            )
-            await self._send_product(
-                context,
-                cid,
-                caption,
-                video_id="BAACAgQAAxkBAAEFb1ppkDToQFhOpQ51rHxhHJ_mjRyOYAACzhsAAknngFBGgRbdZcKHnToE",
-                back_callback="cat_estratti",
-            )
-            return
 
         if d == "prod_distillato":
             caption = (
+                "TEMPORANEAMENTE NON DISPONIBILE\n\n"
                 "Distillato Delta-9 THC RAW purissimo.\n"
                 "Aroma neutro e essenziale, senza terpeni aggiunti per un’esperienza pulita e versatile. "
                 "Perfetto per dosaggi precisi in penna o per edibili, entra in circolo rapido con un effetto forte "
@@ -919,7 +836,7 @@ class ShopBot:
                 ],
                 [
                     InlineKeyboardButton("MD", callback_data="prod_md"),
-                    InlineKeyboardButton("RIVOTRIL", callback_data="prod_sintetico_rivotril"),
+                    InlineKeyboardButton("0XY 80", callback_data="prod_sintetico_oxy_80"),
                 ],
                 [
                     InlineKeyboardButton("LSD", callback_data="prod_lsd_sintetico"),
@@ -927,7 +844,9 @@ class ShopBot:
                 ],
                 [
                     InlineKeyboardButton("0XY SCIROPPO", callback_data="prod_sintetico_oxy_sciroppo"),
+                    InlineKeyboardButton("M0RFIN4 200", callback_data="prod_sintetico_morfina_200"),
                 ],
+                [InlineKeyboardButton("KETAMIN4", callback_data="prod_sintetico_ketamina_4")],
                 [InlineKeyboardButton("⬅️ Indietro", callback_data="shop")],
             ]
             sent = await context.bot.send_message(
@@ -1165,21 +1084,62 @@ class ShopBot:
             )
             return
 
-        if d == "prod_sintetico_rivotril":
+
+        if d == "prod_sintetico_oxy_80":
             caption = (
-                "Rivotril 2 mg –\n"
-                "Compresse ben dosate e pratiche da gestire, apprezzate per un effetto calmante netto e di lunga durata. Azione rapida e pulita, ideale per chi cerca relax profondo, distensione mentale e un impatto più morbido ma persistente rispetto ad altri sedativi comuni. Blister da 10.\n"
-                "2 pillole - 15€\n"
-                "5 pillole - 30€\n"
-                "10 pillole - 45€\n"
-                "25 pillole - 85€\n"
-                "50 pillole - 150€"
+                "Oxydolor 80mg –\n"
+                "Compresse ad alto dosaggio con rilascio regolare e qualità farmaceutica. Effetto caldo, distensivo e molto persistente, con un onset abbastanza rapido e una discesa progressiva. Pensato per chi cerca un impatto più intenso rispetto ai formati standard.\n"
+                "1 pillola - 35€\n"
+                "2 pillole - 60€\n"
+                "5 pillole - 90€\n"
+                "10 pillole - 150€\n"
+                "20 pillole - 250€\n"
+                "Per di piu da estero."
             )
             await self._send_product(
                 context,
                 cid,
                 caption,
-                video_id="BAACAgQAAxkBAAEMlfFp3UWYWAPBk1gZ-DuRm1Si-oiMDAACGCAAAq8Z6FLzPYrvWscwATsE",
+                video_id="BAACAgQAAxkBAAEO0ZNqBaavpB_x6QJGZ2x_sqN6QR_O4AACcxwAAupGKVCUC6SY6zSBazsE",
+                back_callback="cat_sintetico",
+            )
+            return
+
+        if d == "prod_sintetico_morfina_200":
+            caption = (
+                "Morfina 200mg Extended Release\n"
+                "Formato potente con profilo profondo e sedativo, adatto a chi preferisce una spinta oppioide piena e continua. Qualità consistente, effetto corposo e duraturo con sensazione di calma marcata e rilascio mentale.\n"
+                "1 pillola - 40€\n"
+                "2 pillole - 70€\n"
+                "5 pillole - 100€\n"
+                "10 pillole - 190€\n"
+                "20 pillole - 270€\n"
+                "Per di piu da estero."
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEO0ZRqBaavzpvxhw4gK-aKk8NcT_6p1AACdBwAAupGKVC1aIMRQiaooTsE",
+                back_callback="cat_sintetico",
+            )
+            return
+
+        if d == "prod_sintetico_ketamina_4":
+            caption = (
+                "Ketamina 4g –\n"
+                "Cristalli selezionati con profilo pulito e costante, effetto dissociativo nitido con ingresso graduale e persistenza lunga. Struttura compatta, resa alta e sensazione mentale profonda, pensata per chi cerca qualità stabile in ogni sessione.\n"
+                "10g 90€\n"
+                "20g 140€\n"
+                "30g 190€\n"
+                "40g 240€\n"
+                "50g 280€"
+            )
+            await self._send_product(
+                context,
+                cid,
+                caption,
+                video_id="BAACAgQAAxkBAAEO09NqBcbMK15PDDYh4lQ0OvtIJVvkcgACNiUAAupGMVBhcW8Xn5Jt0zsE",
                 back_callback="cat_sintetico",
             )
             return
@@ -1205,26 +1165,6 @@ class ShopBot:
             )
             return
 
-        if d == "prod_caramelle":
-            caption = (
-                "Dank Gummies – caramelle al THC da 500 mg\n"
-                "DISPONIBILI\n"
-                "Morbide, gustose e incredibilmente potenti. Basta mezza caramella per sentire un effetto intenso e prolungato che si fa sentire dopo più o meno un'ora. "
-                "Perfette per chi vuole il massimo senza dare nell'occhio, "
-                "o semplicemente per chi vuole provare qualcosa di diverso. Ogni pacchetto contiene 20 caramelle con 25mg di THC ciascuna.\n\n"
-                "1 pacchetto - 30€\n"
-                "2 pacchetti - 45€\n"
-                "5 pacchetti - 95€\n"
-                "10 pacchetti - 180€"
-            )
-            await self._send_product(
-                context,
-                cid,
-                caption,
-                video_id="BAACAgQAAxkBAAEMlpdp3Uoi68Sy84OcZXv2-C2jEO0UDAACHyAAAq8Z6FKpl_qbSAQwvTsE",
-                back_callback="cat_edibili",
-            )
-            return
 
         if d in {
             "prod_estero_2cb",
@@ -1321,21 +1261,6 @@ class ShopBot:
             )
             return
 
-        if d == "prod_estero_rivotril":
-            caption = (
-                "Rivotril 2 mg –\n"
-                "Compresse ben dosate e pratiche da gestire, apprezzate per un effetto calmante netto e di lunga durata. Azione rapida e pulita, ideale per chi cerca relax profondo, distensione mentale e un impatto più morbido ma persistente rispetto ad altri sedativi comuni. Blister da 10.\n"
-                "100 pillole - 180€\n"
-                "200 pillole - 300€"
-            )
-            await self._send_product(
-                context,
-                cid,
-                caption,
-                video_id="BAACAgQAAxkBAAEMlfFp3UWYWAPBk1gZ-DuRm1Si-oiMDAACGCAAAq8Z6FLzPYrvWscwATsE",
-                back_callback="cat_estero_sintetico",
-            )
-            return
 
         if d == "prod_estero_oxy_sciroppo":
             caption = (
