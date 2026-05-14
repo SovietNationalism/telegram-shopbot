@@ -155,8 +155,8 @@ class ShopBot:
                         "30g 175€\n"
                         "40g 200€\n"
                         "50g 220€\n"
-                        "100g 400€\n"
-                        "200g 760€\n"
+                        "100g 380€\n"
+                        "200g 720€\n"
                         "Un drysift commerciale di buona qualità.\n"
                         "Fumo dall'aroma intenso e naturale, facile da lavorare e piacevole da fumare in ogni modo. Colpisce con una botta potente e duratura, lasciando un effetto rilassante e pulito."
                     ),
